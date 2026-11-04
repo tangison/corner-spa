@@ -1,30 +1,66 @@
-import type { Metadata } from "next";
-import { Cormorant_Garamond, Inter } from "next/font/google";
+import type { Metadata, Viewport } from "next";
+import { Lora, Montserrat } from "next/font/google";
 import "./globals.css";
-import { Toaster } from "@/components/ui/toaster";
 
-const inter = Inter({
-  variable: "--font-inter",
+const lora = Lora({
+  variable: "--font-lora",
   subsets: ["latin"],
+  weight: ["400", "500"],
+  display: "swap",
 });
 
-const cormorant = Cormorant_Garamond({
-  variable: "--font-cormorant",
+const montserrat = Montserrat({
+  variable: "--font-montserrat",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["300", "400"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "Corner Spa - Day Spa in Windhoek | Massage, Facials & Couples Rituals",
+  metadataBase: new URL("https://spa.mendozer.com"),
+  title: "Corner Spa | Windhoek",
   description:
-    "Windhoek's most transparent spa: published prices in NAD, senior-standard care, supervised training lab of the Oryx Institute. Book online in one tap or chat on WhatsApp.",
-  keywords: ["spa Windhoek", "massage Windhoek", "day spa Namibia", "facial Windhoek", "couples massage Windhoek", "Corner Spa"],
+    "Massage, hot stone, nails and waxing in Windhoek. The relaxation you deserve. The first project of Oryx Institute. A concept by Mendozer Investments.",
   openGraph: {
-    title: "Corner Spa - An hour to yourself, in the heart of Windhoek",
-    description: "Massage, facials, body rituals and couples escapes in Klein Windhoek. Transparent prices, named therapists, one-tap booking.",
-    type: "website",
+    title: "Corner Spa | Windhoek",
+    description:
+      "Massage, hot stone, nails and waxing in Windhoek. The relaxation you deserve.",
+    url: "https://spa.mendozer.com",
+    siteName: "Corner Spa",
     locale: "en_NA",
+    type: "website",
+    images: [
+      {
+        url: "/media/hero-wide.jpg",
+        width: 1510,
+        height: 1041,
+        alt: "Smooth wet stones and soft light at Corner Spa",
+      },
+    ],
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Corner Spa | Windhoek",
+    description: "The relaxation you deserve. Massage, hot stone, nails and waxing in Windhoek.",
+    images: ["/media/hero-wide.jpg"],
+  },
+  icons: {
+    icon: [
+      { url: "/media/logos/favicon-32.png", sizes: "32x32", type: "image/png" },
+      { url: "/media/logos/favicon-512.png", sizes: "512x512", type: "image/png" },
+    ],
+    apple: "/media/logos/apple-touch-icon-180.png",
+  },
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#F5F3EE" },
+    { media: "(prefers-color-scheme: dark)", color: "#1f1c1b" },
+  ],
 };
 
 export default function RootLayout({
@@ -33,12 +69,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body
-        className={`${inter.variable} ${cormorant.variable} antialiased bg-background text-foreground`}
-      >
+    <html lang="en" className={`${lora.variable} ${montserrat.variable}`}>
+      <body>
+        <noscript>
+          <style>
+            {`[data-sc-in], [data-sc-stagger] > * { opacity: 1 !important; transform: none !important; }
+              [data-sc-reveal] { clip-path: none !important; }`}
+          </style>
+        </noscript>
         {children}
-        <Toaster />
       </body>
     </html>
   );

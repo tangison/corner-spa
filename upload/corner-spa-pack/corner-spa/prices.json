@@ -1,0 +1,23 @@
+{
+  "source": "assets/reference/price-list-handwritten.png (owner's handwritten price list)",
+  "currency": "N$",
+  "massage": [
+    { "name": "Full body massage with back and neck", "duration": "60 min", "price": 500 },
+    { "name": "Full body massage with hot stones on the back", "duration": "60 min", "price": 450, "confirm": "duration partly cut off in the photo" },
+    { "name": "Relaxing lemon grass full body massage", "price": 700 },
+    { "name": "Back, neck and scalp massage with hot stones", "duration": "30 min", "price": 250 }
+  ],
+  "nails": [
+    { "name": "Gel overlay", "detail": "Hands and feet", "price": 400 },
+    { "name": "Full cover gel with tips", "detail": "Plain", "price": 350 }
+  ],
+  "waxing": [
+    { "name": "Combo", "detail": "Hollywood and underarm", "price": 400, "confirm": "handwritten as 'Klax Combo', read as Wax Combo" },
+    { "name": "Upper lip", "price": 70 },
+    { "name": "Chin", "price": 70 },
+    { "name": "Half legs", "price": 250 },
+    { "name": "Full legs", "price": 400 },
+    { "name": "Underarms", "price": 100 }
+  ],
+  "facials": "No price on the list. Show: ask us for prices."
+}
