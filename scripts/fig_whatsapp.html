@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --text: #1A1A1A;
+    --text-sub: #6B6357;
+    --card-border: #E5DCC9;
+  }
+  body {
+    font-family: 'Segoe UI', 'Helvetica Neue', 'DejaVu Sans', Arial, sans-serif;
+    background: #FFFFFF; color: var(--text);
+    -webkit-font-smoothing: antialiased;
+  }
+  #root { width: fit-content; min-width: 900px; padding: 48px 44px; background: #FFFFFF; }
+
+  .fig-title { font-size: 25px; font-weight: 700; text-align: center; }
+  .fig-sub { font-size: 14px; color: var(--text-sub); text-align: center; margin-top: 8px; margin-bottom: 30px; }
+
+  .phase-group { background: #F7F2E7; border-radius: 14px; padding: 18px 20px 16px; width: 780px; margin: 0 auto; }
+  .phase-title { font-size: 17px; font-weight: 700; padding: 10px 16px; border-radius: 9px; margin-bottom: 14px; background: #FFFFFF; border-left: 5px solid #A8894E; }
+  .phase-title .tag { font-size: 12px; font-weight: 600; color: #A8894E; letter-spacing: 1px; margin-right: 10px; }
+
+  .steps { display: flex; flex-direction: column; gap: 10px; }
+  .step { background: #FFFFFF; border: 1px solid var(--card-border); border-radius: 9px; padding: 12px 15px; display: flex; gap: 12px; align-items: flex-start; }
+  .step-num { width: 26px; height: 26px; line-height: 26px; text-align: center; border-radius: 50%; font-size: 13px; font-weight: 700; background: #C2A76B; color: #FFFFFF; flex: 0 0 26px; }
+  .step-body { flex: 1; }
+  .step-title { font-size: 15px; font-weight: 600; color: #262019; }
+  .step-desc { font-size: 12.5px; color: #6B6357; margin-top: 3px; line-height: 1.5; }
+  .code-chip { margin-top: 8px; font-family: 'DejaVu Sans Mono', 'Courier New', monospace; font-size: 11.5px;
+               background: #F1EADB; border: 1px solid #E0D5BE; border-radius: 6px; padding: 7px 10px;
+               color: #4A4030; word-break: break-all; line-height: 1.5; }
+  .wa-inline { display: inline-block; background: #E3F4E7; border: 1px solid #4FAD52; color: #1E7A34;
+               border-radius: 5px; font-size: 11.5px; font-weight: 700; padding: 1px 7px; }
+
+  .phase-arrow { text-align: center; font-size: 24px; color: #A8894E; font-weight: 700; line-height: 1; margin: 12px 0; }
+
+  .foot-note { width: 780px; margin: 22px auto 0; background: #F8F4EA; border: 1.5px dashed #C9BFA9; border-radius: 12px;
+               padding: 13px 18px; font-size: 13px; color: #4A4436; text-align: center; line-height: 1.55; }
+</style>
+</head>
+<body>
+<div id="root">
+  <div class="fig-title">WhatsApp Booking Flow &mdash; From Tap to Confirmed Appointment</div>
+  <div class="fig-sub">Six steps across three phases, powered by one free click-to-chat link</div>
+
+  <div class="phase-group">
+    <div class="phase-title"><span class="tag">PHASE 1</span>On the website &mdash; capture intent</div>
+    <div class="steps">
+      <div class="step"><div class="step-num">1</div><div class="step-body">
+        <div class="step-title">Visitor taps the floating WhatsApp button</div>
+        <div class="step-desc">Green button, bottom-right on every screen. Tap opens WhatsApp directly &mdash; no forms, no accounts, no waiting for an email reply.</div>
+        <div class="code-chip">https://wa.me/264【number】?text=Hi%20Corner%20Spa!%20I%27d%20like%20to%20book%20a%20treatment.</div>
+      </div></div>
+      <div class="step"><div class="step-num">2</div><div class="step-body">
+        <div class="step-title">WhatsApp opens with the message already typed</div>
+        <div class="step-desc">The prefilled text removes all typing friction. The guest only presses send &mdash; on the phone they already book with.</div>
+      </div></div>
+    </div>
+  </div>
+
+  <div class="phase-arrow">&darr;</div>
+
+  <div class="phase-group">
+    <div class="phase-title"><span class="tag">PHASE 2</span>In the chat &mdash; qualify and confirm</div>
+    <div class="steps">
+      <div class="step"><div class="step-num">3</div><div class="step-body">
+        <div class="step-title">Instant auto-greeting sets expectations</div>
+        <div class="step-desc">WhatsApp Business away-greeting replies in seconds: opening hours, typical response time, and a link to the treatment menu.</div>
+      </div></div>
+      <div class="step"><div class="step-num">4</div><div class="step-body">
+        <div class="step-title">Receptionist confirms treatment, date and therapist <span class="wa-inline">quick replies</span></div>
+        <div class="step-desc">Saved quick replies answer the four most common requests &mdash; massage, facial, couples ritual, gift voucher &mdash; in two taps.</div>
+      </div></div>
+      <div class="step"><div class="step-num">5</div><div class="step-body">
+        <div class="step-title">Deposit link sent when required</div>
+        <div class="step-desc">For longer rituals or peak slots, a payment link secures the booking: card via DPO Pay, or instant PayToday transfer in NAD.</div>
+      </div></div>
+    </div>
+  </div>
+
+  <div class="phase-arrow">&darr;</div>
+
+  <div class="phase-group">
+    <div class="phase-title"><span class="tag">PHASE 3</span>Locked in &mdash; confirm and return</div>
+    <div class="steps">
+      <div class="step"><div class="step-num">6</div><div class="step-body">
+        <div class="step-title">Confirmation, 24-hour reminder, review request</div>
+        <div class="step-desc">The chat itself becomes the appointment card: confirmation with directions, a friendly reminder the day before, and a review link 24 hours after the visit.</div>
+      </div></div>
+    </div>
+  </div>
+
+  <div class="foot-note">Free to run on the WhatsApp Business app with click-to-chat links. Move to the WhatsApp Business Platform (API) &mdash; automated templates, multi-agent routing &mdash; only once message volume outgrows one phone.</div>
+</div>
+</body>
+</html>
