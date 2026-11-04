@@ -1,0 +1,54 @@
+🚀 Initializing Z-AI SDK...
+🔎 Searching images: "elegant spa room interior massage table soft light"
+✅ Got 6 images
+{
+  "success": true,
+  "query": "elegant spa room interior massage table soft light",
+  "count": 6,
+  "ranked": false,
+  "captioned_count": 0,
+  "results": [
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/738367c5dbb1.jpg",
+      "caption": "",
+      "source": "Pure Spa Direct",
+      "original_width": "1000px",
+      "original_height": "1000px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/eec678e432fa.jpg",
+      "caption": "",
+      "source": "LEMI",
+      "original_width": "1200px",
+      "original_height": "1200px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/46a391521630.webp",
+      "caption": "",
+      "source": "Massageliegenhaus",
+      "original_width": "2000px",
+      "original_height": "1500px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/3a5e157ea57d.jpg",
+      "caption": "",
+      "source": "TheCoolist",
+      "original_width": "1080px",
+      "original_height": "1350px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/68dfb22db81a.jpg",
+      "caption": "",
+      "source": "Dreamstime",
+      "original_width": "1600px",
+      "original_height": "963px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/7dbaa8537aed.jpg",
+      "caption": "",
+      "source": "Houzz",
+      "original_width": "1184px",
+      "original_height": "1776px"
+    }
+  ]
+}

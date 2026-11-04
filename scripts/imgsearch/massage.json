@@ -1,0 +1,40 @@
+🚀 Initializing Z-AI SDK...
+🔎 Searching images: "hot stone back massage therapist performing treatment in spa"
+✅ Got 4 images
+{
+  "success": true,
+  "query": "hot stone back massage therapist performing treatment in spa",
+  "count": 4,
+  "ranked": false,
+  "captioned_count": 0,
+  "results": [
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/b1f4cea0fa4b.jpg",
+      "caption": "",
+      "source": "Healthline",
+      "original_width": "1296px",
+      "original_height": "728px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/d2a6058221ff.jpg",
+      "caption": "",
+      "source": "tigon massa",
+      "original_width": "1200px",
+      "original_height": "799px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/1da2aaf5f1c1.jpg",
+      "caption": "",
+      "source": "Isla Bella Beach Resort",
+      "original_width": "1920px",
+      "original_height": "1080px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/204563054f3a.jpg",
+      "caption": "",
+      "source": "YouTube",
+      "original_width": "1280px",
+      "original_height": "720px"
+    }
+  ]
+}

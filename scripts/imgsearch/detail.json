@@ -1,0 +1,40 @@
+🚀 Initializing Z-AI SDK...
+🔎 Searching images: "spa still life rolled towels candles orchid flowers detail"
+✅ Got 4 images
+{
+  "success": true,
+  "query": "spa still life rolled towels candles orchid flowers detail",
+  "count": 4,
+  "ranked": false,
+  "captioned_count": 0,
+  "results": [
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/15a42496f164.jpg",
+      "caption": "",
+      "source": "Etsy",
+      "original_width": "2000px",
+      "original_height": "2000px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/73ff0f466385.jpg",
+      "caption": "",
+      "source": "Shutterstock",
+      "original_width": "1500px",
+      "original_height": "1070px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/b66dfef1c20a.jpg",
+      "caption": "",
+      "source": "Wallpaper Abyss - Alpha Coders",
+      "original_width": "1920px",
+      "original_height": "1280px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/de468b47a145.jpg",
+      "caption": "",
+      "source": "Shutterstock",
+      "original_width": "1500px",
+      "original_height": "1600px"
+    }
+  ]
+}
