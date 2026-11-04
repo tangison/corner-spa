@@ -1,0 +1,20 @@
+{
+  "booking": [
+    {
+      "label": "Booking",
+      "phone": "+264 81 623 4788",
+      "whatsapp": "https://wa.me/264816234788"
+    },
+    {
+      "label": "Second number (to be added)",
+      "phone": "",
+      "whatsapp": ""
+    }
+  ],
+  "domains": [
+    "spa.mendozer.com",
+    "oryxinstitute.org/corner-spa"
+  ],
+  "note": "Mirrors the hard-coded facts in PROMPT.md. Add the second number and the street address here and in PROMPT.md when supplied.",
+  "address": ""
+}
