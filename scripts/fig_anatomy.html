@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --text: #1A1A1A;
+    --text-sub: #6B6357;
+    --bg: #FFFFFF;
+    --card-border: #E5DCC9;
+    --skel: #EAE3D4;
+    --skel-strong: #DDD3BE;
+  }
+  body {
+    font-family: 'Segoe UI', 'Helvetica Neue', 'DejaVu Sans', Arial, sans-serif;
+    background: var(--bg); color: var(--text);
+    -webkit-font-smoothing: antialiased;
+  }
+  #root { width: fit-content; min-width: 1400px; padding: 48px 44px; background: var(--bg); }
+
+  .fig-title { font-size: 26px; font-weight: 700; text-align: center; color: #1A1A1A; }
+  .fig-sub { font-size: 14px; color: var(--text-sub); text-align: center; margin-top: 8px; }
+
+  .legend { display: flex; gap: 18px; justify-content: center; margin: 26px 0 30px; flex-wrap: wrap; }
+  .legend-item { display: flex; align-items: center; gap: 8px; font-size: 13px; color: #4B4438; }
+  .legend-dot { width: 13px; height: 13px; border-radius: 4px; }
+
+  .board { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; align-items: start; }
+
+  .phase { border-radius: 14px; padding: 16px 14px 14px; }
+  .phase.p1 { background: #F8F3EA; border-top: 5px solid #D6C096; }
+  .phase.p2 { background: #F5EFE3; border-top: 5px solid #C2A76B; }
+  .phase.p3 { background: #F2EADC; border-top: 5px solid #A8894E; }
+  .phase.p4 { background: #EFE5D3; border-top: 5px solid #8B6F3A; }
+
+  .phase-name { font-size: 17px; font-weight: 700; color: #1A1A1A; }
+  .phase-job { font-size: 12.5px; color: #6B6357; margin: 4px 0 14px; line-height: 1.45; }
+
+  .block { background: #FFFFFF; border: 1.5px solid var(--card-border); border-radius: 10px;
+           padding: 12px 13px 13px; margin-bottom: 10px; box-shadow: 0 1px 2px rgba(60,45,20,0.05); }
+  .block:last-child { margin-bottom: 0; }
+  .blk-head { display: flex; align-items: center; gap: 9px; margin-bottom: 9px; }
+  .num { width: 24px; height: 24px; border-radius: 50%; color: #FFFFFF; font-size: 12.5px;
+         font-weight: 700; display: flex; align-items: center; justify-content: center; flex: 0 0 24px; }
+  .p1 .num { background: #C2A76B; } .p2 .num { background: #A8894E; }
+  .p3 .num { background: #8B6F3A; } .p4 .num { background: #6E5730; }
+  .blk-name { font-size: 15.5px; font-weight: 600; color: #262019; line-height: 1.25; }
+
+  .skel { background: var(--skel); border-radius: 4px; height: 8px; margin-bottom: 6px; }
+  .skel.last { margin-bottom: 0; }
+  .skel.strong { background: var(--skel-strong); }
+  .row { display: flex; gap: 8px; }
+  .row > * { flex: 1; }
+
+  .btns { display: flex; gap: 8px; margin-top: 9px; }
+  .btn { height: 20px; border-radius: 5px; flex: 1; }
+  .btn.gold { background: #B08050; }
+  .btn.wa { background: #E3F4E7; border: 1.5px solid #4FAD52; }
+  .btn.ghost { background: #FFFFFF; border: 1.5px solid #C9BFA9; }
+
+  .imgbox { background: #F1EBDF; border: 1.5px solid #E0D6C0; border-radius: 7px; }
+
+  .cards3 { display: flex; gap: 8px; }
+  .cards3 > div { flex: 1; background: #F6F1E6; border: 1px solid #E5DCC9; border-radius: 7px; padding: 8px 8px 9px; }
+  .mini-img { height: 26px; background: #EDE5D4; border-radius: 5px; margin-bottom: 6px; }
+
+  .menu-row { display: flex; align-items: center; gap: 8px; padding: 5px 2px; }
+  .menu-row .skel { margin-bottom: 0; }
+  .dots { flex: 1; border-bottom: 2px dotted #D8CDB6; height: 1px; }
+
+  .tiles4 { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; }
+  .tiles4 > div { background: #F6F1E6; border: 1px solid #E5DCC9; border-radius: 6px; height: 26px; }
+
+  .avatar-row { display: flex; gap: 8px; }
+  .avatar-row > div { flex: 1; background: #F6F1E6; border: 1px solid #E5DCC9; border-radius: 7px;
+                      padding: 8px 7px 9px; text-align: center; }
+  .avatar { width: 24px; height: 24px; border-radius: 50%; background: #D9C9A6; margin: 0 auto 6px; }
+
+  .gallery { display: grid; grid-template-columns: repeat(4, 1fr); gap: 7px; }
+  .gallery > div { height: 30px; border-radius: 6px; }
+
+  .quote { background: #F6F1E6; border: 1px solid #E5DCC9; border-radius: 7px; padding: 8px 9px; margin-bottom: 7px; }
+  .quote:last-child { margin-bottom: 0; }
+
+  .steps3 { display: flex; gap: 7px; align-items: center; }
+  .step { flex: 1; background: #F6F1E6; border: 1px solid #E5DCC9; border-radius: 7px; height: 34px;
+          display: flex; align-items: center; justify-content: center; }
+  .step .d { width: 16px; height: 16px; border-radius: 50%; background: #C2A76B; }
+  .arrow { color: #A8894E; font-size: 13px; font-weight: 700; }
+
+  .map { display: flex; gap: 8px; }
+  .map .imgbox { flex: 1.2; height: 52px; }
+  .map .lines { flex: 1; padding-top: 2px; }
+
+  .accordion > div { border: 1px solid #E5DCC9; border-radius: 6px; background: #F8F4EA;
+                     height: 18px; margin-bottom: 6px; display: flex; align-items: center;
+                     justify-content: space-between; padding: 0 9px; }
+  .accordion > div:last-child { margin-bottom: 0; }
+  .acc-line { width: 55%; height: 6px; background: #D9CFBA; border-radius: 3px; }
+  .plus { color: #A8894E; font-size: 12px; font-weight: 700; line-height: 1; }
+
+  .form { display: flex; gap: 8px; }
+  .input { flex: 1; height: 22px; border: 1.5px solid #D8CDB6; border-radius: 5px; background: #FFFFFF; }
+  .form .btn { flex: 0 0 34%; height: 22px; }
+
+  .banner { background: #2B241C; border-radius: 8px; padding: 12px 12px 13px; }
+  .banner .skel { background: #4A4032; }
+
+  .footer-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+  .footer-grid .col > div { height: 6px; background: #E3DAC7; border-radius: 3px; margin-bottom: 5px; }
+  .footer-grid .col > div:first-child { height: 8px; background: #CFC3A8; }
+
+  .float-note { margin-top: 24px; background: #F8F4EA; border: 1.5px dashed #C9BFA9; border-radius: 12px;
+                padding: 14px 20px; display: flex; align-items: center; gap: 26px; justify-content: center; }
+  .float-chip { display: flex; align-items: center; gap: 10px; font-size: 13.5px; color: #3A3430; font-weight: 600; }
+  .wa-badge { width: 30px; height: 30px; border-radius: 50%; background: #4FAD52; color: #fff;
+              display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 15px; }
+  .sticky-bar { width: 190px; height: 26px; border-radius: 8px; background: #2B241C; color: #fff;
+                display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700;
+                letter-spacing: 0.4px; }
+</style>
+</head>
+<body>
+<div id="root">
+  <div class="fig-title">Corner Spa Landing Page &mdash; Conversion Anatomy</div>
+  <div class="fig-sub">Nineteen blocks in scroll order, grouped by the job each one does &mdash; the blueprint for every build decision</div>
+
+  <div class="legend">
+    <div class="legend-item"><div class="legend-dot" style="background:#D6C096;"></div>1&ndash;4 Capture attention</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#C2A76B;"></div>5&ndash;11 Build desire &amp; trust</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#A8894E;"></div>12&ndash;14 Convert to booking</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#8B6F3A;"></div>15&ndash;19 Close &amp; retain</div>
+  </div>
+
+  <div class="board">
+    <!-- PHASE 1 -->
+    <div class="phase p1">
+      <div class="phase-name">1 &middot; Capture</div>
+      <div class="phase-job">Win the first five seconds: what this is, why it is special, where to tap.</div>
+
+      <div class="block"><div class="blk-head"><div class="num">1</div><div class="blk-name">Announcement bar</div></div>
+        <div class="skel last strong" style="width:88%; margin:0 auto;"></div></div>
+
+      <div class="block"><div class="blk-head"><div class="num">2</div><div class="blk-name">Header &amp; navigation</div></div>
+        <div class="row"><div class="skel strong" style="width:22%;"></div><div class="skel" style="width:12%;"></div><div class="skel" style="width:12%;"></div><div class="skel" style="width:12%;"></div><div class="btn gold" style="flex:0 0 26%; height:14px;"></div></div></div>
+
+      <div class="block"><div class="blk-head"><div class="num">3</div><div class="blk-name">Hero + dual CTA</div></div>
+        <div class="skel strong" style="width:92%;"></div>
+        <div class="skel" style="width:70%;"></div>
+        <div class="imgbox" style="height:44px; margin-top:8px;"></div>
+        <div class="btns"><div class="btn gold"></div><div class="btn wa"></div></div></div>
+
+      <div class="block"><div class="blk-head"><div class="num">4</div><div class="blk-name">Trust strip</div></div>
+        <div class="cards3"><div><div class="mini-img" style="height:14px; width:60%; margin:0 auto 4px;"></div><div class="skel last" style="width:80%; margin:0 auto;"></div></div><div><div class="mini-img" style="height:14px; width:60%; margin:0 auto 4px;"></div><div class="skel last" style="width:80%; margin:0 auto;"></div></div><div><div class="mini-img" style="height:14px; width:60%; margin:0 auto 4px;"></div><div class="skel last" style="width:80%; margin:0 auto;"></div></div></div></div>
+    </div>
+
+    <!-- PHASE 2 -->
+    <div class="phase p2">
+      <div class="phase-name">2 &middot; Convince</div>
+      <div class="phase-job">Turn interest into desire: story, treatments, people, proof.</div>
+
+      <div class="block"><div class="blk-head"><div class="num">5</div><div class="blk-name">Brand story</div></div>
+        <div class="row"><div style="flex:1"><div class="skel"></div><div class="skel"></div><div class="skel last" style="width:70%;"></div></div><div class="imgbox" style="flex:1; height:34px;"></div></div></div>
+
+      <div class="block"><div class="blk-head"><div class="num">6</div><div class="blk-name">Signature treatments</div></div>
+        <div class="cards3"><div><div class="mini-img"></div><div class="skel" style="width:85%;"></div><div class="skel last" style="width:55%;"></div></div><div><div class="mini-img"></div><div class="skel" style="width:85%;"></div><div class="skel last" style="width:55%;"></div></div><div><div class="mini-img"></div><div class="skel" style="width:85%;"></div><div class="skel last" style="width:55%;"></div></div></div></div>
+
+      <div class="block"><div class="blk-head"><div class="num">7</div><div class="blk-name">Treatment menu + prices</div></div>
+        <div class="menu-row"><div class="skel" style="width:34%;"></div><div class="dots"></div><div class="skel" style="width:14%;"></div></div>
+        <div class="menu-row"><div class="skel" style="width:40%;"></div><div class="dots"></div><div class="skel" style="width:14%;"></div></div>
+        <div class="menu-row"><div class="skel" style="width:30%;"></div><div class="dots"></div><div class="skel" style="width:14%;"></div></div>
+        <div class="menu-row"><div class="skel" style="width:38%;"></div><div class="dots"></div><div class="skel" style="width:14%;"></div></div>
+        <div class="menu-row"><div class="skel" style="width:26%;"></div><div class="dots"></div><div class="skel" style="width:14%;"></div></div></div>
+
+      <div class="block"><div class="blk-head"><div class="num">8</div><div class="blk-name">Why Corner Spa</div></div>
+        <div class="tiles4"><div></div><div></div><div></div><div></div></div></div>
+
+      <div class="block"><div class="blk-head"><div class="num">9</div><div class="blk-name">Meet the therapists</div></div>
+        <div class="avatar-row"><div><div class="avatar"></div><div class="skel" style="width:80%; margin:0 auto 4px;"></div><div class="skel last" style="width:55%; margin:0 auto;"></div></div><div><div class="avatar"></div><div class="skel" style="width:80%; margin:0 auto 4px;"></div><div class="skel last" style="width:55%; margin:0 auto;"></div></div><div><div class="avatar"></div><div class="skel" style="width:80%; margin:0 auto 4px;"></div><div class="skel last" style="width:55%; margin:0 auto;"></div></div></div></div>
+
+      <div class="block"><div class="blk-head"><div class="num">10</div><div class="blk-name">Gallery</div></div>
+        <div class="gallery"><div class="imgbox"></div><div class="imgbox"></div><div class="imgbox"></div><div class="imgbox"></div></div></div>
+
+      <div class="block"><div class="blk-head"><div class="num">11</div><div class="blk-name">Guest reviews</div></div>
+        <div class="quote"><div class="skel"></div><div class="skel last" style="width:60%;"></div></div>
+        <div class="quote"><div class="skel"></div><div class="skel last" style="width:60%;"></div></div></div>
+    </div>
+
+    <!-- PHASE 3 -->
+    <div class="phase p3">
+      <div class="phase-name">3 &middot; Convert</div>
+      <div class="phase-job">Remove the last friction between desire and a confirmed slot.</div>
+
+      <div class="block"><div class="blk-head"><div class="num">12</div><div class="blk-name">Packages &amp; specials</div></div>
+        <div class="quote"><div class="skel" style="width:75%;"></div><div class="skel last" style="width:50%;"></div></div>
+        <div class="quote"><div class="skel" style="width:75%;"></div><div class="skel last" style="width:50%;"></div></div></div>
+
+      <div class="block"><div class="blk-head"><div class="num">13</div><div class="blk-name">Gift vouchers</div></div>
+        <div class="skel" style="width:85%;"></div>
+        <div class="skel last" style="width:60%;"></div>
+        <div class="btns"><div class="btn gold"></div></div></div>
+
+      <div class="block"><div class="blk-head"><div class="num">14</div><div class="blk-name">How booking works</div></div>
+        <div class="steps3"><div class="step"><div class="d"></div></div><div class="arrow">&rarr;</div><div class="step"><div class="d"></div></div><div class="arrow">&rarr;</div><div class="step"><div class="d"></div></div></div>
+        <div class="skel last" style="width:80%; margin:9px auto 0;"></div></div>
+    </div>
+
+    <!-- PHASE 4 -->
+    <div class="phase p4">
+      <div class="phase-name">4 &middot; Close &amp; retain</div>
+      <div class="phase-job">Answer, reassure, capture, and hand over to the next visit.</div>
+
+      <div class="block"><div class="blk-head"><div class="num">15</div><div class="blk-name">Find us + hours</div></div>
+        <div class="map"><div class="imgbox"></div><div class="lines"><div class="skel"></div><div class="skel"></div><div class="skel last" style="width:65%;"></div></div></div></div>
+
+      <div class="block"><div class="blk-head"><div class="num">16</div><div class="blk-name">FAQ</div></div>
+        <div class="accordion"><div><div class="acc-line"></div><div class="plus">+</div></div><div><div class="acc-line"></div><div class="plus">+</div></div><div><div class="acc-line"></div><div class="plus">+</div></div><div><div class="acc-line"></div><div class="plus">+</div></div></div></div>
+
+      <div class="block"><div class="blk-head"><div class="num">17</div><div class="blk-name">Newsletter opt-in</div></div>
+        <div class="form"><div class="input"></div><div class="btn gold"></div></div></div>
+
+      <div class="block"><div class="blk-head"><div class="num">18</div><div class="blk-name">Final CTA banner</div></div>
+        <div class="banner"><div class="skel" style="width:80%;"></div><div class="skel" style="width:55%;"></div><div class="btns"><div class="btn gold"></div><div class="btn wa"></div></div></div></div>
+
+      <div class="block"><div class="blk-head"><div class="num">19</div><div class="blk-name">Footer</div></div>
+        <div class="footer-grid"><div class="col"><div></div><div></div><div></div></div><div class="col"><div></div><div></div><div></div></div><div class="col"><div></div><div></div><div></div></div><div class="col"><div></div><div></div><div></div></div></div></div>
+    </div>
+  </div>
+
+  <div class="float-note">
+    <div class="float-chip"><div class="wa-badge">W</div>Floating WhatsApp button &mdash; bottom-right on every screen</div>
+    <div class="float-chip"><div class="sticky-bar">Book Now</div>Sticky booking bar &mdash; pinned on mobile scroll</div>
+  </div>
+</div>
+</body>
+</html>
