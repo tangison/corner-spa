@@ -1,0 +1,33 @@
+🚀 Initializing Z-AI SDK...
+🔎 Searching images: "pedicure spa foot treatment nail polish"
+✅ Got 3 images
+{
+  "success": true,
+  "query": "pedicure spa foot treatment nail polish",
+  "count": 3,
+  "ranked": false,
+  "captioned_count": 0,
+  "results": [
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/183c3e97b2b3.jpg",
+      "caption": "",
+      "source": "Pure Spa Direct",
+      "original_width": "1024px",
+      "original_height": "1024px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/b72fb9c1525e.jpg",
+      "caption": "",
+      "source": "Amazon.com",
+      "original_width": "1600px",
+      "original_height": "1600px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/4557840b93de.jpg",
+      "caption": "",
+      "source": "AUM Spa Ubud",
+      "original_width": "1819px",
+      "original_height": "1094px"
+    }
+  ]
+}

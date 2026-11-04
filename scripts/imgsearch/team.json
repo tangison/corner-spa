@@ -1,0 +1,61 @@
+🚀 Initializing Z-AI SDK...
+🔎 Searching images: "professional portrait of female massage therapist in white uniform smiling"
+✅ Got 7 images
+{
+  "success": true,
+  "query": "professional portrait of female massage therapist in white uniform smiling",
+  "count": 7,
+  "ranked": false,
+  "captioned_count": 0,
+  "results": [
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/de5ae8d910da.jpg",
+      "caption": "",
+      "source": "Alamy",
+      "original_width": "1300px",
+      "original_height": "933px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/80c4561fdbcb.jpg",
+      "caption": "",
+      "source": "Coastal Health & Medical Spa",
+      "original_width": "2560px",
+      "original_height": "1706px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/f3e9008e8065.jpg",
+      "caption": "",
+      "source": "Photoumbra Studios",
+      "original_width": "2595px",
+      "original_height": "1730px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/ac057e45aa4c.png",
+      "caption": "",
+      "source": "Cure Today",
+      "original_width": "1200px",
+      "original_height": "675px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/0912a5b01ad0.jpeg",
+      "caption": "",
+      "source": "Issuu",
+      "original_width": "1279px",
+      "original_height": "640px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/c1f8496e44cd.jpg",
+      "caption": "",
+      "source": "Sharper Plastic Surgery",
+      "original_width": "1800px",
+      "original_height": "816px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/6d859df764fa.jpg",
+      "caption": "",
+      "source": "Pure Spa Direct",
+      "original_width": "1024px",
+      "original_height": "1024px"
+    }
+  ]
+}
