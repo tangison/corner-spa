@@ -1,0 +1,705 @@
+     1→"use client";
+     2→
+     3→import React, { useState } from "react";
+     4→import { Button } from "@/components/ui/button";
+     5→import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+     6→import { Input } from "@/components/ui/input";
+     7→import { Label } from "@/components/ui/label";
+     8→import { Textarea } from "@/components/ui/textarea";
+     9→import { BookButton, WhatsAppButton } from "@/components/spa/booking";
+    10→import {
+    11→  FAQS, GALLERY, MEMBERSHIPS, PACKAGES, SIGNATURES, SPA, TEAM, TEAM_GROUP_IMAGE,
+    12→  TESTIMONIALS, TREATMENT_CATEGORIES, VOUCHER_AMOUNTS, WA_PREFILL, formatNAD, track, waLink,
+    13→} from "@/lib/spa";
+    14→import {
+    15→  Award, BadgeCheck, Check, Clock, Gem, GraduationCap, HeartHandshake, Leaf,
+    16→  MapPin, MessageCircle, Navigation, Quote, ShieldCheck, Sparkles, Star, Wallet,
+    17→} from "lucide-react";
+    18→
+    19→// ---------------- Hero ----------------
+    20→export function Hero() {
+    21→  return (
+    22→    <section id="top" className="relative">
+    23→      <div className="absolute inset-0">
+    24→        <img
+    25→          src="https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/46a391521630.webp"
+    26→          alt="Warm, softly lit treatment suite at Corner Spa in Windhoek"
+    27→          className="h-full w-full object-cover"
+    28→        />
+    29→        <div className="absolute inset-0 bg-gradient-to-r from-[#16201B]/85 via-[#16201B]/60 to-[#16201B]/25" />
+    30→      </div>
+    31→
+    32→      <div className="relative mx-auto max-w-6xl px-4 sm:px-6">
+    33→        <div className="flex min-h-[88vh] max-w-xl flex-col justify-center py-24">
+    34→          <p className="mb-4 flex items-center gap-2 text-sm text-[#E4D9BF]">
+    35→            <MapPin className="h-4 w-4 text-[#C9A84C]" /> Klein Windhoek, Windhoek
+    36→            <span className="mx-2 text-white/30">|</span>
+    37→            <Star className="h-4 w-4 fill-[#C9A84C] text-[#C9A84C]" /> {SPA.rating} ({SPA.reviewCount} reviews)
+    38→          </p>
+    39→          <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl leading-[1.08] text-[#F7F3EC]">
+    40→            An hour to yourself,<br />in the heart of Windhoek
+    41→          </h1>
+    42→          <p className="mt-5 text-base sm:text-lg leading-relaxed text-[#D8D3C6]">
+    43→            Slow, skilled treatments in a quiet Klein Windhoek sanctuary - transparent prices,
+    44→            senior-standard care, and booking that takes one tap.
+    45→          </p>
+    46→          <div className="mt-8 flex flex-col sm:flex-row gap-3">
+    47→            <BookButton event="hero_book_click" className="h-12 px-8 text-base">Book Your Treatment</BookButton>
+    48→            <WhatsAppButton prefill={WA_PREFILL.general} source="hero" event="hero_whatsapp_click"
+    49→              className="h-12 px-8 text-base text-[#7FE0A8] border-[#7FE0A8]/50 hover:bg-[#25D366]/15">
+    50→              WhatsApp Us
+    51→            </WhatsAppButton>
+    52→          </div>
+    53→          <p className="mt-6 text-sm text-[#B9B4A5]">
+    54→            Open today · {SPA.responsePromise}
+    55→          </p>
+    56→        </div>
+    57→      </div>
+    58→    </section>
+    59→  );
+    60→}
+    61→
+    62→// ---------------- Trust bar ----------------
+    63→const TRUST_ITEMS = [
+    64→  { icon: Star, label: SPA.rating + " on Google", sub: SPA.reviewCount + " verified reviews" },
+    65→  { icon: ShieldCheck, label: "Senior-standard care", sub: "Documented hygiene protocol" },
+    66→  { icon: GraduationCap, label: "Oryx Institute venture", sub: "Pursuing NQA / NTA accreditation" },
+    67→  { icon: Leaf, label: "Considered products", sub: "Kind to skin, kind to Earth" },
+    68→  { icon: Wallet, label: "Transparent pricing", sub: "Every price published in NAD" },
+    69→];
+    70→
+    71→export function TrustBar() {
+    72→  return (
+    73→    <section aria-label="Trust and credentials" className="border-y border-[#1F2923]/10 bg-[#F2EDE2]">
+    74→      <div className="mx-auto max-w-6xl px-4 sm:px-6 py-6 grid grid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-5">
+    75→        {TRUST_ITEMS.map((item) => (
+    76→          <div key={item.label} className="flex items-center gap-3">
+    77→            <item.icon className="h-7 w-7 shrink-0 text-[#A98B36]" strokeWidth={1.6} />
+    78→            <div>
+    79→              <p className="text-sm font-medium text-[#1F2923]">{item.label}</p>
+    80→              <p className="text-xs text-[#6B6B5F]">{item.sub}</p>
+    81→            </div>
+    82→          </div>
+    83→        ))}
+    84→      </div>
+    85→    </section>
+    86→  );
+    87→}
+    88→
+    89→// ---------------- About ----------------
+    90→export function About() {
+    91→  return (
+    92→    <section id="about" className="mx-auto max-w-6xl px-4 sm:px-6 py-20 sm:py-24">
+    93→      <div className="grid items-center gap-10 lg:grid-cols-2">
+    94→        <div className="relative">
+    95→          <img
+    96→            src="https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/cc193838c313.jpg"
+    97→            alt="A Corner Spa therapist performing a calm facial treatment"
+    98→            className="aspect-[4/3] w-full rounded-2xl object-cover shadow-lg"
+    99→            loading="lazy"
+   100→          />
+   101→          <div className="absolute -bottom-6 -right-4 hidden sm:block rounded-2xl bg-[#1F2923] px-6 py-4 text-[#F7F3EC] shadow-xl">
+   102→            <p className="font-display text-3xl text-[#C9A84C]">Live lab</p>
+   103→            <p className="text-xs text-[#B9B4A5]">Oryx Institute&apos;s first venture</p>
+   104→          </div>
+   105→        </div>
+   106→        <div>
+   107→          <p className="text-sm font-medium uppercase tracking-[0.2em] text-[#A98B36]">About Corner Spa</p>
+   108→          <h2 className="mt-3 font-display text-3xl sm:text-4xl text-[#1F2923]">Rest, restored to a craft</h2>
+   109→          <div className="mt-5 space-y-4 text-[15px] leading-relaxed text-[#3A3F35]">
+   110→            <p>
+   111→              Corner Spa exists for one reason: to give Windhoek a place where an hour of care is
+   112→              delivered like a craft, not a commodity. Quiet rooms, considered products, and
+   113→              therapists trained to a documented standard.
+   114→            </p>
+   115→            <p>
+   116→              We are also the Oryx Institute&apos;s first live venture - a working wellness and
+   117→              service-operations lab where Namibia&apos;s next spa professionals train under
+   118→              qualified supervision. When you book, you experience senior-standard care and fund
+   119→              the making of the industry&apos;s next generation.
+   120→            </p>
+   121→            <p>
+   122→              Everything is stated plainly: prices in the open, therapists by name, and a
+   123→              supervised trainee clearly labelled as one. What you see is what you get.
+   124→            </p>
+   125→          </div>
+   126→          <div className="mt-6 flex gap-3">
+   127→            <BookButton event="about_book_click">Book Your Treatment</BookButton>
+   128→            <WhatsAppButton prefill={WA_PREFILL.custom} source="about" event="wa_click">Ask a question</WhatsAppButton>
+   129→          </div>
+   130→        </div>
+   131→      </div>
+   132→    </section>
+   133→  );
+   134→}
+   135→
+   136→// ---------------- Treatments ----------------
+   137→export function Treatments() {
+   138→  return (
+   139→    <section id="treatments" className="bg-[#F2EDE2] py-20 sm:py-24">
+   140→      <div className="mx-auto max-w-6xl px-4 sm:px-6">
+   141→        <div className="max-w-2xl">
+   142→          <p className="text-sm font-medium uppercase tracking-[0.2em] text-[#A98B36]">The menu</p>
+   143→          <h2 className="mt-3 font-display text-3xl sm:text-4xl text-[#1F2923]">Treatments & prices, in the open</h2>
+   144→          <p className="mt-4 text-[15px] leading-relaxed text-[#3A3F35]">
+   145→            Every treatment, duration and price in Namibian dollars - no &quot;prices on request&quot;.
+   146→            Unsure what to choose? Send one WhatsApp message and we will match you.
+   147→          </p>
+   148→        </div>
+   149→
+   150→        <div className="mt-10 grid gap-6 md:grid-cols-2">
+   151→          {TREATMENT_CATEGORIES.map((cat) => (
+   152→            <div key={cat.id} className="rounded-2xl border border-[#1F2923]/10 bg-[#FBF8F2] p-6 shadow-sm">
+   153→              <div className="flex items-baseline justify-between gap-3">
+   154→                <h3 className="font-display text-2xl text-[#1F2923]">{cat.title}</h3>
+   155→                <span className="text-xs italic text-[#6B6B5F]">{cat.blurb}</span>
+   156→              </div>
+   157→              <ul className="mt-4 divide-y divide-[#1F2923]/8">
+   158→                {cat.items.map((item) => (
+   159→                  <li key={item.id} className="py-3">
+   160→                    <div className="flex items-start justify-between gap-4">
+   161→                      <div>
+   162→                        <p className="font-medium text-[#1F2923]">{item.name}</p>
+   163→                        <p className="mt-0.5 text-[13px] leading-snug text-[#6B6B5F]">{item.benefit}</p>
+   164→                        <p className="mt-1 text-xs text-[#A98B36]">
+   165→                          {item.durations.map((d) => d.minutes + " min · " + formatNAD(d.price)).join("  /  ")}
+   166→                        </p>
+   167→                      </div>
+   168→                    </div>
+   169→                    <div className="mt-2 flex gap-2">
+   170→                      <BookButton treatmentId={item.id} event="book_click" className="h-8 px-4 text-xs">
+   171→                        Book This Ritual
+   172→                      </BookButton>
+   173→                      <a href={waLink("Hi Corner Spa! I would like to book the " + item.name + ". What is available this week?")}
+   174→                        target="_blank" rel="noopener"
+   175→                        onClick={() => track("wa_click", { source: "treatment", treatment: item.id })}
+   176→                        className="inline-flex h-8 items-center rounded-md border border-[#25D366]/50 px-4 text-xs font-medium text-[#128C4B] hover:bg-[#25D366]/10">
+   177→                        <MessageCircle className="mr-1.5 h-3.5 w-3.5" /> Ask
+   178→                      </a>
+   179→                    </div>
+   180→                  </li>
+   181→                ))}
+   182→              </ul>
+   183→            </div>
+   184→          ))}
+   185→        </div>
+   186→
+   187→        <p className="mt-6 text-sm text-[#6B6B5F]">
+   188→          Prefer paper? <a href="#contact" className="underline underline-offset-2 text-[#A98B36]">Request the PDF menu</a> - we will WhatsApp it to you.
+   189→        </p>
+   190→      </div>
+   191→    </section>
+   192→  );
+   193→}
+   194→
+   195→// ---------------- Signatures ----------------
+   196→export function Signatures() {
+   197→  return (
+   198→    <section id="signatures" className="mx-auto max-w-6xl px-4 sm:px-6 py-20 sm:py-24">
+   199→      <div className="max-w-2xl">
+   200→        <p className="text-sm font-medium uppercase tracking-[0.2em] text-[#A98B36]">Signature rituals</p>
+   201→        <h2 className="mt-3 font-display text-3xl sm:text-4xl text-[#1F2923]">Three treatments we are known for</h2>
+   202→      </div>
+   203→      <div className="mt-10 grid gap-8 lg:grid-cols-3">
+   204→        {SIGNATURES.map((s) => (
+   205→          <article key={s.id} className="group flex flex-col overflow-hidden rounded-2xl border border-[#1F2923]/10 bg-[#FBF8F2] shadow-sm">
+   206→            <div className="relative aspect-[4/3] overflow-hidden">
+   207→              <img src={s.image} alt={s.alt} loading="lazy"
+   208→                className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+   209→              <span className="absolute left-3 top-3 rounded-full bg-[#1F2923]/85 px-3 py-1 text-xs text-[#C9A84C]">
+   210→                {s.minutes} minutes
+   211→              </span>
+   212→            </div>
+   213→            <div className="flex flex-1 flex-col p-6">
+   214→              <div className="flex items-baseline justify-between gap-2">
+   215→                <h3 className="font-display text-2xl text-[#1F2923]">{s.name}</h3>
+   216→                <p className="text-lg font-semibold text-[#A98B36]">{formatNAD(s.price)}</p>
+   217→              </div>
+   218→              <p className="mt-3 flex-1 text-sm leading-relaxed text-[#3A3F35]">{s.description}</p>
+   219→              <ul className="mt-4 space-y-1.5">
+   220→                {s.includes.map((inc) => (
+   221→                  <li key={inc} className="flex items-start gap-2 text-[13px] text-[#3A3F35]">
+   222→                    <Check className="mt-0.5 h-4 w-4 shrink-0 text-[#7C8C43]" /> {inc}
+   223→                  </li>
+   224→                ))}
+   225→              </ul>
+   226→              <div className="mt-5 flex gap-2">
+   227→                <BookButton event="signature_book_click" className="flex-1">
+   228→                  Reserve This Ritual
+   229→                </BookButton>
+   230→              </div>
+   231→            </div>
+   232→          </article>
+   233→        ))}
+   234→      </div>
+   235→    </section>
+   236→  );
+   237→}
+   238→
+   239→// ---------------- Team ----------------
+   240→const LEVEL_LABEL: Record<string, string> = {
+   241→  senior: "Senior Therapist",
+   242→  therapist: "Therapist",
+   243→  trainee: "Trainee · supervised",
+   244→};
+   245→
+   246→export function Team() {
+   247→  return (
+   248→    <section id="team" className="bg-[#1F2923] py-20 sm:py-24 text-[#F7F3EC]">
+   249→      <div className="mx-auto max-w-6xl px-4 sm:px-6">
+   250→        <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+   251→          <div className="max-w-2xl">
+   252→            <p className="text-sm font-medium uppercase tracking-[0.2em] text-[#C9A84C]">The team</p>
+   253→            <h2 className="mt-3 font-display text-3xl sm:text-4xl">Hands you can put a name to</h2>
+   254→            <p className="mt-4 text-[15px] leading-relaxed text-[#C9C4B4]">
+   255→              A spa is a people business. Here is exactly who will care for you - qualifications,
+   256→              languages, specialties and all. Guests may request any therapist when booking.
+   257→            </p>
+   258→          </div>
+   259→          <img src={TEAM_GROUP_IMAGE} alt="The Corner Spa therapy team" loading="lazy"
+   260→            className="h-28 w-auto rounded-xl object-cover shadow-lg" />
+   261→        </div>
+   262→
+   263→        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+   264→          {TEAM.map((m) => (
+   265→            <article key={m.id} className="flex flex-col overflow-hidden rounded-2xl bg-[#28352D] shadow-lg">
+   266→              <div className="aspect-[3/4] overflow-hidden">
+   267→                <img src={m.image} alt={"Portrait of " + m.name + ", " + m.role} loading="lazy"
+   268→                  className="h-full w-full object-cover object-top" />
+   269→              </div>
+   270→              <div className="flex flex-1 flex-col p-5">
+   271→                <p className={"inline-flex w-fit items-center rounded-full px-2.5 py-0.5 text-[11px] " +
+   272→                  (m.level === "trainee" ? "bg-[#C9A84C]/20 text-[#E4D08F]" : "bg-[#7C8C43]/25 text-[#B9C68A]")}>
+   273→                  {LEVEL_LABEL[m.level]}
+   274→                </p>
+   275→                <h3 className="mt-2 font-display text-xl">{m.name}</h3>
+   276→                <p className="text-sm text-[#C9C4B4]">{m.specialties.join(" · ")}</p>
+   277→                <p className="mt-3 flex-1 text-[13px] italic leading-relaxed text-[#B9B4A5]">
+   278→                  &ldquo;{m.quote}&rdquo;
+   279→                </p>
+   280→                <p className="mt-3 text-xs leading-relaxed text-[#9B977F]">
+   281→                  <BadgeCheck className="mr-1 inline h-3.5 w-3.5 text-[#C9A84C]" />{m.credentials}
+   282→                </p>
+   283→                <p className="mt-2 text-xs text-[#9B977F]">
+   284→                  {m.languages.join(" / ")} · {m.years} {m.years === 1 ? "year" : "years"}
+   285→                </p>
+   286→                <div className="mt-4 flex gap-2">
+   287→                  <BookButton therapistId={m.id} event="book_click" className="h-9 flex-1 px-3 text-xs">
+   288→                    Book with {m.name.split(" ")[0]}
+   289→                  </BookButton>
+   290→                  <a href={waLink("Hi Corner Spa! I would like to book with " + m.name + ". What is available this week?")}
+   291→                    target="_blank" rel="noopener"
+   292→                    onClick={() => track("wa_click", { source: "team", therapist: m.id })}
+   293→                    aria-label={"WhatsApp " + m.name}
+   294→                    className="grid h-9 w-9 shrink-0 place-items-center rounded-md border border-[#25D366]/50 text-[#7FE0A8] hover:bg-[#25D366]/15">
+   295→                    <MessageCircle className="h-4 w-4" />
+   296→                  </a>
+   297→                </div>
+   298→              </div>
+   299→            </article>
+   300→          ))}
+   301→        </div>
+   302→
+   303→        <p className="mt-8 max-w-3xl text-sm leading-relaxed text-[#9B977F]">
+   304→          Our trainees only ever work under the direct supervision of a senior therapist, and every
+   305→          booking confirmation names your therapist in advance. That is the Corner Spa standard -
+   306→          and the point of the lab.
+   307→        </p>
+   308→      </div>
+   309→    </section>
+   310→  );
+   311→}
+   312→
+   313→// ---------------- Gallery ----------------
+   314→export function Gallery() {
+   315→  return (
+   316→    <section id="gallery" className="mx-auto max-w-6xl px-4 sm:px-6 py-20 sm:py-24">
+   317→      <div className="max-w-2xl">
+   318→        <p className="text-sm font-medium uppercase tracking-[0.2em] text-[#A98B36]">The space</p>
+   319→        <h2 className="mt-3 font-display text-3xl sm:text-4xl text-[#1F2923]">Recognise the room when you walk in</h2>
+   320→      </div>
+   321→      <div className="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
+   322→        {GALLERY.map((g, i) => (
+   323→          <button key={g.src} type="button"
+   324→            onClick={() => track("gallery_expand", { index: i })}
+   325→            className={"group relative overflow-hidden rounded-xl " + (i % 7 === 0 ? "col-span-2 row-span-2 aspect-square" : "aspect-square")}>
+   326→            <img src={g.src} alt={g.alt} loading="lazy"
+   327→              className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+   328→          </button>
+   329→        ))}
+   330→      </div>
+   331→    </section>
+   332→  );
+   333→}
+   334→
+   335→// ---------------- Reviews ----------------
+   336→export function Reviews() {
+   337→  return (
+   338→    <section id="reviews" className="bg-[#F2EDE2] py-20 sm:py-24">
+   339→      <div className="mx-auto max-w-6xl px-4 sm:px-6">
+   340→        <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+   341→          <div className="max-w-2xl">
+   342→            <p className="text-sm font-medium uppercase tracking-[0.2em] text-[#A98B36]">Guest words</p>
+   343→            <h2 className="mt-3 font-display text-3xl sm:text-4xl text-[#1F2923]">What Windhoek says</h2>
+   344→          </div>
+   345→          <div className="flex items-center gap-3 rounded-xl bg-white px-5 py-3 shadow-sm">
+   346→            <p className="font-display text-4xl text-[#1F2923]">{SPA.rating}</p>
+   347→            <div>
+   348→              <div className="flex">
+   349→                {Array.from({ length: 5 }).map((_, i) => (
+   350→                  <Star key={i} className="h-4 w-4 fill-[#C9A84C] text-[#C9A84C]" />
+   351→                ))}
+   352→              </div>
+   353→              <p className="text-xs text-[#6B6B5F]">{SPA.reviewCount} Google reviews · we reply to every one</p>
+   354→            </div>
+   355→          </div>
+   356→        </div>
+   357→
+   358→        <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+   359→          {TESTIMONIALS.map((t) => (
+   360→            <figure key={t.name} className="flex flex-col rounded-2xl bg-[#FBF8F2] p-6 shadow-sm">
+   361→              <Quote className="h-6 w-6 text-[#C9A84C]" />
+   362→              <blockquote className="mt-3 flex-1 text-[15px] leading-relaxed text-[#3A3F35]">{t.text}</blockquote>
+   363→              <figcaption className="mt-4 text-sm">
+   364→                <span className="font-medium text-[#1F2923]">{t.name}</span>
+   365→                <span className="text-[#6B6B5F]"> · {t.treatment}</span>
+   366→              </figcaption>
+   367→            </figure>
+   368→          ))}
+   369→        </div>
+   370→
+   371→        <div className="mt-10 flex flex-col items-center gap-3 rounded-2xl border border-[#C9A84C]/40 bg-[#FBF8F2] p-6 text-center sm:flex-row sm:justify-between sm:text-left">
+   372→          <p className="max-w-xl text-sm text-[#3A3F35]">
+   373→            Visited us? One minute of your time keeps a small Namibian business visible - we read
+   374→            and answer every single review.
+   375→          </p>
+   376→          <div className="flex gap-2">
+   377→            <Button asChild variant="outline" className="h-10 border-[#1F2923]/30 text-[#1F2923]">
+   378→              <a href="https://g.page/r/placeholder-review-link/review" target="_blank" rel="noopener"
+   379→                onClick={() => track("review_widget_click")}>
+   380→                <Star className="mr-2 h-4 w-4 text-[#C9A84C]" /> Leave a Google review
+   381→              </a>
+   382→            </Button>
+   383→            <BookButton event="reviews_book_click" className="h-10">Book Now</BookButton>
+   384→          </div>
+   385→        </div>
+   386→      </div>
+   387→    </section>
+   388→  );
+   389→}
+   390→
+   391→// ---------------- Packages & memberships ----------------
+   392→export function Packages() {
+   393→  return (
+   394→    <section id="packages" className="mx-auto max-w-6xl px-4 sm:px-6 py-20 sm:py-24">
+   395→      <div className="max-w-2xl">
+   396→        <p className="text-sm font-medium uppercase tracking-[0.2em] text-[#A98B36]">Packages & memberships</p>
+   397→        <h2 className="mt-3 font-display text-3xl sm:text-4xl text-[#1F2923]">More spa for your month</h2>
+   398→      </div>
+   399→
+   400→      <div className="mt-10 grid gap-6 lg:grid-cols-3">
+   401→        {PACKAGES.map((p) => (
+   402→          <div key={p.id} className="flex flex-col rounded-2xl border border-[#1F2923]/10 bg-[#FBF8F2] p-6 shadow-sm">
+   403→            <div className="flex items-baseline justify-between">
+   404→              <h3 className="font-display text-2xl text-[#1F2923]">{p.name}</h3>
+   405→              <span className="text-xs text-[#6B6B5F]">{p.minutes} min</span>
+   406→            </div>
+   407→            <p className="mt-2 text-2xl font-semibold text-[#A98B36]">
+   408→              {formatNAD(p.price)}
+   409→              <span className="ml-2 text-sm font-normal text-[#6B6B5F] line-through">{formatNAD(p.worth)}</span>
+   410→            </p>
+   411→            <ul className="mt-4 flex-1 space-y-2">
+   412→              {p.includes.map((i) => (
+   413→                <li key={i} className="flex items-start gap-2 text-sm text-[#3A3F35]">
+   414→                  <Check className="mt-0.5 h-4 w-4 shrink-0 text-[#7C8C43]" /> {i}
+   415→                </li>
+   416→              ))}
+   417→            </ul>
+   418→            <BookButton event="package_click" className="mt-5">Claim This Package</BookButton>
+   419→          </div>
+   420→        ))}
+   421→      </div>
+   422→
+   423→      <div className="mt-10 grid gap-6 lg:grid-cols-2">
+   424→        {MEMBERSHIPS.map((m) => (
+   425→          <div key={m.id} className={"relative flex flex-col rounded-2xl border p-6 sm:p-8 " +
+   426→            (m.featured ? "border-[#C9A84C] bg-[#1F2923] text-[#F7F3EC] shadow-lg" : "border-[#1F2923]/10 bg-[#FBF8F2]")}>
+   427→            {m.featured && (
+   428→              <span className="absolute -top-3 left-6 rounded-full bg-[#C9A84C] px-3 py-1 text-xs font-medium text-[#1F2923]">
+   429→                Most loved
+   430→              </span>
+   431→            )}
+   432→            <div className="flex items-baseline justify-between gap-4">
+   433→              <h3 className={"font-display text-2xl " + (m.featured ? "text-[#F7F3EC]" : "text-[#1F2923]")}>{m.name}</h3>
+   434→              <p className="text-2xl font-semibold text-[#C9A84C]">{formatNAD(m.price)}<span className="text-sm font-normal">/mo</span></p>
+   435→            </div>
+   436→            <ul className="mt-4 flex-1 space-y-2">
+   437→              {m.terms.map((t) => (
+   438→                <li key={t} className={"flex items-start gap-2 text-sm " + (m.featured ? "text-[#D8D3C6]" : "text-[#3A3F35]")}>
+   439→                  <Check className="mt-0.5 h-4 w-4 shrink-0 text-[#7C8C43]" /> {t}
+   440→                </li>
+   441→              ))}
+   442→            </ul>
+   443→            <div className="mt-5 flex gap-2">
+   444→              <BookButton event="membership_click" className="flex-1">Join This Month</BookButton>
+   445→              <WhatsAppButton prefill={"Hi Corner Spa! I have a question about the " + m.name + " membership."}
+   446→                source="packages" event="wa_click"
+   447→                className={m.featured ? "text-[#7FE0A8] border-[#7FE0A8]/40" : ""}>
+   448→                Enquire
+   449→              </WhatsAppButton>
+   450→            </div>
+   451→          </div>
+   452→        ))}
+   453→      </div>
+   454→
+   455→      <p className="mt-8 text-center text-sm text-[#6B6B5F]">
+   456→        Corporate wellness or group bookings (hens, birthdays, teams):
+   457→        <a href={waLink("Hi Corner Spa! I would like to enquire about a group or corporate booking.")} target="_blank" rel="noopener"
+   458→          onClick={() => track("wa_click", { source: "corporate" })}
+   459→          className="ml-1 underline underline-offset-2 text-[#A98B36]">WhatsApp us for a quote</a>.
+   460→      </p>
+   461→    </section>
+   462→  );
+   463→}
+   464→
+   465→// ---------------- Vouchers ----------------
+   466→export function Vouchers() {
+   467→  return (
+   468→    <section id="vouchers" className="bg-[#F2EDE2] py-20 sm:py-24">
+   469→      <div className="mx-auto max-w-6xl px-4 sm:px-6 grid items-center gap-10 lg:grid-cols-2">
+   470→        <div>
+   471→          <p className="text-sm font-medium uppercase tracking-[0.2em] text-[#A98B36]">Gift vouchers</p>
+   472→          <h2 className="mt-3 font-display text-3xl sm:text-4xl text-[#1F2923]">Give an hour, not another candle</h2>
+   473→          <p className="mt-4 max-w-lg text-[15px] leading-relaxed text-[#3A3F35]">
+   474→            Digital vouchers arrive on WhatsApp or email within the hour - the last-minute gift
+   475→            hero. Physical vouchers are wrapped and ready at reception. Valid 12 months.
+   476→          </p>
+   477→          <div className="mt-6 grid max-w-md grid-cols-3 gap-3">
+   478→            {VOUCHER_AMOUNTS.map((v) => (
+   479→              <div key={v} className="rounded-xl border border-[#C9A84C]/40 bg-[#FBF8F2] p-4 text-center shadow-sm">
+   480→                <p className="font-display text-2xl text-[#1F2923]">{formatNAD(v)}</p>
+   481→                <p className="mt-1 text-[11px] text-[#6B6B5F]">any treatment</p>
+   482→              </div>
+   483→            ))}
+   484→          </div>
+   485→          <div className="mt-6 flex flex-col gap-2 sm:flex-row">
+   486→            <BookButton event="voucher_click" className="h-12 px-8">Send a Gift</BookButton>
+   487→            <WhatsAppButton prefill={WA_PREFILL.voucher} source="vouchers" event="wa_click" className="h-12">
+   488→              Custom amount on WhatsApp
+   489→            </WhatsAppButton>
+   490→          </div>
+   491→        </div>
+   492→        <div className="relative">
+   493→          <img src="https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/de468b47a145.jpg"
+   494→            alt="Corner Spa gift voucher presentation with towels and orchid" loading="lazy"
+   495→            className="aspect-[5/6] w-full rounded-2xl object-cover shadow-lg" />
+   496→        </div>
+   497→      </div>
+   498→    </section>
+   499→  );
+   500→}
+   501→
+   502→// ---------------- First visit guide ----------------
+   503→const FIRST_VISIT_STEPS = [
+   504→  { icon: Clock, title: "Arrive 15 minutes early", text: "Time for a short consultation, a robe, and a breath before anything begins." },
+   505→  { icon: HeartHandshake, title: "Tell us everything", text: "Pressure, trouble spots, allergies, pregnancy - the 5-minute consultation shapes the hour." },
+   506→  { icon: Sparkles, title: "Bring nothing", text: "Lockers, gowns, towels and products are all here. Phones sleep in the basket." },
+   507→  { icon: Gem, title: "Choose your after", text: "Tea on the terrace, or drift straight back into the day. Both are correct." },
+   508→];
+   509→
+   510→export function FirstVisit() {
+   511→  return (
+   512→    <section id="first-visit" className="mx-auto max-w-6xl px-4 sm:px-6 py-20 sm:py-24">
+   513→      <div className="max-w-2xl">
+   514→        <p className="text-sm font-medium uppercase tracking-[0.2em] text-[#A98B36]">First visit</p>
+   515→        <h2 className="mt-3 font-display text-3xl sm:text-4xl text-[#1F2923]">Never had a spa day? Here is exactly how it goes</h2>
+   516→      </div>
+   517→      <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+   518→        {FIRST_VISIT_STEPS.map((s, i) => (
+   519→          <div key={s.title} className="rounded-2xl border border-[#1F2923]/10 bg-[#FBF8F2] p-6">
+   520→            <div className="flex items-center gap-3">
+   521→              <span className="grid h-10 w-10 place-items-center rounded-full bg-[#1F2923] text-[#C9A84C]">
+   522→                <s.icon className="h-5 w-5" strokeWidth={1.7} />
+   523→              </span>
+   524→              <span className="font-display text-3xl text-[#C9A84C]/60">{i + 1}</span>
+   525→            </div>
+   526→            <h3 className="mt-4 font-medium text-[#1F2923]">{s.title}</h3>
+   527→            <p className="mt-1.5 text-sm leading-relaxed text-[#6B6B5F]">{s.text}</p>
+   528→          </div>
+   529→        ))}
+   530→      </div>
+   531→    </section>
+   532→  );
+   533→}
+   534→
+   535→// ---------------- FAQ ----------------
+   536→export function Faq() {
+   537→  return (
+   538→    <section id="faq" className="bg-[#F2EDE2] py-20 sm:py-24">
+   539→      <div className="mx-auto max-w-3xl px-4 sm:px-6">
+   540→        <div className="text-center">
+   541→          <p className="text-sm font-medium uppercase tracking-[0.2em] text-[#A98B36]">Good to know</p>
+   542→          <h2 className="mt-3 font-display text-3xl sm:text-4xl text-[#1F2923]">Questions, answered plainly</h2>
+   543→        </div>
+   544→        <Accordion type="single" collapsible className="mt-10">
+   545→          {FAQS.map((f, i) => (
+   546→            <AccordionItem key={i} value={"faq-" + i} className="border-[#1F2923]/15">
+   547→              <AccordionTrigger onClick={() => track("faq_open", { index: i })}
+   548→                className="text-left text-[15px] font-medium text-[#1F2923] hover:no-underline">
+   549→                {f.q}
+   550→              </AccordionTrigger>
+   551→              <AccordionContent className="text-sm leading-relaxed text-[#3A3F35]">
+   552→                {f.a}
+   553→              </AccordionContent>
+   554→            </AccordionItem>
+   555→          ))}
+   556→        </Accordion>
+   557→        <div className="mt-8 text-center">
+   558→          <WhatsAppButton prefill={WA_PREFILL.custom} source="faq" event="wa_click">
+   559→            Still wondering? Ask on WhatsApp
+   560→          </WhatsAppButton>
+   561→        </div>
+   562→      </div>
+   563→    </section>
+   564→  );
+   565→}
+   566→
+   567→// ---------------- Visit (map & hours) ----------------
+   568→export function Visit() {
+   569→  return (
+   570→    <section id="visit" className="mx-auto max-w-6xl px-4 sm:px-6 py-20 sm:py-24">
+   571→      <div className="grid gap-10 lg:grid-cols-2">
+   572→        <div>
+   573→          <p className="text-sm font-medium uppercase tracking-[0.2em] text-[#A98B36]">Find us</p>
+   574→          <h2 className="mt-3 font-display text-3xl sm:text-4xl text-[#1F2923]">Klein Windhoek, off the noise</h2>
+   575→          <p className="mt-4 text-[15px] leading-relaxed text-[#3A3F35]">{SPA.addressLine}</p>
+   576→          <p className="mt-1 text-sm text-[#6B6B5F]">Free on-site parking · two minutes from the Nelson Mandela Ave strip.</p>
+   577→
+   578→          <div className="mt-6 overflow-hidden rounded-xl border border-[#1F2923]/10">
+   579→            {SPA.hours.map((h) => (
+   580→              <div key={h.days} className="flex items-center justify-between bg-[#FBF8F2] px-4 py-2.5 text-sm [&:not(:last-child)]:border-b [&:not(:last-child)]:border-[#1F2923]/8">
+   581→                <span className="text-[#3A3F35]">{h.days}</span>
+   582→                <span className="font-medium text-[#1F2923]">{h.time}</span>
+   583→              </div>
+   584→            ))}
+   585→          </div>
+   586→
+   587→          <div className="mt-6 flex flex-wrap gap-2">
+   588→            <Button asChild variant="outline" className="h-11 border-[#1F2923]/30 text-[#1F2923]"
+   589→              onClick={() => track("directions_click")}>
+   590→              <a href="https://www.google.com/maps/search/?api=1&query=Klein+Windhoek,+Windhoek,+Namibia"
+   591→                target="_blank" rel="noopener">
+   592→                <Navigation className="mr-2 h-4 w-4" /> Get Directions
+   593→              </a>
+   594→            </Button>
+   595→            <WhatsAppButton prefill="Hi Corner Spa! Could you send me directions and parking info please?"
+   596→              source="visit" event="wa_click">
+   597→              Ask about parking
+   598→            </WhatsAppButton>
+   599→          </div>
+   600→        </div>
+   601→        <div className="min-h-[320px] overflow-hidden rounded-2xl border border-[#1F2923]/10 shadow-sm">
+   602→          <iframe
+   603→            title="Map - Corner Spa, Klein Windhoek, Windhoek"
+   604→            src="https://www.google.com/maps?q=Klein%20Windhoek%2C%20Windhoek%2C%20Namibia&z=14&output=embed"
+   605→            className="h-full w-full min-h-[320px]"
+   606→            loading="lazy"
+   607→            referrerPolicy="no-referrer-when-downgrade"
+   608→          />
+   609→        </div>
+   610→      </div>
+   611→    </section>
+   612→  );
+   613→}
+   614→
+   615→// ---------------- Contact ----------------
+   616→export function Contact() {
+   617→  const [name, setName] = useState("");
+   618→  const [contact, setContact] = useState("");
+   619→  const [interest, setInterest] = useState("");
+   620→  const [messageText, setMessageText] = useState("");
+   621→  const [done, setDone] = useState(false);
+   622→
+   623→  const submit = (e: React.FormEvent) => {
+   624→    e.preventDefault();
+   625→    track("form_submit", { interest });
+   626→    const msg = [
+   627→      "Hi Corner Spa! Enquiry from the website:",
+   628→      `Name: ${name}`,
+   629→      `Contact: ${contact}`,
+   630→      interest ? `Interested in: ${interest}` : "",
+   631→      messageText ? `Message: ${messageText}` : "",
+   632→    ].filter(Boolean).join("\n");
+   633→    window.open(waLink(msg), "_blank", "noopener");
+   634→    setDone(true);
+   635→  };
+   636→
+   637→  return (
+   638→    <section id="contact" className="bg-[#1F2923] py-20 sm:py-24 text-[#F7F3EC]">
+   639→      <div className="mx-auto max-w-6xl px-4 sm:px-6 grid gap-10 lg:grid-cols-2">
+   640→        <div>
+   641→          <p className="text-sm font-medium uppercase tracking-[0.2em] text-[#C9A84C]">Contact</p>
+   642→          <h2 className="mt-3 font-display text-3xl sm:text-4xl">One message, and we take it from here</h2>
+   643→          <p className="mt-4 max-w-md text-[15px] leading-relaxed text-[#C9C4B4]">
+   644→            WhatsApp is fastest. Phone works too. Either way you get a person, within{" "}
+   645→            <span className="text-[#C9A84C]">15 minutes during opening hours</span> - that is a promise we publish.
+   646→          </p>
+   647→          <div className="mt-8 space-y-4">
+   648→            <a href={waLink(WA_PREFILL.general)} target="_blank" rel="noopener"
+   649→              onClick={() => track("wa_click", { source: "contact" })}
+   650→              className="flex items-center gap-4 rounded-xl border border-[#25D366]/30 bg-[#28352D] p-4 hover:border-[#25D366]/60 transition-colors">
+   651→              <MessageCircle className="h-6 w-6 text-[#7FE0A8]" />
+   652→              <div>
+   653→                <p className="font-medium">WhatsApp {SPA.whatsappDisplay}</p>
+   654→                <p className="text-sm text-[#9B977F]">Chat to book - answered by staff, not bots</p>
+   655→              </div>
+   656→            </a>
+   657→            <a href={SPA.phoneHref} onClick={() => track("contact_call_click")}
+   658→              className="flex items-center gap-4 rounded-xl border border-white/10 bg-[#28352D] p-4 hover:border-[#C9A84C]/50 transition-colors">
+   659→              <Award className="h-6 w-6 text-[#C9A84C]" />
+   660→              <div>
+   661→                <p className="font-medium">{SPA.phone}</p>
+   662→                <p className="text-sm text-[#9B977F]">For same-day requests and questions you would rather ask aloud</p>
+   663→              </div>
+   664→            </a>
+   665→            <p className="text-sm text-[#9B977F]">Prefer email? <a className="underline underline-offset-2 hover:text-white" href={"mailto:" + SPA.email}>{SPA.email}</a></p>
+   666→          </div>
+   667→        </div>
+   668→
+   669→        <form onSubmit={submit} className="rounded-2xl bg-[#FBF8F2] p-6 sm:p-8 text-[#1F2923] shadow-xl">
+   670→          <h3 className="font-display text-2xl">Send a structured enquiry</h3>
+   671→          <p className="mt-1 text-sm text-[#6B6B5F]">Five seconds to fill; it opens in WhatsApp ready to send.</p>
+   672→          <div className="mt-5 space-y-4">
+   673→            <div className="space-y-1.5">
+   674→              <Label htmlFor="ct-name">Your name</Label>
+   675→              <Input id="ct-name" required value={name} onChange={(e) => setName(e.target.value)} placeholder="Full name" className="bg-white" />
+   676→            </div>
+   677→            <div className="space-y-1.5">
+   678→              <Label htmlFor="ct-contact">Phone / WhatsApp</Label>
+   679→              <Input id="ct-contact" required value={contact} onChange={(e) => setContact(e.target.value)} placeholder="+264 ..." inputMode="tel" className="bg-white" />
+   680→            </div>
+   681→            <div className="space-y-1.5">
+   682→              <Label htmlFor="ct-interest">I am interested in</Label>
+   683→              <Input id="ct-interest" value={interest} onChange={(e) => setInterest(e.target.value)}
+   684→                placeholder="e.g. couples massage, vouchers, membership" className="bg-white" />
+   685→            </div>
+   686→            <div className="space-y-1.5">
+   687→              <Label htmlFor="ct-msg">Message (optional)</Label>
+   688→              <Textarea id="ct-msg" value={messageText} onChange={(e) => setMessageText(e.target.value)}
+   689→                placeholder="Anything we should know?" className="bg-white min-h-24" />
+   690→            </div>
+   691→            <Button type="submit" className="w-full h-12 bg-[#C9A84C] text-[#1F2923] hover:bg-[#B08F3E]">
+   692→              Send Enquiry
+   693→            </Button>
+   694→            {done && (
+   695→              <p className="rounded-lg bg-[#7C8C43]/15 px-4 py-3 text-sm text-[#3A4A22]">
+   696→                Thank you - your enquiry is open in WhatsApp. Press send and we will reply within 15 minutes during opening hours.
+   697→              </p>
+   698→            )}
+   699→          </div>
+   700→        </form>
+   701→      </div>
+   702→    </section>
+   703→  );
+   704→}
+   705→
