@@ -19,6 +19,7 @@ const montserrat = Montserrat({
 export const metadata: Metadata = {
   metadataBase: new URL("https://spa.mendozer.com"),
   title: "Corner Spa | Windhoek",
+  manifest: "/manifest.webmanifest",
   description:
     "Massage, hot stone, nails and waxing in Windhoek. The relaxation you deserve. The first project of Oryx Institute. A concept by Mendozer Investments.",
   openGraph: {
