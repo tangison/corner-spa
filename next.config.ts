@@ -16,6 +16,26 @@ const nextConfig: NextConfig = {
           },
         ],
       },
+      {
+        // Owner media and the vendored engine are content-addressed by name;
+        // a year of immutable caching keeps repeat visits fast.
+        source: "/media/:path*",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=31536000, immutable",
+          },
+        ],
+      },
+      {
+        source: "/scrollcraft/:path*",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=31536000, immutable",
+          },
+        ],
+      },
     ];
   },
   typescript: {

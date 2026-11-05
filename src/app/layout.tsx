@@ -20,6 +20,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://spa.mendozer.com"),
   title: "Corner Spa | Windhoek",
   manifest: "/manifest.webmanifest",
+  alternates: { canonical: "https://spa.mendozer.com" },
   description:
     "Massage, hot stone, nails and waxing in Windhoek. The relaxation you deserve. The first project of Oryx Institute. A concept by Mendozer Investments.",
   openGraph: {
@@ -49,6 +50,7 @@ export const metadata: Metadata = {
     icon: [
       { url: "/media/logos/favicon-32.png", sizes: "32x32", type: "image/png" },
       { url: "/media/logos/favicon-512.png", sizes: "512x512", type: "image/png" },
+      { url: "/favicon.svg", type: "image/svg+xml" },
     ],
     apple: "/media/logos/apple-touch-icon-180.png",
   },
@@ -72,6 +74,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${lora.variable} ${montserrat.variable}`}>
       <body>
+        <span className="brand-bar" aria-hidden="true" />
         <noscript>
           <style>
             {`[data-sc-in], [data-sc-stagger] > * { opacity: 1 !important; transform: none !important; }

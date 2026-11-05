@@ -32,7 +32,7 @@ export function SiteHeader() {
             </picture>
             Corner Spa
           </a>
-          <a className="btn" href="#book" onClick={() => track("nav_book_click")}>
+          <a className="btn" href="/book" onClick={() => track("nav_book_click")}>
             Book
           </a>
         </header>
