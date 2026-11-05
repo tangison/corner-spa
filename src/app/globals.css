@@ -631,6 +631,10 @@ a:focus-visible { outline: 2px solid var(--sand); outline-offset: 3px; }
 /* persistent brand bar at the top edge, under the scroll progress */
 .brand-bar { position: fixed; inset: 0 0 auto 0; height: 3px; background: var(--accent); z-index: 59; pointer-events: none; }
 
+/* skip link: hidden until keyboard focus */
+.skip-link { position: fixed; top: 10px; left: 10px; z-index: 100; background: var(--bg); border: 1px solid var(--sand); padding: 8px 14px; font-size: 12px; letter-spacing: .1em; text-transform: uppercase; text-decoration: none; color: var(--ink); transform: translateY(-64px); }
+.skip-link:focus { transform: none; }
+
 /* monochrome treatment for photographs of people. Warm mono, palette-safe. */
 .mono { filter: grayscale(1) sepia(.22) contrast(.98) brightness(.99); }
 @media (prefers-color-scheme: dark) { .mono { filter: grayscale(1) sepia(.18) contrast(.96) brightness(.82); } }
