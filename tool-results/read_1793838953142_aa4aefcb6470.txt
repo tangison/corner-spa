@@ -1,0 +1,619 @@
+     1→@import "tailwindcss";
+     2→
+     3→/* ======================================================================
+     4→   scrollcraft.css: the engine floor (vendored verbatim from the
+     5→   scroll-craft skill; theme with the token overrides that follow)
+     6→   ====================================================================== */
+     7→/* ============================================================================
+     8→   scrollcraft.css: the taste floor
+     9→   ----------------------------------------------------------------------------
+    10→   Two layers, and the split matters:
+    11→
+    12→     TOKENS   what you override per brand. Colour roles, the type ramp, the
+    13→              spacing scale, elevation, motion. A brand is ~12 values.
+    14→     DEVICES  what the engine drives. Do not restyle these to taste; they are
+    15→              the mechanism. Style your own markup instead.
+    16→
+    17→   Nothing here draws a "component". There are no card, badge, or pill classes,
+    18→   because a stylesheet that ships those is how every page built on it ends up
+    19→   with the same shapes. You get a floor and a vocabulary; the composition is
+    20→   yours.
+    21→   ========================================================================== */
+    22→
+    23→/* ---------------------------------------------------------------- tokens -- */
+    24→:root {
+    25→  /* --- colour roles. Override these six and the page is rebranded. -------- */
+    26→  --sc-canvas:      #08090b;   /* the page ground. Drift interpolates this.   */
+    27→  --sc-surface:     #101217;   /* anything raised off the ground             */
+    28→  --sc-ink:         #f4f2ef;   /* primary text                               */
+    29→  --sc-ink-soft:    #9a9ba1;   /* secondary text. Tinted, never flat gray.   */
+    30→  --sc-accent:      #d8ff3e;   /* ONE accent. It owns a region, not confetti. */
+    31→  --sc-accent-ink:  #08090b;   /* text that sits on the accent               */
+    32→
+    33→  --sc-hairline:    color-mix(in oklab, var(--sc-ink) 12%, transparent);
+    34→  --sc-hairline-strong: color-mix(in oklab, var(--sc-ink) 22%, transparent);
+    35→
+    36→  /* --- type. Two families max. Display carries voice, text carries prose. - */
+    37→  --sc-font-display: "Instrument Sans", "Geist", system-ui, sans-serif;
+    38→  --sc-font-text:    "Geist", system-ui, sans-serif;
+    39→  --sc-font-mono:    "Geist Mono", ui-monospace, monospace;
+    40→
+    41→  /* Fluid ramp. Tracking tightens as size grows because a face set at 6rem
+    42→     with 0 tracking reads loose; this is optical correction, not decoration. */
+    43→  --sc-t-xs:   clamp(0.75rem, 0.72rem + 0.15vw, 0.82rem);
+    44→  --sc-t-sm:   clamp(0.875rem, 0.84rem + 0.18vw, 0.95rem);
+    45→  --sc-t-base: clamp(1rem, 0.96rem + 0.22vw, 1.125rem);
+    46→  --sc-t-lg:   clamp(1.2rem, 1.1rem + 0.5vw, 1.5rem);
+    47→  --sc-t-xl:   clamp(1.6rem, 1.35rem + 1.2vw, 2.25rem);
+    48→  --sc-t-2xl:  clamp(2.1rem, 1.6rem + 2.4vw, 3.4rem);
+    49→  --sc-t-3xl:  clamp(2.8rem, 1.9rem + 4.2vw, 5rem);
+    50→  --sc-t-4xl:  clamp(3.4rem, 1.9rem + 6.6vw, 7.5rem);
+    51→
+    52→  --sc-track-tight:  -0.035em;
+    53→  --sc-track-snug:   -0.02em;
+    54→  --sc-track-normal: -0.005em;
+    55→  --sc-track-wide:    0.08em;
+    56→
+    57→  --sc-leading-none: 0.94;
+    58→  --sc-leading-tight: 1.06;
+    59→  --sc-leading-body: 1.62;
+    60→
+    61→  --sc-measure: 62ch;
+    62→
+    63→  /* --- space. 4px base: the useful middle steps an 8-only scale misses. --- */
+    64→  --sc-1: 0.25rem;  --sc-2: 0.5rem;   --sc-3: 0.75rem;  --sc-4: 1rem;
+    65→  --sc-5: 1.5rem;   --sc-6: 2rem;     --sc-7: 3rem;     --sc-8: 4rem;
+    66→  --sc-9: 6rem;     --sc-10: 8rem;    --sc-11: 12rem;
+    67→
+    68→  /* Section rhythm is fluid so a phone doesn't inherit desktop air. */
+    69→  --sc-section: clamp(4.5rem, 9vw, 11rem);
+    70→  --sc-gutter:  clamp(1.25rem, 5vw, 5.5rem);
+    71→  --sc-maxw:    82rem;
+    72→
+    73→  /* --- radius. Pick one scale for the page and hold it. ------------------- */
+    74→  --sc-r-sm: 6px;  --sc-r-md: 12px;  --sc-r-lg: 20px;  --sc-r-pill: 999px;
+    75→
+    76→  /* --- elevation. Every shadow has an offset AND a soft blur, and is tinted
+    77→         to the canvas hue. A zero-offset coloured halo is decoration, not
+    78→         depth, so there isn't one here. ---------------------------------- */
+    79→  --sc-shadow-color: 220 40% 2%;
+    80→  --sc-e1: 0 1px 2px hsl(var(--sc-shadow-color) / 0.28),
+    81→           0 2px 6px -1px hsl(var(--sc-shadow-color) / 0.20);
+    82→  --sc-e2: 0 2px 4px hsl(var(--sc-shadow-color) / 0.24),
+    83→           0 8px 18px -4px hsl(var(--sc-shadow-color) / 0.30);
+    84→  --sc-e3: 0 4px 8px hsl(var(--sc-shadow-color) / 0.22),
+    85→           0 18px 40px -8px hsl(var(--sc-shadow-color) / 0.38),
+    86→           0 48px 90px -24px hsl(var(--sc-shadow-color) / 0.30);
+    87→
+    88→  /* Edge light: a 1px top highlight sells a raised surface better than any
+    89→     amount of blur, because real raised things catch light on their lip. */
+    90→  --sc-edge: inset 0 1px 0 color-mix(in oklab, var(--sc-ink) 10%, transparent);
+    91→
+    92→  /* --- motion. Built-in CSS easings are too weak for UI. ------------------ */
+    93→  --sc-ease-out:    cubic-bezier(0.23, 1, 0.32, 1);
+    94→  --sc-ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+    95→  --sc-ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
+    96→  --sc-d-fast: 160ms;  --sc-d-base: 240ms;  --sc-d-slow: 420ms;
+    97→
+    98→  --sc-z-stage: 1; --sc-z-copy: 20; --sc-z-chrome: 60;
+    99→}
+   100→
+   101→/* --------------------------------------------------------------- reset -- */
+   102→*, *::before, *::after { box-sizing: border-box; }
+   103→html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+   104→@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+   105→
+   106→body {
+   107→  margin: 0;
+   108→  background: var(--sc-canvas);
+   109→  color: var(--sc-ink);
+   110→  font-family: var(--sc-font-text);
+   111→  font-size: var(--sc-t-base);
+   112→  line-height: var(--sc-leading-body);
+   113→  letter-spacing: var(--sc-track-normal);
+   114→  -webkit-font-smoothing: antialiased;
+   115→  text-rendering: optimizeLegibility;
+   116→  font-synthesis-weight: none;
+   117→  overflow-x: clip;
+   118→}
+   119→img, video, canvas, svg { display: block; max-width: 100%; }
+   120→button, input, select, textarea { font: inherit; color: inherit; }
+   121→
+   122→/* ------------------------------------------------- the browser surfaces --
+   123→   The parts you did not draw still carry the design. Selection, caret, focus
+   124→   ring, scrollbar and tabular numerals all ship with defaults that belong to no
+   125→   design system. Theming them is the cheapest signal that a page was built
+   126→   rather than assembled, and it is the step that gets skipped most reliably. */
+   127→::selection { background: var(--sc-accent); color: var(--sc-accent-ink); }
+   128→:root { caret-color: var(--sc-accent); accent-color: var(--sc-accent); }
+   129→:focus-visible {
+   130→  outline: 2px solid var(--sc-accent);
+   131→  outline-offset: 3px;
+   132→  border-radius: var(--sc-r-sm);
+   133→}
+   134→:where(a) { color: inherit; text-decoration-thickness: 1px; text-underline-offset: 0.22em; }
+   135→@supports (scrollbar-color: auto) {
+   136→  html { scrollbar-color: color-mix(in oklab, var(--sc-ink) 26%, transparent) transparent; scrollbar-width: thin; }
+   137→}
+   138→:where(table, .sc-nums, [data-sc-count]) { font-variant-numeric: tabular-nums; }
+   139→
+   140→/* ----------------------------------------------------------- typography -- */
+   141→.sc-display {
+   142→  font-family: var(--sc-font-display);
+   143→  font-weight: 500;
+   144→  line-height: var(--sc-leading-none);
+   145→  letter-spacing: var(--sc-track-tight);
+   146→  text-wrap: balance;
+   147→  margin: 0;
+   148→}
+   149→.sc-display--xl { font-size: var(--sc-t-4xl); }
+   150→.sc-display--lg { font-size: var(--sc-t-3xl); }
+   151→.sc-display--md { font-size: var(--sc-t-2xl); letter-spacing: var(--sc-track-snug); }
+   152→.sc-lede {
+   153→  font-size: var(--sc-t-lg);
+   154→  line-height: 1.44;
+   155→  letter-spacing: var(--sc-track-snug);
+   156→  color: var(--sc-ink);
+   157→  max-width: 46ch;
+   158→  text-wrap: pretty;
+   159→  margin: 0;
+   160→}
+   161→.sc-body { max-width: var(--sc-measure); color: var(--sc-ink-soft); text-wrap: pretty; margin: 0; }
+   162→.sc-label {
+   163→  font-family: var(--sc-font-mono);
+   164→  font-size: var(--sc-t-xs);
+   165→  letter-spacing: var(--sc-track-wide);
+   166→  text-transform: uppercase;
+   167→  color: var(--sc-ink-soft);
+   168→}
+   169→
+   170→/* ---------------------------------------------------------------- layout -- */
+   171→.sc-wrap { width: 100%; max-width: var(--sc-maxw); margin-inline: auto; padding-inline: var(--sc-gutter); }
+   172→.sc-section { padding-block: var(--sc-section); }
+   173→/* More space above a heading than below it: the gap belongs to the boundary,
+   174→   not to the pair. */
+   175→.sc-stack > * + * { margin-top: var(--sc-4); }
+   176→.sc-stack > :is(h1,h2,h3) { margin-top: var(--sc-7); }
+   177→.sc-stack > :is(h1,h2,h3):first-child { margin-top: 0; }
+   178→.sc-rule { height: 1px; border: 0; background: var(--sc-hairline); margin: 0; }
+   179→
+   180→/* =============================================================== DEVICES ==
+   181→   Driven by the engine. Restyle your own markup, not these.                */
+   182→
+   183→.sc-act--pinned { position: relative; }
+   184→.sc-stage {
+   185→  position: sticky; top: 0;
+   186→  height: 100vh; height: 100svh;
+   187→  overflow: clip;
+   188→  z-index: var(--sc-z-stage);
+   189→}
+   190→
+   191→/* scrub / sequence media */
+   192→.sc-stage :is(video[data-sc-scrub], canvas[data-sc-sequence], .sc-stage__poster) {
+   193→  position: absolute; inset: 0;
+   194→  width: 100%; height: 100%;
+   195→  object-fit: cover;
+   196→}
+   197→video[data-sc-scrub] { opacity: 0; transition: opacity 380ms var(--sc-ease-out); }
+   198→.sc-has-clip video[data-sc-scrub] { opacity: 1; }
+   199→/* The poster is a live frame-holder, not a placeholder: it stays up until a
+   200→   real video frame has painted, which is what stops the blank-stage flash. */
+   201→.sc-stage__poster { z-index: 0; transition: opacity 380ms var(--sc-ease-out); }
+   202→.sc-has-clip .sc-stage__poster { opacity: 0; }
+   203→
+   204→/* A scrim only where text sits. A full-frame darkening layer flattens the
+   205→   image everywhere to fix contrast in one corner. */
+   206→.sc-scrim {
+   207→  position: absolute; inset: 0; pointer-events: none; z-index: 1;
+   208→  background: linear-gradient(
+   209→    var(--sc-scrim-angle, 180deg),
+   210→    color-mix(in oklab, var(--sc-canvas) var(--sc-scrim-a, 78%), transparent) 0%,
+   211→    color-mix(in oklab, var(--sc-canvas) 30%, transparent) 42%,
+   212→    transparent 68%);
+   213→}
+   214→/* Point the scrim at the copy. A scrim gradient that darkens the top while the
+   215→   copy sits at the bottom fixes contrast nowhere and flattens the image
+   216→   everywhere, which is the most common way text-over-video goes wrong. */
+   217→.sc-scrim--bottom { --sc-scrim-angle: 0deg; }
+   218→.sc-scrim--left   { --sc-scrim-angle: 90deg; }
+   219→.sc-scrim--right  { --sc-scrim-angle: 270deg; }
+   220→
+   221→/* Corner scrims, for copy anchored to a corner. An edge gradient has to darken
+   222→   a whole band across the frame to cover one corner; a corner gradient puts the
+   223→   density where the text is and leaves the rest of the image alone. Pair with
+   224→   .sc-copy--lead / .sc-copy--trail. */
+   225→.sc-scrim--lead {
+   226→  background: linear-gradient(to top right,
+   227→    color-mix(in oklab, var(--sc-canvas) 94%, transparent) 0%,
+   228→    color-mix(in oklab, var(--sc-canvas) 72%, transparent) 30%,
+   229→    color-mix(in oklab, var(--sc-canvas) 30%, transparent) 52%,
+   230→    transparent 72%);
+   231→}
+   232→.sc-scrim--trail {
+   233→  background: linear-gradient(to top left,
+   234→    color-mix(in oklab, var(--sc-canvas) 94%, transparent) 0%,
+   235→    color-mix(in oklab, var(--sc-canvas) 72%, transparent) 30%,
+   236→    color-mix(in oklab, var(--sc-canvas) 30%, transparent) 52%,
+   237→    transparent 72%);
+   238→}
+   239→/* A band across the bottom, for copy that spans the full width of the frame.
+   240→   That is what both corner anchors become below 860px, and it is also the right
+   241→   shape whenever the copy block is wider than a corner. */
+   242→.sc-scrim--band {
+   243→  background: linear-gradient(to top,
+   244→    color-mix(in oklab, var(--sc-canvas) 94%, transparent) 0%,
+   245→    color-mix(in oklab, var(--sc-canvas) 74%, transparent) 22%,
+   246→    color-mix(in oklab, var(--sc-canvas) 30%, transparent) 42%,
+   247→    transparent 58%);
+   248→}
+   249→.sc-scrim--vignette {
+   250→  background: radial-gradient(120% 90% at 50% 45%, transparent 40%,
+   251→              color-mix(in oklab, var(--sc-canvas) 70%, transparent) 100%);
+   252→}
+   253→
+   254→/* copy over a stage.
+   255→   max-width is in rem, never ch. A `ch` on this container resolves against the
+   256→   CONTAINER's font-size (body size), not the display size of the heading inside
+   257→   it, so `max-width: 20ch` here silently produces a ~180px column and wraps a
+   258→   hero headline to six lines. Set a ch measure on the text element itself. */
+   259→.sc-copy {
+   260→  position: absolute; z-index: var(--sc-z-copy);
+   261→  inset-inline: var(--sc-gutter);
+   262→  max-width: min(46rem, 76vw);
+   263→  will-change: opacity, transform;
+   264→}
+   265→.sc-copy--lead   { left: var(--sc-gutter); bottom: clamp(3rem, 12vh, 9rem); }
+   266→/* inset-inline FIRST. It is the shorthand for left+right, so declaring it after
+   267→   `left: 50%` resets left to auto and the block drifts off the left edge. */
+   268→.sc-copy--center { inset-inline: auto; left: 50%; top: 50%; translate: -50% -50%; text-align: center; }
+   269→.sc-copy--trail  { inset-inline: auto; right: var(--sc-gutter); bottom: clamp(3rem, 12vh, 9rem); text-align: right; }
+   270→
+   271→/* cue defaults: the engine writes opacity/transform inline, these are the
+   272→   pre-paint state so nothing flashes before the first read() */
+   273→[data-sc-cue] { opacity: 0; will-change: opacity, transform; }
+   274→.sc-ready [data-sc-cue] { transition: none; }
+   275→
+   276→/* kinetic split */
+   277→.sc-split { display: inline-block; overflow: hidden; vertical-align: top; }
+   278→/* Descenders live below the baseline; a line mask clipped to the line box eats
+   279→   the tails off g, y, p, j. The padding buys them room back. */
+   280→.sc-split--line { display: block; padding-bottom: 0.14em; margin-bottom: -0.14em; }
+   281→.sc-split__i { display: inline-block; will-change: transform, opacity; }
+   282→.sc-is-split { opacity: 1 !important; }
+   283→
+   284→/* horizontal rail */
+   285→[data-sc-pan] { display: flex; will-change: transform; }
+   286→
+   287→/* reveal + parallax */
+   288→[data-sc-reveal] { will-change: clip-path; }
+   289→[data-sc-parallax] { will-change: transform; }
+   290→
+   291→/* flow reveal (fires once) */
+   292→[data-sc-in], [data-sc-stagger] > * {
+   293→  opacity: 0;
+   294→  transform: translate3d(0, 14px, 0);
+   295→  transition: opacity 620ms var(--sc-ease-out), transform 620ms var(--sc-ease-out);
+   296→}
+   297→[data-sc-in].sc-in, [data-sc-stagger] > .sc-in { opacity: 1; transform: none; }
+   298→
+   299→/* pointer devices */
+   300→[data-sc-tilt] { transform-style: preserve-3d; will-change: transform; }
+   301→[data-sc-magnet] { will-change: transform; }
+   302→/* isolation always; position only if nothing more specific already set it.
+   303→   Written with :where() (zero specificity) on purpose: a plain `position:
+   304→   relative` here has the same weight as `.sc-stage` and, being later in the
+   305→   file, silently wins. A stage carrying both attributes then stops being
+   306→   sticky and the whole act scrolls away instead of pinning. */
+   307→[data-sc-spotlight] { isolation: isolate; }
+   308→:where([data-sc-spotlight]) { position: relative; }
+   309→[data-sc-spotlight]::after {
+   310→  content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 2;
+   311→  background: radial-gradient(
+   312→    28rem 28rem at calc(var(--sc-mx, 0.5) * 100%) calc(var(--sc-my, 0.5) * 100%),
+   313→    color-mix(in oklab, var(--sc-accent) 16%, transparent), transparent 70%);
+   314→  opacity: 0; transition: opacity var(--sc-d-slow) var(--sc-ease-out);
+   315→}
+   316→[data-sc-spotlight]:hover::after { opacity: 1; }
+   317→
+   318→/* =========================================================== WORLDFLIGHT ==
+   319→   One fixed stage for the whole page. The only thing in document flow is the
+   320→   spacer, and it is empty. If you find yourself adding a section here, you want
+   321→   act mode instead: the moment a real block scrolls past the fixed stage, the
+   322→   page has a seam again and the whole point is gone.                        */
+   323→
+   324→[data-sc-mode="worldflight"] { position: relative; }
+   325→
+   326→.sc-world {
+   327→  position: fixed; inset: 0;
+   328→  overflow: clip;
+   329→  z-index: var(--sc-z-stage);
+   330→  background: var(--sc-canvas);
+   331→}
+   332→
+   333→/* Every leg is mounted for the life of the page and stacked in the same box.
+   334→   The engine owns opacity, visibility and z-index here; do not set them. */
+   335→.sc-world__seg {
+   336→  position: absolute; inset: 0;
+   337→  opacity: 0;
+   338→  will-change: opacity;
+   339→}
+   340→.sc-world__seg > :is(video, img, canvas) {
+   341→  position: absolute; inset: 0;
+   342→  width: 100%; height: 100%;
+   343→  object-fit: cover;
+   344→}
+   345→/* The poster is the frame-holder AND the first camera move: the engine pushes
+   346→   it in slowly until a real decoded frame is available to replace it. */
+   347→.sc-world__poster {
+   348→  z-index: 0;
+   349→  transform-origin: 50% 50%;
+   350→  transition: opacity 420ms var(--sc-ease-out);
+   351→}
+   352→.sc-world__seg > video { z-index: 1; }
+   353→.sc-world__seg.sc-has-clip .sc-world__poster { opacity: 0; }
+   354→/* The act stylesheet lights a clip through its ancestor act. A worldflight leg
+   355→   has no act, so match the class the engine also writes on the clip itself. */
+   356→video[data-sc-scrub].sc-has-clip { opacity: 1; }
+   357→
+   358→/* The copy layer is fixed too, and inert by default: the engine hands
+   359→   pointer-events back to a block only while it is actually legible. */
+   360→.sc-world__copy {
+   361→  position: fixed; inset: 0;
+   362→  z-index: var(--sc-z-copy);
+   363→  pointer-events: none;
+   364→}
+   365→.sc-world__scrim { position: absolute; inset: 0; pointer-events: none; z-index: 0; }
+   366→[data-sc-copy] {
+   367→  opacity: 0;
+   368→  pointer-events: none;
+   369→  will-change: opacity, transform;
+   370→}
+   371→.sc-ready [data-sc-copy] { transition: none; }
+   372→
+   373→/* The track. Empty on purpose. */
+   374→.sc-world__spacer { pointer-events: none; }
+   375→
+   376→/* scroll progress */
+   377→[data-sc-progress] {
+   378→  position: fixed; inset: 0 0 auto 0; height: 2px; z-index: var(--sc-z-chrome);
+   379→  background: var(--sc-accent); transform-origin: 0 50%; transform: scaleX(0);
+   380→  will-change: transform;
+   381→}
+   382→
+   383→/* ----------------------------------------------------------- atmosphere --
+   384→   Depth is not only shadow. Grain keeps a flat dark ground from banding, and
+   385→   it is the difference between "a dark page" and "a lit room". */
+   386→.sc-grain { position: fixed; inset: 0; pointer-events: none; z-index: 3; opacity: 0.045; }
+   387→.sc-grain::before {
+   388→  content: ""; position: absolute; inset: -50%;
+   389→  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/></filter><rect width='140' height='140' filter='url(%23n)'/></svg>");
+   390→}
+   391→
+   392→/* -------------------------------------------------------- reduced motion -- */
+   393→@media (prefers-reduced-motion: reduce) {
+   394→  /* Fewer and gentler, not zero. Opacity still carries the reveal so the page
+   395→     is comprehensible; every position change is dropped. */
+   396→  [data-sc-in], [data-sc-stagger] > * { transform: none; transition-duration: 220ms; }
+   397→  [data-sc-parallax], [data-sc-pan], .sc-split__i { transform: none !important; }
+   398→  /* A wipe is a position change too. Show reveal content settled. */
+   399→  [data-sc-reveal] { clip-path: none !important; }
+   400→  /* A rail's transform IS its navigation, not decoration. Zeroing it the way
+   401→     parallax and kinetic type are zeroed parks the act on its first screenful
+   402→     and makes everything past the fold unreachable: a device degrading into
+   403→     missing content. Hand the travel back to the reader as an ordinary scroll
+   404→     region instead, so the same items are all still gettable without motion.
+   405→     A build that would rather re-lay the rail out as a grid can still do that;
+   406→     this is the floor, not the ceiling. */
+   407→  [data-sc-act="pan"] .sc-stage,
+   408→  [data-sc-act="pan"] [data-sc-stage] {
+   409→    overflow-x: auto; overflow-y: hidden;
+   410→    overscroll-behavior-x: contain;
+   411→    scroll-snap-type: x proximity;
+   412→  }
+   413→  [data-sc-pan] > * { scroll-snap-align: center; }
+   414→  [data-sc-spotlight]::after { display: none; }
+   415→  /* A worldflight keeps its whole story here. No clip is ever fetched, so the
+   416→     posters are the film, and they cross-dissolve through exactly the same
+   417→     seams at exactly the same scroll positions. The push-in and the copy drift
+   418→     are the only things that go. */
+   419→  .sc-world__poster, [data-sc-copy] { transform: none !important; }
+   420→}
+   421→
+   422→/* --------------------------------------------------------------- mobile -- */
+   423→@media (max-width: 860px) {
+   424→  .sc-copy { inset-inline: var(--sc-gutter); max-width: none; }
+   425→  .sc-copy--trail { text-align: left; }
+   426→  .sc-stage { height: 100svh; }
+   427→  /* .sc-copy--trail re-anchors to the left and spans the full width here, so a
+   428→     bottom-RIGHT corner gradient darkens the one corner the copy just left and
+   429→     guarantees a contrast failure over any bright clip. Point the density at
+   430→     the copy: the same band .sc-scrim--band paints. */
+   431→  .sc-scrim--trail {
+   432→    background: linear-gradient(to top,
+   433→      color-mix(in oklab, var(--sc-canvas) 94%, transparent) 0%,
+   434→      color-mix(in oklab, var(--sc-canvas) 74%, transparent) 22%,
+   435→      color-mix(in oklab, var(--sc-canvas) 30%, transparent) 42%,
+   436→      transparent 58%);
+   437→  }
+   438→}
+   439→/* ======================================================================
+   440→   Corner Spa brand overrides (after scrollcraft.css, before reference port)
+   441→   Brand: #F5F3EE bg, #2B2726 ink, #A89076 accent. Lora + Montserrat Light.
+   442→   ====================================================================== */
+   443→:root {
+   444→  --sc-canvas: #F5F3EE;
+   445→  --sc-surface: #FBFAF7;
+   446→  --sc-ink: #2B2726;
+   447→  --sc-ink-soft: #6f6761;
+   448→  --sc-accent: #A89076;
+   449→  --sc-accent-ink: #2B2726;
+   450→  --sc-font-display: var(--font-lora), Georgia, serif;
+   451→  --sc-font-text: var(--font-montserrat), system-ui, sans-serif;
+   452→
+   453→  /* Reference tokens */
+   454→  --bg: #F5F3EE;
+   455→  --ink: #2B2726;
+   456→  --sand: #8c7459;
+   457→  --mute: #6f6761;
+   458→  --line: #dcd6cc;
+   459→}
+   460→
+   461→@media (prefers-color-scheme: dark) {
+   462→  :root:not([data-theme="light"]) {
+   463→    --sc-canvas: #1f1c1b;
+   464→    --sc-surface: #26221f;
+   465→    --sc-ink: #f1ede6;
+   466→    --sc-ink-soft: #a79f97;
+   467→    --sc-accent: #c2a98d;
+   468→    --sc-accent-ink: #1f1c1b;
+   469→    --bg: #1f1c1b;
+   470→    --ink: #f1ede6;
+   471→    --sand: #c2a98d;
+   472→    --mute: #a79f97;
+   473→    --line: #3a3532;
+   474→  }
+   475→}
+   476→
+   477→:root[data-theme="dark"] {
+   478→  --sc-canvas: #1f1c1b;
+   479→  --sc-surface: #26221f;
+   480→  --sc-ink: #f1ede6;
+   481→  --sc-ink-soft: #a79f97;
+   482→  --sc-accent: #c2a98d;
+   483→  --sc-accent-ink: #1f1c1b;
+   484→  --bg: #1f1c1b;
+   485→  --ink: #f1ede6;
+   486→  --sand: #c2a98d;
+   487→  --mute: #a79f97;
+   488→  --line: #3a3532;
+   489→}
+   490→
+   491→html { padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
+   492→body { background: var(--bg); color: var(--ink); font: 300 16px/1.75 var(--font-montserrat), system-ui, sans-serif; }
+   493→::selection { background: var(--sand); color: var(--bg); }
+   494→
+   495→/* ======================================================================
+   496→   Reference design port (approved layout, reference-design.html)
+   497→   ====================================================================== */
+   498→.w { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+   499→.serif { font-family: var(--font-lora), Georgia, serif; font-weight: 400; }
+   500→a { color: inherit; }
+   501→
+   502→header.site { display: flex; justify-content: space-between; align-items: center; padding: 28px 0; }
+   503→.brand { display: flex; align-items: center; gap: 12px; letter-spacing: .28em; font-size: 13px; text-transform: uppercase; text-decoration: none; }
+   504→.brand img { width: 34px; height: auto; display: block; }
+   505→.btn { display: inline-block; border: 1px solid var(--ink); padding: 11px 24px; font-size: 12px; letter-spacing: .16em; text-transform: uppercase; text-decoration: none; transition: background-color var(--sc-d-fast) var(--sc-ease-out), color var(--sc-d-fast) var(--sc-ease-out); }
+   506→.btn:hover, .btn:focus-visible { background: var(--ink); color: var(--bg); }
+   507→.btn:active { transform: translateY(1px); }
+   508→
+   509→.hero { padding: 64px 0 48px; max-width: 760px; }
+   510→h1 { font-size: clamp(42px, 8vw, 84px); line-height: 1.05; letter-spacing: -.015em; }
+   511→.lead { color: var(--mute); max-width: 36ch; margin: 28px 0 36px; }
+   512→.lead-cta { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
+   513→
+   514→.full { display: block; width: 100%; height: clamp(240px, 52vw, 620px); object-fit: cover; }
+   515→section { padding: 96px 0; }
+   516→@media (max-width: 700px) { section { padding: 64px 0; } }
+   517→.eyebrow { font-size: 11px; letter-spacing: .3em; text-transform: uppercase; color: var(--sand); margin-bottom: 28px; }
+   518→h2 { font-size: clamp(28px, 4.5vw, 44px); line-height: 1.15; margin-bottom: 40px; text-wrap: balance; }
+   519→
+   520→.menu { display: grid; gap: 56px; }
+   521→@media (min-width: 860px) { .menu { grid-template-columns: 5fr 6fr; gap: 80px; align-items: start; } .menu > .menu-media { position: sticky; top: 24px; } }
+   522→.menu > .menu-media { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; }
+   523→.menu-media img { width: 100%; height: 100%; object-fit: cover; display: block; }
+   524→.grp { margin-bottom: 48px; }
+   525→.grp h3 { font-size: 11px; letter-spacing: .3em; text-transform: uppercase; color: var(--sand); font-weight: 400; margin-bottom: 8px; }
+   526→.row { display: flex; justify-content: space-between; align-items: baseline; gap: 24px; padding: 16px 0; border-bottom: 1px solid var(--line); }
+   527→.row .row-name { text-decoration: none; transition: color var(--sc-d-fast) var(--sc-ease-out); }
+   528→.row .row-name:hover { color: var(--sand); }
+   529→.row .row-name small { display: block; color: var(--mute); font-size: 13px; font-weight: 300; }
+   530→.row .row-price { white-space: nowrap; font-family: var(--font-lora), Georgia, serif; }
+   531→.note { color: var(--mute); font-size: 13px; }
+   532→.menu-foot { margin-top: 40px; display: flex; flex-wrap: wrap; gap: 18px; align-items: center; }
+   533→
+   534→.g { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+   535→.g img { width: 100%; object-fit: cover; display: block; }
+   536→.g .a { aspect-ratio: 4 / 5; }
+   537→.g .s { aspect-ratio: 1; }
+   538→.g .c { grid-column: 1 / -1; aspect-ratio: 21 / 8; }
+   539→@media (max-width: 560px) { .g { grid-template-columns: 1fr; } .g .s, .g .a { aspect-ratio: 4 / 5; } .g .c { aspect-ratio: 4 / 3; } }
+   540→
+   541→/* Breath band: flush full-bleed, like the reference */
+   542→.breath { padding: 0; }
+   543→
+   544→/* Quote band (the pinned peak) */
+   545→.quote { position: relative; padding: 0; }
+   546→.quote [data-sc-stage] { overflow: hidden; position: sticky; top: 0; height: 100vh; height: 100svh; }
+   547→.quote-media { position: absolute; inset: -12% 0; }
+   548→.quote-media img { width: 100%; height: 100%; object-fit: cover; transform: scale(calc(1 + var(--sc-p, 0) * 0.05)); will-change: transform; }
+   549→.quote-copy { position: absolute; inset: 0; display: flex; align-items: center; padding: 0 max(24px, calc((100vw - 1080px) / 2 + 24px)); z-index: 2; }
+   550→.quote-copy p { font-size: clamp(28px, 5.5vw, 60px); line-height: 1.12; color: #2B2726; text-wrap: balance; }
+   551→.quote-stage { position: relative; height: clamp(300px, 56vw, 640px); }
+   552→
+   553→.pt { display: grid; gap: 48px; }
+   554→@media (min-width: 800px) { .pt { grid-template-columns: 1fr 1fr; } }
+   555→.pt h3 { font-size: 26px; margin-bottom: 8px; }
+   556→.pt p { color: var(--mute); }
+   557→.pt .a2 { color: var(--sand); font-size: 13px; letter-spacing: .08em; margin-top: 8px; display: inline-block; text-decoration: none; border-bottom: 1px solid var(--line); }
+   558→.pt .a2:hover { border-bottom-color: var(--sand); }
+   559→
+   560→.book { text-align: center; }
+   561→.book .ph { font-family: var(--font-lora), Georgia, serif; font-size: clamp(30px, 6vw, 56px); margin: 8px 0 28px; display: block; text-decoration: none; }
+   562→.book .ph:hover { color: var(--sand); }
+   563→.book > .w > p { color: var(--mute); margin-top: 28px; font-size: 14px; }
+   564→.book-cta { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
+   565→
+   566→/* Inline booking form (hooks directly to WhatsApp, no backend) */
+   567→.bk-form { max-width: 520px; margin: 56px auto 0; text-align: left; border-top: 1px solid var(--line); padding-top: 40px; }
+   568→.bk-form .grp-label { display: block; font-size: 11px; letter-spacing: .28em; text-transform: uppercase; color: var(--sand); margin: 26px 0 6px; }
+   569→.bk-form input, .bk-form select, .bk-form textarea {
+   570→  width: 100%; background: transparent; border: 0; border-bottom: 1px solid var(--line);
+   571→  padding: 10px 2px; font: 300 16px/1.5 var(--font-montserrat), system-ui, sans-serif; color: var(--ink);
+   572→  border-radius: 0; outline: none; transition: border-color var(--sc-d-fast) var(--sc-ease-out);
+   573→}
+   574→.bk-form input:focus, .bk-form select:focus, .bk-form textarea:focus { border-bottom-color: var(--sand); }
+   575→.bk-form select { appearance: none; -webkit-appearance: none; background-image: linear-gradient(45deg, transparent 50%, var(--mute) 50%), linear-gradient(135deg, var(--mute) 50%, transparent 50%); background-position: calc(100% - 14px) 55%, calc(100% - 9px) 55%; background-size: 5px 5px; background-repeat: no-repeat; }
+   576→.bk-form textarea { min-height: 72px; resize: vertical; }
+   577→.bk-form ::placeholder { color: var(--mute); opacity: .75; }
+   578→.bk-actions { margin-top: 34px; display: flex; gap: 14px; flex-wrap: wrap; }
+   579→.bk-done { margin-top: 22px; color: var(--mute); font-size: 13px; letter-spacing: .06em; }
+   580→.bk-privacy { margin-top: 18px; color: var(--mute); font-size: 12px; }
+   581→
+   582→footer.site { padding: 48px 0 64px; border-top: 1px solid var(--line); font-size: 11px; letter-spacing: .2em; color: var(--mute); text-align: center; line-height: 2.2; text-transform: uppercase; }
+   583→footer.site a { text-decoration: none; border-bottom: 1px solid var(--line); }
+   584→footer.site a:hover { color: var(--sand); }
+   585→
+   586→a:focus-visible { outline: 2px solid var(--sand); outline-offset: 3px; }
+   587→
+   588→/* Sticky header state */
+   589→.site-header { position: sticky; top: 0; z-index: 40; background: transparent; transition: background-color var(--sc-d-base) var(--sc-ease-out), box-shadow var(--sc-d-base) var(--sc-ease-out); }
+   590→.site-header.scrolled { background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); box-shadow: 0 1px 0 var(--line); }
+   591→
+   592→/* Floating widgets */
+   593→.float-widgets { position: fixed; right: max(16px, env(safe-area-inset-right)); bottom: max(16px, env(safe-area-inset-bottom)); z-index: 50; display: flex; flex-direction: column; gap: 10px; align-items: flex-end; }
+   594→.float-btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; height: 52px; min-width: 52px; padding: 0 18px; border-radius: 999px; border: 1px solid var(--line); background: var(--bg); color: var(--ink); font-size: 12px; letter-spacing: .14em; text-transform: uppercase; text-decoration: none; box-shadow: 0 2px 10px rgba(43, 39, 38, .12); transition: transform var(--sc-d-fast) var(--sc-ease-out), background-color var(--sc-d-fast) var(--sc-ease-out), color var(--sc-d-fast) var(--sc-ease-out), opacity var(--sc-d-base) var(--sc-ease-out); }
+   595→.float-btn:hover { background: var(--ink); color: var(--bg); }
+   596→.float-btn:active { transform: scale(.97); }
+   597→.float-btn svg { width: 18px; height: 18px; flex: none; }
+   598→.float-top { padding: 0; width: 52px; opacity: 0; pointer-events: none; transform: translateY(6px); }
+   599→.float-top.show { opacity: 1; pointer-events: auto; transform: none; }
+   600→@media (max-width: 560px) { .float-btn { height: 48px; min-width: 48px; padding: 0 14px; } .float-top { width: 48px; } }
+   601→.float-label { display: inline; }
+   602→@media (max-width: 560px) { .float-label { display: none; } .float-btn.wa { padding: 0; } }
+   603→
+   604→/* Hero entrance (no-JS-safe: engine re-drives via cues) */
+   605→.hero-copy { position: relative; }
+   606→
+   607→/* Embedded mode: hide floating widgets (the frame already IS the page) */
+   608→@media (display-mode: standalone) { .float-widgets { display: none; } }
+   609→
+   610→/* Progress hairline tune to brand */
+   611→[data-sc-progress] { z-index: 60; }
+   612→[data-sc-progress]::after { background: var(--sand) !important; }
+   613→
+   614→@media (prefers-reduced-motion: reduce) {
+   615→  .float-top { transition: opacity var(--sc-d-fast) linear; transform: none; }
+   616→}
+   617→
+   618→/* brand touch 1793833453 */
+   619→
