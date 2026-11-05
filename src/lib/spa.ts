@@ -134,9 +134,67 @@ export const MEDIA = {
     wetStone: "/media/photos/wet-stone.jpg",
     leafMacro: "/media/photos/leaf-macro.jpg",
     towel: "/media/photos/towel.jpg",
+    // Photographs of people, shown with a warm monochrome treatment.
+    peopleBackHands: "/media/photos/people-back-hands.jpg",
+    peopleFacialCheek: "/media/photos/people-facial-cheek.jpg",
+    peopleOilPour: "/media/photos/people-oil-pour.jpg",
+    peopleStonesRest: "/media/photos/people-stones-rest.jpg",
   },
   heroWide: "/media/hero-wide.jpg",
 } as const;
+
+// Plain-English notes on the massage types we offer. Descriptions of the
+// treatment types, not claims: prices stay exactly as prices.json.
+export const MASSAGE_NOTES: { name: string; note: string }[] = [
+  {
+    name: "Full body massage",
+    note: "Slow, even strokes across the whole body. The classic choice when everything feels tight.",
+  },
+  {
+    name: "Hot stones on the back",
+    note: "Smooth heated stones rest along the back. The warmth settles deep, held tension.",
+  },
+  {
+    name: "Lemon grass full body",
+    note: "Lemon grass oil used in the massage. The lemony scent is calm and light.",
+  },
+  {
+    name: "Back, neck and scalp",
+    note: "Focused work where tension gathers: back, neck and scalp. Thirty quiet minutes.",
+  },
+];
+
+// Chat answers, built only from the facts above. Nothing invented.
+export const CHAT_INTRO =
+  "Hello. I can answer the usual questions. For anything else, WhatsApp us and a person takes over.";
+
+export type ChatAnswer = { chips: string[]; text: string; wa?: string };
+
+export const CHAT_ANSWERS: Record<string, ChatAnswer> = {
+  book: {
+    chips: ["Prices", "Where are you?", "Talk to a person"],
+    text: "The quickest way is WhatsApp, or the booking form on this page. Choose a treatment, add your name and the day you prefer, and the message opens in WhatsApp ready to send.",
+    wa: WA_PREFILL.general,
+  },
+  prices: {
+    chips: ["Book", "Facials", "Where are you?"],
+    text: "Massages from N$ 250. Full body massage with back and neck, 60 min, is N$ 500. Hot stones on the back is N$ 450. Lemon grass full body is N$ 700. Back, neck and scalp, 30 min, is N$ 250. Nails and waxing are on the price list. Facials: ask us for prices.",
+  },
+  facials: {
+    chips: ["Book", "Prices"],
+    text: "Facial prices are not fixed yet, so we say: ask us for prices. Send a WhatsApp and we tell you the same day.",
+    wa: WA_PREFILL.question,
+  },
+  where: {
+    chips: ["Book", "Talk to a person"],
+    text: "We are in Windhoek, Namibia. The spa site is spa.mendozer.com, and oryxinstitute.org/corner-spa shows the same site.",
+  },
+  human: {
+    chips: ["Prices", "Where are you?"],
+    text: `Of course. WhatsApp is the fastest, or call ${SPA.phone} and we answer during opening hours.`,
+    wa: WA_PREFILL.general,
+  },
+};
 
 export function track(event: string, detail?: Record<string, string | number | boolean | undefined>) {
   if (typeof window === "undefined") return;

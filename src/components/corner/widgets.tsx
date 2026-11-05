@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { WA_PREFILL, track, waLink } from "@/lib/spa";
+import { ChatWidget } from "@/components/corner/chat";
 
 function WhatsAppGlyph() {
   return (
@@ -41,6 +42,7 @@ export function FloatingWidgets() {
           <path d="M12 19V5m0 0l-6 6m6-6l6 6" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
       </button>
+      <ChatWidget />
       <a
         className="float-btn wa"
         href={waLink(WA_PREFILL.general)}

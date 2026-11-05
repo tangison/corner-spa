@@ -453,7 +453,7 @@ video[data-sc-scrub].sc-has-clip { opacity: 1; }
   /* Reference tokens */
   --bg: #F5F3EE;
   --ink: #2B2726;
-  --sand: #8c7459;
+  --sand: #7d6a4d;
   --mute: #6f6761;
   --line: #dcd6cc;
 }
@@ -616,3 +616,61 @@ a:focus-visible { outline: 2px solid var(--sand); outline-offset: 3px; }
 }
 
 /* brand touch 1793833453 */
+
+/* ========================================================== additions ==
+   Brand accent (exact) + AA text tone, brand bar, monochrome people
+   photography, chat widget, footer nav, prose pages. */
+
+:root {
+  /* exact brand accent from the logo texture. Decorative uses only
+     (brand bar, scroll progress). Small text uses --sand, which is the
+     same accent darkened to pass WCAG AA (4.69:1 on the warm ground). */
+  --accent: #A89076;
+}
+
+/* persistent brand bar at the top edge, under the scroll progress */
+.brand-bar { position: fixed; inset: 0 0 auto 0; height: 3px; background: var(--accent); z-index: 59; pointer-events: none; }
+
+/* monochrome treatment for photographs of people. Warm mono, palette-safe. */
+.mono { filter: grayscale(1) sepia(.22) contrast(.98) brightness(.99); }
+@media (prefers-color-scheme: dark) { .mono { filter: grayscale(1) sepia(.18) contrast(.96) brightness(.82); } }
+@media (prefers-reduced-motion: reduce) { .mono { transition: none; } }
+
+/* footer navigation */
+.foot-nav { display: flex; flex-wrap: wrap; gap: 6px 22px; justify-content: center; margin: 18px 0 6px; }
+.foot-nav a { text-decoration: none; border-bottom: 1px solid var(--line); }
+.foot-copy { margin-top: 10px; text-transform: none; letter-spacing: .06em; }
+
+/* chat widget */
+.float-chat-panel { position: fixed; right: max(16px, env(safe-area-inset-right)); bottom: calc(max(16px, env(safe-area-inset-bottom)) + 120px); width: min(340px, calc(100vw - 32px)); max-height: min(480px, 70svh); overflow: auto; background: var(--bg); border: 1px solid var(--line); border-radius: 14px; padding: 18px; z-index: 55; box-shadow: 0 12px 40px rgba(43, 39, 38, .18); }
+.float-chat-panel[hidden] { display: none; }
+.chat-title { font-size: 11px; letter-spacing: .2em; text-transform: uppercase; color: var(--mute); margin-bottom: 10px; }
+.chat-msg { font-size: 14px; line-height: 1.7; margin: 0 0 12px; }
+.chat-msg a { color: var(--ink); border-bottom: 1px solid var(--sand); text-decoration: none; }
+.chat-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chat-chip { font: inherit; font-size: 12px; letter-spacing: .06em; background: transparent; color: var(--ink); border: 1px solid var(--line); border-radius: 999px; padding: 7px 13px; cursor: pointer; }
+.chat-chip:hover, .chat-chip:focus-visible { border-color: var(--sand); color: var(--sand); }
+@media (max-width: 560px) { .float-chat-panel { bottom: calc(max(16px, env(safe-area-inset-bottom)) + 112px); } }
+
+/* quiet prose pages (privacy, terms, brand) */
+.prose { max-width: 62ch; }
+.prose p { font-size: 15px; line-height: 1.9; color: var(--ink-soft); margin: 0 0 18px; }
+.prose h2 { font-size: 15px; letter-spacing: .18em; text-transform: uppercase; color: var(--ink); margin: 34px 0 12px; font-weight: 400; }
+.prose a { color: var(--ink); border-bottom: 1px solid var(--sand); text-decoration: none; }
+.prose ul { margin: 0 0 18px; padding-left: 20px; color: var(--ink-soft); }
+.prose li { font-size: 15px; line-height: 1.9; }
+.prose strong { color: var(--ink); font-weight: 500; }
+
+/* swatches on the brand page */
+.swatches { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 14px; margin: 22px 0; }
+.swatch { border: 1px solid var(--line); padding: 14px; }
+.swatch-chip { height: 64px; margin-bottom: 10px; }
+.swatch p { font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--mute); margin: 0; line-height: 1.8; }
+.logo-row { display: flex; flex-wrap: wrap; gap: 18px; align-items: center; margin: 20px 0; }
+.logo-cell { border: 1px solid var(--line); padding: 18px 22px; display: grid; place-items: center; }
+.logo-cell.dark { background: var(--ink); }
+
+/* massage notes on the book page */
+.mnote { margin: 0 0 22px; }
+.mnote h2 { font-size: clamp(19px, 2.6vw, 24px); margin: 0 0 6px; font-weight: 500; }
+.mnote p { margin: 0; color: var(--ink-soft); font-size: 15px; line-height: 1.8; }

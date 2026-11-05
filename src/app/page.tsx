@@ -1,4 +1,5 @@
 import { SiteHeader } from "@/components/corner/header";
+import { SiteFooter } from "@/components/corner/footer";
 import { FloatingWidgets } from "@/components/corner/widgets";
 import { ScrollEngine } from "@/components/corner/engine";
 import { EmbedGuard } from "@/components/corner/embed-guard";
@@ -45,7 +46,7 @@ export default function Home() {
               <h1 className="serif">{SPA.tagline}</h1>
               <p className="lead">{SPA.lead}</p>
               <div className="lead-cta">
-                <a className="btn" href="#book" data-track="hero_book_click">
+                <a className="btn" href="/book" data-track="hero_book_click">
                   Book a treatment
                 </a>
                 <a
@@ -90,8 +91,9 @@ export default function Home() {
             <div className="menu">
               <div className="menu-media" data-sc-parallax="-0.18">
                 <img
+                  className="mono"
                   src={MEDIA.photos.hotStonesBack}
-                  alt="Hot stones placed along the back"
+                  alt="Warm hands placing smooth dark stones along a back"
                   width={1919}
                   height={2400}
                   loading="lazy"
@@ -182,9 +184,9 @@ export default function Home() {
               </figure>
               <figure data-sc-in style={{ margin: 0 }}>
                 <img
-                  className="a"
+                  className="a mono"
                   src={MEDIA.photos.facialCheek}
-                  alt="Fingertips on the cheek during a facial"
+                  alt="Fingertips resting on a cheek during a quiet facial"
                   width={1919}
                   height={2400}
                   loading="lazy"
@@ -225,6 +227,53 @@ export default function Home() {
                   height={2400}
                   loading="lazy"
                   decoding="async"
+                />
+              </figure>
+              <figure data-sc-in style={{ margin: 0 }}>
+                <img
+                  className="a mono"
+                  src={MEDIA.photos.peopleBackHands}
+                  alt="A therapist's hands resting on an oiled back during a massage"
+                  width={1500}
+                  height={1000}
+                  loading="lazy"
+                  decoding="async"
+                  style={{ objectPosition: "center 30%" }}
+                />
+              </figure>
+              <figure data-sc-in style={{ margin: 0 }}>
+                <img
+                  className="a mono"
+                  src={MEDIA.photos.peopleFacialCheek}
+                  alt="A woman with closed eyes smoothing cream onto her cheek"
+                  width={1200}
+                  height={800}
+                  loading="lazy"
+                  decoding="async"
+                  style={{ objectPosition: "center 35%" }}
+                />
+              </figure>
+              <figure data-sc-in style={{ margin: 0 }} className="s">
+                <img
+                  className="s mono"
+                  src={MEDIA.photos.peopleOilPour}
+                  alt="Warm oil poured from a small dark bowl into an open palm"
+                  width={1067}
+                  height={1600}
+                  loading="lazy"
+                  decoding="async"
+                />
+              </figure>
+              <figure data-sc-in style={{ margin: 0 }} className="c">
+                <img
+                  className="c mono"
+                  src={MEDIA.photos.peopleStonesRest}
+                  alt="A woman resting beside smooth dark stones on a textured towel"
+                  width={1600}
+                  height={1064}
+                  loading="lazy"
+                  decoding="async"
+                  style={{ objectPosition: "center 40%" }}
                 />
               </figure>
             </div>
@@ -301,19 +350,7 @@ export default function Home() {
         </section>
       </main>
 
-      <footer className="site">
-        <div className="w">
-          Corner Spa
-          <br />
-          First project of Oryx Institute. A concept by Mendozer Investments.
-          <br />
-          spa.mendozer.com · oryxinstitute.org/corner-spa
-          <br />
-          <a href="https://studio.tangison.com" target="_blank" rel="noopener">
-            Made by Tangison Studio
-          </a>
-        </div>
-      </footer>
+      <SiteFooter />
 
       <FloatingWidgets />
       <EmbedGuard />
