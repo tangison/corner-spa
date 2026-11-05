@@ -28,7 +28,7 @@ export function SiteHeader() {
                 media="(prefers-color-scheme: dark)"
                 srcSet={MEDIA.markLight}
               />
-              <img src={MEDIA.markDark} alt="" width={760} height={692} />
+              <img src={MEDIA.markDark} alt="" width={160} height={146} />
             </picture>
             Corner Spa
           </a>
