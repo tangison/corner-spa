@@ -74,6 +74,9 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${lora.variable} ${montserrat.variable}`}>
       <body>
+        <a className="skip-link" href="#top">
+          Skip to content
+        </a>
         <span className="brand-bar" aria-hidden="true" />
         <noscript>
           <style>
