@@ -4,7 +4,6 @@ import React, { useMemo, useState } from "react";
 import {
   ALL_PRICE_ROWS,
   PRICE_GROUPS,
-  SPA,
   track,
   waLink,
 } from "@/lib/spa";
@@ -17,13 +16,15 @@ function rowLabel(r: { name: string; detail?: string; price: number }) {
 }
 
 // Inline booking form. No backend, no popup: submit composes the booking
-// message and opens WhatsApp directly (hooks straight into wa.me).
+// message and opens WhatsApp directly (hooks straight into wa.me). If the
+// WhatsApp window never opens, the message can be copied by hand instead.
 export function BookForm() {
   const [name, setName] = useState("");
   const [treatment, setTreatment] = useState("");
   const [when, setWhen] = useState("");
   const [note, setNote] = useState("");
   const [done, setDone] = useState(false);
+  const [copied, setCopied] = useState(false);
 
   const message = useMemo(() => {
     const lines = ["Hi Corner Spa! I would like to book a treatment."];
@@ -39,6 +40,32 @@ export function BookForm() {
     track("booking_form_submit", { treatment, has_note: !!note.trim() });
     window.open(waLink(message), "_blank", "noopener");
     setDone(true);
+    setCopied(false);
+  };
+
+  const copyMessage = async () => {
+    track("booking_copy_click");
+    try {
+      await navigator.clipboard.writeText(message);
+      setCopied(true);
+    } catch {
+      // Older browsers or blocked clipboard: select-and-copy fallback.
+      const ta = document.createElement("textarea");
+      ta.value = message;
+      ta.setAttribute("readonly", "");
+      ta.style.position = "fixed";
+      ta.style.opacity = "0";
+      document.body.appendChild(ta);
+      ta.select();
+      try {
+        document.execCommand("copy");
+        setCopied(true);
+      } catch {
+        setCopied(false);
+      }
+      document.body.removeChild(ta);
+    }
+    setTimeout(() => setCopied(false), 4000);
   };
 
   return (
@@ -50,6 +77,7 @@ export function BookForm() {
         onChange={(e) => setName(e.target.value)}
         placeholder="Full name"
         autoComplete="name"
+        enterKeyHint="next"
         required
       />
 
@@ -73,7 +101,7 @@ export function BookForm() {
           </optgroup>
         ))}
         <optgroup label="Facials">
-          <option value="Facial (price on request)">Facial (ask us for prices)</option>
+          <option value="Facial (ask us for prices)">Facial (ask us for prices)</option>
         </optgroup>
         <optgroup label="Not sure">
           <option value="Advise me">Advise me</option>
@@ -88,6 +116,7 @@ export function BookForm() {
         value={when}
         onChange={(e) => setWhen(e.target.value)}
         placeholder="e.g. Saturday morning"
+        enterKeyHint="next"
       />
 
       <label className="grp-label" htmlFor="bk-note">
@@ -98,6 +127,7 @@ export function BookForm() {
         value={note}
         onChange={(e) => setNote(e.target.value)}
         placeholder="Pressure, allergies, occasion"
+        enterKeyHint="send"
       />
 
       <div className="bk-actions">
@@ -120,13 +150,35 @@ export function BookForm() {
       </div>
 
       {done && (
-        <p className="bk-done" role="status">
-          WhatsApp is open with your booking. Press send and we take it from there.
-        </p>
+        <div className="bk-done" role="status">
+          <p>
+            WhatsApp is open with your booking. Press send and we take it from
+            there.
+          </p>
+          <p className="bk-fallback-lead">Did the WhatsApp window not open?</p>
+          <div className="bk-fallback">
+            <button type="button" className="btn" onClick={copyMessage}>
+              {copied ? "Copied" : "Copy message"}
+            </button>
+            <a
+              href="https://web.whatsapp.com"
+              target="_blank"
+              rel="noopener"
+              onClick={() => track("booking_webwa_click")}
+            >
+              Open web.whatsapp.com
+            </a>
+          </div>
+          {copied && (
+            <p className="note">
+              Copied. Paste it into any WhatsApp chat to us and press send.
+            </p>
+          )}
+        </div>
       )}
       <p className="bk-privacy">
         Your message opens in WhatsApp straight away. Nothing is stored on this
-        site, and we answer {SPA.phone.replace("+264", "on +264")} during opening hours.
+        site, and we answer during opening hours.
       </p>
     </form>
   );

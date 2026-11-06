@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Lora, Montserrat } from "next/font/google";
+import { SwRegister } from "@/components/corner/sw-register";
 import "./globals.css";
 
 const lora = Lora({
@@ -18,15 +19,15 @@ const montserrat = Montserrat({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://spa.mendozer.com"),
-  title: "Corner Spa | Windhoek",
+  title: "Corner Spa | Massage and beauty in Windhoek",
   manifest: "/manifest.webmanifest",
   alternates: { canonical: "https://spa.mendozer.com" },
   description:
-    "Massage, hot stone, nails and waxing in Windhoek. The relaxation you deserve. The first project of Oryx Institute. A concept by Mendozer Investments.",
+    "Massage, hot stone, foot spa, nails, waxing and lashes in Windhoek. The relaxation you deserve. The first project of Oryx Institute.",
   openGraph: {
-    title: "Corner Spa | Windhoek",
+    title: "Corner Spa | Massage and beauty in Windhoek",
     description:
-      "Massage, hot stone, nails and waxing in Windhoek. The relaxation you deserve.",
+      "Massage, hot stone, foot spa, nails, waxing and lashes in Windhoek. The relaxation you deserve.",
     url: "https://spa.mendozer.com",
     siteName: "Corner Spa",
     locale: "en_NA",
@@ -42,8 +43,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Corner Spa | Windhoek",
-    description: "The relaxation you deserve. Massage, hot stone, nails and waxing in Windhoek.",
+    title: "Corner Spa | Massage and beauty in Windhoek",
+    description: "The relaxation you deserve. Massage, hot stone, foot spa, nails, waxing and lashes in Windhoek.",
     images: ["/media/hero-wide.jpg"],
   },
   icons: {
@@ -85,6 +86,7 @@ export default function RootLayout({
           </style>
         </noscript>
         {children}
+        <SwRegister />
       </body>
     </html>
   );
