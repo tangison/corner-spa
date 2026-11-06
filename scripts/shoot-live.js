@@ -3,7 +3,7 @@ const { chromium } = require('playwright');
 const path = require('path');
 
 const CHROME = '/home/z/.cache/ms-playwright/chromium-1200/chrome-linux64/chrome';
-const BASE = 'https://spa.mendozer.com';
+const BASE = process.env.BASE || 'https://spa.mendozer.com';
 const OUT = '/tmp/shots';
 const PAGES = ['/', '/contact', '/book', '/privacy-policy', '/terms', '/brand'];
 const SIZES = [

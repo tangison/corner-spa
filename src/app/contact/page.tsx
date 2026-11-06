@@ -68,7 +68,6 @@ export default function ContactPage() {
       <main id="top">
         <section aria-label="Contact and location">
           <div className="w">
-            <p className="eyebrow">Contact</p>
             <h1 className="serif">Come and find us</h1>
             <p className="lead">
               The spa is quiet on purpose, so we keep contact simple: one

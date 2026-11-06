@@ -2,6 +2,7 @@
 const { chromium } = require('playwright');
 
 const CHROME = '/home/z/.cache/ms-playwright/chromium-1200/chrome-linux64/chrome';
+const BASE = process.env.BASE || 'https://spa.mendozer.com';
 const PAGES = ['/', '/contact', '/book', '/privacy-policy', '/terms', '/brand'];
 
 (async () => {
@@ -12,18 +13,27 @@ const PAGES = ['/', '/contact', '/book', '/privacy-policy', '/terms', '/brand'];
   const m = await browser.newContext({ viewport: { width: 390, height: 844 } });
   const mp = await m.newPage();
   for (const p of PAGES) {
-    await mp.goto('https://spa.mendozer.com' + p, { waitUntil: 'networkidle', timeout: 45000 });
+    await mp.goto(BASE + p, { waitUntil: 'networkidle', timeout: 45000 });
     await mp.waitForTimeout(400);
     const r = await mp.evaluate(() => {
       const doc = document.documentElement;
       const overflowX = doc.scrollWidth - doc.clientWidth;
-      // interactive elements smaller than 24x24 (WCAG 2.5.8 minimum)
+      // interactive elements smaller than 24x24 (WCAG 2.5.8 minimum).
+      // The target is the region that accepts pointer actions, so the
+      // element rect is unioned with its ::after hit-area overlay when
+      // one is present (inset-negative absolute pseudo-element).
       const small = [];
       for (const el of document.querySelectorAll('a, button, select, input, textarea, [role="button"], summary')) {
         const b = el.getBoundingClientRect();
         if (b.width === 0 || b.height === 0) continue;
-        if (b.width < 24 || b.height < 24) {
-          small.push({ tag: el.tagName.toLowerCase(), text: (el.textContent || el.getAttribute('aria-label') || '').trim().slice(0, 30), w: Math.round(b.width), h: Math.round(b.height) });
+        let w = b.width, h = b.height;
+        const cs = getComputedStyle(el, '::after');
+        if (cs.content !== 'none' && cs.position === 'absolute') {
+          const t = parseFloat(cs.top), r2 = parseFloat(cs.right), bt = parseFloat(cs.bottom), l = parseFloat(cs.left);
+          if ([t, r2, bt, l].every(v => v < 0)) { w = w - l - r2; h = h - t - bt; }
+        }
+        if (w < 24 || h < 24) {
+          small.push({ tag: el.tagName.toLowerCase(), text: (el.textContent || el.getAttribute('aria-label') || '').trim().slice(0, 30), w: Math.round(w), h: Math.round(h) });
         }
       }
       return { overflowX, small };
@@ -36,7 +46,7 @@ const PAGES = ['/', '/contact', '/book', '/privacy-policy', '/terms', '/brand'];
   const d = await browser.newContext({ viewport: { width: 1440, height: 900 } });
   const dp = await d.newPage();
   for (const p of PAGES) {
-    await dp.goto('https://spa.mendozer.com' + p, { waitUntil: 'networkidle', timeout: 45000 });
+    await dp.goto(BASE + p, { waitUntil: 'networkidle', timeout: 45000 });
     await dp.waitForTimeout(400);
     const r = await dp.evaluate(() => {
       const out = {};

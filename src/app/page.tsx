@@ -92,7 +92,6 @@ export default function Home() {
         {/* 3 - Substance: honest prices, sticky photo, every row books on WhatsApp. */}
         <section id="treatments" data-sc-act="flow" aria-label="Price list">
           <div className="w">
-            <p className="eyebrow">Treatments</p>
             <h2 className="serif">Price list</h2>
             <div className="menu">
               <div className="menu-media" data-sc-parallax="-0.18">
@@ -392,7 +391,7 @@ export default function Home() {
               </div>
             </div>
             <BookForm />
-            <p>
+            <p className="note">
               {SITE_ADDRESSES.map((a) => (
                 <span key={a.label}>
                   <a href={a.href} target="_blank" rel="noopener">{a.label}</a>
