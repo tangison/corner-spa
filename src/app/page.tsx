@@ -5,8 +5,11 @@ import { ScrollEngine } from "@/components/corner/engine";
 import { EmbedGuard } from "@/components/corner/embed-guard";
 import { TrackClicks } from "@/components/corner/track-clicks";
 import { BookForm } from "@/components/corner/book-form";
+import { ReviewsSection } from "@/components/corner/reviews";
+import { HoursList } from "@/components/corner/open-now";
 import {
-  MEDIA, PARTNERS, PRICE_GROUPS, SPA, SITE_ADDRESSES, SITE_URL,
+  ADDRESS, ADDRESS_LINE, DIRECTIONS_URL, FACIALS_NOTE, MEDIA, OPENING_HOURS_SPEC,
+  PARTNERS, PRICE_GROUPS, PRICE_RANGE, SITE_ADDRESSES, SITE_URL, SPA,
   WA_PREFILL, waBookRow, waLink,
 } from "@/lib/spa";
 
@@ -16,15 +19,18 @@ const daySpaJsonLd = {
   name: SPA.name,
   slogan: SPA.tagline,
   description:
-    "Massage, hot stone, nails and waxing in Windhoek. The first project of Oryx Institute. A concept by Mendozer Investments.",
-  telephone: SPA.phone,
+    "Massage, hot stone, foot spa, nails, waxing and lashes in Windhoek. The first project of Oryx Institute. A concept by Mendozer Investments.",
+  telephone: SPA.phone, // structured data only, never shown as page text
   url: SITE_URL,
-  priceRange: "N$ 70 - N$ 700",
+  priceRange: PRICE_RANGE,
   address: {
     "@type": "PostalAddress",
-    addressLocality: "Windhoek",
+    streetAddress: `${ADDRESS.street}, ${ADDRESS.area}`,
+    addressLocality: ADDRESS.city,
     addressCountry: "NA",
   },
+  openingHoursSpecification: OPENING_HOURS_SPEC,
+  sameAs: [...SITE_ADDRESSES.map((a) => a.href), "https://mendozer.com"],
 };
 
 export default function Home() {
@@ -94,8 +100,8 @@ export default function Home() {
                   className="mono"
                   src={MEDIA.photos.hotStonesBack}
                   alt="Warm hands placing smooth dark stones along a back"
-                  width={1919}
-                  height={2400}
+                  width={1399}
+                  height={1750}
                   loading="lazy"
                   decoding="async"
                 />
@@ -122,7 +128,21 @@ export default function Home() {
                     ))}
                   </div>
                 ))}
-                <p className="note">{SPA.facialsNote}</p>
+                <div className="grp" data-sc-in>
+                  <h3>Facials</h3>
+                  <div className="row">
+                    <span className="row-name">{FACIALS_NOTE}</span>
+                    <a
+                      className="row-price a2"
+                      href={waLink(WA_PREFILL.facial)}
+                      target="_blank"
+                      rel="noopener"
+                      data-track="facial_wa_click"
+                    >
+                      Book
+                    </a>
+                  </div>
+                </div>
                 <div className="menu-foot" data-sc-in>
                   <a
                     className="btn"
@@ -132,6 +152,9 @@ export default function Home() {
                     data-track="menu_wa_click"
                   >
                     Book on WhatsApp
+                  </a>
+                  <a className="a2" href="/price-list.pdf" data-track="price_pdf_click">
+                    Price list (PDF)
                   </a>
                   <p className="note">Tap any treatment to book it in one message.</p>
                 </div>
@@ -187,8 +210,8 @@ export default function Home() {
                   className="a mono"
                   src={MEDIA.photos.facialCheek}
                   alt="Fingertips resting on a cheek during a quiet facial"
-                  width={1919}
-                  height={2400}
+                  width={1399}
+                  height={1750}
                   loading="lazy"
                   decoding="async"
                 />
@@ -223,8 +246,8 @@ export default function Home() {
                   className="c"
                   src={MEDIA.photos.towel}
                   alt="Soft cotton towel weave"
-                  width={2400}
-                  height={2400}
+                  width={1600}
+                  height={1600}
                   loading="lazy"
                   decoding="async"
                 />
@@ -308,10 +331,19 @@ export default function Home() {
                 </div>
               ))}
             </div>
+            <p className="note" style={{ marginTop: "40px" }}>
+              Making a flyer or a status image for the spa? The{" "}
+              <a href="/brand">brand page</a> has the colours, the fonts and
+              the real logo.
+            </p>
           </div>
         </section>
 
-        {/* 7 - Commitment: phone, WhatsApp, and a form that opens WhatsApp directly. */}
+        {/* 6b - Reviews: hidden until a Google Business Profile link exists. */}
+        <ReviewsSection />
+
+        {/* 7 - Commitment: WhatsApp, hours, directions, and a form that
+               opens WhatsApp directly. The phone number is never printed. */}
         <section
           id="book"
           data-sc-act="flow"
@@ -321,20 +353,43 @@ export default function Home() {
         >
           <div className="w">
             <p className="eyebrow">Book now</p>
-            <a className="ph" href={SPA.phoneHref} data-track="phone_click">
-              {SPA.phone}
+            <a
+              className="ph"
+              href={waLink(WA_PREFILL.general)}
+              target="_blank"
+              rel="noopener"
+              data-track="book_wa_click"
+            >
+              Book on WhatsApp
             </a>
-            <div className="book-cta">
-              <a
-                className="btn"
-                href={waLink(WA_PREFILL.general)}
-                target="_blank"
-                rel="noopener"
-                data-sc-magnet="0.22"
-                data-track="book_wa_click"
-              >
-                WhatsApp
-              </a>
+            <div className="book-facts">
+              <div>
+                <p className="grp-label">Where</p>
+                <p className="fact">
+                  {ADDRESS_LINE}
+                  <br />
+                  <span className="note">{ADDRESS.plot}</span>
+                </p>
+                <p>
+                  <a
+                    className="a2"
+                    href={DIRECTIONS_URL}
+                    target="_blank"
+                    rel="noopener"
+                    data-track="directions_click"
+                  >
+                    Get directions
+                  </a>
+                  <span className="note"> · </span>
+                  <a className="a2" href="/contact" data-track="home_contact_click">
+                    More ways to reach us
+                  </a>
+                </p>
+              </div>
+              <div>
+                <p className="grp-label">Hours</p>
+                <HoursList />
+              </div>
             </div>
             <BookForm />
             <p>

@@ -1,0 +1,25 @@
+# Corner Spa
+
+A small day spa in Windhoek West, Windhoek, Namibia. Booking happens on WhatsApp. This file is a plain map of the site for AI agents and crawlers.
+
+Site: https://spa.mendozer.com
+Mirror: https://oryxinstitute.org/corner-spa
+Operators: first project of Oryx Institute (oryxinstitute.org), a concept by Mendozer Investments (mendozer.com).
+
+## Facts
+
+- Address: 34 Schonlein Street, Windhoek West, Windhoek, Namibia, on the Flexona Organizational Services plot.
+- Hours (Africa/Windhoek): Monday to Friday 09:00 to 18:00, Saturday 09:00 to 16:00, closed on Sunday.
+- Booking: WhatsApp only, via the Book buttons on the site. No phone number is shown on the site.
+- Prices: Namibian dollars (N$), from N$ 50 to N$ 800, single source of truth in prices.json in the repository.
+- Facials: prices on request. Email for legal and privacy requests only: info@mendozer.com.
+
+## Pages
+
+- [Home](https://spa.mendozer.com/): price list, gallery, booking form.
+- [Book](https://spa.mendozer.com/book): booking form, hours, address, directions, before-your-visit note, FAQ.
+- [Contact](https://spa.mendozer.com/contact): address, hours, directions, WhatsApp and legal email.
+- [Privacy policy](https://spa.mendozer.com/privacy-policy): plain-language privacy statement.
+- [Booking terms](https://spa.mendozer.com/terms): arrival, cancellation, payment and health disclosure terms.
+- [Brand](https://spa.mendozer.com/brand): colours, fonts and logo rules.
+- [Price list (PDF)](https://spa.mendozer.com/price-list.pdf): downloadable list generated from prices.json.

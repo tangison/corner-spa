@@ -67,6 +67,18 @@ export function ChatWidget() {
                 </a>
               </p>
             ) : null}
+            {t.link ? (
+              <p className="chat-msg">
+                <a
+                  href={t.link.href}
+                  target="_blank"
+                  rel="noopener"
+                  onClick={() => track("chat_link_click", { topic: t.link!.label })}
+                >
+                  {t.link.label}
+                </a>
+              </p>
+            ) : null}
             <div className="chat-chips">
               {t.chips.map((c) => (
                 <button key={c} type="button" className="chat-chip" onClick={() => ask(c)}>
@@ -90,7 +102,7 @@ export function ChatWidget() {
         type="button"
         className="float-btn wa"
         aria-expanded={open}
-        aria-label={open ? "Close Corner Spa answers" : "Ask Corner Spa a question"}
+        aria-label={open ? "Close Corner Spa answers" : "Ask us, Corner Spa answers"}
         onClick={() => {
           track("chat_toggle_click", { open: !open });
           setOpen((v) => !v);

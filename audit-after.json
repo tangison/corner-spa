@@ -1,0 +1,358 @@
+{
+  "meta": {
+    "version": "0.0.171",
+    "schemaVersion": "1.6",
+    "baseUrl": "https://nimble-mandolin-22l28qv.tmp.now",
+    "timestamp": "2026-11-06T05:00:53.429Z",
+    "totalPages": 0,
+    "maxPages": 500,
+    "auditLevel": {
+      "level": "full",
+      "basedOn": "full",
+      "settings": {
+        "pages": 500,
+        "crawlStrategy": "all",
+        "cloudChecks": true,
+        "render": "all",
+        "externalLinks": true,
+        "probe": "active"
+      },
+      "changes": []
+    },
+    "rulesCache": {
+      "pagesReplayed": 0,
+      "pagesEvaluated": 0,
+      "disabledReason": "refresh-requested"
+    },
+    "scriptsEvaluated": 0
+  },
+  "status": "blocked",
+  "statusReason": "Site blocked the crawler (bot protection / auth / rate limit): blocked_by_vercel: Vercel served a challenge or block page (x-vercel-mitigated header), HTTP 403, for nimble-mandolin-22l28qv.tmp.now",
+  "statusReasonCode": "http_4xx",
+  "refusedFetches": [
+    {
+      "url": "https://nimble-mandolin-22l28qv.tmp.now/robots.txt",
+      "resource": "robots.txt",
+      "status": 403
+    },
+    {
+      "url": "https://nimble-mandolin-22l28qv.tmp.now/llms.txt",
+      "resource": "llms.txt",
+      "status": 403
+    },
+    {
+      "url": "https://nimble-mandolin-22l28qv.tmp.now/llms-full.txt",
+      "resource": "llms.txt",
+      "status": 403
+    },
+    {
+      "url": "https://nimble-mandolin-22l28qv.tmp.now/",
+      "resource": "markdown",
+      "status": 403
+    },
+    {
+      "url": "https://nimble-mandolin-22l28qv.tmp.now/index.md",
+      "resource": "markdown",
+      "status": 403
+    },
+    {
+      "url": "https://nimble-mandolin-22l28qv.tmp.now/sitemap.xml",
+      "resource": "sitemap",
+      "status": 403
+    },
+    {
+      "url": "https://nimble-mandolin-22l28qv.tmp.now/sitemap_index.xml",
+      "resource": "sitemap",
+      "status": 403
+    },
+    {
+      "url": "https://nimble-mandolin-22l28qv.tmp.now/sitemap-index.xml",
+      "resource": "sitemap",
+      "status": 403
+    },
+    {
+      "url": "https://nimble-mandolin-22l28qv.tmp.now/sitemaps.xml",
+      "resource": "sitemap",
+      "status": 403
+    },
+    {
+      "url": "https://nimble-mandolin-22l28qv.tmp.now/sitemap1.xml",
+      "resource": "sitemap",
+      "status": 403
+    },
+    {
+      "url": "https://nimble-mandolin-22l28qv.tmp.now/post-sitemap.xml",
+      "resource": "sitemap",
+      "status": 403
+    },
+    {
+      "url": "https://nimble-mandolin-22l28qv.tmp.now/page-sitemap.xml",
+      "resource": "sitemap",
+      "status": 403
+    },
+    {
+      "url": "https://nimble-mandolin-22l28qv.tmp.now/news-sitemap.xml",
+      "resource": "sitemap",
+      "status": 403
+    }
+  ],
+  "wafBlocked": {
+    "total": 1,
+    "seed": {
+      "url": "https://nimble-mandolin-22l28qv.tmp.now/",
+      "status": 403,
+      "provider": "Vercel",
+      "providerId": "vercel",
+      "signal": "x-vercel-mitigated header",
+      "code": "blocked_by_vercel"
+    },
+    "pages": [],
+    "providers": [
+      "Vercel"
+    ]
+  },
+  "score": {
+    "overall": null,
+    "grade": "N/A",
+    "groups": [],
+    "categories": []
+  },
+  "summary": {
+    "passed": 15,
+    "warnings": 0,
+    "failed": 0,
+    "skipped": 0
+  },
+  "issues": [],
+  "executedRules": [
+    "ax/ai-crawlers",
+    "ax/content-signals",
+    "crawl/robots-txt",
+    "images/broken-images",
+    "images/image-file-size",
+    "links/broken-anchors",
+    "links/broken-external-links",
+    "links/broken-links",
+    "links/dead-links",
+    "mobile/web-app-manifest",
+    "perf/content-in-js-bundle",
+    "perf/css-file-size",
+    "perf/js-file-size",
+    "perf/total-byte-weight",
+    "reliability/broken-forms",
+    "reliability/broken-resources",
+    "schema/entity-authors",
+    "schema/entity-conflicts",
+    "schema/entity-dangling",
+    "schema/entity-id-format",
+    "schema/entity-identity",
+    "schema/entity-local-business-per-page",
+    "schema/entity-organization-missing",
+    "schema/entity-orphan",
+    "schema/entity-publisher-mismatch",
+    "schema/entity-sameas-missing",
+    "schema/entity-split-identity",
+    "schema/entity-type-drift",
+    "schema/entity-website-missing",
+    "security/graphql-get-mutations",
+    "security/graphql-introspection",
+    "security/http-to-https",
+    "security/leaked-secrets",
+    "security/tls-certificate"
+  ],
+  "infoChecks": [
+    {
+      "ruleId": "ax/ai-crawlers",
+      "name": "AI Crawler Access",
+      "check": "ai-crawler-access",
+      "message": "No robots.txt — all AI crawlers are allowed by default",
+      "pages": [],
+      "pagesCount": 0,
+      "pagesHasMore": false
+    },
+    {
+      "ruleId": "ax/content-signals",
+      "name": "Content Signals",
+      "check": "content-signals",
+      "message": "No Content-Signal declared in robots.txt (optional per-purpose AI policy)",
+      "pages": [],
+      "pagesCount": 0,
+      "pagesHasMore": false
+    },
+    {
+      "ruleId": "crawl/robots-txt",
+      "name": "Robots.txt",
+      "check": "robots-txt-exists",
+      "message": "robots.txt could not be checked",
+      "pages": [],
+      "pagesCount": 0,
+      "pagesHasMore": false
+    },
+    {
+      "ruleId": "links/dead-links",
+      "name": "Dead Links (Cloud)",
+      "check": "dead-links",
+      "message": "No external links found to verify",
+      "pages": [],
+      "pagesCount": 0,
+      "pagesHasMore": false
+    },
+    {
+      "ruleId": "mobile/web-app-manifest",
+      "name": "Web App Manifest",
+      "check": "web-app-manifest-linked",
+      "message": "No page links a web app manifest; add one to control the home-screen icon and name",
+      "pages": [],
+      "pagesCount": 0,
+      "pagesHasMore": false
+    },
+    {
+      "ruleId": "reliability/broken-forms",
+      "name": "Forms That Lose Submissions",
+      "check": "broken-forms",
+      "message": "No forms detected",
+      "pages": [],
+      "pagesCount": 0,
+      "pagesHasMore": false
+    },
+    {
+      "ruleId": "schema/entity-authors",
+      "name": "Author Entities",
+      "check": "entity-authors",
+      "message": "This site declares no JSON-LD entities on any crawled page",
+      "pages": [],
+      "pagesCount": 0,
+      "pagesHasMore": false
+    },
+    {
+      "ruleId": "schema/entity-conflicts",
+      "name": "Entity Property Conflicts",
+      "check": "entity-conflicts",
+      "message": "This site declares no JSON-LD entities on any crawled page",
+      "pages": [],
+      "pagesCount": 0,
+      "pagesHasMore": false
+    },
+    {
+      "ruleId": "schema/entity-dangling",
+      "name": "Dangling Entity References",
+      "check": "entity-dangling",
+      "message": "This site declares no JSON-LD entities on any crawled page",
+      "pages": [],
+      "pagesCount": 0,
+      "pagesHasMore": false
+    },
+    {
+      "ruleId": "schema/entity-id-format",
+      "name": "Entity @id Format",
+      "check": "entity-id-format",
+      "message": "This site declares no JSON-LD entities on any crawled page",
+      "pages": [],
+      "pagesCount": 0,
+      "pagesHasMore": false
+    },
+    {
+      "ruleId": "schema/entity-identity",
+      "name": "Entity Identity",
+      "check": "entity-identity",
+      "message": "This site declares no JSON-LD entities on any crawled page",
+      "pages": [],
+      "pagesCount": 0,
+      "pagesHasMore": false
+    },
+    {
+      "ruleId": "schema/entity-local-business-per-page",
+      "name": "LocalBusiness On Every Page",
+      "check": "entity-local-business-per-page",
+      "message": "This site declares no JSON-LD entities on any crawled page",
+      "pages": [],
+      "pagesCount": 0,
+      "pagesHasMore": false
+    },
+    {
+      "ruleId": "schema/entity-organization-missing",
+      "name": "Organization Entity",
+      "check": "entity-organization-missing",
+      "message": "This site declares no JSON-LD entities on any crawled page",
+      "pages": [],
+      "pagesCount": 0,
+      "pagesHasMore": false
+    },
+    {
+      "ruleId": "schema/entity-orphan",
+      "name": "Orphan Entities",
+      "check": "entity-orphan",
+      "message": "This site declares no JSON-LD entities on any crawled page",
+      "pages": [],
+      "pagesCount": 0,
+      "pagesHasMore": false
+    },
+    {
+      "ruleId": "schema/entity-publisher-mismatch",
+      "name": "Publisher Mismatch",
+      "check": "entity-publisher-mismatch",
+      "message": "This site declares no JSON-LD entities on any crawled page",
+      "pages": [],
+      "pagesCount": 0,
+      "pagesHasMore": false
+    },
+    {
+      "ruleId": "schema/entity-sameas-missing",
+      "name": "Organization sameAs",
+      "check": "entity-sameas-missing",
+      "message": "This site declares no JSON-LD entities on any crawled page",
+      "pages": [],
+      "pagesCount": 0,
+      "pagesHasMore": false
+    },
+    {
+      "ruleId": "schema/entity-split-identity",
+      "name": "Split Entity Identity",
+      "check": "entity-split-identity",
+      "message": "This site declares no JSON-LD entities on any crawled page",
+      "pages": [],
+      "pagesCount": 0,
+      "pagesHasMore": false
+    },
+    {
+      "ruleId": "schema/entity-type-drift",
+      "name": "Entity Type Drift",
+      "check": "entity-type-drift",
+      "message": "This site declares no JSON-LD entities on any crawled page",
+      "pages": [],
+      "pagesCount": 0,
+      "pagesHasMore": false
+    },
+    {
+      "ruleId": "schema/entity-website-missing",
+      "name": "WebSite Entity",
+      "check": "entity-website-missing",
+      "message": "This site declares no JSON-LD entities on any crawled page",
+      "pages": [],
+      "pagesCount": 0,
+      "pagesHasMore": false
+    }
+  ],
+  "entities": {
+    "format": "squirrelscan/entity-map",
+    "version": 1,
+    "site": "https://nimble-mandolin-22l28qv.tmp.now/",
+    "generatedAt": "2026-11-06T05:00:55.322Z",
+    "summary": {
+      "nodeCount": 0,
+      "edgeCount": 0,
+      "danglingCount": 0,
+      "pagesTotal": 0,
+      "pagesWithoutEntities": 0,
+      "nodesWithStableId": 0,
+      "stableIdShare": 0,
+      "pageLocalCount": 0,
+      "nodesWithoutIdCount": 0,
+      "conflictCount": 0,
+      "countsByType": {}
+    },
+    "nodes": [],
+    "edges": [],
+    "pages": []
+  }
+}

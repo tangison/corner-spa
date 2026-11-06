@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewportFit=cover" />
+<title>You are offline | Corner Spa</title>
+<meta name="robots" content="noindex" />
+<style>
+  :root { color-scheme: light dark; }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    text-align: center;
+    padding: 48px 24px;
+    background: #F5F3EE;
+    color: #2B2726;
+    font-family: "Montserrat", system-ui, -apple-system, sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+  }
+  @media (prefers-color-scheme: dark) {
+    body { background: #1f1c1b; color: #f1ede6; }
+    .rule { border-color: #3a3532; }
+  }
+  .mark { width: 44px; height: auto; margin: 0 auto 22px; display: block; }
+  .eyebrow { font-size: 11px; letter-spacing: .3em; text-transform: uppercase; color: #7d6a4d; margin: 0 0 14px; }
+  h1 { font-family: Georgia, "Times New Roman", serif; font-weight: 400; font-size: clamp(30px, 6vw, 48px); line-height: 1.1; margin: 0 0 16px; }
+  p { max-width: 38ch; margin: 0 auto 28px; color: inherit; opacity: .78; font-size: 15px; }
+  .rule { width: 56px; height: 1px; border: 0; background: #A89076; margin: 0 auto 28px; }
+  a.btn {
+    display: inline-block;
+    border: 1px solid currentColor;
+    padding: 11px 24px;
+    font-size: 12px;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: inherit;
+  }
+  a.btn:hover { opacity: .8; }
+</style>
+</head>
+<body>
+<main>
+  <picture>
+    <source srcset="/media/logos/mark-light.png" media="(prefers-color-scheme: dark)" />
+    <img class="mark" src="/media/logos/mark-dark.png" alt="" width="44" height="43" onerror="this.style.display='none'" />
+  </picture>
+  <p class="eyebrow">Offline</p>
+  <h1>The connection drifted.</h1>
+  <hr class="rule" />
+  <p>
+    This page needs a connection, and right now there is none. The site will
+    come back the moment yours does.
+  </p>
+  <a class="btn" href="/">Try again</a>
+</main>
+</body>
+</html>

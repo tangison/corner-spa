@@ -1,0 +1,2955 @@
+{
+  "meta": {
+    "version": "0.0.171",
+    "schemaVersion": "1.6",
+    "baseUrl": "https://spa.mendozer.com",
+    "timestamp": "2026-11-06T05:01:28.823Z",
+    "totalPages": 5,
+    "maxPages": 500,
+    "auditLevel": {
+      "level": "full",
+      "basedOn": "full",
+      "settings": {
+        "pages": 500,
+        "crawlStrategy": "all",
+        "cloudChecks": true,
+        "render": "all",
+        "externalLinks": true,
+        "probe": "active"
+      },
+      "changes": []
+    },
+    "rulesCache": {
+      "pagesReplayed": 0,
+      "pagesEvaluated": 5,
+      "disabledReason": "refresh-requested"
+    },
+    "scriptsEvaluated": 10
+  },
+  "status": "completed",
+  "score": {
+    "overall": 75,
+    "grade": "C",
+    "groups": [
+      {
+        "group": "seo",
+        "name": "SEO",
+        "score": 75,
+        "passed": 510,
+        "warnings": 26,
+        "failed": 5,
+        "total": 541
+      },
+      {
+        "group": "performance",
+        "name": "Performance",
+        "score": 98,
+        "passed": 101,
+        "warnings": 6,
+        "failed": 0,
+        "total": 107
+      },
+      {
+        "group": "security",
+        "name": "Security",
+        "score": 95,
+        "passed": 52,
+        "warnings": 4,
+        "failed": 0,
+        "total": 56
+      },
+      {
+        "group": "ai",
+        "name": "Agents",
+        "score": 90,
+        "passed": 11,
+        "warnings": 5,
+        "failed": 0,
+        "total": 16
+      }
+    ],
+    "categories": [
+      {
+        "name": "Accessibility",
+        "score": 96
+      },
+      {
+        "name": "Content",
+        "score": 95
+      },
+      {
+        "name": "Performance",
+        "score": 97
+      },
+      {
+        "name": "Agent Experience",
+        "score": 90
+      },
+      {
+        "name": "Core SEO",
+        "score": 93
+      },
+      {
+        "name": "E-E-A-T",
+        "score": 59
+      },
+      {
+        "name": "Security",
+        "score": 94
+      },
+      {
+        "name": "Social Media",
+        "score": 88
+      },
+      {
+        "name": "Images",
+        "score": 93
+      },
+      {
+        "name": "Mobile",
+        "score": 94
+      },
+      {
+        "name": "Links",
+        "score": 95
+      },
+      {
+        "name": "Structured Data",
+        "score": 96
+      },
+      {
+        "name": "Crawlability",
+        "score": 100
+      },
+      {
+        "name": "Internationalization",
+        "score": 100
+      },
+      {
+        "name": "Site Integrity",
+        "score": 100
+      },
+      {
+        "name": "Legal Compliance",
+        "score": 100
+      },
+      {
+        "name": "Reliability",
+        "score": 100
+      },
+      {
+        "name": "URL Structure",
+        "score": 100
+      }
+    ]
+  },
+  "summary": {
+    "passed": 674,
+    "warnings": 44,
+    "failed": 5,
+    "skipped": 0
+  },
+  "issues": [
+    {
+      "ruleId": "a11y/label-content-name-mismatch",
+      "name": "Label Content Name Mismatch",
+      "description": "Checks that visible label text is part of accessible name",
+      "solution": "For controls with visible labels, the accessible name should contain the visible text. Voice control users say what they see - if the accessible name doesn't include the visible label, voice commands won't work. Example: A button showing 'Search' should not have aria-label='Find products'.",
+      "category": "Accessibility",
+      "group": "seo",
+      "severity": "error",
+      "checks": [
+        {
+          "name": "label-content-name-mismatch",
+          "status": "fail",
+          "message": "1 element(s) where visible text doesn't match accessible name",
+          "affectedPages": [
+            "https://spa.mendozer.com/",
+            "https://spa.mendozer.com/book",
+            "https://spa.mendozer.com/brand",
+            "https://spa.mendozer.com/privacy-policy",
+            "https://spa.mendozer.com/terms"
+          ],
+          "affectedPagesCount": 5,
+          "affectedPagesHasMore": false,
+          "items": [
+            {
+              "id": "button: visible=\"ask us\" vs aria-label=\"ask corner spa a que\"",
+              "sourcePages": [
+                "https://spa.mendozer.com/",
+                "https://spa.mendozer.com/book",
+                "https://spa.mendozer.com/brand",
+                "https://spa.mendozer.com/privacy-policy",
+                "https://spa.mendozer.com/terms"
+              ],
+              "siteWide": {
+                "pages": 5,
+                "of": 5
+              }
+            }
+          ],
+          "details": {
+            "issue": "Voice control users may not be able to activate these controls"
+          }
+        }
+      ]
+    },
+    {
+      "ruleId": "images/optimized",
+      "name": "Image Optimization",
+      "description": "Checks for image optimization indicators",
+      "solution": "Optimize images to reduce file sizes without visible quality loss. Use tools like Squoosh, ImageOptim, or TinyPNG. Consider using an image CDN (Cloudinary, Imgix, Cloudflare Images) for automatic optimization and responsive delivery. Modern formats (WebP, AVIF) offer 25-50% better compression.",
+      "category": "Images",
+      "group": "seo",
+      "severity": "info",
+      "checks": [
+        {
+          "name": "image-optimization-needed",
+          "status": "warn",
+          "message": "Images may not be optimized - consider using an image CDN",
+          "affectedPages": [
+            "https://spa.mendozer.com/"
+          ],
+          "affectedPagesCount": 1,
+          "affectedPagesHasMore": false,
+          "details": {
+            "suggestion": "Cloudinary, Imgix, or Cloudflare Images"
+          }
+        }
+      ]
+    },
+    {
+      "ruleId": "ax/llms-txt",
+      "name": "llms.txt",
+      "description": "Detects /llms.txt (and /llms-full.txt) at the domain root and checks its basic Markdown format — an emerging standard giving AI agents a curated, machine-readable map of your site",
+      "solution": "llms.txt (llmstxt.org) is a Markdown file at your domain root that points AI agents and answer engines at your most useful, clean content. Add a /llms.txt with an H1 title, a short summary, and sections of Markdown links to key pages; optionally add /llms-full.txt with that content inlined. This is a recommendation only — it never affects your score.",
+      "category": "Agent Experience",
+      "group": "ai",
+      "severity": "info",
+      "checks": [
+        {
+          "name": "llms-txt-present",
+          "status": "warn",
+          "message": "No /llms.txt found — consider adding one so AI agents can discover your key content",
+          "affectedPages": [],
+          "affectedPagesCount": 0,
+          "affectedPagesHasMore": false,
+          "legacyValue": "absent"
+        }
+      ]
+    },
+    {
+      "ruleId": "ax/markdown-response",
+      "name": "Markdown Response",
+      "description": "Checks whether the site serves text/markdown via content negotiation (Accept: text/markdown) or exposes a .md variant of the homepage — agents increasingly prefer clean Markdown over rendered HTML",
+      "solution": "Agents and answer engines parse Markdown more reliably than rendered HTML. Serve a Markdown representation of your key pages: honor `Accept: text/markdown` via content negotiation, and/or publish a `.md` variant (e.g. /index.md). This is a recommendation only — it never affects your score.",
+      "category": "Agent Experience",
+      "group": "ai",
+      "severity": "info",
+      "checks": [
+        {
+          "name": "markdown-response",
+          "status": "warn",
+          "message": "No Markdown response — consider honoring Accept: text/markdown or publishing a .md variant so agents get clean content",
+          "affectedPages": [],
+          "affectedPagesCount": 0,
+          "affectedPagesHasMore": false,
+          "details": {
+            "negotiatedContentType": "text/html; charset=utf-8",
+            "mdVariantContentType": "text/html; charset=utf-8"
+          },
+          "legacyValue": "absent"
+        }
+      ]
+    },
+    {
+      "ruleId": "core/meta-title",
+      "name": "Meta Title",
+      "description": "Validates page title presence and length",
+      "solution": "Every page needs a unique, descriptive title tag between 30-75 characters. Titles appear in browser tabs, search results, and social shares. Write titles that accurately describe the page content while including your primary keyword near the beginning. If your title is too short, add more descriptive context. If too long, prioritize the most important information first and trim secondary details. Avoid keyword stuffing or duplicate titles across pages.",
+      "category": "Core SEO",
+      "group": "seo",
+      "severity": "warning",
+      "checks": [
+        {
+          "name": "meta-title",
+          "status": "warn",
+          "message": "Title too short",
+          "affectedPages": [
+            "https://spa.mendozer.com/",
+            "https://spa.mendozer.com/brand",
+            "https://spa.mendozer.com/privacy-policy",
+            "https://spa.mendozer.com/terms"
+          ],
+          "affectedPagesCount": 4,
+          "affectedPagesHasMore": false,
+          "items": [
+            {
+              "id": "https://spa.mendozer.com/",
+              "label": "Corner Spa | Windhoek (21 chars)",
+              "sourcePages": [
+                "https://spa.mendozer.com/"
+              ]
+            },
+            {
+              "id": "https://spa.mendozer.com/brand",
+              "label": "Brand | Corner Spa (18 chars)",
+              "sourcePages": [
+                "https://spa.mendozer.com/brand"
+              ]
+            },
+            {
+              "id": "https://spa.mendozer.com/privacy-policy",
+              "label": "Privacy policy | Corner Spa (27 chars)",
+              "sourcePages": [
+                "https://spa.mendozer.com/privacy-policy"
+              ]
+            },
+            {
+              "id": "https://spa.mendozer.com/terms",
+              "label": "Booking terms | Corner Spa (26 chars)",
+              "sourcePages": [
+                "https://spa.mendozer.com/terms"
+              ]
+            }
+          ],
+          "legacyValue": "Corner Spa | Windhoek"
+        }
+      ]
+    },
+    {
+      "ruleId": "core/og-tags",
+      "name": "Open Graph Tags",
+      "description": "Validates Open Graph meta tags for social sharing",
+      "solution": "Open Graph tags control how your content appears when shared on Facebook, LinkedIn, and other platforms. Required tags: og:title, og:description, og:image, og:url, and og:type. Add OG tags in your page head. Use images at least 1200x630 pixels for best display. Keep og:title under 60 characters and og:description under 200. Test shares using Facebook's Sharing Debugger tool.",
+      "category": "Core SEO",
+      "group": "seo",
+      "severity": "warning",
+      "checks": [
+        {
+          "name": "og-image",
+          "status": "warn",
+          "message": "Missing og:image - social shares will lack imagery",
+          "affectedPages": [
+            "https://spa.mendozer.com/book"
+          ],
+          "affectedPagesCount": 1,
+          "affectedPagesHasMore": false
+        }
+      ]
+    },
+    {
+      "ruleId": "security/csp",
+      "name": "Content Security Policy",
+      "description": "Checks for Content-Security-Policy header and validates directives",
+      "solution": "CSP prevents XSS attacks by restricting which resources can load. Start with a report-only policy to identify issues. Key directives: default-src 'self', script-src (avoid 'unsafe-inline'), img-src, style-src, frame-ancestors. Use nonces or hashes instead of 'unsafe-inline' for scripts. Test thoroughly as strict CSP can break functionality.",
+      "category": "Security",
+      "group": "security",
+      "severity": "warning",
+      "checks": [
+        {
+          "name": "csp-no-script-control",
+          "status": "warn",
+          "message": "CSP has no script-src or default-src directive",
+          "affectedPages": [],
+          "affectedPagesCount": 0,
+          "affectedPagesHasMore": false,
+          "legacyValue": "Scripts from any source are allowed"
+        }
+      ]
+    },
+    {
+      "ruleId": "security/form-captcha",
+      "name": "Form CAPTCHA",
+      "description": "Checks for CAPTCHA protection on public forms",
+      "solution": "Add CAPTCHA protection (reCAPTCHA, Cloudflare Turnstile, hCaptcha, FormShield, etc.) to public-facing forms to prevent spam and bot submissions. Contact forms, comment forms, newsletter signups, and registration forms are common targets for automated abuse. Modern solutions like Turnstile and FormShield offer invisible protection with minimal user friction.",
+      "category": "Security",
+      "group": "security",
+      "severity": "warning",
+      "checks": [
+        {
+          "name": "form-captcha",
+          "status": "warn",
+          "message": "1 public form(s) without CAPTCHA",
+          "affectedPages": [
+            "https://spa.mendozer.com/",
+            "https://spa.mendozer.com/book"
+          ],
+          "affectedPagesCount": 2,
+          "affectedPagesHasMore": false,
+          "items": [
+            {
+              "id": "form[0]",
+              "sourcePages": [
+                "https://spa.mendozer.com/",
+                "https://spa.mendozer.com/book"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "ruleId": "security/security-txt",
+      "name": "security.txt",
+      "description": "Checks for a valid RFC 9116 security.txt so security researchers know how to report a vulnerability",
+      "solution": "Publish a security.txt at /.well-known/security.txt with at least a Contact and an Expires field, served as plain text. Keep Expires in the future (renew it yearly). Sign the file with PGP if you can, and do not serve an HTML page at that path.",
+      "category": "Security",
+      "group": "security",
+      "severity": "warning",
+      "checks": [
+        {
+          "name": "security-txt",
+          "status": "warn",
+          "message": "No security.txt at /.well-known/security.txt (RFC 9116 vulnerability-disclosure contact)",
+          "affectedPages": [],
+          "affectedPagesCount": 0,
+          "affectedPagesHasMore": false,
+          "legacyValue": "missing"
+        }
+      ]
+    },
+    {
+      "ruleId": "links/no-contextual-inbound",
+      "name": "No Contextual Inbound Links",
+      "description": "Detects pages whose only internal inbound links come from sitewide chrome (nav, header, footer, sidebar)",
+      "solution": "These pages look well-linked but receive no editorial support: every link pointing at them is repeated on every page of the site, so it carries no signal about what the page is about or how important it is. Add links from the body copy of related articles, hub pages, or category descriptions using descriptive anchor text. Sitewide navigation links help discovery, but contextual links are what pass topical relevance and internal link equity.",
+      "category": "Links",
+      "group": "seo",
+      "severity": "warning",
+      "checks": [
+        {
+          "name": "no-contextual-inbound",
+          "status": "warn",
+          "message": "1 page(s) are linked only from sitewide chrome",
+          "affectedPages": [
+            "https://spa.mendozer.com/brand"
+          ],
+          "affectedPagesCount": 1,
+          "affectedPagesHasMore": false,
+          "items": [
+            {
+              "id": "https://spa.mendozer.com/brand",
+              "label": "https://spa.mendozer.com/brand, linked only from the footer",
+              "meta": {
+                "sections": {
+                  "footer": 5
+                }
+              }
+            }
+          ],
+          "details": {
+            "total": 1
+          },
+          "legacyValue": "/brand"
+        }
+      ]
+    },
+    {
+      "ruleId": "content/keyword-stuffing",
+      "name": "Keyword Stuffing",
+      "description": "Detects excessive keyword repetition in content",
+      "solution": "Keyword stuffing is repeating words unnaturally to manipulate rankings. Search engines penalize this practice. Write naturally for users first. Use keywords where they fit naturally. Aim for 1-2% keyword density at most. Use synonyms and related terms instead of repeating the exact same phrase. Focus on providing value, not gaming algorithms.",
+      "category": "Content",
+      "group": "seo",
+      "severity": "warning",
+      "checks": [
+        {
+          "name": "keyword-stuffing",
+          "status": "warn",
+          "message": "1 to 2 word(s) may be overused",
+          "affectedPages": [
+            "https://spa.mendozer.com/",
+            "https://spa.mendozer.com/book",
+            "https://spa.mendozer.com/terms"
+          ],
+          "affectedPagesCount": 3,
+          "affectedPagesHasMore": false,
+          "items": [
+            {
+              "id": "are",
+              "label": "\"are\" (5.1%)",
+              "meta": {
+                "count": 8,
+                "density": 5.063291139240507
+              },
+              "sourcePages": [
+                "https://spa.mendozer.com/terms"
+              ]
+            },
+            {
+              "id": "back",
+              "label": "\"back\" (3.3%)",
+              "meta": {
+                "count": 7,
+                "density": 3.286384976525822
+              },
+              "sourcePages": [
+                "https://spa.mendozer.com/book"
+              ]
+            },
+            {
+              "id": "full",
+              "label": "\"full\" (4.5%)",
+              "meta": {
+                "count": 10,
+                "density": 4.504504504504505
+              },
+              "sourcePages": [
+                "https://spa.mendozer.com/",
+                "https://spa.mendozer.com/book"
+              ]
+            },
+            {
+              "id": "massage",
+              "label": "\"massage\" (4.1%)",
+              "meta": {
+                "count": 9,
+                "density": 4.054054054054054
+              },
+              "sourcePages": [
+                "https://spa.mendozer.com/"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "ruleId": "content/word-count",
+      "name": "Word Count",
+      "description": "Checks content length for thin content issues",
+      "solution": "Pages with thin content (under 300 words) often struggle to rank well and are actively deindexed by Google since the June 2025 core update. Add more valuable, relevant content to thin pages—aim for at least 500 words for standard pages and 1000+ for in-depth articles. If a page can't be fleshed out, voluntarily noindex it or consolidate it into a more comprehensive resource. Trimming thin pages from your index is better than leaving low-value content for Google to penalize.",
+      "category": "Content",
+      "group": "seo",
+      "severity": "warning",
+      "checks": [
+        {
+          "name": "word-count",
+          "status": "warn",
+          "message": "Thin content: 207 to 281 words (min 300)",
+          "affectedPages": [
+            "https://spa.mendozer.com/",
+            "https://spa.mendozer.com/book",
+            "https://spa.mendozer.com/brand",
+            "https://spa.mendozer.com/privacy-policy",
+            "https://spa.mendozer.com/terms"
+          ],
+          "affectedPagesCount": 5,
+          "affectedPagesHasMore": false,
+          "items": [
+            {
+              "id": "https://spa.mendozer.com/",
+              "label": "Thin content: 281 words (min 300)"
+            },
+            {
+              "id": "https://spa.mendozer.com/book",
+              "label": "Thin content: 281 words (min 300)"
+            },
+            {
+              "id": "https://spa.mendozer.com/brand",
+              "label": "Thin content: 207 words (min 300)"
+            },
+            {
+              "id": "https://spa.mendozer.com/privacy-policy",
+              "label": "Thin content: 239 words (min 300)"
+            },
+            {
+              "id": "https://spa.mendozer.com/terms",
+              "label": "Thin content: 241 words (min 300)"
+            }
+          ],
+          "legacyValue": "281"
+        }
+      ]
+    },
+    {
+      "ruleId": "schema/local-business",
+      "name": "LocalBusiness Schema",
+      "description": "Validates LocalBusiness schema for local SEO",
+      "solution": "LocalBusiness schema helps your business appear in local search and Google Maps. Required: name, plus either a full PostalAddress (streetAddress, addressLocality, postalCode) for a storefront, or areaServed for a service-area business (SAB) with no public storefront: Google supports omitting the address when areaServed is declared. Include telephone, openingHours (use OpeningHoursSpecification for complex hours), geo coordinates, and priceRange. Match data with your Google Business Profile.",
+      "category": "Structured Data",
+      "group": "seo",
+      "severity": "warning",
+      "checks": [
+        {
+          "name": "local-business-address",
+          "status": "warn",
+          "message": "Address incomplete",
+          "affectedPages": [
+            "https://spa.mendozer.com/"
+          ],
+          "affectedPagesCount": 1,
+          "affectedPagesHasMore": false,
+          "items": [
+            {
+              "id": "postalCode",
+              "sourcePages": [
+                "https://spa.mendozer.com/"
+              ]
+            },
+            {
+              "id": "streetAddress",
+              "sourcePages": [
+                "https://spa.mendozer.com/"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "ruleId": "images/image-file-size",
+      "name": "Image File Size Too Large",
+      "description": "Checks for image files that exceed recommended size limits",
+      "solution": "Large images slow down page loads and impact Core Web Vitals. Compress oversized images, use modern formats (WebP/AVIF), and resize images to the display dimensions. Consider responsive images with srcset to serve smaller files on mobile.",
+      "category": "Images",
+      "group": "seo",
+      "severity": "warning",
+      "checks": [
+        {
+          "name": "image-file-size-warn",
+          "status": "warn",
+          "message": "4 image(s) exceed 200.0 KB",
+          "affectedPages": [
+            "https://spa.mendozer.com/"
+          ],
+          "affectedPagesCount": 1,
+          "affectedPagesHasMore": false,
+          "items": [
+            {
+              "id": "https://spa.mendozer.com/media/photos/facial-cheek.jpg",
+              "sourcePages": [
+                "https://spa.mendozer.com/"
+              ],
+              "meta": {
+                "sizeBytes": 261218,
+                "size": "255.1 KB",
+                "status": 206,
+                "contentType": "image/jpeg"
+              }
+            },
+            {
+              "id": "https://spa.mendozer.com/media/photos/hot-stones-back.jpg",
+              "sourcePages": [
+                "https://spa.mendozer.com/"
+              ],
+              "meta": {
+                "sizeBytes": 322649,
+                "size": "315.1 KB",
+                "status": 206,
+                "contentType": "image/jpeg"
+              }
+            },
+            {
+              "id": "https://spa.mendozer.com/media/photos/people-stones-rest.jpg",
+              "sourcePages": [
+                "https://spa.mendozer.com/"
+              ],
+              "meta": {
+                "sizeBytes": 222582,
+                "size": "217.4 KB",
+                "status": 206,
+                "contentType": "image/jpeg"
+              }
+            },
+            {
+              "id": "https://spa.mendozer.com/media/photos/towel.jpg",
+              "sourcePages": [
+                "https://spa.mendozer.com/"
+              ],
+              "meta": {
+                "sizeBytes": 353832,
+                "size": "345.5 KB",
+                "status": 206,
+                "contentType": "image/jpeg"
+              }
+            }
+          ],
+          "details": {
+            "thresholdBytes": 204800,
+            "total": 4
+          }
+        }
+      ]
+    },
+    {
+      "ruleId": "perf/critical-request-chains",
+      "name": "Critical Request Chains",
+      "description": "Identifies chains of dependent resources that delay rendering",
+      "solution": "Critical request chains are sequences of dependent network requests that must complete before the page can render. Reduce chain depth by: 1) Inlining critical CSS instead of linking external files. 2) Adding async or defer to non-critical scripts. 3) Avoiding CSS @import — use <link> tags instead. 4) Using <link rel='preload'> for critical resources. 5) Reducing the number of render-blocking resources in <head>.",
+      "category": "Performance",
+      "group": "performance",
+      "severity": "warning",
+      "checks": [
+        {
+          "name": "critical-request-chains",
+          "status": "warn",
+          "message": "2 critical request chain(s) found",
+          "affectedPages": [
+            "https://spa.mendozer.com/",
+            "https://spa.mendozer.com/book",
+            "https://spa.mendozer.com/brand",
+            "https://spa.mendozer.com/privacy-policy",
+            "https://spa.mendozer.com/terms"
+          ],
+          "affectedPagesCount": 5,
+          "affectedPagesHasMore": false,
+          "items": [
+            {
+              "id": "CSS: /_next/static/chunks/3211afdac4c6ad96.css",
+              "sourcePages": [
+                "https://spa.mendozer.com/",
+                "https://spa.mendozer.com/book",
+                "https://spa.mendozer.com/brand",
+                "https://spa.mendozer.com/privacy-policy",
+                "https://spa.mendozer.com/terms"
+              ],
+              "siteWide": {
+                "pages": 5,
+                "of": 5
+              }
+            },
+            {
+              "id": "CSS: /_next/static/chunks/c7b7d021e476a292.css",
+              "sourcePages": [
+                "https://spa.mendozer.com/",
+                "https://spa.mendozer.com/book",
+                "https://spa.mendozer.com/brand",
+                "https://spa.mendozer.com/privacy-policy",
+                "https://spa.mendozer.com/terms"
+              ],
+              "siteWide": {
+                "pages": 5,
+                "of": 5
+              }
+            }
+          ],
+          "details": {
+            "blockingCss": 2,
+            "blockingJs": 0,
+            "importCount": 0,
+            "preloads": 3
+          }
+        }
+      ]
+    },
+    {
+      "ruleId": "perf/lazy-above-fold",
+      "name": "Lazy Loading Above Fold",
+      "description": "Detects lazy loading on likely above-fold images",
+      "solution": "Don't use loading='lazy' on images that appear above the fold (visible without scrolling). Lazy loading these images delays LCP because the browser waits for layout before fetching. For hero images and LCP candidates: 1) Remove loading='lazy'. 2) Add fetchpriority='high'. 3) Consider preloading with <link rel='preload' as='image'>. Only use lazy loading for below-fold images.",
+      "category": "Performance",
+      "group": "performance",
+      "severity": "warning",
+      "checks": [
+        {
+          "name": "lazy-above-fold",
+          "status": "warn",
+          "message": "1 above-fold image(s) with lazy loading",
+          "affectedPages": [
+            "https://spa.mendozer.com/"
+          ],
+          "affectedPagesCount": 1,
+          "affectedPagesHasMore": false,
+          "items": [
+            {
+              "id": "/media/photos/hot-stones-back.jpg",
+              "sourcePages": [
+                "https://spa.mendozer.com/"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "ruleId": "social/og-url-match",
+      "name": "OG URL Match",
+      "description": "Checks that og:url matches canonical URL",
+      "solution": "og:url should match your canonical URL. Mismatches can cause social share stats to be fragmented across different URLs. Use the same URL normalization (https, www, trailing slash) as your canonical tag. Facebook uses og:url for share counting and deduplication.",
+      "category": "Social Media",
+      "group": "seo",
+      "severity": "warning",
+      "checks": [
+        {
+          "name": "og-url-match",
+          "status": "warn",
+          "message": "og:url does not match canonical URL",
+          "affectedPages": [
+            "https://spa.mendozer.com/brand",
+            "https://spa.mendozer.com/privacy-policy",
+            "https://spa.mendozer.com/terms"
+          ],
+          "affectedPagesCount": 3,
+          "affectedPagesHasMore": false,
+          "legacyValue": "og: https://spa.mendozer.com"
+        }
+      ]
+    },
+    {
+      "ruleId": "a11y/input-types",
+      "name": "Input Types",
+      "description": "Checks that fields use the right input type and keyboard hint, and that forms keep native validation",
+      "solution": "Use the input type that matches the data: type='email', type='tel', type='url' and type='number' each summon the right mobile keyboard and bring free browser validation with them, while type='text' gives users the full QWERTY keyboard and no help at all. Never use type='number' for a digit string such as a postal code, phone number or card number: it strips leading zeros, adds a spinner, and silently discards anything that is not a valid float. If you need a numeric keypad without those side effects, keep type='text' and add inputmode='numeric'. On forms with several fields, set enterkeyhint='next' on each field and enterkeyhint='send' or 'done' on the last one so the mobile return key says what it does. Only add novalidate when your own JavaScript takes over validation: on a form that still declares required or pattern and ships no replacement, it removes the browser's error messages and hands users nothing back.",
+      "category": "Accessibility",
+      "group": "seo",
+      "severity": "warning",
+      "checks": [
+        {
+          "name": "enterkeyhint",
+          "status": "warn",
+          "message": "1 multi-field form(s) set no enterkeyhint",
+          "affectedPages": [
+            "https://spa.mendozer.com/",
+            "https://spa.mendozer.com/book"
+          ],
+          "affectedPagesCount": 2,
+          "affectedPagesHasMore": false,
+          "items": [
+            {
+              "id": "form:nth-of-type(1)",
+              "label": "4-field form, no field sets enterkeyhint",
+              "snippet": "<form class=\"bk-form\" aria-label=\"Book a treatment on WhatsApp\">",
+              "meta": {
+                "reason": "missing-enterkeyhint",
+                "fields": 4
+              },
+              "sourcePages": [
+                "https://spa.mendozer.com/",
+                "https://spa.mendozer.com/book"
+              ]
+            }
+          ],
+          "details": {
+            "formsChecked": 1
+          }
+        }
+      ]
+    },
+    {
+      "ruleId": "mobile/web-app-manifest",
+      "name": "Web App Manifest",
+      "description": "Checks the web app manifest the pages link: that it loads and parses, its name, start_url and display, its 192px and 512px PNG icons, and that its theme_color matches the pages' theme-color",
+      "solution": "The web app manifest (usually site.webmanifest) sets the name, icons, splash colours and start page used when someone adds the site to their home screen. Serve it as application/manifest+json, give it a name, a start_url and a display mode, and declare 192x192 and 512x512 PNG icons. Add a maskable icon so Android can crop it to the launcher shape without clipping. Keep the manifest's theme_color equal to the theme-color meta on your pages. A site that links no manifest gets advice only, and that does not affect the score.",
+      "category": "Mobile",
+      "group": "seo",
+      "severity": "warning",
+      "checks": [
+        {
+          "name": "web-app-manifest",
+          "status": "warn",
+          "message": "Web app manifest https://spa.mendozer.com/manifest.webmanifest has 1 issue(s) (linked from https://spa.mendozer.com/, https://spa.mendozer.com/book, https://spa.mendozer.com/brand, https://spa.mendozer.com/privacy-policy, https://spa.mendozer.com/terms)",
+          "affectedPages": [
+            "https://spa.mendozer.com/",
+            "https://spa.mendozer.com/book",
+            "https://spa.mendozer.com/brand",
+            "https://spa.mendozer.com/privacy-policy",
+            "https://spa.mendozer.com/terms"
+          ],
+          "affectedPagesCount": 5,
+          "affectedPagesHasMore": false,
+          "items": [
+            {
+              "id": "icon-192",
+              "label": "no 192x192 PNG icon declared",
+              "meta": {
+                "status": "warn"
+              }
+            }
+          ],
+          "legacyValue": "https://spa.mendozer.com/manifest.webmanifest"
+        }
+      ]
+    },
+    {
+      "ruleId": "eeat/about-page",
+      "name": "About Page",
+      "description": "Checks for an about/company page with content",
+      "solution": "An About page establishes credibility and trust. Include company history, mission, team overview, and credentials. Link from main navigation or footer. For E-E-A-T, explain your expertise and why visitors should trust you. Include contact information and physical location if applicable. A concrete path in `paths` that the crawl did not reach is requested once after the crawl (robots.txt and the per-host limits apply), so an About page nothing links to is found; the finding says which paths were probed. An About page your pages link to but the crawl did not fetch (an excluded path, or past the page limit) is reported as linked but not crawled rather than missing. On a single-page site, an About section (an element whose id is about, about-us or a localised slug, linked from the page as #about) counts as the About page; add enough content to it (200 words or more).",
+      "category": "E-E-A-T",
+      "group": "seo",
+      "severity": "warning",
+      "checks": [
+        {
+          "name": "about-page",
+          "status": "warn",
+          "message": "No About page found",
+          "affectedPages": [],
+          "affectedPagesCount": 0,
+          "affectedPagesHasMore": false,
+          "legacyValue": "Create /about or /about-us page"
+        }
+      ]
+    },
+    {
+      "ruleId": "eeat/author-byline",
+      "name": "Author Bylines",
+      "description": "Checks for visible author names on content pages",
+      "solution": "Author bylines demonstrate experience and accountability. Show author names prominently on articles, blog posts, and expert content. Include author credentials where relevant. Link author names to bio pages. For YMYL content (health, finance), author transparency is especially important for Google's E-E-A-T assessment.",
+      "category": "E-E-A-T",
+      "group": "seo",
+      "severity": "warning",
+      "checks": [
+        {
+          "name": "author-byline",
+          "status": "warn",
+          "message": "No content pages have author attribution",
+          "affectedPages": [],
+          "affectedPagesCount": 0,
+          "affectedPagesHasMore": false,
+          "legacyValue": "Add author bylines to build E-E-A-T"
+        }
+      ]
+    },
+    {
+      "ruleId": "eeat/contact-page",
+      "name": "Contact Page",
+      "description": "Checks for contact page with multiple contact methods",
+      "solution": "A contact page with multiple contact methods builds trust. Include: email address or contact form, phone number (if applicable), physical address, and social media links. Make contact information easy to find from any page. For local businesses, include business hours. Response time expectations are also helpful. A Contact page your pages link to but the crawl did not fetch (an excluded path, or past the page limit) is reported as linked but not crawled rather than missing, and its contact methods are not checked. On a single-page site, a Contact section (an element whose id is contact, contact-us or a localised slug, linked from the page as #contact) counts as the Contact page when it has an email or phone link or a form.",
+      "category": "E-E-A-T",
+      "group": "seo",
+      "severity": "warning",
+      "checks": [
+        {
+          "name": "contact-page",
+          "status": "warn",
+          "message": "No Contact page found",
+          "affectedPages": [],
+          "affectedPagesCount": 0,
+          "affectedPagesHasMore": false,
+          "legacyValue": "Create /contact page"
+        }
+      ]
+    },
+    {
+      "ruleId": "eeat/content-dates",
+      "name": "Content Dates",
+      "description": "Checks for published and modified dates on content",
+      "solution": "Visible dates show content freshness and help users assess relevance. Include datePublished and dateModified in Article schema. Show human-readable dates on pages. Update dateModified when making significant changes. Fresh content signals ongoing maintenance and expertise. Stale dates may hurt rankings for time-sensitive topics.",
+      "category": "E-E-A-T",
+      "group": "seo",
+      "severity": "warning",
+      "checks": [
+        {
+          "name": "date-published",
+          "status": "warn",
+          "message": "No content pages have datePublished",
+          "affectedPages": [],
+          "affectedPagesCount": 0,
+          "affectedPagesHasMore": false,
+          "legacyValue": "Add dates to Article schema"
+        }
+      ]
+    },
+    {
+      "ruleId": "ax/token-weight",
+      "name": "Token Weight",
+      "description": "Estimates the LLM token cost of a page's raw HTML and reports the text-to-HTML ratio — how much of that cost is actual content versus markup, scripts, and styles",
+      "solution": "Strip or externalize inline <script>/<style> blocks, avoid deeply nested wrapper divs and long utility-class strings on content-bearing elements, and serve lean server-rendered markup rather than a client framework's verbose hydration output — especially on content pages. Consider Markdown content negotiation, which sidesteps the ratio problem by removing HTML markup from the response entirely.",
+      "category": "Agent Experience",
+      "group": "ai",
+      "severity": "warning",
+      "checks": [
+        {
+          "name": "token-weight-ratio",
+          "status": "warn",
+          "message": "Visible text is under 15% of the page HTML — agents pay token cost mostly for markup, scripts, and styles",
+          "affectedPages": [
+            "https://spa.mendozer.com/",
+            "https://spa.mendozer.com/book",
+            "https://spa.mendozer.com/brand",
+            "https://spa.mendozer.com/privacy-policy",
+            "https://spa.mendozer.com/terms"
+          ],
+          "affectedPagesCount": 5,
+          "affectedPagesHasMore": false,
+          "items": [
+            {
+              "id": "https://spa.mendozer.com/",
+              "label": "~4% of HTML is visible text (~13,201 est. tokens)",
+              "sourcePages": [
+                "https://spa.mendozer.com/"
+              ]
+            },
+            {
+              "id": "https://spa.mendozer.com/book",
+              "label": "~7% of HTML is visible text (~6,383 est. tokens)",
+              "sourcePages": [
+                "https://spa.mendozer.com/book"
+              ]
+            },
+            {
+              "id": "https://spa.mendozer.com/brand",
+              "label": "~6% of HTML is visible text (~5,859 est. tokens)",
+              "sourcePages": [
+                "https://spa.mendozer.com/brand"
+              ]
+            },
+            {
+              "id": "https://spa.mendozer.com/privacy-policy",
+              "label": "~7% of HTML is visible text (~5,531 est. tokens)",
+              "sourcePages": [
+                "https://spa.mendozer.com/privacy-policy"
+              ]
+            },
+            {
+              "id": "https://spa.mendozer.com/terms",
+              "label": "~7% of HTML is visible text (~5,572 est. tokens)",
+              "sourcePages": [
+                "https://spa.mendozer.com/terms"
+              ]
+            }
+          ],
+          "details": {
+            "textLength": 1581,
+            "htmlLength": 22283
+          },
+          "legacyValue": "4"
+        }
+      ]
+    }
+  ],
+  "executedRules": [
+    "a11y/accesskeys",
+    "a11y/aria-allowed-attr",
+    "a11y/aria-command-name",
+    "a11y/aria-deprecated-role",
+    "a11y/aria-dialog-name",
+    "a11y/aria-hidden-body",
+    "a11y/aria-hidden-focus",
+    "a11y/aria-input-field-name",
+    "a11y/aria-labels",
+    "a11y/aria-meter-name",
+    "a11y/aria-progressbar-name",
+    "a11y/aria-required-attr",
+    "a11y/aria-required-children",
+    "a11y/aria-required-parent",
+    "a11y/aria-roles",
+    "a11y/aria-text",
+    "a11y/aria-toggle-field-name",
+    "a11y/aria-tooltip-name",
+    "a11y/aria-treeitem-name",
+    "a11y/aria-valid-attr",
+    "a11y/aria-valid-attr-value",
+    "a11y/autocomplete-tokens",
+    "a11y/button-name",
+    "a11y/color-contrast",
+    "a11y/definition-list",
+    "a11y/dlitem",
+    "a11y/duplicate-id-active",
+    "a11y/duplicate-id-aria",
+    "a11y/empty-heading",
+    "a11y/focus-visible",
+    "a11y/form-field-multiple-labels",
+    "a11y/form-labels",
+    "a11y/frame-title",
+    "a11y/heading-order",
+    "a11y/html-lang-valid",
+    "a11y/html-xml-lang-mismatch",
+    "a11y/identical-links-same-purpose",
+    "a11y/image-redundant-alt",
+    "a11y/input-image-alt",
+    "a11y/input-types",
+    "a11y/label-content-name-mismatch",
+    "a11y/landmark-one-main",
+    "a11y/landmark-regions",
+    "a11y/link-in-text-block",
+    "a11y/link-text",
+    "a11y/list-structure",
+    "a11y/listitem",
+    "a11y/meta-refresh",
+    "a11y/object-alt",
+    "a11y/paste-inputs",
+    "a11y/select-name",
+    "a11y/skip-link",
+    "a11y/tabindex",
+    "a11y/table-duplicate-name",
+    "a11y/table-headers",
+    "a11y/td-headers-attr",
+    "a11y/th-has-data-cells",
+    "a11y/touch-targets",
+    "a11y/valid-lang",
+    "a11y/video-captions",
+    "a11y/zoom-disabled",
+    "analytics/gtm-present",
+    "ax/agent-blocking",
+    "ax/agents-md",
+    "ax/ai-crawlers",
+    "ax/api-discovery",
+    "ax/content-signals",
+    "ax/llms-txt",
+    "ax/markdown-response",
+    "ax/noai-signals",
+    "ax/pay-per-crawl",
+    "ax/rsl-license",
+    "ax/token-weight",
+    "ax/well-known-agent",
+    "content/article-links",
+    "content/author-info",
+    "content/broken-html",
+    "content/common-misspellings",
+    "content/dev-leakage",
+    "content/duplicate-description",
+    "content/duplicate-title",
+    "content/freshness",
+    "content/h1-title-alignment",
+    "content/heading-hierarchy",
+    "content/hidden-text",
+    "content/keyword-stuffing",
+    "content/meta-in-body",
+    "content/mojibake",
+    "content/placeholder-contact",
+    "content/placeholder-media",
+    "content/placeholder-text",
+    "content/reading-level",
+    "content/stale-copyright",
+    "content/unrendered-markup",
+    "content/word-count",
+    "core/canonical",
+    "core/charset",
+    "core/doctype",
+    "core/favicon",
+    "core/h1",
+    "core/meta-description",
+    "core/meta-title",
+    "core/nosnippet",
+    "core/og-tags",
+    "core/robots-meta",
+    "core/title-unique",
+    "core/twitter-cards",
+    "crawl/all-noindex-pages",
+    "crawl/canonical-chain",
+    "crawl/html-size",
+    "crawl/indexability",
+    "crawl/indexability-conflicts",
+    "crawl/noindex-in-sitemap",
+    "crawl/pdf-size",
+    "crawl/redirect-chain",
+    "crawl/robots-meta-conflict",
+    "crawl/robots-txt",
+    "crawl/schema-noindex-conflict",
+    "crawl/sitemap-4xx",
+    "crawl/sitemap-coverage",
+    "crawl/sitemap-domain",
+    "crawl/sitemap-exists",
+    "crawl/sitemap-valid",
+    "crawl/soft-404",
+    "eeat/about-page",
+    "eeat/affiliate-disclosure",
+    "eeat/author-byline",
+    "eeat/author-expertise",
+    "eeat/citations",
+    "eeat/contact-page",
+    "eeat/content-dates",
+    "eeat/disclaimers",
+    "eeat/editorial-policy",
+    "eeat/physical-address",
+    "eeat/privacy-policy",
+    "eeat/terms-of-service",
+    "eeat/trust-signals",
+    "eeat/ymyl-detection",
+    "i18n/hreflang",
+    "i18n/lang-attribute",
+    "images/alt-text",
+    "images/aspect-mismatch",
+    "images/broken-images",
+    "images/dimensions",
+    "images/figure-figcaption",
+    "images/filename-quality",
+    "images/hotlinked",
+    "images/image-file-size",
+    "images/lazy-loading",
+    "images/modern-format",
+    "images/offscreen-lazy",
+    "images/optimized",
+    "images/picture-element",
+    "images/responsive-size",
+    "images/srcset",
+    "images/svg-inline",
+    "integrity/orphan-page",
+    "integrity/template-discontinuity",
+    "legal/cookie-consent",
+    "legal/privacy-policy",
+    "legal/terms-of-service",
+    "links/anchor-mismatch",
+    "links/anchor-text",
+    "links/broken-anchors",
+    "links/broken-external-links",
+    "links/broken-links",
+    "links/dead-end-pages",
+    "links/dead-links",
+    "links/external-links",
+    "links/https-downgrade",
+    "links/internal-links",
+    "links/invalid-links",
+    "links/no-contextual-inbound",
+    "links/nofollow-internal",
+    "links/orphan-pages",
+    "links/redirect-chains",
+    "links/tel-mailto",
+    "links/weak-internal-links",
+    "local/geo-meta",
+    "local/nap-consistency",
+    "local/service-area",
+    "mobile/font-size",
+    "mobile/horizontal-scroll",
+    "mobile/input-zoom",
+    "mobile/interstitials",
+    "mobile/tap-targets",
+    "mobile/viewport",
+    "mobile/viewport-zoom",
+    "mobile/web-app-manifest",
+    "perf/animated-content",
+    "perf/asset-compression",
+    "perf/bad-caching",
+    "perf/browser-required",
+    "perf/cache-headers",
+    "perf/carousel-hidden-eager",
+    "perf/cls-hints",
+    "perf/compression",
+    "perf/content-in-js-bundle",
+    "perf/critical-request-chains",
+    "perf/css-file-size",
+    "perf/dom-size",
+    "perf/duplicate-js",
+    "perf/font-delivery",
+    "perf/font-loading",
+    "perf/framework-data-payload",
+    "perf/http2",
+    "perf/inp-hints",
+    "perf/js-file-size",
+    "perf/js-libraries",
+    "perf/js-redirects",
+    "perf/lazy-above-fold",
+    "perf/lcp-fetchpriority",
+    "perf/lcp-hints",
+    "perf/legacy-js",
+    "perf/preconnect",
+    "perf/render-blocking",
+    "perf/source-maps",
+    "perf/total-byte-weight",
+    "perf/ttfb",
+    "perf/unminified-css",
+    "perf/unminified-js",
+    "reliability/broken-forms",
+    "reliability/broken-resources",
+    "schema/article",
+    "schema/breadcrumb",
+    "schema/entity-conflicts",
+    "schema/entity-dangling",
+    "schema/entity-id-format",
+    "schema/entity-identity",
+    "schema/entity-local-business-per-page",
+    "schema/entity-organization-missing",
+    "schema/entity-orphan",
+    "schema/entity-sameas-missing",
+    "schema/entity-split-identity",
+    "schema/entity-type-drift",
+    "schema/entity-website-missing",
+    "schema/expected-type",
+    "schema/faq",
+    "schema/json-ld-valid",
+    "schema/local-business",
+    "schema/organization",
+    "schema/product",
+    "schema/review",
+    "schema/video",
+    "schema/website-search",
+    "security/cookie-flags",
+    "security/csp",
+    "security/csp-blocks-own-resources",
+    "security/form-captcha",
+    "security/form-https",
+    "security/graphql-get-mutations",
+    "security/graphql-introspection",
+    "security/hsts",
+    "security/http-to-https",
+    "security/https",
+    "security/leaked-secrets",
+    "security/mixed-content",
+    "security/new-tab",
+    "security/permissions-policy",
+    "security/referrer-policy",
+    "security/security-txt",
+    "security/sri",
+    "security/third-party-cookies",
+    "security/tls-certificate",
+    "security/token-storage",
+    "security/version-disclosure",
+    "security/x-content-type",
+    "security/x-frame-options",
+    "social/og-image-size",
+    "social/og-url-match",
+    "social/share-buttons",
+    "social/social-profiles",
+    "url/hyphens",
+    "url/length",
+    "url/lowercase",
+    "url/parameters",
+    "url/slug-keywords",
+    "url/special-chars",
+    "url/stop-words",
+    "url/trailing-slash",
+    "video/video-accessible",
+    "video/video-schema",
+    "video/video-thumbnail"
+  ],
+  "infoChecks": [
+    {
+      "ruleId": "a11y/accesskeys",
+      "name": "Access Keys",
+      "check": "accesskeys",
+      "message": "No access keys defined",
+      "pages": [
+        "https://spa.mendozer.com/",
+        "https://spa.mendozer.com/book",
+        "https://spa.mendozer.com/brand",
+        "https://spa.mendozer.com/privacy-policy",
+        "https://spa.mendozer.com/terms"
+      ],
+      "pagesCount": 5,
+      "pagesHasMore": false
+    },
+    {
+      "ruleId": "a11y/aria-meter-name",
+      "name": "ARIA Meter Name",
+      "check": "aria-meter-name",
+      "message": "No meter elements found",
+      "pages": [
+        "https://spa.mendozer.com/",
+        "https://spa.mendozer.com/book",
+        "https://spa.mendozer.com/brand",
+        "https://spa.mendozer.com/privacy-policy",
+        "https://spa.mendozer.com/terms"
+      ],
+      "pagesCount": 5,
+      "pagesHasMore": false
+    },
+    {
+      "ruleId": "a11y/aria-progressbar-name",
+      "name": "ARIA Progressbar Name",
+      "check": "aria-progressbar-name",
+      "message": "No progressbar elements found",
+      "pages": [
+        "https://spa.mendozer.com/",
+        "https://spa.mendozer.com/book",
+        "https://spa.mendozer.com/brand",
+        "https://spa.mendozer.com/privacy-policy",
+        "https://spa.mendozer.com/terms"
+      ],
+      "pagesCount": 5,
+      "pagesHasMore": false
+    },
+    {
+      "ruleId": "a11y/aria-text",
+      "name": "ARIA Text",
+      "check": "aria-text",
+      "message": "No elements with role=\"text\" found",
+      "pages": [
+        "https://spa.mendozer.com/",
+        "https://spa.mendozer.com/book",
+        "https://spa.mendozer.com/brand",
+        "https://spa.mendozer.com/privacy-policy",
+        "https://spa.mendozer.com/terms"
+      ],
+      "pagesCount": 5,
+      "pagesHasMore": false
+    },
+    {
+      "ruleId": "a11y/aria-tooltip-name",
+      "name": "ARIA Tooltip Name",
+      "check": "aria-tooltip-name",
+      "message": "No tooltip elements found",
+      "pages": [
+        "https://spa.mendozer.com/",
+        "https://spa.mendozer.com/book",
+        "https://spa.mendozer.com/brand",
+        "https://spa.mendozer.com/privacy-policy",
+        "https://spa.mendozer.com/terms"
+      ],
+      "pagesCount": 5,
+      "pagesHasMore": false
+    },
+    {
+      "ruleId": "a11y/aria-treeitem-name",
+      "name": "ARIA Treeitem Name",
+      "check": "aria-treeitem-name",
+      "message": "No treeitem elements found",
+      "pages": [
+        "https://spa.mendozer.com/",
+        "https://spa.mendozer.com/book",
+        "https://spa.mendozer.com/brand",
+        "https://spa.mendozer.com/privacy-policy",
+        "https://spa.mendozer.com/terms"
+      ],
+      "pagesCount": 5,
+      "pagesHasMore": false
+    },
+    {
+      "ruleId": "a11y/definition-list",
+      "name": "Definition List Structure",
+      "check": "definition-list",
+      "message": "No definition lists found",
+      "pages": [
+        "https://spa.mendozer.com/",
+        "https://spa.mendozer.com/book",
+        "https://spa.mendozer.com/brand",
+        "https://spa.mendozer.com/privacy-policy",
+        "https://spa.mendozer.com/terms"
+      ],
+      "pagesCount": 5,
+      "pagesHasMore": false
+    },
+    {
+      "ruleId": "a11y/dlitem",
+      "name": "Definition List Item",
+      "check": "dlitem",
+      "message": "No dt/dd elements found",
+      "pages": [
+        "https://spa.mendozer.com/",
+        "https://spa.mendozer.com/book",
+        "https://spa.mendozer.com/brand",
+        "https://spa.mendozer.com/privacy-policy",
+        "https://spa.mendozer.com/terms"
+      ],
+      "pagesCount": 5,
+      "pagesHasMore": false
+    },
+    {
+      "ruleId": "a11y/duplicate-id-active",
+      "name": "Duplicate ID Active",
+      "check": "duplicate-id-active",
+      "message": "No focusable elements with IDs found",
+      "pages": [
+        "https://spa.mendozer.com/brand",
+        "https://spa.mendozer.com/privacy-policy",
+        "https://spa.mendozer.com/terms"
+      ],
+      "pagesCount": 3,
+      "pagesHasMore": false
+    },
+    {
+      "ruleId": "a11y/duplicate-id-aria",
+      "name": "Duplicate ID ARIA",
+      "check": "duplicate-id-aria",
+      "message": "No ARIA ID references found",
+      "pages": [
+        "https://spa.mendozer.com/",
+        "https://spa.mendozer.com/book",
+        "https://spa.mendozer.com/brand",
+        "https://spa.mendozer.com/privacy-policy",
+        "https://spa.mendozer.com/terms"
+      ],
+      "pagesCount": 5,
+      "pagesHasMore": false
+    },
+    {
+      "ruleId": "a11y/focus-visible",
+      "name": "Focus Visible",
+      "check": "focus-visible",
+      "message": "Focus styles not analyzed (requires CSS inspection)",
+      "pages": [
+        "https://spa.mendozer.com/",
+        "https://spa.mendozer.com/book",
+        "https://spa.mendozer.com/brand",
+        "https://spa.mendozer.com/privacy-policy",
+        "https://spa.mendozer.com/terms"
+      ],
+      "pagesCount": 5,
+      "pagesHasMore": false
+    },
+    {
+      "ruleId": "a11y/form-field-multiple-labels",
+      "name": "Multiple Labels",
+      "check": "form-field-multiple-labels",
+      "message": "No form inputs found",
+      "pages": [
+        "https://spa.mendozer.com/brand",
+        "https://spa.mendozer.com/privacy-policy",
+        "https://spa.mendozer.com/terms"
+      ],
+      "pagesCount": 3,
+      "pagesHasMore": false
+    },
+    {
+      "ruleId": "a11y/form-labels",
+      "name": "Form Labels",
+      "check": "form-labels",
+      "message": "No form inputs found",
+      "pages": [
+        "https://spa.mendozer.com/brand",
+        "https://spa.mendozer.com/privacy-policy",
+        "https://spa.mendozer.com/terms"
+      ],
+      "pagesCount": 3,
+      "pagesHasMore": false
+    },
+    {
+      "ruleId": "a11y/frame-title",
+      "name": "Frame Title",
+      "check": "frame-title",
+      "message": "No iframes found",
+      "pages": [
+        "https://spa.mendozer.com/",
+        "https://spa.mendozer.com/book",
+        "https://spa.mendozer.com/brand",
+        "https://spa.mendozer.com/privacy-policy",
+        "https://spa.mendozer.com/terms"
+      ],
+      "pagesCount": 5,
+      "pagesHasMore": false
+    },
+    {
+      "ruleId": "a11y/html-xml-lang-mismatch",
+      "name": "HTML XML Lang Mismatch",
+      "check": "html-xml-lang-mismatch",
+      "message": "Only lang attribute present (recommended for HTML5)",
+      "pages": [
+        "https://spa.mendozer.com/",
+        "https://spa.mendozer.com/book",
+        "https://spa.mendozer.com/brand",
+        "https://spa.mendozer.com/privacy-policy",
+        "https://spa.mendozer.com/terms"
+      ],
+      "pagesCount": 5,
+      "pagesHasMore": false
+    },
+    {
+      "ruleId": "a11y/input-image-alt",
+      "name": "Input Image Alt",
+      "check": "input-image-alt",
+      "message": "No image inputs found",
+      "pages": [
+        "https://spa.mendozer.com/",
+        "https://spa.mendozer.com/book",
+        "https://spa.mendozer.com/brand",
+        "https://spa.mendozer.com/privacy-policy",
+        "https://spa.mendozer.com/terms"
+      ],
+      "pagesCount": 5,
+      "pagesHasMore": false
+    },
+    {
+      "ruleId": "a11y/link-in-text-block",
+      "name": "Link in Text Block",
+      "check": "link-in-text-block",
+      "message": "No links found in text blocks",
+      "pages": [
+        "https://spa.mendozer.com/brand"
+      ],
+      "pagesCount": 1,
+      "pagesHasMore": false
+    },
+    {
+      "ruleId": "a11y/list-structure",
+      "name": "List Structure",
+      "check": "list-structure",
+      "message": "No ul/ol lists found",
+      "pages": [
+        "https://spa.mendozer.com/",
+        "https://spa.mendozer.com/book",
+        "https://spa.mendozer.com/brand"
+      ],
+      "pagesCount": 3,
+      "pagesHasMore": false
+    },
+    {
+      "ruleId": "a11y/listitem",
+      "name": "List Item Context",
+      "check": "listitem",
+      "message": "No li elements found",
+      "pages": [
+        "https://spa.mendozer.com/",
+        "https://spa.mendozer.com/book",
+        "https://spa.mendozer.com/brand"
+      ],
+      "pagesCount": 3,
+      "pagesHasMore": false
+    },
+    {
+      "ruleId": "a11y/object-alt",
+      "name": "Object Alt Text",
+      "check": "object-alt",
+      "message": "No object elements found",
+      "pages": [
+        "https://spa.mendozer.com/",
+        "https://spa.mendozer.com/book",
+        "https://spa.mendozer.com/brand",
+        "https://spa.mendozer.com/privacy-policy",
+        "https://spa.mendozer.com/terms"
+      ],
+      "pagesCount": 5,
+      "pagesHasMore": false
+    },
+    {
+      "ruleId": "a11y/paste-inputs",
+      "name": "Paste Inputs",
+      "check": "paste-inputs",
+      "message": "No text inputs found",
+      "pages": [
+        "https://spa.mendozer.com/brand",
+        "https://spa.mendozer.com/privacy-policy",
+        "https://spa.mendozer.com/terms"
+      ],
+      "pagesCount": 3,
+      "pagesHasMore": false
+    },
+    {
+      "ruleId": "a11y/select-name",
+      "name": "Select Name",
+      "check": "select-name",
+      "message": "No select elements found",
+      "pages": [
+        "https://spa.mendozer.com/brand",
+        "https://spa.mendozer.com/privacy-policy",
+        "https://spa.mendozer.com/terms"
+      ],
+      "pagesCount": 3,
+      "pagesHasMore": false
+    },
+    {
+      "ruleId": "a11y/table-duplicate-name",
+      "name": "Table Duplicate Name",
+      "check": "table-duplicate-name",
+      "message": "No data tables found",
+      "pages": [
+        "https://spa.mendozer.com/",
+        "https://spa.mendozer.com/book",
+        "https://spa.mendozer.com/brand",
+        "https://spa.mendozer.com/privacy-policy",
+        "https://spa.mendozer.com/terms"
+      ],
+      "pagesCount": 5,
+      "pagesHasMore": false
+    },
+    {
+      "ruleId": "a11y/table-headers",
+      "name": "Table Headers",
+      "check": "table-headers",
+      "message": "No data tables found",
+      "pages": [
+        "https://spa.mendozer.com/",
+        "https://spa.mendozer.com/book",
+        "https://spa.mendozer.com/brand",
+        "https://spa.mendozer.com/privacy-policy",
+        "https://spa.mendozer.com/terms"
+      ],
+      "pagesCount": 5,
+      "pagesHasMore": false
+    },
+    {
+      "ruleId": "a11y/td-headers-attr",
+      "name": "Table Cell Headers",
+      "check": "td-headers-attr",
+      "message": "No tables found",
+      "pages": [
+        "https://spa.mendozer.com/",
+        "https://spa.mendozer.com/book",
+        "https://spa.mendozer.com/brand",
+        "https://spa.mendozer.com/privacy-policy",
+        "https://spa.mendozer.com/terms"
+      ],
+      "pagesCount": 5,
+      "pagesHasMore": false
+    },
+    {
+      "ruleId": "a11y/th-has-data-cells",
+      "name": "TH Has Data Cells",
+      "check": "th-has-data-cells",
+      "message": "No data tables found",
+      "pages": [
+        "https://spa.mendozer.com/",
+        "https://spa.mendozer.com/book",
+        "https://spa.mendozer.com/brand",
+        "https://spa.mendozer.com/privacy-policy",
+        "https://spa.mendozer.com/terms"
+      ],
+      "pagesCount": 5,
+      "pagesHasMore": false
+    },
+    {
+      "ruleId": "a11y/touch-targets",
+      "name": "Touch Targets",
+      "check": "touch-targets",
+      "message": "Touch target sizes require CSS analysis",
+      "pages": [
+        "https://spa.mendozer.com/",
+        "https://spa.mendozer.com/book",
+        "https://spa.mendozer.com/brand",
+        "https://spa.mendozer.com/privacy-policy",
+        "https://spa.mendozer.com/terms"
+      ],
+      "pagesCount": 5,
+      "pagesHasMore": false
+    },
+    {
+      "ruleId": "a11y/valid-lang",
+      "name": "Valid Lang Attributes",
+      "check": "valid-lang",
+      "message": "No additional lang attributes found",
+      "pages": [
+        "https://spa.mendozer.com/",
+        "https://spa.mendozer.com/book",
+        "https://spa.mendozer.com/brand",
+        "https://spa.mendozer.com/privacy-policy",
+        "https://spa.mendozer.com/terms"
+      ],
+      "pagesCount": 5,
+      "pagesHasMore": false
+    },
+    {
+      "ruleId": "a11y/video-captions",
+      "name": "Video Captions",
+      "check": "video-captions",
+      "message": "No videos detected",
+      "pages": [
+        "https://spa.mendozer.com/",
+        "https://spa.mendozer.com/book",
+        "https://spa.mendozer.com/brand",
+        "https://spa.mendozer.com/privacy-policy",
+        "https://spa.mendozer.com/terms"
+      ],
+      "pagesCount": 5,
+      "pagesHasMore": false
+    },
+    {
+      "ruleId": "analytics/gtm-present",
+      "name": "Analytics Tracking",
+      "check": "gtm-present",
+      "message": "No analytics tracking detected",
+      "pages": [
+        "https://spa.mendozer.com/",
+        "https://spa.mendozer.com/book",
+        "https://spa.mendozer.com/brand",
+        "https://spa.mendozer.com/privacy-policy",
+        "https://spa.mendozer.com/terms"
+      ],
+      "pagesCount": 5,
+      "pagesHasMore": false
+    },
+    {
+      "ruleId": "ax/agents-md",
+      "name": "AGENTS.md",
+      "check": "agents-md-present",
+      "message": "No AGENTS.md found — consider adding one if this site has an associated codebase",
+      "pages": [],
+      "pagesCount": 0,
+      "pagesHasMore": false
+    },
+    {
+      "ruleId": "ax/ai-crawlers",
+      "name": "AI Crawler Access",
+      "check": "ai-crawler-access",
+      "message": "24/24 known AI crawlers allowed",
+      "pages": [],
+      "pagesCount": 0,
+      "pagesHasMore": false
+    },
+    {
+      "ruleId": "ax/api-discovery",
+      "name": "API & OAuth Discovery",
+      "check": "api-discovery",
+      "message": "No api-catalog or OpenAPI specification found",
+      "pages": [],
+      "pagesCount": 0,
+      "pagesHasMore": false
+    },
+    {
+      "ruleId": "ax/api-discovery",
+      "name": "API & OAuth Discovery",
+      "check": "api-discovery-oauth",
+      "message": "No OAuth discovery documents found",
+      "pages": [],
+      "pagesCount": 0,
+      "pagesHasMore": false
+    },
+    {
+      "ruleId": "ax/content-signals",
+      "name": "Content Signals",
+      "check": "content-signals",
+      "message": "No Content-Signal declared in robots.txt (optional per-purpose AI policy)",
+      "pages": [],
+      "pagesCount": 0,
+      "pagesHasMore": false
+    },
+    {
+      "ruleId": "ax/pay-per-crawl",
+      "name": "Pay Per Crawl",
+      "check": "pay-per-crawl",
+      "message": "No monetized agent access (pay-per-crawl / x402) detected",
+      "pages": [],
+      "pagesCount": 0,
+      "pagesHasMore": false
+    },
+    {
+      "ruleId": "ax/rsl-license",
+      "name": "RSL License",
+      "check": "rsl-license-present",
+      "message": "No machine-readable licensing declared (no robots.txt License: directive or Link: rel=license)",
+      "pages": [],
+      "pagesCount": 0,
+      "pagesHasMore": false
+    },
+    {
+      "ruleId": "ax/well-known-agent",
+      "name": "Well-Known Agent Files",
+      "check": "well-known-agent",
+      "message": "No MCP server card, A2A agent card, or agent-skills manifest found",
+      "pages": [],
+      "pagesCount": 0,
+      "pagesHasMore": false
+    },
+    {
+      "ruleId": "content/article-links",
+      "name": "Article Link Density",
+      "check": "article-links",
+      "message": "Not an article page",
+      "pages": [
+        "https://spa.mendozer.com/",
+        "https://spa.mendozer.com/book",
+        "https://spa.mendozer.com/brand",
+        "https://spa.mendozer.com/privacy-policy",
+        "https://spa.mendozer.com/terms"
+      ],
+      "pagesCount": 5,
+      "pagesHasMore": false
+    },
+    {
+      "ruleId": "content/author-info",
+      "name": "Author Info",
+      "check": "author-info",
+      "message": "No author information detected",
+      "pages": [
+        "https://spa.mendozer.com/",
+        "https://spa.mendozer.com/book",
+        "https://spa.mendozer.com/brand",
+        "https://spa.mendozer.com/privacy-policy",
+        "https://spa.mendozer.com/terms"
+      ],
+      "pagesCount": 5,
+      "pagesHasMore": false
+    },
+    {
+      "ruleId": "content/freshness",
+      "name": "Content Freshness",
+      "check": "freshness",
+      "message": "No freshness signals detected",
+      "pages": [
+        "https://spa.mendozer.com/",
+        "https://spa.mendozer.com/book",
+        "https://spa.mendozer.com/brand",
+        "https://spa.mendozer.com/privacy-policy",
+        "https://spa.mendozer.com/terms"
+      ],
+      "pagesCount": 5,
+      "pagesHasMore": false
+    },
+    {
+      "ruleId": "content/reading-level",
+      "name": "Reading Level",
+      "check": "reading-level",
+      "message": "Readability: Moderate (Grade 8.6)",
+      "pages": [
+        "https://spa.mendozer.com/",
+        "https://spa.mendozer.com/book",
+        "https://spa.mendozer.com/brand",
+        "https://spa.mendozer.com/privacy-policy",
+        "https://spa.mendozer.com/terms"
+      ],
+      "pagesCount": 5,
+      "pagesHasMore": false
+    },
+    {
+      "ruleId": "crawl/sitemap-exists",
+      "name": "Sitemap Exists",
+      "check": "sitemap-urls",
+      "message": "Sitemap contains 5 URL(s)",
+      "pages": [],
+      "pagesCount": 0,
+      "pagesHasMore": false
+    },
+    {
+      "ruleId": "eeat/affiliate-disclosure",
+      "name": "Affiliate Disclosure",
+      "check": "affiliate-disclosure",
+      "message": "No affiliate links or disclosure page detected",
+      "pages": [],
+      "pagesCount": 0,
+      "pagesHasMore": false
+    },
+    {
+      "ruleId": "eeat/author-expertise",
+      "name": "Author Expertise",
+      "check": "author-expertise",
+      "message": "Limited author expertise signals",
+      "pages": [],
+      "pagesCount": 0,
+      "pagesHasMore": false
+    },
+    {
+      "ruleId": "eeat/citations",
+      "name": "Citations",
+      "check": "citations",
+      "message": "No authoritative citations detected",
+      "pages": [],
+      "pagesCount": 0,
+      "pagesHasMore": false
+    },
+    {
+      "ruleId": "eeat/content-dates",
+      "name": "Content Dates",
+      "check": "date-modified",
+      "message": "0% of content has dateModified",
+      "pages": [],
+      "pagesCount": 0,
+      "pagesHasMore": false
+    },
+    {
+      "ruleId": "eeat/disclaimers",
+      "name": "Disclaimers",
+      "check": "disclaimer-page",
+      "message": "No dedicated disclaimer page found",
+      "pages": [],
+      "pagesCount": 0,
+      "pagesHasMore": false
+    },
+    {
+      "ruleId": "eeat/editorial-policy",
+      "name": "Editorial Policy",
+      "check": "editorial-policy",
+      "message": "No editorial/content policy pages found",
+      "pages": [],
+      "pagesCount": 0,
+      "pagesHasMore": false
+    },
+    {
+      "ruleId": "eeat/physical-address",
+      "name": "Physical Address",
+      "check": "physical-address",
+      "message": "No address schema markup detected",
+      "pages": [],
+      "pagesCount": 0,
+      "pagesHasMore": false
+    },
+    {
+      "ruleId": "eeat/trust-signals",
+      "name": "Trust Signals",
+      "check": "trust-signals",
+      "message": "Limited trust signals detected",
+      "pages": [],
+      "pagesCount": 0,
+      "pagesHasMore": false
+    },
+    {
+      "ruleId": "eeat/ymyl-detection",
+      "name": "YMYL Detection",
+      "check": "ymyl-content",
+      "message": "YMYL content detected - apply higher E-E-A-T standards",
+      "pages": [],
+      "pagesCount": 0,
+      "pagesHasMore": false
+    },
+    {
+      "ruleId": "eeat/ymyl-detection",
+      "name": "YMYL Detection",
+      "check": "ymyl-requirements",
+      "message": "YMYL content should have expert authors, disclaimers, and citations",
+      "pages": [],
+      "pagesCount": 0,
+      "pagesHasMore": false
+    },
+    {
+      "ruleId": "i18n/hreflang",
+      "name": "Hreflang Tags",
+      "check": "hreflang",
+      "message": "No hreflang tags found (not required for single-language sites)",
+      "pages": [
+        "https://spa.mendozer.com/",
+        "https://spa.mendozer.com/book",
+        "https://spa.mendozer.com/brand",
+        "https://spa.mendozer.com/privacy-policy",
+        "https://spa.mendozer.com/terms"
+      ],
+      "pagesCount": 5,
+      "pagesHasMore": false
+    },
+    {
+      "ruleId": "images/figure-figcaption",
+      "name": "Figure Captions",
+      "check": "figure-figcaption",
+      "message": "10/10 figure(s) missing figcaption",
+      "pages": [
+        "https://spa.mendozer.com/"
+      ],
+      "pagesCount": 1,
+      "pagesHasMore": false
+    },
+    {
+      "ruleId": "images/figure-figcaption",
+      "name": "Figure Captions",
+      "check": "figure-usage",
+      "message": "1 image(s) not using figure/figcaption",
+      "pages": [
+        "https://spa.mendozer.com/book",
+        "https://spa.mendozer.com/brand",
+        "https://spa.mendozer.com/privacy-policy",
+        "https://spa.mendozer.com/terms"
+      ],
+      "pagesCount": 4,
+      "pagesHasMore": false
+    },
+    {
+      "ruleId": "images/lazy-loading",
+      "name": "Lazy Loading",
+      "check": "lazy-loading",
+      "message": "1 image(s) found, no lazy loading detected",
+      "pages": [
+        "https://spa.mendozer.com/book",
+        "https://spa.mendozer.com/brand",
+        "https://spa.mendozer.com/privacy-policy",
+        "https://spa.mendozer.com/terms"
+      ],
+      "pagesCount": 4,
+      "pagesHasMore": false
+    },
+    {
+      "ruleId": "images/lazy-loading",
+      "name": "Lazy Loading",
+      "check": "lazy-loading-missing",
+      "message": "2 image(s) without loading attribute",
+      "pages": [
+        "https://spa.mendozer.com/"
+      ],
+      "pagesCount": 1,
+      "pagesHasMore": false
+    },
+    {
+      "ruleId": "images/modern-format",
+      "name": "Modern Image Formats",
+      "check": "modern-format",
+      "message": "13 image(s) using legacy formats (JPEG/PNG)",
+      "pages": [
+        "https://spa.mendozer.com/",
+        "https://spa.mendozer.com/book",
+        "https://spa.mendozer.com/brand",
+        "https://spa.mendozer.com/privacy-policy",
+        "https://spa.mendozer.com/terms"
+      ],
+      "pagesCount": 5,
+      "pagesHasMore": false
+    },
+    {
+      "ruleId": "images/optimized",
+      "name": "Image Optimization",
+      "check": "legacy-image-formats",
+      "message": "13 image(s) could use WebP/AVIF",
+      "pages": [
+        "https://spa.mendozer.com/",
+        "https://spa.mendozer.com/book",
+        "https://spa.mendozer.com/brand",
+        "https://spa.mendozer.com/privacy-policy",
+        "https://spa.mendozer.com/terms"
+      ],
+      "pagesCount": 5,
+      "pagesHasMore": false
+    },
+    {
+      "ruleId": "images/srcset",
+      "name": "Responsive Images",
+      "check": "srcset",
+      "message": "1 responsive, 13 fixed-size image(s)",
+      "pages": [
+        "https://spa.mendozer.com/",
+        "https://spa.mendozer.com/book",
+        "https://spa.mendozer.com/brand",
+        "https://spa.mendozer.com/privacy-policy",
+        "https://spa.mendozer.com/terms"
+      ],
+      "pagesCount": 5,
+      "pagesHasMore": false
+    },
+    {
+      "ruleId": "legal/cookie-consent",
+      "name": "Cookie Consent",
+      "check": "cookie-consent",
+      "message": "No cookie consent mechanism detected",
+      "pages": [
+        "https://spa.mendozer.com/",
+        "https://spa.mendozer.com/book",
+        "https://spa.mendozer.com/brand",
+        "https://spa.mendozer.com/privacy-policy",
+        "https://spa.mendozer.com/terms"
+      ],
+      "pagesCount": 5,
+      "pagesHasMore": false
+    },
+    {
+      "ruleId": "links/broken-external-links",
+      "name": "Broken External Links",
+      "check": "not-requested-external-links",
+      "message": "13 external link(s) were not requested because they look like actions (log out, unsubscribe) or carry a token or signature in the URL, so their status was not checked",
+      "pages": [],
+      "pagesCount": 0,
+      "pagesHasMore": false
+    },
+    {
+      "ruleId": "links/dead-links",
+      "name": "Dead Links (Cloud)",
+      "check": "dead-links",
+      "message": "Checked 6 external link(s); none are dead",
+      "pages": [],
+      "pagesCount": 0,
+      "pagesHasMore": false
+    },
+    {
+      "ruleId": "links/tel-mailto",
+      "name": "Tel & Mailto Links",
+      "check": "tel-mailto",
+      "message": "No tel: or mailto: links found",
+      "pages": [
+        "https://spa.mendozer.com/brand",
+        "https://spa.mendozer.com/privacy-policy",
+        "https://spa.mendozer.com/terms"
+      ],
+      "pagesCount": 3,
+      "pagesHasMore": false
+    },
+    {
+      "ruleId": "local/geo-meta",
+      "name": "Geo Meta Tags",
+      "check": "geo-meta",
+      "message": "No geo meta tags found",
+      "pages": [
+        "https://spa.mendozer.com/",
+        "https://spa.mendozer.com/book",
+        "https://spa.mendozer.com/brand",
+        "https://spa.mendozer.com/privacy-policy",
+        "https://spa.mendozer.com/terms"
+      ],
+      "pagesCount": 5,
+      "pagesHasMore": false
+    },
+    {
+      "ruleId": "local/nap-consistency",
+      "name": "NAP Consistency",
+      "check": "local-business-schema",
+      "message": "No LocalBusiness schema found",
+      "pages": [],
+      "pagesCount": 0,
+      "pagesHasMore": false
+    },
+    {
+      "ruleId": "local/service-area",
+      "name": "Service Area Pages",
+      "check": "service-area",
+      "message": "No dedicated location pages found",
+      "pages": [],
+      "pagesCount": 0,
+      "pagesHasMore": false
+    },
+    {
+      "ruleId": "mobile/font-size",
+      "name": "Font Size",
+      "check": "font-size",
+      "message": "No extremely small inline font sizes detected",
+      "pages": [
+        "https://spa.mendozer.com/",
+        "https://spa.mendozer.com/book",
+        "https://spa.mendozer.com/brand",
+        "https://spa.mendozer.com/privacy-policy",
+        "https://spa.mendozer.com/terms"
+      ],
+      "pagesCount": 5,
+      "pagesHasMore": false
+    },
+    {
+      "ruleId": "mobile/input-zoom",
+      "name": "Form Field Zoom",
+      "check": "input-zoom",
+      "message": "No form field read is under 16px. 4 more field(s) were not read: their size comes from a stylesheet or rule a static audit cannot resolve.",
+      "pages": [
+        "https://spa.mendozer.com/",
+        "https://spa.mendozer.com/book"
+      ],
+      "pagesCount": 2,
+      "pagesHasMore": false
+    },
+    {
+      "ruleId": "mobile/tap-targets",
+      "name": "Tap Targets",
+      "check": "tap-targets",
+      "message": "45 interactive element(s) found",
+      "pages": [
+        "https://spa.mendozer.com/",
+        "https://spa.mendozer.com/book",
+        "https://spa.mendozer.com/brand",
+        "https://spa.mendozer.com/privacy-policy",
+        "https://spa.mendozer.com/terms"
+      ],
+      "pagesCount": 5,
+      "pagesHasMore": false
+    },
+    {
+      "ruleId": "perf/bad-caching",
+      "name": "Weak Caching (site-wide)",
+      "check": "bad-caching-compression",
+      "message": "5/5 compressible pages compressed",
+      "pages": [],
+      "pagesCount": 0,
+      "pagesHasMore": false
+    },
+    {
+      "ruleId": "perf/bad-caching",
+      "name": "Weak Caching (site-wide)",
+      "check": "bad-caching-freshness",
+      "message": "5/5 pages declare a caching policy",
+      "pages": [],
+      "pagesCount": 0,
+      "pagesHasMore": false
+    },
+    {
+      "ruleId": "perf/browser-required",
+      "name": "Browser-Required Audits",
+      "check": "browser-required-audits",
+      "message": "18 audits require browser execution",
+      "pages": [
+        "https://spa.mendozer.com/",
+        "https://spa.mendozer.com/book",
+        "https://spa.mendozer.com/brand",
+        "https://spa.mendozer.com/privacy-policy",
+        "https://spa.mendozer.com/terms"
+      ],
+      "pagesCount": 5,
+      "pagesHasMore": false
+    },
+    {
+      "ruleId": "perf/http2",
+      "name": "HTTP/2",
+      "check": "http2-unknown",
+      "message": "HTTP/2 support cannot be determined from headers",
+      "pages": [
+        "https://spa.mendozer.com/",
+        "https://spa.mendozer.com/book",
+        "https://spa.mendozer.com/brand",
+        "https://spa.mendozer.com/privacy-policy",
+        "https://spa.mendozer.com/terms"
+      ],
+      "pagesCount": 5,
+      "pagesHasMore": false
+    },
+    {
+      "ruleId": "perf/js-libraries",
+      "name": "JS Libraries",
+      "check": "js-libraries-detected",
+      "message": "2 JavaScript library/libraries detected",
+      "pages": [
+        "https://spa.mendozer.com/",
+        "https://spa.mendozer.com/book",
+        "https://spa.mendozer.com/brand",
+        "https://spa.mendozer.com/privacy-policy",
+        "https://spa.mendozer.com/terms"
+      ],
+      "pagesCount": 5,
+      "pagesHasMore": false
+    },
+    {
+      "ruleId": "perf/lcp-fetchpriority",
+      "name": "LCP Image Fetch Priority",
+      "check": "lcp-fetchpriority",
+      "message": "No eager hero image candidate found",
+      "pages": [
+        "https://spa.mendozer.com/book",
+        "https://spa.mendozer.com/brand",
+        "https://spa.mendozer.com/privacy-policy",
+        "https://spa.mendozer.com/terms"
+      ],
+      "pagesCount": 4,
+      "pagesHasMore": false
+    },
+    {
+      "ruleId": "perf/legacy-js",
+      "name": "Legacy JavaScript",
+      "check": "legacy-js",
+      "message": "No legacy JavaScript patterns detected",
+      "pages": [
+        "https://spa.mendozer.com/",
+        "https://spa.mendozer.com/book",
+        "https://spa.mendozer.com/brand",
+        "https://spa.mendozer.com/privacy-policy",
+        "https://spa.mendozer.com/terms"
+      ],
+      "pagesCount": 5,
+      "pagesHasMore": false
+    },
+    {
+      "ruleId": "perf/preconnect",
+      "name": "Preconnect Hints",
+      "check": "preconnect-usage",
+      "message": "No preconnect hints (may not be needed)",
+      "pages": [
+        "https://spa.mendozer.com/",
+        "https://spa.mendozer.com/book",
+        "https://spa.mendozer.com/brand",
+        "https://spa.mendozer.com/privacy-policy",
+        "https://spa.mendozer.com/terms"
+      ],
+      "pagesCount": 5,
+      "pagesHasMore": false
+    },
+    {
+      "ruleId": "perf/render-blocking",
+      "name": "Render-Blocking Resources",
+      "check": "render-blocking",
+      "message": "2 render-blocking resource(s)",
+      "pages": [
+        "https://spa.mendozer.com/",
+        "https://spa.mendozer.com/book",
+        "https://spa.mendozer.com/brand",
+        "https://spa.mendozer.com/privacy-policy",
+        "https://spa.mendozer.com/terms"
+      ],
+      "pagesCount": 5,
+      "pagesHasMore": false
+    },
+    {
+      "ruleId": "perf/ttfb",
+      "name": "Time to First Byte",
+      "check": "download-time",
+      "message": "Content download: 2ms",
+      "pages": [
+        "https://spa.mendozer.com/",
+        "https://spa.mendozer.com/book",
+        "https://spa.mendozer.com/brand",
+        "https://spa.mendozer.com/privacy-policy",
+        "https://spa.mendozer.com/terms"
+      ],
+      "pagesCount": 5,
+      "pagesHasMore": false
+    },
+    {
+      "ruleId": "perf/unminified-css",
+      "name": "Unminified CSS",
+      "check": "potentially-unminified-css",
+      "message": "4 stylesheet(s) may not be minified",
+      "pages": [
+        "https://spa.mendozer.com/",
+        "https://spa.mendozer.com/book",
+        "https://spa.mendozer.com/brand",
+        "https://spa.mendozer.com/privacy-policy",
+        "https://spa.mendozer.com/terms"
+      ],
+      "pagesCount": 5,
+      "pagesHasMore": false
+    },
+    {
+      "ruleId": "perf/unminified-js",
+      "name": "Unminified JavaScript",
+      "check": "potentially-unminified-js",
+      "message": "7 script(s) may not be minified",
+      "pages": [
+        "https://spa.mendozer.com/",
+        "https://spa.mendozer.com/book",
+        "https://spa.mendozer.com/brand",
+        "https://spa.mendozer.com/privacy-policy",
+        "https://spa.mendozer.com/terms"
+      ],
+      "pagesCount": 5,
+      "pagesHasMore": false
+    },
+    {
+      "ruleId": "reliability/broken-forms",
+      "name": "Forms That Lose Submissions",
+      "check": "broken-forms",
+      "message": "No forms detected",
+      "pages": [],
+      "pagesCount": 0,
+      "pagesHasMore": false
+    },
+    {
+      "ruleId": "schema/article",
+      "name": "Article Schema",
+      "check": "article-schema",
+      "message": "No Article schema found",
+      "pages": [
+        "https://spa.mendozer.com/",
+        "https://spa.mendozer.com/book",
+        "https://spa.mendozer.com/brand",
+        "https://spa.mendozer.com/privacy-policy",
+        "https://spa.mendozer.com/terms"
+      ],
+      "pagesCount": 5,
+      "pagesHasMore": false
+    },
+    {
+      "ruleId": "schema/breadcrumb",
+      "name": "Breadcrumb Schema",
+      "check": "breadcrumb-schema",
+      "message": "Homepage - breadcrumbs not typically needed",
+      "pages": [
+        "https://spa.mendozer.com/",
+        "https://spa.mendozer.com/book",
+        "https://spa.mendozer.com/brand",
+        "https://spa.mendozer.com/privacy-policy",
+        "https://spa.mendozer.com/terms"
+      ],
+      "pagesCount": 5,
+      "pagesHasMore": false
+    },
+    {
+      "ruleId": "schema/entity-sameas-missing",
+      "name": "Organization sameAs",
+      "check": "entity-sameas-missing",
+      "message": "Corner Spa has no sameAs profiles",
+      "pages": [],
+      "pagesCount": 0,
+      "pagesHasMore": false
+    },
+    {
+      "ruleId": "schema/entity-website-missing",
+      "name": "WebSite Entity",
+      "check": "entity-website-missing",
+      "message": "This site declares no WebSite entity",
+      "pages": [],
+      "pagesCount": 0,
+      "pagesHasMore": false
+    },
+    {
+      "ruleId": "schema/expected-type",
+      "name": "Expected schema for page type",
+      "check": "expected-type",
+      "message": "Page type not classified with enough confidence to expect structured data",
+      "pages": [
+        "https://spa.mendozer.com/",
+        "https://spa.mendozer.com/book",
+        "https://spa.mendozer.com/brand",
+        "https://spa.mendozer.com/privacy-policy",
+        "https://spa.mendozer.com/terms"
+      ],
+      "pagesCount": 5,
+      "pagesHasMore": false
+    },
+    {
+      "ruleId": "schema/faq",
+      "name": "FAQ Schema",
+      "check": "faq-schema",
+      "message": "No FAQPage schema found",
+      "pages": [
+        "https://spa.mendozer.com/",
+        "https://spa.mendozer.com/book",
+        "https://spa.mendozer.com/brand",
+        "https://spa.mendozer.com/privacy-policy",
+        "https://spa.mendozer.com/terms"
+      ],
+      "pagesCount": 5,
+      "pagesHasMore": false
+    },
+    {
+      "ruleId": "schema/json-ld-valid",
+      "name": "JSON-LD Valid",
+      "check": "json-ld",
+      "message": "No JSON-LD structured data found",
+      "pages": [
+        "https://spa.mendozer.com/book",
+        "https://spa.mendozer.com/brand",
+        "https://spa.mendozer.com/privacy-policy",
+        "https://spa.mendozer.com/terms"
+      ],
+      "pagesCount": 4,
+      "pagesHasMore": false
+    },
+    {
+      "ruleId": "schema/local-business",
+      "name": "LocalBusiness Schema",
+      "check": "local-business-geo",
+      "message": "LocalBusiness missing geo coordinates",
+      "pages": [
+        "https://spa.mendozer.com/"
+      ],
+      "pagesCount": 1,
+      "pagesHasMore": false
+    },
+    {
+      "ruleId": "schema/local-business",
+      "name": "LocalBusiness Schema",
+      "check": "local-business-recommended",
+      "message": "LocalBusiness could include recommended properties",
+      "pages": [
+        "https://spa.mendozer.com/"
+      ],
+      "pagesCount": 1,
+      "pagesHasMore": false
+    },
+    {
+      "ruleId": "schema/local-business",
+      "name": "LocalBusiness Schema",
+      "check": "local-business-schema",
+      "message": "No LocalBusiness schema found",
+      "pages": [
+        "https://spa.mendozer.com/book",
+        "https://spa.mendozer.com/brand",
+        "https://spa.mendozer.com/privacy-policy",
+        "https://spa.mendozer.com/terms"
+      ],
+      "pagesCount": 4,
+      "pagesHasMore": false
+    },
+    {
+      "ruleId": "schema/organization",
+      "name": "Organization Schema",
+      "check": "organization-schema",
+      "message": "No Organization schema found",
+      "pages": [
+        "https://spa.mendozer.com/",
+        "https://spa.mendozer.com/book",
+        "https://spa.mendozer.com/brand",
+        "https://spa.mendozer.com/privacy-policy",
+        "https://spa.mendozer.com/terms"
+      ],
+      "pagesCount": 5,
+      "pagesHasMore": false
+    },
+    {
+      "ruleId": "schema/product",
+      "name": "Product Schema",
+      "check": "product-schema",
+      "message": "No Product schema found",
+      "pages": [
+        "https://spa.mendozer.com/",
+        "https://spa.mendozer.com/book",
+        "https://spa.mendozer.com/brand",
+        "https://spa.mendozer.com/privacy-policy",
+        "https://spa.mendozer.com/terms"
+      ],
+      "pagesCount": 5,
+      "pagesHasMore": false
+    },
+    {
+      "ruleId": "schema/review",
+      "name": "Review Schema",
+      "check": "review-schema",
+      "message": "No Review or AggregateRating schema found",
+      "pages": [
+        "https://spa.mendozer.com/",
+        "https://spa.mendozer.com/book",
+        "https://spa.mendozer.com/brand",
+        "https://spa.mendozer.com/privacy-policy",
+        "https://spa.mendozer.com/terms"
+      ],
+      "pagesCount": 5,
+      "pagesHasMore": false
+    },
+    {
+      "ruleId": "schema/video",
+      "name": "Video Schema",
+      "check": "video-schema",
+      "message": "No VideoObject schema found",
+      "pages": [
+        "https://spa.mendozer.com/",
+        "https://spa.mendozer.com/book",
+        "https://spa.mendozer.com/brand",
+        "https://spa.mendozer.com/privacy-policy",
+        "https://spa.mendozer.com/terms"
+      ],
+      "pagesCount": 5,
+      "pagesHasMore": false
+    },
+    {
+      "ruleId": "schema/website-search",
+      "name": "WebSite Search Schema",
+      "check": "website-schema",
+      "message": "No WebSite schema on homepage",
+      "pages": [
+        "https://spa.mendozer.com/"
+      ],
+      "pagesCount": 1,
+      "pagesHasMore": false
+    },
+    {
+      "ruleId": "security/csp",
+      "name": "Content Security Policy",
+      "check": "csp-no-object-src",
+      "message": "CSP missing object-src directive",
+      "pages": [],
+      "pagesCount": 0,
+      "pagesHasMore": false
+    },
+    {
+      "ruleId": "security/form-captcha",
+      "name": "Form CAPTCHA",
+      "check": "form-captcha",
+      "message": "No forms on page",
+      "pages": [
+        "https://spa.mendozer.com/brand",
+        "https://spa.mendozer.com/privacy-policy",
+        "https://spa.mendozer.com/terms"
+      ],
+      "pagesCount": 3,
+      "pagesHasMore": false
+    },
+    {
+      "ruleId": "security/form-https",
+      "name": "Form HTTPS",
+      "check": "form-https",
+      "message": "No forms detected",
+      "pages": [
+        "https://spa.mendozer.com/",
+        "https://spa.mendozer.com/book",
+        "https://spa.mendozer.com/brand",
+        "https://spa.mendozer.com/privacy-policy",
+        "https://spa.mendozer.com/terms"
+      ],
+      "pagesCount": 5,
+      "pagesHasMore": false
+    },
+    {
+      "ruleId": "security/new-tab",
+      "name": "External Link Security",
+      "check": "noreferrer",
+      "message": "22 external link(s) send the referrer (add rel=\"noreferrer\" if that is not wanted)",
+      "pages": [
+        "https://spa.mendozer.com/",
+        "https://spa.mendozer.com/book",
+        "https://spa.mendozer.com/brand",
+        "https://spa.mendozer.com/privacy-policy",
+        "https://spa.mendozer.com/terms"
+      ],
+      "pagesCount": 5,
+      "pagesHasMore": false
+    },
+    {
+      "ruleId": "security/permissions-policy",
+      "name": "Permissions-Policy",
+      "check": "permissions-policy",
+      "message": "No Permissions-Policy header",
+      "pages": [],
+      "pagesCount": 0,
+      "pagesHasMore": false
+    },
+    {
+      "ruleId": "security/referrer-policy",
+      "name": "Referrer-Policy",
+      "check": "referrer-policy",
+      "message": "No Referrer-Policy header (browser default applies)",
+      "pages": [],
+      "pagesCount": 0,
+      "pagesHasMore": false
+    },
+    {
+      "ruleId": "security/sri",
+      "name": "Subresource Integrity",
+      "check": "sri",
+      "message": "No cross-origin scripts or stylesheets on this page — SRI not applicable",
+      "pages": [
+        "https://spa.mendozer.com/",
+        "https://spa.mendozer.com/book",
+        "https://spa.mendozer.com/brand",
+        "https://spa.mendozer.com/privacy-policy",
+        "https://spa.mendozer.com/terms"
+      ],
+      "pagesCount": 5,
+      "pagesHasMore": false
+    },
+    {
+      "ruleId": "security/x-content-type",
+      "name": "X-Content-Type-Options",
+      "check": "x-content-type",
+      "message": "Missing X-Content-Type-Options header",
+      "pages": [],
+      "pagesCount": 0,
+      "pagesHasMore": false
+    },
+    {
+      "ruleId": "social/og-image-size",
+      "name": "OG Image Size",
+      "check": "og-image-size",
+      "message": "No og:image tag found",
+      "pages": [
+        "https://spa.mendozer.com/book"
+      ],
+      "pagesCount": 1,
+      "pagesHasMore": false
+    },
+    {
+      "ruleId": "social/share-buttons",
+      "name": "Share Buttons",
+      "check": "share-buttons",
+      "message": "No social share buttons detected",
+      "pages": [
+        "https://spa.mendozer.com/",
+        "https://spa.mendozer.com/book",
+        "https://spa.mendozer.com/brand",
+        "https://spa.mendozer.com/terms"
+      ],
+      "pagesCount": 4,
+      "pagesHasMore": false
+    },
+    {
+      "ruleId": "social/social-profiles",
+      "name": "Social Profiles",
+      "check": "social-profiles",
+      "message": "No social media profile links found",
+      "pages": [
+        "https://spa.mendozer.com/",
+        "https://spa.mendozer.com/book",
+        "https://spa.mendozer.com/brand",
+        "https://spa.mendozer.com/privacy-policy",
+        "https://spa.mendozer.com/terms"
+      ],
+      "pagesCount": 5,
+      "pagesHasMore": false
+    },
+    {
+      "ruleId": "url/hyphens",
+      "name": "URL Hyphens",
+      "check": "url-hyphens",
+      "message": "URL has no word separators",
+      "pages": [
+        "https://spa.mendozer.com/",
+        "https://spa.mendozer.com/book",
+        "https://spa.mendozer.com/brand",
+        "https://spa.mendozer.com/terms"
+      ],
+      "pagesCount": 4,
+      "pagesHasMore": false
+    },
+    {
+      "ruleId": "url/slug-keywords",
+      "name": "Slug Keywords",
+      "check": "slug-keywords",
+      "message": "Root URL (no slug to analyze)",
+      "pages": [
+        "https://spa.mendozer.com/"
+      ],
+      "pagesCount": 1,
+      "pagesHasMore": false
+    },
+    {
+      "ruleId": "url/trailing-slash",
+      "name": "Trailing Slash",
+      "check": "trailing-slash",
+      "message": "Root URL (trailing slash check not applicable)",
+      "pages": [
+        "https://spa.mendozer.com/",
+        "https://spa.mendozer.com/book",
+        "https://spa.mendozer.com/brand",
+        "https://spa.mendozer.com/privacy-policy",
+        "https://spa.mendozer.com/terms"
+      ],
+      "pagesCount": 5,
+      "pagesHasMore": false
+    },
+    {
+      "ruleId": "video/video-accessible",
+      "name": "Video Accessibility",
+      "check": "video-accessible",
+      "message": "No HTML5 video elements found",
+      "pages": [
+        "https://spa.mendozer.com/",
+        "https://spa.mendozer.com/book",
+        "https://spa.mendozer.com/brand",
+        "https://spa.mendozer.com/privacy-policy",
+        "https://spa.mendozer.com/terms"
+      ],
+      "pagesCount": 5,
+      "pagesHasMore": false
+    },
+    {
+      "ruleId": "video/video-schema",
+      "name": "Video Schema",
+      "check": "video-schema",
+      "message": "No video content detected",
+      "pages": [
+        "https://spa.mendozer.com/",
+        "https://spa.mendozer.com/book",
+        "https://spa.mendozer.com/brand",
+        "https://spa.mendozer.com/privacy-policy",
+        "https://spa.mendozer.com/terms"
+      ],
+      "pagesCount": 5,
+      "pagesHasMore": false
+    },
+    {
+      "ruleId": "video/video-thumbnail",
+      "name": "Video Thumbnail",
+      "check": "video-thumbnail",
+      "message": "No HTML5 video elements found",
+      "pages": [
+        "https://spa.mendozer.com/",
+        "https://spa.mendozer.com/book",
+        "https://spa.mendozer.com/brand",
+        "https://spa.mendozer.com/privacy-policy",
+        "https://spa.mendozer.com/terms"
+      ],
+      "pagesCount": 5,
+      "pagesHasMore": false
+    }
+  ],
+  "technologies": {
+    "source": "local",
+    "firstScan": false,
+    "added": [],
+    "removed": [],
+    "items": [
+      {
+        "id": "react",
+        "name": "React",
+        "category": "framework",
+        "version": null,
+        "confidence": "high",
+        "website": "https://react.dev",
+        "logoUrl": "https://squirrelscan.com/tech-icons/react.png"
+      },
+      {
+        "id": "nextjs",
+        "name": "Next.js",
+        "category": "framework",
+        "version": null,
+        "confidence": "high",
+        "website": "https://nextjs.org",
+        "logoUrl": "https://squirrelscan.com/tech-icons/nextjs.png"
+      },
+      {
+        "id": "vercel-edge",
+        "name": "Vercel Edge Network",
+        "category": "cdn",
+        "version": null,
+        "confidence": "high",
+        "website": "https://vercel.com",
+        "logoUrl": "https://squirrelscan.com/tech-icons/vercel.png"
+      },
+      {
+        "id": "vercel",
+        "name": "Vercel",
+        "category": "hosting",
+        "version": null,
+        "confidence": "high",
+        "website": "https://vercel.com",
+        "logoUrl": "https://squirrelscan.com/tech-icons/vercel.png"
+      }
+    ]
+  },
+  "structure": {
+    "pages": 5,
+    "sections": [
+      {
+        "section": "footer",
+        "pages": 5,
+        "links": 45
+      },
+      {
+        "section": "content",
+        "pages": 4,
+        "links": 27
+      },
+      {
+        "section": "header",
+        "pages": 5,
+        "links": 5
+      }
+    ],
+    "unknownLinks": 5,
+    "totalLinks": 82,
+    "chrome": {
+      "links": 40,
+      "contentLinks": 3,
+      "share": 0.93
+    },
+    "pageTypes": {
+      "counts": [
+        {
+          "label": "legal",
+          "pages": 2
+        },
+        {
+          "label": "homepage",
+          "pages": 1
+        }
+      ],
+      "notClassified": 2,
+      "byModel": 2,
+      "degraded": 0
+    }
+  },
+  "entities": {
+    "format": "squirrelscan/entity-map",
+    "version": 1,
+    "site": "https://spa.mendozer.com/",
+    "generatedAt": "2026-11-06T05:01:31.222Z",
+    "summary": {
+      "nodeCount": 1,
+      "edgeCount": 0,
+      "danglingCount": 0,
+      "pagesTotal": 5,
+      "pagesWithoutEntities": 4,
+      "nodesWithStableId": 0,
+      "stableIdShare": 0,
+      "pageLocalCount": 0,
+      "nodesWithoutIdCount": 0,
+      "conflictCount": 0,
+      "countsByType": {
+        "DaySpa": 1
+      }
+    },
+    "nodes": [
+      {
+        "key": "syn:DaySpa|name:corner spa",
+        "id": null,
+        "types": [
+          "DaySpa"
+        ],
+        "name": "Corner Spa",
+        "properties": {
+          "name": "Corner Spa",
+          "url": "https://spa.mendozer.com/",
+          "telephone": "+264 81 623 4788",
+          "address": "Windhoek, NA",
+          "description": "Massage, hot stone, nails and waxing in Windhoek. The first project of Oryx Institute. A concept by Mendozer Investments."
+        },
+        "occurrences": 1,
+        "pages": [
+          "https://spa.mendozer.com/"
+        ],
+        "morePages": 0,
+        "conflicts": [],
+        "danglingRefs": 0,
+        "pageLocal": false
+      }
+    ],
+    "edges": [],
+    "pages": [
+      {
+        "url": "https://spa.mendozer.com/",
+        "declares": [
+          "syn:DaySpa|name:corner spa"
+        ],
+        "references": [],
+        "entityCount": 1
+      },
+      {
+        "url": "https://spa.mendozer.com/book",
+        "declares": [],
+        "references": [],
+        "entityCount": 0
+      },
+      {
+        "url": "https://spa.mendozer.com/brand",
+        "declares": [],
+        "references": [],
+        "entityCount": 0
+      },
+      {
+        "url": "https://spa.mendozer.com/privacy-policy",
+        "declares": [],
+        "references": [],
+        "entityCount": 0
+      },
+      {
+        "url": "https://spa.mendozer.com/terms",
+        "declares": [],
+        "references": [],
+        "entityCount": 0
+      }
+    ]
+  }
+}
