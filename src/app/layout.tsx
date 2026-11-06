@@ -73,7 +73,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${lora.variable} ${montserrat.variable}`}>
+    <html
+      lang="en"
+      className={`${lora.variable} ${montserrat.variable}`}
+      suppressHydrationWarning
+    >
       <body>
         <a className="skip-link" href="#top">
           Skip to content

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { SiteHeader } from "@/components/corner/header";
 import { SiteFooter } from "@/components/corner/footer";
 import { FloatingWidgets } from "@/components/corner/widgets";
+import { DarkPage } from "@/components/corner/dark-page";
 import { MEDIA, SITE_URL } from "@/lib/spa";
 
 const OG_IMAGE = {
@@ -40,6 +41,7 @@ const COLORS = [
 export default function BrandPage() {
   return (
     <>
+      <DarkPage />
       <SiteHeader />
       <main id="top">
         <section aria-label="Brand">

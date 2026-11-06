@@ -3,8 +3,9 @@ import { SiteHeader } from "@/components/corner/header";
 import { SiteFooter } from "@/components/corner/footer";
 import { FloatingWidgets } from "@/components/corner/widgets";
 import { HoursList } from "@/components/corner/open-now";
+import { DarkPage } from "@/components/corner/dark-page";
 import {
-  ADDRESS, ADDRESS_LINE, DIRECTIONS_URL, OPENING_HOURS_SPEC, SITE_ADDRESSES,
+  ADDRESS, DIRECTIONS_URL, OPENING_HOURS_SPEC, SITE_ADDRESSES,
   SITE_URL, SPA, WA_PREFILL, waLink,
 } from "@/lib/spa";
 
@@ -58,6 +59,7 @@ export const metadata: Metadata = {
 export default function ContactPage() {
   return (
     <>
+      <DarkPage />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(contactJsonLd) }}
@@ -73,24 +75,27 @@ export default function ContactPage() {
               address, one WhatsApp, and the hours we are actually open.
             </p>
 
-            <div className="book-facts" style={{ marginTop: "8px" }}>
+            <p className="type-moment">
+              <a
+                href={DIRECTIONS_URL}
+                target="_blank"
+                rel="noopener"
+                data-track="contact_directions_click"
+              >
+                {ADDRESS.street},
+                <br />
+                {ADDRESS.area}
+              </a>
+            </p>
+            <p className="note" style={{ marginTop: "6px" }}>
+              {ADDRESS.plot}. Tap the address for directions.
+            </p>
+
+            <div className="book-facts" style={{ marginTop: "36px" }}>
               <div>
                 <p className="grp-label">Where</p>
                 <p className="fact">
-                  {ADDRESS_LINE}
-                  <br />
-                  <span className="note">{ADDRESS.plot}</span>
-                </p>
-                <p>
-                  <a
-                    className="a2"
-                    href={DIRECTIONS_URL}
-                    target="_blank"
-                    rel="noopener"
-                    data-track="contact_directions_click"
-                  >
-                    Get directions
-                  </a>
+                  {ADDRESS.city}, {ADDRESS.country}
                 </p>
                 <p className="note" style={{ marginTop: "20px" }}>
                   On the web:{" "}

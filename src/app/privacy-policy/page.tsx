@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { SiteHeader } from "@/components/corner/header";
 import { SiteFooter } from "@/components/corner/footer";
 import { FloatingWidgets } from "@/components/corner/widgets";
+import { DarkPage } from "@/components/corner/dark-page";
 import { ADDRESS_LINE, SITE_URL, WA_PREFILL, waLink } from "@/lib/spa";
 
 // NOTE FOR THE OWNER: a lawyer must review this page before launch.
@@ -38,6 +39,7 @@ export const metadata: Metadata = {
 export default function PrivacyPolicyPage() {
   return (
     <>
+      <DarkPage />
       <SiteHeader />
       <main id="top">
         <section aria-label="Privacy policy">
