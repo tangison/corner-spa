@@ -574,7 +574,7 @@ h2 { font-size: clamp(28px, 4.5vw, 44px); line-height: 1.15; margin-bottom: 40px
 
 /* Inline booking form (hooks directly to WhatsApp, no backend) */
 .bk-form { max-width: 520px; margin: 56px auto 0; text-align: left; border-top: 1px solid var(--line); padding-top: 40px; }
-.bk-form .grp-label { display: block; font-size: 11px; letter-spacing: .28em; text-transform: uppercase; color: var(--sand); margin: 26px 0 6px; }
+.bk-form .grp-label { display: block; font-size: 12px; letter-spacing: .04em; color: var(--sand); margin: 26px 0 6px; }
 .bk-form input, .bk-form select, .bk-form textarea {
   width: 100%; background: transparent; border: 0; border-bottom: 1px solid var(--line);
   padding: 10px 2px; font: 300 16px/1.5 var(--font-montserrat), system-ui, sans-serif; color: var(--ink);
@@ -681,7 +681,7 @@ a:focus-visible { outline: 2px solid var(--sand); outline-offset: 3px; }
 .swatches { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 14px; margin: 22px 0; }
 .swatch { border: 1px solid var(--line); padding: 14px; }
 .swatch-chip { height: 64px; margin-bottom: 10px; }
-.swatch p { font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--mute); margin: 0; line-height: 1.8; }
+.swatch p { font-size: 11px; letter-spacing: .04em; color: var(--mute); margin: 0; line-height: 1.8; }
 .logo-row { display: flex; flex-wrap: wrap; gap: 18px; align-items: center; margin: 20px 0; }
 .logo-cell { border: 1px solid var(--line); padding: 18px 22px; display: grid; place-items: center; }
 .logo-cell.dark { background: var(--ink); }
@@ -697,11 +697,18 @@ a:focus-visible { outline: 2px solid var(--sand); outline-offset: 3px; }
 
 /* quiet text links, usable anywhere (partners grid overrides below) */
 .a2 { color: var(--sand); font-size: 13px; letter-spacing: .02em; text-decoration: none; border-bottom: 1px solid var(--line); padding-bottom: 1px; }
+/* Quiet links measure 16-18px tall, under the 24px AA target floor. A
+   transparent overlay extends the hit area without moving the type or
+   the underline: same look, taps land from 26px away. */
+.a2, footer.site a, .prose a, .note a { position: relative; }
+.a2::after, footer.site a::after, .prose a::after, .note a::after { content: ""; position: absolute; inset: -5px -8px; }
 .a2:hover, .a2:focus-visible { border-bottom-color: var(--sand); }
 .pt .a2 { margin-top: 8px; display: inline-block; }
 
 /* live opening badge: sand when open, quiet grey when closed */
-.open-badge { display: inline-flex; align-items: center; gap: 8px; font-size: 11px; letter-spacing: .22em; text-transform: uppercase; color: var(--mute); border: 1px solid var(--line); border-radius: 999px; padding: 6px 13px; }
+/* Status badge carries a full sentence, so it reads sentence case at a
+   calm tracking; tiny tracked caps on 28 characters read as noise. */
+.open-badge { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; letter-spacing: .04em; color: var(--mute); border: 1px solid var(--line); border-radius: 999px; padding: 6px 13px; }
 .open-badge.is-open { color: var(--sand); border-color: var(--sand); }
 .open-dot { width: 7px; height: 7px; border-radius: 999px; background: currentColor; flex: none; }
 

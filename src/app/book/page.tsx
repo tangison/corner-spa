@@ -45,7 +45,6 @@ export default function BookPage() {
       <main id="top">
         <section aria-label="Book a treatment">
           <div className="w">
-            <p className="eyebrow">Book now</p>
             <h1 className="serif">Book a treatment</h1>
             <p className="lead">
               Choose what you would like, add your name and the day you prefer.
@@ -126,7 +125,6 @@ export default function BookPage() {
             </div>
 
             <div className="faq">
-              <p className="eyebrow">Good to know</p>
               <h2 className="serif">Questions we hear often</h2>
               {FAQ.map((f) => (
                 <details key={f.q}>
