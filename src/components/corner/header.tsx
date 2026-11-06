@@ -23,13 +23,20 @@ export function SiteHeader() {
             onClick={() => track("brand_click")}
             aria-label="Corner Spa, back to top"
           >
-            <picture>
-              <source
-                media="(prefers-color-scheme: dark)"
-                srcSet={MEDIA.markLight}
-              />
-              <img src={MEDIA.markDark} alt="" width={160} height={146} />
-            </picture>
+            <img
+              className="mark-img mark-dark"
+              src={MEDIA.markDark}
+              alt=""
+              width={160}
+              height={146}
+            />
+            <img
+              className="mark-img mark-light"
+              src={MEDIA.markLight}
+              alt=""
+              width={160}
+              height={146}
+            />
             Corner Spa
           </a>
           <a className="btn" href="/book" onClick={() => track("nav_book_click")}>

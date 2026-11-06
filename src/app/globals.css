@@ -734,3 +734,52 @@ a:focus-visible { outline: 2px solid var(--sand); outline-offset: 3px; }
 
 /* footer address, hours and badge */
 .foot-badge { display: inline-block; margin: 10px 0 4px; }
+
+/* ========================================================== additions ==
+   Ink pages: /contact, /privacy-policy, /terms and /brand are forced
+   dark via DarkPage (data-theme="dark" on <html>) and restyled as
+   text-heavy monochrome pages: body text in ink at 16px, quiet labels
+   in muted, hairlines, and one display-type moment on the contact page.
+   Home and /book keep the light photographic theme untouched. */
+
+/* Header logo mark: swap by theme, not only by OS preference. The dark
+   pebbles sit on light grounds, the light pebbles on dark grounds. */
+.brand .mark-img { display: none; }
+.brand .mark-dark { display: block; }
+[data-theme="dark"] .brand .mark-dark { display: none; }
+[data-theme="dark"] .brand .mark-light { display: block; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .brand .mark-dark { display: none; }
+  :root:not([data-theme="light"]) .brand .mark-light { display: block; }
+}
+
+/* The type moment: the street address set large, as the visit block's
+   display. One a page, on the left line, ink on the ground. */
+.type-moment { margin: 40px 0 12px; }
+.type-moment a {
+  font-family: var(--font-lora), Georgia, serif;
+  font-weight: 400;
+  font-size: clamp(32px, 7.4vw, 92px);
+  line-height: 1.04;
+  letter-spacing: -0.025em;
+  color: var(--ink);
+  text-decoration: none;
+  transition: color var(--sc-d-fast) var(--sc-ease-out);
+}
+.type-moment a:hover, .type-moment a:focus-visible { color: var(--sand); }
+@media (max-width: 700px) { .type-moment { margin: 32px 0 8px; } }
+
+/* Text-heavy prose on the dark pages: what people read sits in ink at
+   16px; muted stays for labels, dates and meta. */
+[data-theme="dark"] .prose p,
+[data-theme="dark"] .prose li { font-size: 16px; line-height: 1.85; color: var(--ink); }
+[data-theme="dark"] .prose h2,
+[data-theme="dark"] .prose .note { color: var(--mute); }
+[data-theme="dark"] .prose h2 { font-size: 16px; }
+[data-theme="dark"] .prose h1 { margin-bottom: 20px; }
+[data-theme="dark"] .prose a { color: var(--ink); }
+
+/* Brand page demo chips keep their demo grounds on dark pages: the dark
+   mark is shown on the warm off-white, the light mark on charcoal. */
+[data-theme="dark"] .logo-cell { background: #F5F3EE; }
+[data-theme="dark"] .logo-cell.dark { background: #2B2726; }
