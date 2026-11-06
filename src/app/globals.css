@@ -490,6 +490,15 @@ video[data-sc-scrub].sc-has-clip { opacity: 1; }
 
 html { padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
 body { background: var(--bg); color: var(--ink); font: 300 16px/1.75 var(--font-montserrat), system-ui, sans-serif; }
+p { text-wrap: pretty; }
+
+/* Dark grounds read thin strokes lighter than they read on paper: body text
+   steps up from Light to regular weight in both dark contexts (OS preference
+   and the forced ink pages). The light theme keeps the pinned brand weight. */
+:root[data-theme="dark"] body { font-weight: 400; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) body { font-weight: 400; }
+}
 ::selection { background: var(--sand); color: var(--bg); }
 
 /* ======================================================================
@@ -502,7 +511,7 @@ a { color: inherit; }
 header.site { display: flex; justify-content: space-between; align-items: center; padding: 28px 0; }
 .brand { display: flex; align-items: center; gap: 12px; letter-spacing: .28em; font-size: 13px; text-transform: uppercase; text-decoration: none; }
 .brand img { width: 34px; height: auto; display: block; }
-.btn { display: inline-block; border: 1px solid var(--ink); padding: 11px 24px; font-size: 12px; letter-spacing: .16em; text-transform: uppercase; text-decoration: none; transition: background-color var(--sc-d-fast) var(--sc-ease-out), color var(--sc-d-fast) var(--sc-ease-out); }
+.btn { display: inline-block; border: 1px solid var(--ink); padding: 13px 26px; font-size: 12px; letter-spacing: .16em; text-transform: uppercase; text-decoration: none; transition: background-color var(--sc-d-fast) var(--sc-ease-out), color var(--sc-d-fast) var(--sc-ease-out); }
 .btn:hover, .btn:focus-visible { background: var(--ink); color: var(--bg); }
 .btn:active { transform: translateY(1px); }
 
@@ -554,7 +563,7 @@ h2 { font-size: clamp(28px, 4.5vw, 44px); line-height: 1.15; margin-bottom: 40px
 @media (min-width: 800px) { .pt { grid-template-columns: 1fr 1fr; } }
 .pt h3 { font-size: 26px; margin-bottom: 8px; }
 .pt p { color: var(--mute); }
-.pt .a2 { color: var(--sand); font-size: 13px; letter-spacing: .08em; margin-top: 8px; display: inline-block; text-decoration: none; border-bottom: 1px solid var(--line); }
+.pt .a2 { color: var(--sand); font-size: 13px; letter-spacing: .02em; margin-top: 8px; display: inline-block; text-decoration: none; border-bottom: 1px solid var(--line); }
 .pt .a2:hover { border-bottom-color: var(--sand); }
 
 .book { text-align: center; }
@@ -579,7 +588,10 @@ h2 { font-size: clamp(28px, 4.5vw, 44px); line-height: 1.15; margin-bottom: 40px
 .bk-done { margin-top: 22px; color: var(--mute); font-size: 13px; letter-spacing: .06em; }
 .bk-privacy { margin-top: 18px; color: var(--mute); font-size: 12px; }
 
-footer.site { padding: 48px 0 64px; border-top: 1px solid var(--line); font-size: 11px; letter-spacing: .2em; color: var(--mute); text-align: center; line-height: 2.2; text-transform: uppercase; }
+/* Footer: 13px floor (never smaller), sentence case at quiet tracking.
+   Caps-and-wide-tracking on a 130-character link run read as shouting and
+   broke the 24px touch-target floor; sentence case at 13px fixes both. */
+footer.site { padding: 48px 0 64px; border-top: 1px solid var(--line); font-size: 13px; letter-spacing: .04em; color: var(--mute); text-align: center; line-height: 2.1; }
 footer.site a { text-decoration: none; border-bottom: 1px solid var(--line); }
 footer.site a:hover { color: var(--sand); }
 
@@ -643,7 +655,7 @@ a:focus-visible { outline: 2px solid var(--sand); outline-offset: 3px; }
 /* footer navigation */
 .foot-nav { display: flex; flex-wrap: wrap; gap: 6px 22px; justify-content: center; margin: 18px 0 6px; }
 .foot-nav a { text-decoration: none; border-bottom: 1px solid var(--line); }
-.foot-copy { margin-top: 10px; text-transform: none; letter-spacing: .06em; }
+.foot-copy { margin-top: 10px; letter-spacing: .04em; }
 
 /* chat widget */
 .float-chat-panel { position: fixed; right: max(16px, env(safe-area-inset-right)); bottom: calc(max(16px, env(safe-area-inset-bottom)) + 120px); width: min(340px, calc(100vw - 32px)); max-height: min(480px, 70svh); overflow: auto; background: var(--bg); border: 1px solid var(--line); border-radius: 14px; padding: 18px; z-index: 55; box-shadow: 0 12px 40px rgba(43, 39, 38, .18); }
@@ -684,7 +696,7 @@ a:focus-visible { outline: 2px solid var(--sand); outline-offset: 3px; }
    note, FAQ accordion, WhatsApp copy fallback, price PDF link. */
 
 /* quiet text links, usable anywhere (partners grid overrides below) */
-.a2 { color: var(--sand); font-size: 13px; letter-spacing: .08em; text-decoration: none; border-bottom: 1px solid var(--line); padding-bottom: 1px; }
+.a2 { color: var(--sand); font-size: 13px; letter-spacing: .02em; text-decoration: none; border-bottom: 1px solid var(--line); padding-bottom: 1px; }
 .a2:hover, .a2:focus-visible { border-bottom-color: var(--sand); }
 .pt .a2 { margin-top: 8px; display: inline-block; }
 
