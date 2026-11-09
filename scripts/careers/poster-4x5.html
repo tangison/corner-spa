@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Corner Spa — We are hiring — 1080x1350</title>
+<style>
+  /* Corner Spa "We are hiring" 4:5 poster. Exactly 1080x1350 px,
+     all content inside a 60 px safe margin. */
+  @font-face { font-family: "Lora"; src: url("fonts/Lora-400.woff2") format("woff2"); font-weight: 400; font-style: normal; }
+  @font-face { font-family: "Lora"; src: url("fonts/Lora-500.woff2") format("woff2"); font-weight: 500; font-style: normal; }
+  @font-face { font-family: "Montserrat"; src: url("fonts/Montserrat-300.woff2") format("woff2"); font-weight: 300; font-style: normal; }
+  @font-face { font-family: "Montserrat"; src: url("fonts/Montserrat-400.woff2") format("woff2"); font-weight: 400; font-style: normal; }
+  @font-face { font-family: "Montserrat"; src: url("fonts/Montserrat-500.woff2") format("woff2"); font-weight: 500; font-style: normal; }
+  @font-face { font-family: "Montserrat"; src: url("fonts/Montserrat-600.woff2") format("woff2"); font-weight: 600; font-style: normal; }
+
+  :root {
+    --cream: #F5F3EE;
+    --card: rgba(251, 250, 247, .8);
+    --ink: #2B2724;
+    --gold: #B8905F;
+    --gold-deep: #9E7342;
+    --line: rgba(43, 39, 36, .14);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 1080px; height: 1350px; }
+  body {
+    position: relative; overflow: hidden;
+    font-family: "Montserrat", system-ui, sans-serif;
+    font-weight: 300; color: var(--ink); background: var(--cream);
+    -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
+  }
+
+  .bg { position: absolute; inset: 0; z-index: 0; }
+  .bg img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .bg::after { content: ""; position: absolute; inset: 0; background: rgba(245, 243, 238, .38); }
+
+  .page { position: absolute; inset: 0; z-index: 1; padding: 60px; display: flex; flex-direction: column; }
+
+  .brand { display: flex; align-items: center; gap: 26px; }
+  .brand img { width: 84px; height: auto; display: block; }
+  .brand-name { font-size: 30px; font-weight: 500; letter-spacing: .42em; color: var(--ink); text-transform: uppercase; padding-left: .42em; }
+
+  .hero { position: relative; margin-top: 44px; min-height: 322px; }
+  .headline { font-family: "Lora", Georgia, serif; font-weight: 400; font-size: 122px; line-height: 1.03; letter-spacing: -.005em; color: var(--ink); }
+  .role-line { margin-top: 26px; font-size: 25px; font-weight: 500; letter-spacing: .28em; color: var(--gold-deep); text-transform: uppercase; }
+
+  .chair { position: absolute; right: 4px; top: 6px; width: 340px; z-index: 0; }
+  .chair img { width: 100%; height: auto; display: block; }
+  .chair::after {
+    content: ""; position: absolute; left: 6%; right: 6%; bottom: -32px; height: 56px;
+    background: radial-gradient(ellipse at center, rgba(43, 39, 36, .18) 0%, rgba(43, 39, 36, .07) 45%, rgba(43, 39, 36, 0) 72%);
+    z-index: -1;
+  }
+
+  .cards { position: relative; z-index: 2; margin-top: 18px; display: flex; flex-direction: column; gap: 20px; }
+
+  .card {
+    background: var(--card);
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+    border: 1px solid rgba(255, 255, 255, .55);
+    border-radius: 28px;
+    box-shadow: 0 10px 30px rgba(43, 39, 36, .09);
+  }
+
+  .card.looking { width: 640px; padding: 30px 36px 28px; }
+  .label { font-size: 18px; font-weight: 600; letter-spacing: .26em; color: var(--gold-deep); text-transform: uppercase; margin-bottom: 12px; }
+  .card.looking p { font-size: 22px; line-height: 1.46; font-weight: 400; }
+  .card.looking .second { margin-top: 20px; }
+
+  .card.apply { padding: 28px 36px; display: flex; align-items: center; gap: 32px; }
+  .apply-left { flex: 1 1 auto; }
+  .apply-left .label { margin-bottom: 14px; }
+  .apply-kicker { font-size: 21px; font-weight: 400; }
+  .apply-mail { font-family: "Lora", Georgia, serif; font-weight: 500; font-size: 36px; color: var(--ink); text-decoration: none; letter-spacing: .01em; margin: 5px 0 16px; display: inline-block; }
+  .apply-online { font-size: 21px; font-weight: 400; }
+  .apply-url { font-family: "Lora", Georgia, serif; font-weight: 500; font-size: 28px; color: var(--ink); text-decoration: none; display: inline-block; margin: 3px 0 10px; }
+  .apply-city { font-size: 20px; font-weight: 400; color: rgba(43, 39, 36, .78); }
+  .qr { flex: 0 0 auto; text-align: center; width: 140px; }
+  .qr img { width: 140px; height: 140px; display: block; }
+  .qr span { display: block; margin-top: 9px; font-size: 15px; font-weight: 400; letter-spacing: .12em; color: rgba(43, 39, 36, .75); text-transform: uppercase; }
+
+  .spacer { flex: 1 1 auto; }
+
+  .card.footer-card { padding: 24px 32px; display: flex; align-items: center; gap: 26px; }
+  .org { display: flex; flex-direction: column; align-items: center; gap: 8px; text-decoration: none; }
+  .org img { height: 48px; width: auto; display: block; }
+  .org.mend img { height: 50px; }
+  .org-url { font-size: 15px; font-weight: 400; letter-spacing: .1em; color: rgba(43, 39, 36, .72); }
+  .divider { width: 1px; height: 66px; background: var(--line); }
+  .footnote { margin-left: auto; text-align: right; font-size: 15px; font-weight: 500; letter-spacing: .18em; color: var(--gold-deep); text-transform: uppercase; line-height: 2; }
+</style>
+</head>
+<body>
+  <div class="bg" aria-hidden="true">
+    <img src="assets/towel-fold.jpg" alt="">
+  </div>
+
+  <div class="page">
+    <div class="brand">
+      <img src="assets/mark-dark.png" alt="Corner Spa">
+      <span class="brand-name">Corner&nbsp;Spa</span>
+    </div>
+
+    <div class="hero">
+      <div class="chair" aria-hidden="true">
+        <img src="assets/chair-cut.png" alt="">
+      </div>
+      <h1 class="headline">We are<br>hiring</h1>
+      <p class="role-line">Multi-Talent Spa&nbsp;Specialist</p>
+    </div>
+
+    <div class="cards">
+      <div class="card looking">
+        <p class="label">Who we are looking for</p>
+        <p>A multi-talented specialist for our Windhoek spa, confident across beauty and spa treatments.</p>
+        <p class="label second">Preferred</p>
+        <p>A qualification in cosmetology and experience in spa, skin and nail care.</p>
+      </div>
+
+      <div class="card apply">
+        <div class="apply-left">
+          <p class="label">How to apply</p>
+          <p class="apply-kicker">Email your CV to</p>
+          <a class="apply-mail" href="mailto:careers@mendozer.com?subject=Spa%20Specialist%20Application">careers@mendozer.com</a>
+          <p class="apply-online">Or apply online on our careers page:</p>
+          <a class="apply-url" href="https://spa.mendozer.com/careers">spa.mendozer.com/careers</a>
+          <p class="apply-city">Windhoek West, Windhoek, Namibia</p>
+        </div>
+        <div class="qr">
+          <img src="assets/qr.png" alt="QR code to spa.mendozer.com/careers">
+          <span>Scan to apply</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="spacer"></div>
+
+    <div class="card footer-card">
+      <a class="org" href="https://oryxinstitute.org">
+        <img src="assets/oryx-lockup.svg" alt="Oryx Institute">
+        <span class="org-url">oryxinstitute.org</span>
+      </a>
+      <span class="divider" aria-hidden="true"></span>
+      <a class="org mend" href="https://mendozer.com">
+        <img src="assets/mendozer-full.png" alt="Mendozer Investments">
+        <span class="org-url">mendozer.com</span>
+      </a>
+      <p class="footnote">First project of Oryx Institute<br>A concept by Mendozer Investments</p>
+    </div>
+  </div>
+</body>
+</html>

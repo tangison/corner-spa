@@ -1,0 +1,1435 @@
+{
+ "page": "/home/z/my-project/.taste-skgate/home.html",
+ "url": "http://127.0.0.1:5200/home.html",
+ "at": "2026-11-09T06:36:11.643Z",
+ "out": "/home/z/my-project/.taste-skgate/.taste-skill/consistency-home",
+ "widths": [
+  {
+   "width": 1440,
+   "height": 900,
+   "screens": 9,
+   "held": 0,
+   "errors": [
+    "effect-kind: could not read http://127.0.0.1:5200/_next/static/chunks/de2e26ab072db058.js (HTTP 404)",
+    "effect-kind: could not read http://127.0.0.1:5200/_next/static/chunks/6464c3628e48b573.js (HTTP 404)",
+    "effect-kind: could not read http://127.0.0.1:5200/_next/static/chunks/turbopack-188383a4f7dee05c.js (HTTP 404)"
+   ],
+   "findings": [
+    {
+     "check": "assets",
+     "sev": "FAIL",
+     "sel": "(the page)",
+     "text": "",
+     "stop": null,
+     "msg": "the stylesheet _next/static/chunks/4a99a38a1b5b422f.css did not load (404): everything here was measured without it",
+     "fix": "fix the path, or remove the reference"
+    },
+    {
+     "check": "assets",
+     "sev": "FAIL",
+     "sel": "(the page)",
+     "text": "",
+     "stop": null,
+     "msg": "the image media/logos/mark-dark.png did not load (404)",
+     "fix": "fix the path, or remove the reference"
+    },
+    {
+     "check": "assets",
+     "sev": "FAIL",
+     "sel": "(the page)",
+     "text": "",
+     "stop": null,
+     "msg": "the image media/logos/mark-light.png did not load (404)",
+     "fix": "fix the path, or remove the reference"
+    },
+    {
+     "check": "assets",
+     "sev": "FAIL",
+     "sel": "(the page)",
+     "text": "",
+     "stop": null,
+     "msg": "the image media/photos/leaf-and-pebble.jpg did not load (404)",
+     "fix": "fix the path, or remove the reference"
+    },
+    {
+     "check": "assets",
+     "sev": "FAIL",
+     "sel": "(the page)",
+     "text": "",
+     "stop": null,
+     "msg": "the script scrollcraft/scrollcraft.js did not load (404)",
+     "fix": "fix the path, or remove the reference"
+    },
+    {
+     "check": "assets",
+     "sev": "FAIL",
+     "sel": "(the page)",
+     "text": "",
+     "stop": null,
+     "msg": "the script _next/static/chunks/2bbb3dfb5e75f911.js did not load (404)",
+     "fix": "fix the path, or remove the reference"
+    },
+    {
+     "check": "assets",
+     "sev": "FAIL",
+     "sel": "(the page)",
+     "text": "",
+     "stop": null,
+     "msg": "the image media/photos/hot-stones-back.jpg did not load (404)",
+     "fix": "fix the path, or remove the reference"
+    },
+    {
+     "check": "assets",
+     "sev": "FAIL",
+     "sel": "(the page)",
+     "text": "",
+     "stop": null,
+     "msg": "the script _next/static/chunks/de2e26ab072db058.js did not load (404)",
+     "fix": "fix the path, or remove the reference"
+    },
+    {
+     "check": "assets",
+     "sev": "FAIL",
+     "sel": "(the page)",
+     "text": "",
+     "stop": null,
+     "msg": "the script _next/static/chunks/6464c3628e48b573.js did not load (404)",
+     "fix": "fix the path, or remove the reference"
+    },
+    {
+     "check": "assets",
+     "sev": "FAIL",
+     "sel": "(the page)",
+     "text": "",
+     "stop": null,
+     "msg": "the script _next/static/chunks/turbopack-188383a4f7dee05c.js did not load (404)",
+     "fix": "fix the path, or remove the reference"
+    },
+    {
+     "check": "assets",
+     "sev": "FAIL",
+     "sel": "(the page)",
+     "text": "",
+     "stop": null,
+     "msg": "the script _next/static/chunks/2f236954d6a65e12.js did not load (404)",
+     "fix": "fix the path, or remove the reference"
+    },
+    {
+     "check": "assets",
+     "sev": "FAIL",
+     "sel": "(the page)",
+     "text": "",
+     "stop": null,
+     "msg": "the script _next/static/chunks/83aa4c9dbaec5e17.js did not load (404)",
+     "fix": "fix the path, or remove the reference"
+    },
+    {
+     "check": "assets",
+     "sev": "FAIL",
+     "sel": "(the page)",
+     "text": "",
+     "stop": null,
+     "msg": "the script _next/static/chunks/fc45bd84cc7e1e7b.js did not load (404)",
+     "fix": "fix the path, or remove the reference"
+    },
+    {
+     "check": "assets",
+     "sev": "FAIL",
+     "sel": "(the page)",
+     "text": "",
+     "stop": null,
+     "msg": "the script _next/static/chunks/8e277ffc4fc08c82.js did not load (404)",
+     "fix": "fix the path, or remove the reference"
+    },
+    {
+     "check": "assets",
+     "sev": "FAIL",
+     "sel": "(the page)",
+     "text": "",
+     "stop": null,
+     "msg": "the image media/photos/sand-ripples.jpg did not load (404)",
+     "fix": "fix the path, or remove the reference"
+    },
+    {
+     "check": "assets",
+     "sev": "FAIL",
+     "sel": "(the page)",
+     "text": "",
+     "stop": null,
+     "msg": "the image media/photos/black-pebbles.jpg did not load (404)",
+     "fix": "fix the path, or remove the reference"
+    },
+    {
+     "check": "assets",
+     "sev": "FAIL",
+     "sel": "(the page)",
+     "text": "",
+     "stop": null,
+     "msg": "the image media/photos/wet-stone.jpg did not load (404)",
+     "fix": "fix the path, or remove the reference"
+    },
+    {
+     "check": "assets",
+     "sev": "FAIL",
+     "sel": "(the page)",
+     "text": "",
+     "stop": null,
+     "msg": "the image media/photos/leaf-macro.jpg did not load (404)",
+     "fix": "fix the path, or remove the reference"
+    },
+    {
+     "check": "assets",
+     "sev": "FAIL",
+     "sel": "(the page)",
+     "text": "",
+     "stop": null,
+     "msg": "the image media/photos/towel.jpg did not load (404)",
+     "fix": "fix the path, or remove the reference"
+    },
+    {
+     "check": "assets",
+     "sev": "FAIL",
+     "sel": "(the page)",
+     "text": "",
+     "stop": null,
+     "msg": "the image media/photos/people-back-hands.jpg did not load (404)",
+     "fix": "fix the path, or remove the reference"
+    },
+    {
+     "check": "assets",
+     "sev": "FAIL",
+     "sel": "(the page)",
+     "text": "",
+     "stop": null,
+     "msg": "the image media/photos/people-oil-pour.jpg did not load (404)",
+     "fix": "fix the path, or remove the reference"
+    },
+    {
+     "check": "assets",
+     "sev": "FAIL",
+     "sel": "(the page)",
+     "text": "",
+     "stop": null,
+     "msg": "the image media/photos/people-stones-rest.jpg did not load (404)",
+     "fix": "fix the path, or remove the reference"
+    },
+    {
+     "check": "empty-visual",
+     "sev": "FAIL",
+     "sel": "div.w > header.site > a.brand > img.mark-img.mark-dark",
+     "text": "mark-dark.png",
+     "stop": 0,
+     "msg": "the picture shows nothing here: 98% of it is one colour (#ffffff); its image mark-dark.png did not load",
+     "crop": "1440-01-empty-visual.jpg",
+     "fix": "make the visual draw at every width: a picture that loads, an effect that renders, or its still fallback; never an empty frame"
+    },
+    {
+     "check": "empty-visual",
+     "sev": "FAIL",
+     "sel": "div.w > header.site > a.brand > img.mark-img.mark-light",
+     "text": "mark-light.png",
+     "stop": 0,
+     "msg": "the picture shows nothing here: 99% of it is one colour (#ffffff); its image mark-light.png did not load",
+     "crop": "1440-02-empty-visual.jpg",
+     "fix": "make the visual draw at every width: a picture that loads, an effect that renders, or its still fallback; never an empty frame"
+    },
+    {
+     "check": "hero-fill",
+     "sev": "FAIL",
+     "sel": "section#treatments",
+     "text": "Price list",
+     "msg": "the next section shows on the first screen: it starts at 346px on a 900px screen (the hero ends at 308px)",
+     "stop": 0,
+     "crop": "1440-03-hero-fill.jpg",
+     "fix": "let the hero fill the first screen alone (min-height: 100svh, less above it): nothing of the next section on load"
+    },
+    {
+     "check": "off-viewport",
+     "sev": "FAIL",
+     "sel": "section.quote > div > div.quote-media > img",
+     "text": "img: sand-ripples.jpg",
+     "msg": "runs 968px off the right side of the screen",
+     "stop": 1,
+     "crop": "1440-13-off-viewport.jpg",
+     "fix": "keep it inside the screen at this width: let it shrink, wrap or stack"
+    },
+    {
+     "check": "off-viewport",
+     "sev": "FAIL",
+     "sel": "(the page)",
+     "text": "",
+     "stop": null,
+     "msg": "the page is 2408px wide on a 1440px screen and scrolls sideways",
+     "fix": "keep it inside the screen at this width: let it shrink, wrap or stack"
+    },
+    {
+     "check": "no-visual",
+     "sev": "FAIL",
+     "sel": "section#treatments",
+     "text": "Price list",
+     "msg": "no picture, effect or mock in this section; a feature section needs a visual",
+     "stop": 0,
+     "crop": "1440-04-no-visual.jpg",
+     "fix": "give the section a visual: a UI fragment on a ground, real icons, or a photograph that fits"
+    },
+    {
+     "check": "text-only",
+     "sev": "FAIL",
+     "sel": "section#book",
+     "text": "Book now Book on WhatsApp Where 34 Schonlein Str",
+     "msg": "the closing section is only text: no picture, icon, mock or effect in it",
+     "stop": 4,
+     "crop": "1440-26-text-only.jpg",
+     "fix": "give the section a visual: a photograph that fits, the real icons, or a UI fragment on a ground"
+    },
+    {
+     "check": "cta",
+     "sev": "FAIL",
+     "sel": "main#top > section:nth-of-type(1)",
+     "text": "",
+     "msg": "the hero has no button (the nav's does not count)",
+     "stop": 0,
+     "crop": "1440-05-cta.jpg",
+     "fix": "add the action: a button in the hero, one on every priced item, one in the closing section"
+    },
+    {
+     "check": "cta",
+     "sev": "FAIL",
+     "sel": "section#book",
+     "text": "Book now Book on WhatsApp Where 34 Schonlein Str",
+     "msg": "the last section before the footer ends with no button",
+     "stop": 4,
+     "crop": "1440-27-cta.jpg",
+     "fix": "add the action: a button in the hero, one on every priced item, one in the closing section"
+    },
+    {
+     "check": "copy-headline",
+     "sev": "FAIL",
+     "sel": "section:nth-of-type(1) > div.w > div.hero > h1.serif",
+     "text": "The relaxation you deserve.",
+     "msg": "\"The relaxation you deserve.\" does not name what is sold (day spa, windhoek west, day, spa, from flags); only the line under it does",
+     "stop": 0,
+     "crop": "1440-06-copy-headline.jpg",
+     "fix": "put the category noun in the h1 (and who it is for, or where), in 2 to 8 words"
+    },
+    {
+     "check": "off-grid",
+     "sev": "FAIL",
+     "sel": "div.float-widgets > button.float-btn.wa",
+     "text": "Ask us",
+     "stop": 6,
+     "msg": "left edge at 24px, 16px off the page margin at 8px (63 elements, like button.float-btn.float-top)",
+     "crop": "1440-31-off-grid.jpg",
+     "fix": "move it onto the page margin, or the column edge its section uses"
+    },
+    {
+     "check": "section-gaps",
+     "sev": "FAIL",
+     "sel": "main#top > section:nth-of-type(1) / section#treatments",
+     "text": "",
+     "stop": 0,
+     "msg": "39px between these sections, +129% against the median 17px",
+     "crop": "1440-07-section-gaps.jpg",
+     "fix": "use one gap between sections (all within 25% of each other)"
+    },
+    {
+     "check": "visual-empty",
+     "sev": "FAIL",
+     "sel": "section.breath > figure > div > img.full",
+     "text": "leaf-and-pebble.jpg",
+     "msg": "the picture leaf-and-pebble.jpg is broken (it loaded nothing): its frame shows empty",
+     "stop": 0,
+     "crop": "1440-08-visual-empty.jpg",
+     "fix": "make the visual draw at this width: a picture that loads, an effect that renders, or its still fallback; never an empty ground or frame"
+    },
+    {
+     "check": "visual-empty",
+     "sev": "FAIL",
+     "sel": "div.w > div.menu > div.menu-media > img.mono",
+     "text": "hot-stones-back.jpg",
+     "msg": "the picture hot-stones-back.jpg is broken (it loaded nothing): its frame shows empty",
+     "stop": 0,
+     "crop": "1440-09-visual-empty.jpg",
+     "fix": "make the visual draw at this width: a picture that loads, an effect that renders, or its still fallback; never an empty ground or frame"
+    },
+    {
+     "check": "visual-empty",
+     "sev": "FAIL",
+     "sel": "section.quote > div > div.quote-media > img",
+     "text": "sand-ripples.jpg",
+     "msg": "the picture sand-ripples.jpg is broken (it loaded nothing): its frame shows empty",
+     "stop": 2,
+     "crop": "1440-15-visual-empty.jpg",
+     "fix": "make the visual draw at this width: a picture that loads, an effect that renders, or its still fallback; never an empty ground or frame"
+    },
+    {
+     "check": "visual-empty",
+     "sev": "FAIL",
+     "sel": "div.w > div.g > figure:nth-of-type(1) > img.a",
+     "text": "black-pebbles.jpg",
+     "msg": "the picture black-pebbles.jpg is broken (it loaded nothing): its frame shows empty",
+     "stop": 2,
+     "crop": "1440-16-visual-empty.jpg",
+     "fix": "make the visual draw at this width: a picture that loads, an effect that renders, or its still fallback; never an empty ground or frame"
+    },
+    {
+     "check": "visual-empty",
+     "sev": "FAIL",
+     "sel": "div.w > div.g > figure:nth-of-type(2) > img.s",
+     "text": "wet-stone.jpg",
+     "msg": "the picture wet-stone.jpg is broken (it loaded nothing): its frame shows empty",
+     "stop": 3,
+     "crop": "1440-18-visual-empty.jpg",
+     "fix": "make the visual draw at this width: a picture that loads, an effect that renders, or its still fallback; never an empty ground or frame"
+    },
+    {
+     "check": "visual-empty",
+     "sev": "FAIL",
+     "sel": "div.w > div.g > figure:nth-of-type(3) > img.s",
+     "text": "leaf-macro.jpg",
+     "msg": "the picture leaf-macro.jpg is broken (it loaded nothing): its frame shows empty (and 6 more like it: towel.jpg, people-back-hands.jpg, people-oil-pour.jpg, people-stones-rest.jpg, ...)",
+     "stop": 3,
+     "crop": "1440-19-visual-empty.jpg",
+     "fix": "make the visual draw at this width: a picture that loads, an effect that renders, or its still fallback; never an empty ground or frame"
+    },
+    {
+     "check": "street-number",
+     "sev": "FAIL",
+     "sel": "div.w > div.book-facts > div:nth-of-type(1) > p.fact",
+     "text": "34 Schonlein Street",
+     "stop": 3,
+     "msg": "a street with its house number: \"34 Schonlein Street\"; a real door, which the brief does not give (and 3 more like it: footer.site > div.w, div.book-facts > div:nth-of-type(1) > p:nth-of-type(3) > a.a2:nth-of-type(1), footer.site > div.w > a:nth-of-type(1))",
+     "crop": "1440-20-street-number.jpg",
+     "fix": "print the street and the district only (\"Weserstraße, Berlin-Neukölln\"): no house number, unless the brief gives the address"
+    },
+    {
+     "check": "street-number",
+     "sev": "FAIL",
+     "sel": "script[type=\"application/ld+json\"]",
+     "text": "34 Schonlein Street, Windhoek West",
+     "msg": "a streetAddress with a house number in the JSON-LD: \"34 Schonlein Street, Windhoek West\"; a real door, which the brief does not give",
+     "fix": "print the street and the district only (\"Weserstraße, Berlin-Neukölln\"): no house number, unless the brief gives the address"
+    },
+    {
+     "check": "phone-number",
+     "sev": "FAIL",
+     "sel": "footer.site > div.w",
+     "text": "+264 81 623 4788",
+     "stop": 6,
+     "msg": "a phone number in international format: \"+264 81 623 4788\"; a visitor can dial it and reach a stranger (and in the same element: \"+264 85 777 7077\") (and 23 more like it: div.w > div.hero > div.lead-cta > a.btn:nth-of-type(2), div:nth-of-type(2) > div.grp:nth-of-type(1) > div.row:nth-of-type(1) > a.row-name, div:nth-of-type(2) > div.grp:nth-of-type(1) > div.row:nth-of-type(2) > a.row-name, ...)",
+     "crop": "1440-32-phone-number.jpg",
+     "fix": "drop the number and its tel: link (a \"Request a call\" form may stand in), unless the brief gives the number"
+    },
+    {
+     "check": "empty-area",
+     "sev": "FAIL",
+     "sel": "section#treatments",
+     "text": "Price list",
+     "msg": "81% of the section is empty: 81% beside content that covers under half the container, in its 607px of rows (WARN over 35%, FAIL over 50%)",
+     "stop": 0,
+     "crop": "1440-10-empty-area.jpg",
+     "fix": "fill the section: a picture or a second column beside the words, or more of its own content; the section stays one or two screens tall (T-height)"
+    },
+    {
+     "check": "empty-area",
+     "sev": "FAIL",
+     "sel": "main#top > section:nth-of-type(6)",
+     "text": "Oryx Institute",
+     "msg": "72% of the section is empty: 73% beside content that covers under half the container, in its 299px of rows (WARN over 35%, FAIL over 50%)",
+     "stop": 3,
+     "crop": "1440-21-empty-area.jpg",
+     "fix": "fill the section: a picture or a second column beside the words, or more of its own content; the section stays one or two screens tall (T-height)"
+    },
+    {
+     "check": "assets",
+     "sev": "WARN",
+     "sel": "(the page)",
+     "text": "",
+     "stop": null,
+     "msg": "the font _next/static/media/e8f2fbee2754df70-s.p.9b7a96b4.woff2 did not load (404)",
+     "fix": "fix the path, or remove the reference"
+    },
+    {
+     "check": "assets",
+     "sev": "WARN",
+     "sel": "(the page)",
+     "text": "",
+     "stop": null,
+     "msg": "the font _next/static/media/8c2eb9ceedecfc8e-s.p.21935807.woff2 did not load (404)",
+     "fix": "fix the path, or remove the reference"
+    },
+    {
+     "check": "flush",
+     "sev": "WARN",
+     "sel": "section.quote > div > div.quote-copy > p.serif",
+     "text": "Slow, quiet and unhurried.",
+     "msg": "section.quote and section:nth-of-type(5) run together: 17px between their content, on one ground",
+     "stop": 2,
+     "crop": "1440-17-flush.jpg",
+     "fix": "give the section its padding at the edge where the ground changes (the closing call keeps a clear gap above the footer)"
+    },
+    {
+     "check": "flush",
+     "sev": "WARN",
+     "sel": "div.w > div.g > figure.c:nth-of-type(7) > img.c.mono",
+     "text": "img: A woman resting beside smooth dark stones on",
+     "msg": "section:nth-of-type(5) and section:nth-of-type(6) run together: 16px between their content, on one ground",
+     "stop": 3,
+     "crop": "1440-22-flush.jpg",
+     "fix": "give the section its padding at the edge where the ground changes (the closing call keeps a clear gap above the footer)"
+    },
+    {
+     "check": "flush",
+     "sev": "WARN",
+     "sel": "section:nth-of-type(6) > div.w > p.note > a",
+     "text": "brand page",
+     "msg": "section:nth-of-type(6) and section#book run together: 17px between their content, on one ground",
+     "stop": 3,
+     "crop": "1440-23-flush.jpg",
+     "fix": "give the section its padding at the edge where the ground changes (the closing call keeps a clear gap above the footer)"
+    },
+    {
+     "check": "flush",
+     "sev": "WARN",
+     "sel": "section#book > div.w > p:nth-of-type(3)",
+     "text": "All prices in Namibian dollars.",
+     "msg": "section#book and footer.site run together: 17px between their content, on one ground",
+     "stop": 4,
+     "crop": "1440-28-flush.jpg",
+     "fix": "give the section its padding at the edge where the ground changes (the closing call keeps a clear gap above the footer)"
+    },
+    {
+     "check": "copy-headings",
+     "sev": "WARN",
+     "sel": "div.w > div.pt > div:nth-of-type(2) > h3.serif",
+     "text": "Mendozer Investments",
+     "msg": "\"Mendozer Investments\" names no product, part, place or section (the one brand line a page may have)",
+     "stop": 3,
+     "crop": "1440-24-copy-headings.jpg",
+     "fix": "name the thing in every heading: the product, a part, the place or a section noun"
+    },
+    {
+     "check": "copy-actions",
+     "sev": "WARN",
+     "sel": "(the page)",
+     "text": "",
+     "msg": "the main action \"Book a treatment\" does not read word for word the same in the nav or hero and the closing section",
+     "stop": null,
+     "fix": "few actions, one wording: at most 2 in the hero, the main action word for word in nav, hero and close"
+    },
+    {
+     "check": "links",
+     "sev": "WARN",
+     "sel": "div.menu > div:nth-of-type(2) > div.menu-foot > a.a2",
+     "text": "Price list (PDF)",
+     "msg": "\"Price list (PDF)\" goes to /price-list.pdf, which does not exist here",
+     "stop": 1,
+     "crop": "1440-14-links.jpg",
+     "fix": "point every link at a real section, page or file"
+    },
+    {
+     "check": "links",
+     "sev": "WARN",
+     "sel": "footer.site > div.w > nav.foot-nav > a:nth-of-type(1)",
+     "text": "Home",
+     "msg": "\"Home\" goes to /, which does not exist here",
+     "stop": 4,
+     "crop": "1440-29-links.jpg",
+     "fix": "point every link at a real section, page or file"
+    },
+    {
+     "check": "one-screen",
+     "sev": "WARN",
+     "sel": "section#treatments",
+     "text": "Price list",
+     "msg": "1 section is shorter than the screen, so the next one's heading or picture shows with it: \"Price list\" is 607px of the 900px under the nav, and \"Slow, quiet and unhurried.\" shows below it",
+     "fix": "give each section the screen (min-height: 100svh less the nav, its content centred), or join two short ones into one",
+     "stop": 0,
+     "crop": "1440-11-one-screen.jpg"
+    },
+    {
+     "check": "hero-enter",
+     "sev": "WARN",
+     "sel": "main#top > section:nth-of-type(1) > div.w > div.hero",
+     "text": "",
+     "msg": "the hero does not enter on load: no data-enter on the hero and no head line setting html.m-enter (motion.md, The hero's entrance)",
+     "fix": "put data-enter on the hero <section> and keep the head line from starter.html that sets html.m-enter",
+     "stop": 0,
+     "crop": "1440-12-hero-enter.jpg"
+    },
+    {
+     "check": "moment-none",
+     "sev": "WARN",
+     "sel": "(the page)",
+     "text": "",
+     "msg": "a place page (--type) deals no moment: every kind carries one, two on a long page (moments.md)",
+     "fix": "deal one (moments.mjs pick --page place --photo) and mount it in its own section",
+     "stop": null
+    },
+    {
+     "check": "empty-area",
+     "sev": "WARN",
+     "sel": "section#book",
+     "text": "Book now Book on WhatsApp Where 34 Schon",
+     "msg": "50% of the section is empty: 51% beside content that covers under half the container, in its 582px of rows (WARN over 35%, FAIL over 50%)",
+     "stop": 3,
+     "crop": "1440-25-empty-area.jpg",
+     "fix": "fill the section: a picture or a second column beside the words, or more of its own content; the section stays one or two screens tall (T-height)"
+    },
+    {
+     "check": "form-fields",
+     "sev": "WARN",
+     "sel": "section#book > div.w > form.bk-form",
+     "text": "",
+     "msg": "the form has no status line (role=\"status\"): sending, sent and errors are never read out",
+     "stop": 4,
+     "crop": "1440-30-form-fields.jpg",
+     "fix": "give each field its type, autocomplete and inputmode, never block paste or disable the button before a submit, and add the status line (references/system.md, Forms)"
+    },
+    {
+     "check": "hero-screen",
+     "sev": "FAIL",
+     "sel": "main#top > section:nth-of-type(1)",
+     "text": "The relaxation you deserve.Massage, hot ",
+     "msg": "the hero ends at 308px on a 900px screen, 592px above the fold: it ends at the fold, 1px either way (SR-1)",
+     "fix": "make the hero exactly one screen (height: 100svh, its content fitted inside), never taller or shorter",
+     "rule": "SR-1 T1",
+     "crop": "1440-rhythm-01-hero-screen.jpg"
+    },
+    {
+     "check": "hero-screen",
+     "sev": "FAIL",
+     "sel": "main#top > section.breath",
+     "text": "Leaf resting on stone",
+     "msg": "592px of the next section shows on the first screen (from 308px on a 900px screen): nothing below the hero shows at load (SR-1)",
+     "fix": "end the hero at the fold so nothing of the next section shows at load (hero height: 100svh)",
+     "rule": "SR-1 T2"
+    },
+    {
+     "check": "section-height",
+     "sev": "FAIL",
+     "sel": "main#top > section.breath",
+     "text": "Leaf resting on stone",
+     "msg": "the section is 18px tall (0 screens), 882px short of one screen (900px): every section after the hero is one screen or two, 2px either way (SR-2)",
+     "fix": "set the section to one screen or two (height: calc(var(--h,1) * 100vh), --h 1 or 2) and cut or split its content to fit",
+     "rule": "SR-2 T-height",
+     "crop": "1440-rhythm-02-section-height.jpg"
+    },
+    {
+     "check": "section-height",
+     "sev": "FAIL",
+     "sel": "main#top > section:nth-of-type(5)",
+     "text": "Gallery",
+     "msg": "the section is 160px tall (0.2 screens), 740px short of one screen (900px): every section after the hero is one screen or two, 2px either way (SR-2)",
+     "fix": "set the section to one screen or two (height: calc(var(--h,1) * 100vh), --h 1 or 2) and cut or split its content to fit",
+     "rule": "SR-2 T-height"
+    },
+    {
+     "check": "section-height",
+     "sev": "FAIL",
+     "sel": "main#top > section:nth-of-type(6)",
+     "text": "The ventureOryx InstituteOperations lead",
+     "msg": "the section is 299px tall (0.3 screens), 601px short of one screen (900px): every section after the hero is one screen or two, 2px either way (and 4 more like it: \"Slow, quiet and unhurrie\", \"Book nowBook on WhatsApp\", \"Price listMassageFull bo\") (SR-2)",
+     "fix": "set the section to one screen or two (height: calc(var(--h,1) * 100vh), --h 1 or 2) and cut or split its content to fit",
+     "rule": "SR-2 T-height"
+    },
+    {
+     "check": "section-height",
+     "sev": "FAIL",
+     "sel": "section#treatments",
+     "text": "Price listMassageFull body massage60 min",
+     "msg": "the section starts at 346px, 346px below the screen grid (0 x 900px): sections start on whole screens (SR-2)",
+     "fix": "make every section above it exactly one or two screens tall, so this one starts on a whole screen",
+     "rule": "SR-2 T-grid"
+    },
+    {
+     "check": "section-height",
+     "sev": "FAIL",
+     "sel": "main#top > section:nth-of-type(5)",
+     "text": "Gallery",
+     "msg": "the section starts at 2372px, 328px above the screen grid (3 x 900px): sections start on whole screens (SR-2)",
+     "fix": "make every section above it exactly one or two screens tall, so this one starts on a whole screen",
+     "rule": "SR-2 T-grid"
+    },
+    {
+     "check": "section-height",
+     "sev": "FAIL",
+     "sel": "main#top > section.breath",
+     "text": "Leaf resting on stone",
+     "msg": "the section starts at 308px, 308px below the screen grid (0 x 900px): sections start on whole screens (and 5 more like it: \"The relaxation you deser\", \"Book nowBook on WhatsApp\", \"The ventureOryx Institut\") (SR-2)",
+     "fix": "make every section above it exactly one or two screens tall, so this one starts on a whole screen",
+     "rule": "SR-2 T-grid"
+    },
+    {
+     "check": "section-height",
+     "sev": "FAIL",
+     "sel": "section#treatments",
+     "text": "Price listMassageFull body massage60 min",
+     "msg": "the section's content does not fit it: its lowest content ends 606px below its top, past 535px (the section less 72px of bottom padding) (SR-2)",
+     "fix": "fit the content above the section's bottom padding (--padb), or make it two screens (.g2) in two groups",
+     "rule": "SR-2 T-fit"
+    },
+    {
+     "check": "section-height",
+     "sev": "FAIL",
+     "sel": "main#top > section.quote",
+     "text": "Slow, quiet and unhurried.",
+     "msg": "the section's content does not fit it: its lowest content ends 1387px below its top, past 1316px (the section less 72px of bottom padding) (and 3 more like it: \"The ventureOryx Institut\", \"Book nowBook on WhatsApp\", \"HomeBook a treatmentCont\") (SR-2)",
+     "fix": "fit the content above the section's bottom padding (--padb), or make it two screens (.g2) in two groups",
+     "rule": "SR-2 T-fit"
+    },
+    {
+     "check": "section-air",
+     "sev": "FAIL",
+     "sel": "section#treatments / main#top > section.quote",
+     "text": "",
+     "msg": "1387px of air between the content of these two sections: 128-480px (64-600px WARN) (every gap out of the band at 1440px, top to bottom: 1387px after \"Price listMassageFul\", 17px after \"Slow, quiet and unhu\", 17px after \"The ventureOryx Inst\") (SR-3)",
+     "fix": "keep 128-480px of air between the content of neighbouring sections (112-420px on a phone): the sections' padding (--padt, --padb)",
+     "rule": "SR-3 T-gap",
+     "crop": "1440-rhythm-03-section-air.jpg"
+    },
+    {
+     "check": "section-air",
+     "sev": "FAIL",
+     "sel": "main#top > section.quote / main#top > section:nth-of-type(5)",
+     "text": "",
+     "msg": "17px of air between the content of these two sections: 128-480px (64-600px WARN) (SR-3)",
+     "fix": "keep 128-480px of air between the content of neighbouring sections (112-420px on a phone): the sections' padding (--padt, --padb)",
+     "rule": "SR-3 T-gap"
+    },
+    {
+     "check": "section-air",
+     "sev": "FAIL",
+     "sel": "main#top > section:nth-of-type(6) / section#book",
+     "text": "",
+     "msg": "17px of air between the content of these two sections: 128-480px (64-600px WARN) (SR-3)",
+     "fix": "keep 128-480px of air between the content of neighbouring sections (112-420px on a phone): the sections' padding (--padt, --padb)",
+     "rule": "SR-3 T-gap"
+    },
+    {
+     "check": "section-air",
+     "sev": "FAIL",
+     "sel": "main#top > section.breath",
+     "text": "Leaf resting on stone",
+     "msg": "the section shows no content: its content fills 0% of its 18px (55% or more) (SR-3)",
+     "fix": "fill the section to 55%: more content, a picture or a background layer, or merge it into the section above as its last block",
+     "rule": "SR-3 T-fill"
+    },
+    {
+     "check": "section-air",
+     "sev": "FAIL",
+     "sel": "main#top > section.quote",
+     "text": "Slow, quiet and unhurried.",
+     "msg": "the content fills 1.2% of the section's height (17 of 1388px): 55% or more (40% WARN) (SR-3)",
+     "fix": "fill the section to 55%: more content, a picture or a background layer, or merge it into the section above as its last block",
+     "rule": "SR-3 T-fill"
+    },
+    {
+     "check": "section-air",
+     "sev": "FAIL",
+     "sel": "main#top > section:nth-of-type(5)",
+     "text": "Gallery",
+     "msg": "the content fills 10.6% of the section's height (17 of 160px): 55% or more (40% WARN) (SR-3)",
+     "fix": "fill the section to 55%: more content, a picture or a background layer, or merge it into the section above as its last block",
+     "rule": "SR-3 T-fill"
+    },
+    {
+     "check": "one-section",
+     "sev": "FAIL",
+     "sel": "footer.site",
+     "text": "HomeBook a treatmentContactPrice listPri",
+     "msg": "the screen at scroll 2863px (the top of section 7) shows 302px of section 8 and the content of 2 sections, over 24px each beside section 7: a screen shows one section (another may peek 8px, 24px WARN) (SR-4)",
+     "fix": "make each section exactly one screen or two, so a screen shows one section and no neighbour peeks",
+     "rule": "SR-4 T-views",
+     "crop": "1440-rhythm-04-one-section.jpg"
+    },
+    {
+     "check": "one-section",
+     "sev": "FAIL",
+     "sel": "main#top > section:nth-of-type(6)",
+     "text": "The ventureOryx InstituteOperations lead",
+     "msg": "the screen at scroll 2372px (the top of section 5) shows 299px of section 6 and the content of 2 sections, over 24px each beside section 7: a screen shows one section (another may peek 8px, 24px WARN) (SR-4)",
+     "fix": "make each section exactly one screen or two, so a screen shows one section and no neighbour peeks",
+     "rule": "SR-4 T-views"
+    },
+    {
+     "check": "one-section",
+     "sev": "FAIL",
+     "sel": "main#top > section.quote",
+     "text": "Slow, quiet and unhurried.",
+     "msg": "the screen at scroll 308px (the top of section 2) shows 240px of section 4 beside section 3: a screen shows one section (another may peek 8px, 24px WARN) (and 5 more like it: scroll 1800px, scroll 2700px, scroll 197px) (SR-4)",
+     "fix": "make each section exactly one screen or two, so a screen shows one section and no neighbour peeks",
+     "rule": "SR-4 T-views"
+    },
+    {
+     "check": "container-edges",
+     "sev": "FAIL",
+     "sel": "div.site-header > div.w > header.site",
+     "text": "Corner SpaBook",
+     "msg": "the nav's content runs 8px from the left and 1005px from the right (read from its outermost blocks: no .wrap): the page's container starts at 48px; 8 and 1005px are not one margin; the margin is 64-120px at 1440px (one container, equal margins, 2px either way) (SR-6)",
+     "fix": "use one container on every section and the nav (.wrap): one margin left and right, 64-120px on a desktop, 16-24px on a phone",
+     "rule": "SR-6 T1-margins",
+     "crop": "1440-rhythm-05-container-edges.jpg"
+    },
+    {
+     "check": "container-edges",
+     "sev": "FAIL",
+     "sel": "section#book",
+     "text": "Book nowBook on WhatsAppWhere34 Schonlei",
+     "msg": "the content of section 7 runs 48px from the left and 8px from the right (read from its outermost blocks: no .wrap): 48 and 8px are not one margin; the margin is 64-120px at 1440px (one container, equal margins, 2px either way) (SR-6)",
+     "fix": "use one container on every section and the nav (.wrap): one margin left and right, 64-120px on a desktop, 16-24px on a phone",
+     "rule": "SR-6 T1-margins"
+    },
+    {
+     "check": "container-edges",
+     "sev": "FAIL",
+     "sel": "a.skip-link",
+     "text": "Skip to content",
+     "msg": "a <a> at the top of the page, outside header.nav, main, footer.closing and nav.actionbar (SR-6)",
+     "fix": "build the page as header.nav, a main of sections (each one in-flow .wrap plus background layers) and footer.closing",
+     "rule": "SR-6 T1-structure"
+    },
+    {
+     "check": "container-edges",
+     "sev": "FAIL",
+     "sel": "div.site-header",
+     "text": "Corner SpaBook",
+     "msg": "a <div> at the top of the page, outside header.nav, main, footer.closing and nav.actionbar (and 10 more like it: \"HomeBook a treatmentCont\", \"Corner SpaHello. I can a\", \"The relaxation you deser\") (SR-6)",
+     "fix": "build the page as header.nav, a main of sections (each one in-flow .wrap plus background layers) and footer.closing",
+     "rule": "SR-6 T1-structure"
+    },
+    {
+     "check": "container-edges",
+     "sev": "FAIL",
+     "sel": "div.site-header > div.w > header.site > a.brand",
+     "text": "Corner Spa",
+     "msg": "\"Corner Spa\" runs 8-400px, outside the container lines of the nav at 48-1432px: full width is for background layers and grounds only (and 65 more like it: div.w > header.site > a.brand > img.mark-img.mark-dark, \"The relaxation you deser\", \"Massage, hot stone, foot\") (SR-6)",
+     "fix": "keep it inside the container lines (.wrap): full width is for background layers and grounds only",
+     "rule": "SR-6 T2-containment"
+    },
+    {
+     "check": "container-edges",
+     "sev": "FAIL",
+     "sel": "section:nth-of-type(1) > div.w > div.hero > h1.serif",
+     "text": "The relaxation you deserve.",
+     "msg": "31 text blocks start on a left line at x 8, -40px from the container's left: text starts on the container's left, or on one split line (x 635, 752, 869) (also \"Massage, hot stone, foot spa, na\", \"Price list\", \"Massage\") (and 2 more like it: \"The relaxation you deser\", \"Price list\") (SR-6)",
+     "fix": "start the text on the container's left, or on the one split line every split shares",
+     "rule": "SR-6 T3-left-lines"
+    },
+    {
+     "check": "container-edges",
+     "sev": "FAIL",
+     "sel": "section.quote > div > div.quote-media > img",
+     "text": "",
+     "msg": "the page scrolls sideways (2408px wide on a 1440px screen): the <img> ends at 2408px (SR-6)",
+     "fix": "take the sideways scroll away: nothing wider than the screen (overflow-x: clip on the part that spills)",
+     "rule": "SR-6 T5-overflow"
+    },
+    {
+     "check": "container-edges",
+     "sev": "FAIL",
+     "sel": "section.quote > div > div.quote-media > img",
+     "text": "",
+     "msg": "a <img> over half the container wide runs 8-2408px, not on the container's lines at 48-1432px (and 1 more like it: div.w > span.foot-complaints > a.foot-tel > svg) (SR-6)",
+     "fix": "run the picture or box from the container's left line to its right line, or put it in a row or a split",
+     "rule": "SR-6 T6-right-edges"
+    }
+   ],
+   "glAsked": 0
+  },
+  {
+   "width": 390,
+   "height": 844,
+   "screens": 2,
+   "held": 0,
+   "errors": [],
+   "findings": [
+    {
+     "check": "empty-visual",
+     "sev": "FAIL",
+     "sel": "div.w > header.site > a.brand > img.mark-img.mark-dark",
+     "text": "mark-dark.png",
+     "stop": 0,
+     "msg": "the picture shows nothing here: 98% of it is one colour (#ffffff); its image mark-dark.png did not load",
+     "crop": "390-01-empty-visual.jpg",
+     "fix": "make the visual draw at every width: a picture that loads, an effect that renders, or its still fallback; never an empty frame"
+    },
+    {
+     "check": "empty-visual",
+     "sev": "FAIL",
+     "sel": "div.w > header.site > a.brand > img.mark-img.mark-light",
+     "text": "mark-light.png",
+     "stop": 0,
+     "msg": "the picture shows nothing here: 99% of it is one colour (#ffffff); its image mark-light.png did not load",
+     "crop": "390-02-empty-visual.jpg",
+     "fix": "make the visual draw at every width: a picture that loads, an effect that renders, or its still fallback; never an empty frame"
+    },
+    {
+     "check": "hero-fill",
+     "sev": "FAIL",
+     "sel": "section#treatments",
+     "text": "Price list",
+     "msg": "the next section shows on the first screen: it starts at 419px on a 3376px screen (the hero ends at 381px)",
+     "stop": 0,
+     "crop": "390-03-hero-fill.jpg",
+     "fix": "let the hero fill the first screen alone (min-height: 100svh, less above it): nothing of the next section on load"
+    },
+    {
+     "check": "nav",
+     "sev": "FAIL",
+     "sel": "div.site-header > div.w > header.site > a.brand",
+     "text": "Corner Spa",
+     "stop": 0,
+     "msg": "nav link wraps to a second line",
+     "crop": "390-04-nav.jpg",
+     "fix": "make the nav one bar from the content's left edge to its right edge, with every link and action inside it"
+    },
+    {
+     "check": "off-viewport",
+     "sev": "FAIL",
+     "sel": "section.quote > div > div.quote-media > img",
+     "text": "img: sand-ripples.jpg",
+     "msg": "runs 2018px off the right side of the screen",
+     "stop": 0,
+     "crop": "390-05-off-viewport.jpg",
+     "fix": "keep it inside the screen at this width: let it shrink, wrap or stack"
+    },
+    {
+     "check": "off-viewport",
+     "sev": "FAIL",
+     "sel": "(the page)",
+     "text": "",
+     "stop": null,
+     "msg": "the page is 2408px wide on a 390px screen and scrolls sideways",
+     "fix": "keep it inside the screen at this width: let it shrink, wrap or stack"
+    },
+    {
+     "check": "tap-size",
+     "sev": "FAIL",
+     "sel": "div:nth-of-type(2) > div.grp:nth-of-type(1) > div.row:nth-of-type(1) > a.row-name",
+     "text": "Full body massage60 min",
+     "msg": "a 157x17px tap target (and 12 more like it on this screen): 1px from the next one (\"Full body massage with h\"), so a thumb lands on the wrong one",
+     "stop": 0,
+     "crop": "390-06-tap-size.jpg",
+     "fix": "make every link and control outside running text 44px tall on a phone: display: inline-flex; align-items: center; min-height: 44px (a footer list then needs no gap), a 44px small button, or a transparent ::before laid past the box"
+    },
+    {
+     "check": "tap-size",
+     "sev": "FAIL",
+     "sel": "input#bk-name",
+     "text": "",
+     "msg": "a 185x21px tap target (and 1 more like it on this screen): 0px from the next one (\"Choose from the price li\"), so a thumb lands on the wrong one",
+     "stop": 1,
+     "crop": "390-19-tap-size.jpg",
+     "fix": "make every link and control outside running text 44px tall on a phone: display: inline-flex; align-items: center; min-height: 44px (a footer list then needs no gap), a 44px small button, or a transparent ::before laid past the box"
+    },
+    {
+     "check": "tap-size",
+     "sev": "FAIL",
+     "sel": "select#bk-treatment",
+     "text": "Choose from the price list Full body massage (60",
+     "msg": "a 426x19px tap target: 0px from the next one (\"\"), so a thumb lands on the wrong one",
+     "stop": 1,
+     "crop": "390-20-tap-size.jpg",
+     "fix": "make every link and control outside running text 44px tall on a phone: display: inline-flex; align-items: center; min-height: 44px (a footer list then needs no gap), a 44px small button, or a transparent ::before laid past the box"
+    },
+    {
+     "check": "tap-size",
+     "sev": "FAIL",
+     "sel": "div.w > form.bk-form > div.bk-actions > button.btn",
+     "text": "Send on WhatsApp",
+     "msg": "a 131x21px tap target: 0px from the next one (\"Just ask a question\"), so a thumb lands on the wrong one",
+     "stop": 1,
+     "crop": "390-21-tap-size.jpg",
+     "fix": "make every link and control outside running text 44px tall on a phone: display: inline-flex; align-items: center; min-height: 44px (a footer list then needs no gap), a 44px small button, or a transparent ::before laid past the box"
+    },
+    {
+     "check": "tap-size",
+     "sev": "FAIL",
+     "sel": "div.w > p.note > span:nth-of-type(1) > a",
+     "text": "spa.mendozer.com",
+     "msg": "a 119x17px tap target (and 1 more like it on this screen): 1px from the next one (\"oryxinstitute.org/corner\"), so a thumb lands on the wrong one",
+     "stop": 1,
+     "crop": "390-22-tap-size.jpg",
+     "fix": "make every link and control outside running text 44px tall on a phone: display: inline-flex; align-items: center; min-height: 44px (a footer list then needs no gap), a 44px small button, or a transparent ::before laid past the box"
+    },
+    {
+     "check": "tap-size",
+     "sev": "FAIL",
+     "sel": "div.float-widgets > button.float-btn.float-top",
+     "text": "",
+     "msg": "a 16x21px tap target: 0px from the next one (\"Ask us\"), so a thumb lands on the wrong one",
+     "stop": 1,
+     "crop": "390-23-tap-size.jpg",
+     "fix": "make every link and control outside running text 44px tall on a phone: display: inline-flex; align-items: center; min-height: 44px (a footer list then needs no gap), a 44px small button, or a transparent ::before laid past the box"
+    },
+    {
+     "check": "cta",
+     "sev": "FAIL",
+     "sel": "main#top > section:nth-of-type(1)",
+     "text": "",
+     "msg": "the hero has no button (the nav's does not count)",
+     "stop": 0,
+     "crop": "390-07-cta.jpg",
+     "fix": "add the action: a button in the hero, one on every priced item, one in the closing section"
+    },
+    {
+     "check": "cta",
+     "sev": "FAIL",
+     "sel": "section#book",
+     "text": "Book now Book on WhatsApp Where 34 Schonlein Str",
+     "msg": "the last section before the footer ends with no button",
+     "stop": 1,
+     "crop": "390-24-cta.jpg",
+     "fix": "add the action: a button in the hero, one on every priced item, one in the closing section"
+    },
+    {
+     "check": "off-grid",
+     "sev": "FAIL",
+     "sel": "textarea#bk-note",
+     "text": "",
+     "stop": 1,
+     "msg": "left edge at 71px, 23px off a common edge of its section at 48px (3 elements, like dd)",
+     "crop": "390-25-off-grid.jpg",
+     "fix": "move it onto the page margin, or the column edge its section uses"
+    },
+    {
+     "check": "off-grid",
+     "sev": "FAIL",
+     "sel": "div.float-widgets > button.float-btn.wa",
+     "text": "Ask us",
+     "stop": 1,
+     "msg": "left edge at 24px, 16px off the page margin at 8px (62 elements, like button.float-btn.float-top)",
+     "crop": "390-26-off-grid.jpg",
+     "fix": "move it onto the page margin, or the column edge its section uses"
+    },
+    {
+     "check": "section-gaps",
+     "sev": "FAIL",
+     "sel": "main#top > section:nth-of-type(1) / section#treatments",
+     "text": "",
+     "stop": 0,
+     "msg": "39px between these sections, +129% against the median 17px of gaps at a change of ground",
+     "crop": "390-08-section-gaps.jpg",
+     "fix": "use one gap between sections (all within 25% of each other)"
+    },
+    {
+     "check": "visual-empty",
+     "sev": "FAIL",
+     "sel": "section.breath > figure > div > img.full",
+     "text": "leaf-and-pebble.jpg",
+     "msg": "the picture leaf-and-pebble.jpg is broken (it loaded nothing): its frame shows empty",
+     "stop": 0,
+     "crop": "390-09-visual-empty.jpg",
+     "fix": "make the visual draw at this width: a picture that loads, an effect that renders, or its still fallback; never an empty ground or frame"
+    },
+    {
+     "check": "visual-empty",
+     "sev": "FAIL",
+     "sel": "div.w > div.menu > div.menu-media > img.mono",
+     "text": "hot-stones-back.jpg",
+     "msg": "the picture hot-stones-back.jpg is broken (it loaded nothing): its frame shows empty",
+     "stop": 0,
+     "crop": "390-10-visual-empty.jpg",
+     "fix": "make the visual draw at this width: a picture that loads, an effect that renders, or its still fallback; never an empty ground or frame"
+    },
+    {
+     "check": "visual-empty",
+     "sev": "FAIL",
+     "sel": "section.quote > div > div.quote-media > img",
+     "text": "sand-ripples.jpg",
+     "msg": "the picture sand-ripples.jpg is broken (it loaded nothing): its frame shows empty",
+     "stop": 0,
+     "crop": "390-11-visual-empty.jpg",
+     "fix": "make the visual draw at this width: a picture that loads, an effect that renders, or its still fallback; never an empty ground or frame"
+    },
+    {
+     "check": "visual-empty",
+     "sev": "FAIL",
+     "sel": "div.w > div.g > figure:nth-of-type(1) > img.a",
+     "text": "black-pebbles.jpg",
+     "msg": "the picture black-pebbles.jpg is broken (it loaded nothing): its frame shows empty",
+     "stop": 0,
+     "crop": "390-12-visual-empty.jpg",
+     "fix": "make the visual draw at this width: a picture that loads, an effect that renders, or its still fallback; never an empty ground or frame"
+    },
+    {
+     "check": "visual-empty",
+     "sev": "FAIL",
+     "sel": "div.w > div.g > figure:nth-of-type(2) > img.s",
+     "text": "wet-stone.jpg",
+     "msg": "the picture wet-stone.jpg is broken (it loaded nothing): its frame shows empty",
+     "stop": 0,
+     "crop": "390-13-visual-empty.jpg",
+     "fix": "make the visual draw at this width: a picture that loads, an effect that renders, or its still fallback; never an empty ground or frame"
+    },
+    {
+     "check": "visual-empty",
+     "sev": "FAIL",
+     "sel": "div.w > div.g > figure:nth-of-type(3) > img.s",
+     "text": "leaf-macro.jpg",
+     "msg": "the picture leaf-macro.jpg is broken (it loaded nothing): its frame shows empty (and 4 more like it: towel.jpg, people-back-hands.jpg, people-oil-pour.jpg, people-stones-rest.jpg)",
+     "stop": 0,
+     "crop": "390-14-visual-empty.jpg",
+     "fix": "make the visual draw at this width: a picture that loads, an effect that renders, or its still fallback; never an empty ground or frame"
+    },
+    {
+     "check": "flush",
+     "sev": "WARN",
+     "sel": "section.quote > div > div.quote-copy > p.serif",
+     "text": "Slow, quiet and unhurried.",
+     "msg": "section.quote and section:nth-of-type(5) run together: 17px between their content, on one ground",
+     "stop": 0,
+     "crop": "390-15-flush.jpg",
+     "fix": "give the section its padding at the edge where the ground changes (the closing call keeps a clear gap above the footer)"
+    },
+    {
+     "check": "flush",
+     "sev": "WARN",
+     "sel": "section:nth-of-type(6) > div.w > p.note > a",
+     "text": "brand page",
+     "msg": "section:nth-of-type(6) and section#book run together: 17px between their content, on one ground",
+     "stop": 0,
+     "crop": "390-16-flush.jpg",
+     "fix": "give the section its padding at the edge where the ground changes (the closing call keeps a clear gap above the footer)"
+    },
+    {
+     "check": "flush",
+     "sev": "WARN",
+     "sel": "section#book > div.w > p:nth-of-type(3)",
+     "text": "All prices in Namibian dollars.",
+     "msg": "section#book and footer.site run together: 17px between their content, on one ground",
+     "stop": 1,
+     "crop": "390-27-flush.jpg",
+     "fix": "give the section its padding at the edge where the ground changes (the closing call keeps a clear gap above the footer)"
+    },
+    {
+     "check": "tap-size",
+     "sev": "WARN",
+     "sel": "div.site-header > div.w > header.site > a.brand",
+     "text": "Corner Spa",
+     "msg": "a 364x35px tap target: under the 44px a phone needs",
+     "stop": 0,
+     "crop": "390-17-tap-size.jpg",
+     "fix": "make every link and control outside running text 44px tall on a phone: display: inline-flex; align-items: center; min-height: 44px (a footer list then needs no gap), a 44px small button, or a transparent ::before laid past the box"
+    },
+    {
+     "check": "tap-size",
+     "sev": "WARN",
+     "sel": "div:nth-of-type(2) > div.grp:nth-of-type(1) > div.row:nth-of-type(5) > a.row-name",
+     "text": "Couples massage60 min",
+     "msg": "a 148x17px tap target: under the 44px a phone needs",
+     "stop": 0,
+     "crop": "390-18-tap-size.jpg",
+     "fix": "make every link and control outside running text 44px tall on a phone: display: inline-flex; align-items: center; min-height: 44px (a footer list then needs no gap), a 44px small button, or a transparent ::before laid past the box"
+    },
+    {
+     "check": "tap-size",
+     "sev": "WARN",
+     "sel": "textarea#bk-note",
+     "text": "",
+     "msg": "a 171x36px tap target: under the 44px a phone needs",
+     "stop": 1,
+     "crop": "390-28-tap-size.jpg",
+     "fix": "make every link and control outside running text 44px tall on a phone: display: inline-flex; align-items: center; min-height: 44px (a footer list then needs no gap), a 44px small button, or a transparent ::before laid past the box"
+    },
+    {
+     "check": "tap-size",
+     "sev": "WARN",
+     "sel": "div.w > span.foot-social-group > span:nth-of-type(1) > a",
+     "text": "Instagram",
+     "msg": "a 64x17px tap target (and 1 more like it on this screen): under the 44px a phone needs",
+     "stop": 1,
+     "crop": "390-29-tap-size.jpg",
+     "fix": "make every link and control outside running text 44px tall on a phone: display: inline-flex; align-items: center; min-height: 44px (a footer list then needs no gap), a 44px small button, or a transparent ::before laid past the box"
+    }
+   ],
+   "glAsked": 0
+  }
+ ],
+ "notChecked": [
+  "scroll-linked (stepping)",
+  "scroll-reveal (the reveal walk; IntersectionObserver reveals are read)",
+  "hover-spill",
+  "hidden-visual",
+  "loop-pause",
+  "forms",
+  "reduced-motion",
+  "the dead-IntersectionObserver walk (hidden content is read with scripts off and under reduced motion)",
+  "hover-move"
+ ],
+ "shaders": 0,
+ "hidden": {
+  "screens": 16,
+  "quick": true
+ },
+ "sweep": {
+  "widths": [
+   1280,
+   1152,
+   1024,
+   896,
+   768
+  ],
+  "errors": [],
+  "findings": []
+ },
+ "narrow": {
+  "width": 320,
+  "height": 640,
+  "errors": [],
+  "findings": [
+   {
+    "check": "tap-size",
+    "sev": "FAIL",
+    "sel": "div:nth-of-type(2) > div.grp:nth-of-type(1) > div.row:nth-of-type(1) > a.row-name",
+    "text": "Full body massage60 min",
+    "msg": "a 157x17px tap target (and 12 more like it on this screen): 1px from the next one (\"Full body massage with h\"), so a thumb lands on the wrong one",
+    "width": 320,
+    "fix": "make every link and control outside running text 44px tall on a phone: display: inline-flex; align-items: center; min-height: 44px (a footer list then needs no gap), a 44px small button, or a transparent ::before laid past the box"
+   },
+   {
+    "check": "tap-size",
+    "sev": "WARN",
+    "sel": "div:nth-of-type(2) > div.grp:nth-of-type(1) > div.row:nth-of-type(4) > a.row-name",
+    "text": "Back, neck and shoulder massage with hot stone30",
+    "msg": "a 272x35px tap target: under the 44px a phone needs",
+    "width": 320,
+    "fix": "make every link and control outside running text 44px tall on a phone: display: inline-flex; align-items: center; min-height: 44px (a footer list then needs no gap), a 44px small button, or a transparent ::before laid past the box"
+   },
+   {
+    "check": "tap-size",
+    "sev": "WARN",
+    "sel": "input#bk-name",
+    "text": "",
+    "msg": "a 185x21px tap target (and 1 more like it on this screen): under the 44px a phone needs",
+    "width": 320,
+    "fix": "make every link and control outside running text 44px tall on a phone: display: inline-flex; align-items: center; min-height: 44px (a footer list then needs no gap), a 44px small button, or a transparent ::before laid past the box"
+   },
+   {
+    "check": "tap-size",
+    "sev": "WARN",
+    "sel": "select#bk-treatment",
+    "text": "Choose from the price list Full body massage (60",
+    "msg": "a 426x19px tap target: under the 44px a phone needs",
+    "width": 320,
+    "fix": "make every link and control outside running text 44px tall on a phone: display: inline-flex; align-items: center; min-height: 44px (a footer list then needs no gap), a 44px small button, or a transparent ::before laid past the box"
+   },
+   {
+    "check": "tap-size",
+    "sev": "WARN",
+    "sel": "textarea#bk-note",
+    "text": "",
+    "msg": "a 171x36px tap target: under the 44px a phone needs",
+    "width": 320,
+    "fix": "make every link and control outside running text 44px tall on a phone: display: inline-flex; align-items: center; min-height: 44px (a footer list then needs no gap), a 44px small button, or a transparent ::before laid past the box"
+   },
+   {
+    "check": "tap-size",
+    "sev": "FAIL",
+    "sel": "div.w > form.bk-form > div.bk-actions > button.btn",
+    "text": "Send on WhatsApp",
+    "msg": "a 131x21px tap target: 0px from the next one (\"Just ask a question\"), so a thumb lands on the wrong one",
+    "width": 320,
+    "fix": "make every link and control outside running text 44px tall on a phone: display: inline-flex; align-items: center; min-height: 44px (a footer list then needs no gap), a 44px small button, or a transparent ::before laid past the box"
+   },
+   {
+    "check": "tap-size",
+    "sev": "FAIL",
+    "sel": "div.w > p.note > span:nth-of-type(1) > a",
+    "text": "spa.mendozer.com",
+    "msg": "a 119x17px tap target (and 1 more like it on this screen): 1px from the next one (\"oryxinstitute.org/corner\"), so a thumb lands on the wrong one",
+    "width": 320,
+    "fix": "make every link and control outside running text 44px tall on a phone: display: inline-flex; align-items: center; min-height: 44px (a footer list then needs no gap), a 44px small button, or a transparent ::before laid past the box"
+   },
+   {
+    "check": "tap-size",
+    "sev": "FAIL",
+    "sel": "div.w > span.foot-social-group > span:nth-of-type(1) > a",
+    "text": "Instagram",
+    "msg": "a 64x17px tap target (and 1 more like it on this screen): 1px from the next one (\"+264 85 777 7077\"), so a thumb lands on the wrong one",
+    "width": 320,
+    "fix": "make every link and control outside running text 44px tall on a phone: display: inline-flex; align-items: center; min-height: 44px (a footer list then needs no gap), a 44px small button, or a transparent ::before laid past the box"
+   },
+   {
+    "check": "tap-size",
+    "sev": "FAIL",
+    "sel": "div.float-widgets > button.float-btn.float-top",
+    "text": "",
+    "msg": "a 16x21px tap target: 0px from the next one (\"Ask us\"), so a thumb lands on the wrong one",
+    "width": 320,
+    "fix": "make every link and control outside running text 44px tall on a phone: display: inline-flex; align-items: center; min-height: 44px (a footer list then needs no gap), a 44px small button, or a transparent ::before laid past the box"
+   },
+   {
+    "check": "off-viewport",
+    "sev": "FAIL",
+    "sel": "div > div.quote-media > img",
+    "text": "",
+    "msg": "at 320px wide it runs 2088px past the screen's right edge (the page is 2408px wide and scrolls sideways)",
+    "crop": "narrow-320-07-off-viewport.jpg",
+    "width": 320,
+    "fix": "keep it inside the screen at this width: let it shrink, wrap or stack"
+   },
+   {
+    "check": "off-viewport",
+    "sev": "FAIL",
+    "sel": "div.w > form.bk-form > select#bk-treatment",
+    "text": "Choose from the price list Full body massage (60",
+    "msg": "at 320px wide it runs 114px past the screen's right edge (the page is 2408px wide and scrolls sideways)",
+    "width": 320,
+    "fix": "keep it inside the screen at this width: let it shrink, wrap or stack"
+   }
+  ]
+ },
+ "counts": {
+  "FAIL": 102,
+  "WARN": 26
+ },
+ "checks": {
+  "assets": "FAIL",
+  "shader-lint": "PASS",
+  "gl-fallback": "PASS",
+  "empty-visual": "FAIL",
+  "hero-fill": "FAIL",
+  "flush": "WARN",
+  "placeholder": "PASS",
+  "sample-label": "PASS",
+  "caption": "PASS",
+  "credit-wall": "PASS",
+  "nav": "FAIL",
+  "nav-covers": "PASS",
+  "spill": "PASS",
+  "off-viewport": "FAIL",
+  "fold-card": "PASS",
+  "hover-spill": "not checked",
+  "overlap-text": "PASS",
+  "collide": "PASS",
+  "tap-size": "FAIL",
+  "row-gap": "PASS",
+  "cut-text": "PASS",
+  "fold-cut": "PASS",
+  "marquee": "PASS",
+  "scroll-linked": "not checked",
+  "scroll-reveal": "not checked",
+  "pinned": "PASS",
+  "loop-pause": "not checked",
+  "reduced-motion": "not checked",
+  "hidden-content": "PASS",
+  "webgl": "PASS",
+  "no-visual": "FAIL",
+  "text-only": "FAIL",
+  "card-visual": "PASS",
+  "hidden-visual": "not checked",
+  "card-family": "PASS",
+  "card-layout": "PASS",
+  "nesting": "PASS",
+  "effect-repeat": "PASS",
+  "ui-fit": "PASS",
+  "ui-centre": "PASS",
+  "dark-ground": "PASS",
+  "button-styles": "PASS",
+  "button-shape": "PASS",
+  "same-action": "PASS",
+  "button-picture": "PASS",
+  "cta": "FAIL",
+  "pricing-tiers": "PASS",
+  "copy-headline": "FAIL",
+  "copy-fact": "PASS",
+  "copy-headings": "WARN",
+  "copy-buttons": "PASS",
+  "copy-actions": "WARN",
+  "heading-scale": "PASS",
+  "stagger": "PASS",
+  "top-stagger": "PASS",
+  "off-grid": "FAIL",
+  "col-edge": "PASS",
+  "right-edge": "PASS",
+  "centre-axis": "PASS",
+  "tilt": "PASS",
+  "contrast": "PASS",
+  "text-contrast": "PASS",
+  "body-size": "PASS",
+  "busy-ground": "PASS",
+  "section-gaps": "FAIL",
+  "proximity": "PASS",
+  "hole": "PASS",
+  "links": "WARN",
+  "forms": "not checked",
+  "photo-upscale": "PASS",
+  "photo-set": "PASS",
+  "photo-credit": "PASS",
+  "nav-family": "PASS",
+  "nav-labels": "PASS",
+  "link-styles": "PASS",
+  "heading-align": "PASS",
+  "label-centre": "PASS",
+  "fake-button": "PASS",
+  "stranded-action": "PASS",
+  "orphan": "PASS",
+  "unit-break": "PASS",
+  "tab-wrap": "PASS",
+  "effects-fit": "PASS",
+  "fade-cut": "PASS",
+  "photo-weight": "PASS",
+  "copy-length": "PASS",
+  "nav-current": "PASS",
+  "progress-bar": "PASS",
+  "photo-repeat": "PASS",
+  "button-contrast": "PASS",
+  "photo-print": "PASS",
+  "grounds": "PASS",
+  "split-align": "PASS",
+  "fact-agree": "PASS",
+  "fold-action": "PASS",
+  "action-count": "PASS",
+  "one-screen": "WARN",
+  "hover": "not checked",
+  "hover-move": "not checked",
+  "product-shown": "PASS",
+  "same-object": "PASS",
+  "font-load": "PASS",
+  "visual-caption": "PASS",
+  "visual-empty": "FAIL",
+  "effect-kind": "PASS",
+  "hero-enter": "WARN",
+  "moment-none": "WARN",
+  "street-number": "FAIL",
+  "postcode": "PASS",
+  "coordinates": "PASS",
+  "company-number": "PASS",
+  "phone-number": "FAIL",
+  "hero-screen": "FAIL",
+  "section-height": "FAIL",
+  "section-air": "FAIL",
+  "one-section": "FAIL",
+  "one-heading": "PASS",
+  "container-edges": "FAIL",
+  "row-lines": "PASS",
+  "split-pair": "PASS",
+  "motion-layer": "PASS",
+  "count-text": "PASS",
+  "loop-cycle": "PASS",
+  "section-tile": "PASS",
+  "empty-area": "FAIL",
+  "a11y-name": "PASS",
+  "img-alt": "PASS",
+  "field-label": "PASS",
+  "heading-order": "PASS",
+  "tabindex": "PASS",
+  "focus-ring": "PASS",
+  "focus-visible": "PASS",
+  "focus-hidden": "PASS",
+  "skip-link": "PASS",
+  "menu-toggle": "PASS",
+  "lang": "PASS",
+  "page-meta": "PASS",
+  "share-meta": "PASS",
+  "action-repeat": "PASS",
+  "map-link": "PASS",
+  "open-now": "PASS",
+  "assumed": "PASS",
+  "run-on": "PASS",
+  "form-fields": "WARN",
+  "form-send": "PASS"
+ }
+}

@@ -1,0 +1,77 @@
+[
+  {
+    "check": "street-number",
+    "target": "34 Schonlein Street",
+    "reason": "The owner's printed price list gives the full street address with its number; the brief is printed exactly as given (JSON-LD and the visit blocks)."
+  },
+  {
+    "check": "phone-number",
+    "target": "+264 85 777 7077",
+    "reason": "The owner asked (November 2026) for a visible complaints and feedback route with tap-to-call numbers; this is the one place the numbers are printed, as instructed."
+  },
+  {
+    "check": "copy-headline",
+    "target": "The relaxation you deserve.",
+    "reason": "The approved hero voice is the brand line; the lead one line under names the category and the place (Massage, hot stone, foot spa... in Windhoek)."
+  },
+  {
+    "check": "no-visual",
+    "target": "section",
+    "reason": "Approved type-led rhythm on the reference home page: hero, price list, venture and book are deliberate text sections; photographs lead in the breath, quote and gallery sections."
+  },
+  {
+    "check": "scroll-reveal",
+    "target": "data-sc-in",
+    "reason": "The approved home page reveals sections once on entry (scrollcraft engine, fires once, no parallax on text). Noscript and prefers-reduced-motion now show everything at rest, so nothing is hidden without scripts."
+  },
+  {
+    "check": "pinned",
+    "target": "section.quote",
+    "reason": "The approved pinned sand band with the slow kinetic quote is the page's one dealt moment; it holds its own section and pauses under reduced motion."
+  },
+  {
+    "check": "hero-fill",
+    "target": "section.breath",
+    "reason": "The breath band is a full-bleed photograph between hero and price list, not a hero; the first screen ends on a clear bleed into it, which the approved design intends."
+  },
+  {
+    "check": "hero-screen",
+    "target": "section:nth-of-type(1)",
+    "reason": "The approved hero ends 142px above the fold so the first photograph peeks in at load; the owner approved this exact first screen."
+  },
+  {
+    "check": "section-height",
+    "target": "section",
+    "reason": "The home page follows the scrollcraft rhythm the owner approved (gallery 3.2 screens, quote band 2.4 pinned, venture half screen), not the screen grid; rebuilding it would redesign a page the owner signed off."
+  },
+  {
+    "check": "section-air",
+    "target": "section.quote",
+    "reason": "The pinned quote band is a full-bleed photograph with copy over it; the checker measures the empty copy rows of the pinned stage, not real dead space."
+  },
+  {
+    "check": "empty-area",
+    "target": "section",
+    "reason": "The quote band's measured emptiness is the photograph's sky rows; the book section's is the centred quiet column the design language uses (max-width columns on a wide canvas)."
+  },
+  {
+    "check": "one-section",
+    "target": "section",
+    "reason": "Same approved scrollcraft rhythm as section-height: sections on the home page are sized by their content and the engine, not the one-or-two-screen grid."
+  },
+  {
+    "check": "container-edges",
+    "target": "wrap",
+    "reason": "Measured on the home page's full-bleed photograph sections, which intentionally cross the wrap lines edge to edge; every text block sits on the wrap grid."
+  },
+  {
+    "check": "fact-agree",
+    "target": "Saturday 09:00 to 16:00",
+    "reason": "The hours agree everywhere (list, line, chat, JSON-LD all Saturday 09:00 to 16:00); the checker's line parser reads the Monday-to-Friday range as the whole footer line's range and compares it against Saturday."
+  },
+  {
+    "check": "row-lines",
+    "target": "book-facts",
+    "reason": "The approved design language centres the where/hours column, the gallery grid and the partners grid inside the wrap (max-width columns on a wide canvas); the screen-grid rule wants every row on the wrap lines, which the home page deliberately does not do."
+  }
+]
