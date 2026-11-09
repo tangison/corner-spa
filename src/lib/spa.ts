@@ -41,13 +41,13 @@ export const DIRECTIONS_URL =
 export const TIME_ZONE = "Africa/Windhoek";
 
 // Opening hours. `days` uses JS getDay() numbers (0 = Sunday).
-export const HOURS: { label: string; short: string; days: number[]; open: string | null; close: string | null }[] = [
+export const HOURS: { label: string; short: string; days: number[]; open: string | null; close: string | null; note?: string }[] = [
   { label: "Monday to Friday", short: "Mon to Fri", days: [1, 2, 3, 4, 5], open: "09:00", close: "18:00" },
   { label: "Saturday", short: "Sat", days: [6], open: "09:00", close: "16:00" },
-  { label: "Sunday", short: "Sun", days: [0], open: null, close: null },
+  { label: "Sunday", short: "Sun", days: [0], open: null, close: null, note: "By appointment" },
 ];
 
-export const HOURS_LINE = "Mon to Fri 09:00 to 18:00 · Sat 09:00 to 16:00 · Sun closed";
+export const HOURS_LINE = "Mon to Fri 09:00 to 18:00 · Sat 09:00 to 16:00 · Sun by appointment only";
 
 // Schema.org opening hours specification (JSON-LD).
 export const OPENING_HOURS_SPEC = [
@@ -103,6 +103,16 @@ export function waLink(prefill: string): string {
   return `https://wa.me/${SPA.whatsappNumber}?text=${encodeURIComponent(prefill)}`;
 }
 
+// ---------------- Careers ----------------
+export const CAREERS_EMAIL = "careers@mendozer.com";
+export const CAREERS_URL = `${SITE_URL}/careers`;
+export const CAREERS_ROLE = "Multi-Talent Spa Specialist";
+export const CAREERS_WA_PREFILL =
+  "Hi, I'm interested in the Spa Specialist role";
+export const MAPS_GOOGLE =
+  "https://maps.app.goo.gl/xBqbe1HhGoi5gU1aA?g_st=ic";
+export const MAPS_APPLE = "https://maps.apple/p/wAiQBI4WE28Lu~";
+
 export const WA_PREFILL = {
   general:
     "Hi Corner Spa! I would like to book a treatment. What is available this week?",
@@ -153,21 +163,39 @@ export const MEDIA = {
   lockupStackedDark: "/media/logos/lockup-stacked-dark.png",
   lockupStackedLight: "/media/logos/lockup-stacked-light.png",
   photos: {
+    // 2026 owner image pack (22 supplied files; the two flagged originals
+    // were replaced by their approved replacements, as the pack instructs).
     leafAndPebble: "/media/photos/leaf-and-pebble.jpg",
-    hotStonesBack: "/media/photos/hot-stones-back.jpg",
-    sandRipples: "/media/photos/sand-ripples.jpg",
-    blackPebbles: "/media/photos/black-pebbles.jpg",
-    facialCheek: "/media/photos/facial-cheek.jpg",
-    wetStone: "/media/photos/wet-stone.jpg",
-    leafMacro: "/media/photos/leaf-macro.jpg",
-    towel: "/media/photos/towel.jpg",
-    // Photographs of people, shown with a warm monochrome treatment.
-    peopleBackHands: "/media/photos/people-back-hands.jpg",
-    peopleFacialCheek: "/media/photos/people-facial-cheek.jpg",
-    peopleOilPour: "/media/photos/people-oil-pour.jpg",
-    peopleStonesRest: "/media/photos/people-stones-rest.jpg",
+    hotStonesBack: "/media/photos/hot-stone-back.jpg",
+    sandRipples: "/media/photos/sand-ripple.jpg",
+    blackPebbles: "/media/photos/pebble-stack.jpg",
+    facialCheek: "/media/photos/facial-hands.jpg",
+    wetStone: "/media/photos/basalt-water.jpg",
+    leafMacro: "/media/photos/dry-leaf-veins.jpg",
+    towel: "/media/photos/towel-fold.jpg",
+    // Treatments, shown with the same warm monochrome treatment.
+    peopleBackHands: "/media/photos/treatment-fullbody-back.jpg",
+    peopleFacialCheek: "/media/photos/treatment-fullbody-arm.jpg",
+    peopleOilPour: "/media/photos/treatment-stone-hand.jpg",
+    peopleStonesRest: "/media/photos/treatment-couples.jpg",
+    // Second set of treatment frames for the wider gallery.
+    fullbodyStones: "/media/photos/treatment-fullbody-stones.jpg",
+    neckShoulder: "/media/photos/treatment-neck-shoulder.jpg",
+    backShoulder: "/media/photos/treatment-back-shoulder.jpg",
+    shoulderStone: "/media/photos/treatment-shoulder-stone.jpg",
+    neckStones: "/media/photos/treatment-neck-stones.jpg",
+    couplesDetail: "/media/photos/treatment-couples-detail.jpg",
+    oilDrop: "/media/photos/oil-drop.jpg",
+    statusVertical: "/media/photos/status-vertical.jpg",
+    heroStonesLeafWide: "/media/photos/hero-stones-leaf-wide.jpg",
   },
   heroWide: "/media/hero-wide.jpg",
+  // Careers share image: the 4:5 hiring poster (1080x1350).
+  careersPoster: "/media/posters/corner-spa-hiring-4x5.png",
+  // Partner logos, fetched from each company's own site repository.
+  oryxLockup: "/media/logos/partners/oryx-lockup.svg",
+  oryxLockupIvory: "/media/logos/partners/oryx-lockup-ivory.svg",
+  mendozerLockup: "/media/logos/partners/mendozer-logo-full.svg",
 } as const;
 
 // Plain-English notes on the massage types on the menu. Descriptions of the
@@ -175,19 +203,19 @@ export const MEDIA = {
 export const MASSAGE_NOTES: { name: string; note: string }[] = [
   {
     name: "Full body massage",
-    note: "Forty minutes of slow, even strokes across the whole body. The classic choice when everything feels tight.",
+    note: "Sixty minutes of slow, even strokes across the whole body. The classic choice when everything feels tight.",
   },
   {
     name: "Full body massage with hot stone",
-    note: "The same quiet forty minutes, with smooth heated stones resting along the back. The warmth settles in slowly.",
+    note: "The same quiet sixty minutes, with smooth heated stones resting along the back. The warmth settles in slowly.",
   },
   {
     name: "Back, neck and shoulder massage",
-    note: "Focused work where tension gathers: the back, the neck and the shoulders. Twenty five minutes, or thirty with hot stone.",
+    note: "Focused work where tension gathers: the back, the neck and the shoulders. Forty five minutes, or thirty with hot stone.",
   },
   {
     name: "Couples massage",
-    note: "Two tables in one quiet room, side by side. Forty five minutes for two people.",
+    note: "Two tables in one quiet room, side by side. Sixty minutes for two people.",
   },
 ];
 
@@ -217,7 +245,7 @@ export const CHAT_ANSWERS: Record<string, ChatAnswer> = {
   },
   prices: {
     chips: ["Book", "Facials", "Where are you?"],
-    text: "Massages from N$ 300. Full body massage, 40 min, is N$ 450, and with hot stone N$ 500. Couples massage, 45 min, is N$ 800. Foot spa from N$ 250, nails from N$ 50, waxing from N$ 70, lashes from N$ 70. Facials: ask us for prices. The full list is under Price list on the home page.",
+    text: "Massages from N$ 300. Full body massage, 60 min, is N$ 450, and with hot stone N$ 500. Couples massage, 60 min, is N$ 800. Foot spa from N$ 250, nails from N$ 100, waxing (underarms) N$ 100. Facials: ask us for prices. The full list is under Price list on the home page.",
   },
   facials: {
     chips: ["Book", "Prices"],
@@ -226,7 +254,7 @@ export const CHAT_ANSWERS: Record<string, ChatAnswer> = {
   },
   where: {
     chips: ["Book", "Talk to a person"],
-    text: `We are at ${ADDRESS.street}, ${ADDRESS.area}, ${ADDRESS.city}, ${ADDRESS.plot}. Monday to Friday 09:00 to 18:00, Saturday 09:00 to 16:00, closed on Sunday.`,
+    text: `We are at ${ADDRESS.street}, ${ADDRESS.area}, ${ADDRESS.city}, ${ADDRESS.plot}. Monday to Friday 09:00 to 18:00, Saturday 09:00 to 16:00, Sunday by appointment only.`,
     link: { label: "Get directions", href: DIRECTIONS_URL },
   },
   human: {
@@ -256,7 +284,7 @@ export const FAQ: { q: string; a: string }[] = [
   },
   {
     q: "Can you remove lashes done somewhere else?",
-    a: "Yes. Removing lashes we did not apply is N$ 100, and a refill on lashes done elsewhere is N$ 150. Removal of our own lashes is N$ 70.",
+    a: "Yes. Send us a WhatsApp and we tell you the price before you book, so there are no surprises.",
   },
 ];
 

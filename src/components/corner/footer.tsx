@@ -14,6 +14,7 @@ export function SiteFooter() {
           <a href="/">Home</a>
           <a href="/book">Book a treatment</a>
           <a href="/contact">Contact</a>
+          <a href="/careers">Careers</a>
           <a href="/#treatments">Price list</a>
           <a href="/price-list.pdf">Price list (PDF)</a>
           <a href="/privacy-policy">Privacy policy</a>

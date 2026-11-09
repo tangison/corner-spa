@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<style>
+  @font-face { font-family: 'Lora'; src: url('file:///home/z/my-project/corner-spa/poster/fonts/Lora.ttf') format('truetype'); font-weight: 400 700; }
+  @font-face { font-family: 'Montserrat'; src: url('file:///home/z/my-project/corner-spa/poster/fonts/Montserrat.ttf') format('truetype'); font-weight: 100 900; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 1080px; height: 1350px; }
+  body {
+    font-family: 'Montserrat', system-ui, sans-serif;
+    color: #2B2726;
+    background: #F5F3EE;
+    position: relative;
+    overflow: hidden;
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+  }
+  .bg {
+    position: absolute; inset: 0; width: 100%; height: 100%;
+    object-fit: cover; object-position: center 42%;
+  }
+  .wash {
+    position: absolute; inset: 0;
+    background:
+      linear-gradient(180deg, rgba(245,243,238,.46) 0%, rgba(245,243,238,.34) 46%, rgba(245,243,238,.40) 100%);
+  }
+  .sheet { position: absolute; inset: 0; padding: 60px; display: flex; flex-direction: column; }
+
+  /* top bar: stone logo left */
+  .brand { display: flex; align-items: flex-start; }
+  .brand img { width: 138px; height: auto; display: block; }
+
+  /* headline + chair row */
+  .lead-row { display: flex; align-items: flex-start; margin-top: 32px; flex: none; }
+  .headline { flex: 1 1 auto; min-width: 0; }
+  .headline h1 {
+    font-family: 'Lora', Georgia, serif; font-weight: 500;
+    font-size: 88px; line-height: 1.03; letter-spacing: -.01em;
+  }
+  .headline .role {
+    margin-top: 14px; font-size: 12.5px; font-weight: 600;
+    letter-spacing: .30em; color: #9E7342; text-transform: uppercase;
+  }
+  .chair { flex: none; position: relative; }
+  .chair img { height: 520px; width: auto; display: block; margin-top: 8px; }
+
+  /* frosted cream cards */
+  .card {
+    background: rgba(251, 250, 247, 0.80); border: 1px solid rgba(220, 214, 204, 0.9); border-radius: 16px;
+    box-shadow: 0 12px 36px rgba(43,39,38,.10);
+    -webkit-backdrop-filter: blur(9px); backdrop-filter: blur(9px);
+    padding: 28px;
+  }
+  .label { font-size: 11px; font-weight: 600; letter-spacing: .26em; color: #9E7342; text-transform: uppercase; margin-bottom: 10px; }
+  .card p { font-size: 14.5px; line-height: 1.65; }
+  .card p + p { margin-top: 12px; }
+  .sub-label { font-size: 10.5px; font-weight: 600; letter-spacing: .24em; color: #9E7342; text-transform: uppercase; margin: 14px 0 4px; }
+  .sub-label + p { margin-top: 0; }
+
+  .who { margin-top: 26px; max-width: 62%; }
+  .apply { margin-top: 26px; display: flex; gap: 24px; align-items: stretch; }
+  .apply .left { flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; }
+  .apply .mail { font-family: 'Lora', Georgia, serif; font-size: 36px; line-height: 1.15; margin: 6px 0 14px; word-break: break-all; }
+  .apply .mail a, .apply .url a, .card a { color: #2B2726; text-decoration: none; }
+  .apply .url { font-size: 14.5px; }
+  .apply .url a { border-bottom: 1px solid rgba(158,115,66,.7); padding-bottom: 1px; }
+  .apply .place { margin-top: auto; font-size: 12.5px; color: rgba(43,39,38,.72); padding-top: 12px; }
+  .qr { flex: none; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; padding-left: 18px; border-left: 1px solid rgba(220, 214, 204, 0.9); }
+  .qr img { width: 170px; height: 170px; display: block; }
+  .qr span { font-size: 10.5px; letter-spacing: .22em; color: #9E7342; text-transform: uppercase; }
+
+  /* footer band card */
+  .band { margin-top: auto; display: flex; align-items: center; gap: 22px; padding: 22px 28px; }
+  .band .partner { display: flex; align-items: center; gap: 12px; }
+  .band img { height: 52px; width: auto; display: block; }
+  .band .site { font-size: 11px; letter-spacing: .08em; color: rgba(43,39,38,.72); }
+  .band .divider { width: 1px; height: 59px; background: rgba(220, 214, 204, 0.9); }
+  .band .note {
+    margin-left: auto; text-align: right; font-size: 10px; line-height: 1.75;
+    letter-spacing: .18em; color: #9E7342; text-transform: uppercase; font-weight: 600;
+  }
+</style>
+</head>
+<body>
+  <img class="bg" src="file:///home/z/my-project/corner-spa/poster/towel-bg.jpg" alt="">
+  <div class="wash"></div>
+  <div class="sheet">
+    <div class="brand">
+      <img src="file:///home/z/my-project/corner-spa/poster/lockup-stacked.png" alt="Corner Spa">
+    </div>
+
+    <div class="lead-row">
+      <div class="headline">
+        <h1>We are<br>hiring</h1>
+        <div class="role">Multi-Talent Spa Specialist</div>
+      </div>
+      <div class="chair">
+        <img src="file:///home/z/my-project/corner-spa/poster/chair-cutout.png" alt="">
+      </div>
+    </div>
+
+    <div class="card who">
+      <div class="label">Who we are looking for</div>
+      <p>A multi-talented specialist for our Windhoek spa, confident across beauty and spa treatments.</p>
+      <div class="sub-label">Preferred</div>
+      <p>A qualification in cosmetology and experience in spa, skin and nail care.</p>
+    </div>
+
+    <div class="card apply">
+      <div class="left">
+        <div class="label">How to apply</div>
+        <p>Email your CV to</p>
+        <div class="mail"><a href="mailto:careers@mendozer.com">careers@mendozer.com</a></div>
+        <p class="url">Or apply online on our careers page:<br><a href="https://spa.mendozer.com/careers">spa.mendozer.com/careers</a></p>
+        <p class="place">Windhoek West, Windhoek, Namibia</p>
+      </div>
+      <div class="qr">
+        <img src="file:///home/z/my-project/corner-spa/poster/qr-careers.png" alt="QR code to spa.mendozer.com/careers">
+        <span>Scan to apply</span>
+      </div>
+    </div>
+
+    <div class="card band">
+      <div class="partner">
+        <img src="file:///home/z/my-project/corner-spa/poster/oryx-lockup.png" alt="Oryx Institute">
+        <span class="site">oryxinstitute.org</span>
+      </div>
+      <div class="divider"></div>
+      <div class="partner">
+        <img src="file:///home/z/my-project/corner-spa/poster/mendozer-logo-full.png" alt="Mendozer Investments">
+        <span class="site">mendozer.com</span>
+      </div>
+      <div class="note">First project of Oryx Institute<br>A concept by Mendozer Investments</div>
+    </div>
+  </div>
+</body>
+</html>
