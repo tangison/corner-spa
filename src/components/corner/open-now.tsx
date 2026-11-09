@@ -85,7 +85,13 @@ export function HoursList({ compact = false }: { compact?: boolean }) {
         {HOURS.map((h) => (
           <div key={h.label} className="hours-row">
             <dt>{compact ? h.short : h.label}</dt>
-            <dd>{h.open && h.close ? `${h.open} to ${h.close}` : "Closed"}</dd>
+            <dd>
+              {h.open && h.close
+                ? `${h.open} to ${h.close}`
+                : h.note
+                  ? h.note
+                  : "Closed"}
+            </dd>
           </div>
         ))}
       </dl>

@@ -1,16 +1,17 @@
 {
   "_edit": "Single source of truth for every price on the site. Pages and the booking form read this file. After editing, refresh the downloadable PDF with: python3 scripts/make_price_pdf.py",
   "_currency": "All prices in Namibian dollars (N$).",
+  "_source": "Owner price list PDF (2026). This file mirrors it exactly: no rows added, none removed.",
   "groups": [
     {
       "id": "massage",
       "title": "Massage",
       "rows": [
-        { "name": "Full body massage", "detail": "40 min", "price": 450 },
-        { "name": "Full body massage with hot stone", "detail": "40 min", "price": 500 },
-        { "name": "Back, neck and shoulder massage", "detail": "25 min", "price": 300 },
+        { "name": "Full body massage", "detail": "60 min", "price": 450 },
+        { "name": "Full body massage with hot stone", "detail": "60 min", "price": 500 },
+        { "name": "Back, neck and shoulder massage", "detail": "45 min", "price": 300 },
         { "name": "Back, neck and shoulder massage with hot stone", "detail": "30 min", "price": 320 },
-        { "name": "Couples massage", "detail": "45 min", "price": 800 }
+        { "name": "Couples massage", "detail": "60 min", "price": 800 }
       ]
     },
     {
@@ -26,45 +27,18 @@
       "title": "Nails (plain gel)",
       "rows": [
         { "name": "Manicure with tips", "price": 200 },
-        { "name": "Manicure without tips", "price": 100 },
-        { "name": "Full pedicure with tips", "price": 250 },
-        { "name": "Full pedicure without tips", "price": 150 },
-        { "name": "Pedicure with tips", "price": 100 },
-        { "name": "Pedicure without tips", "price": 80 },
-        { "name": "Removal, toes", "price": 50 },
-        { "name": "Removal, manicure", "price": 80 }
+        { "name": "Manicure without tips", "price": 150 },
+        { "name": "Pedicure with tips", "price": 120 },
+        { "name": "Pedicure without tips", "price": 100 },
+        { "name": "Removal, toes", "price": 70 },
+        { "name": "Removal, manicure", "price": 100 }
       ]
     },
     {
       "id": "waxing",
       "title": "Waxing",
       "rows": [
-        { "name": "Combo", "detail": "Hollywood and underarm", "price": 400 },
-        { "name": "Upper lip", "price": 70 },
-        { "name": "Chin", "price": 70 },
-        { "name": "Half legs", "price": 250 },
-        { "name": "Full legs", "price": 400 },
         { "name": "Underarms", "price": 100 }
-      ]
-    },
-    {
-      "id": "lashes",
-      "title": "Lashes",
-      "rows": [
-        { "name": "Cluster lashes", "price": 150 },
-        { "name": "4D lashes", "price": 250 },
-        { "name": "Wispy cat eye", "price": 300 },
-        { "name": "Removal", "price": 70 },
-        { "name": "Removal of foreign lashes (done elsewhere)", "price": 100 },
-        { "name": "Refill", "price": 120 },
-        { "name": "Refill of foreign lashes", "price": 150 }
-      ]
-    },
-    {
-      "id": "combo",
-      "title": "Combo",
-      "rows": [
-        { "name": "Cluster lashes, pedi and mani, and foot spa", "price": 550 }
       ]
     }
   ],

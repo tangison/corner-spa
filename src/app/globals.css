@@ -802,3 +802,154 @@ a:focus-visible { outline: 2px solid var(--sand); outline-offset: 3px; }
    mark is shown on the warm off-white, the light mark on charcoal. */
 [data-theme="dark"] .logo-cell { background: #F5F3EE; }
 [data-theme="dark"] .logo-cell.dark { background: #2B2726; }
+
+/* ========================================================== additions ==
+   2026 owner image pack: full-bleed photography, venture logos, and the
+   Careers page. Same tokens, same type, same buttons — nothing new is
+   invented; the pack supplies the pictures, the brand supplies the rest. */
+
+/* Full-bleed hero: the pack frame sits edge to edge, washed back to the
+   cream ground so the charcoal type keeps AA contrast (>= 4.5:1) over it. */
+.hero-media { position: relative; overflow: hidden; }
+.hero-bg {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: cover; object-position: center 45%;
+}
+.hero-wash {
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(90deg, rgba(245, 243, 238, .88) 0%, rgba(245, 243, 238, .66) 40%, rgba(245, 243, 238, .16) 100%),
+    linear-gradient(0deg, rgba(245, 243, 238, .42) 0%, rgba(245, 243, 238, 0) 38%);
+}
+.hero-media .hero-inner { position: relative; z-index: 2; }
+.hero-media .hero { min-height: min(64vh, 560px); display: flex; flex-direction: column; justify-content: center; padding: 96px 0 72px; }
+@media (max-width: 700px) { .hero-media .hero { min-height: 58vh; padding: 72px 0 56px; } }
+
+/* Venture logos: the official lockups at one quiet size, ink on cream. */
+.venture-logo { display: inline-block; margin-bottom: 18px; }
+.venture-logo img { width: auto; display: block; max-width: 200px; max-height: 52px; }
+.venture-logo:focus-visible { outline: 2px solid var(--sand); outline-offset: 4px; }
+
+/* ---------------------------------------------------------------------
+   Careers (SPA-CAREERS). One vacancy, applying in under two minutes on a
+   phone. Frosted cream cards, gold spaced-cap labels, charcoal text.
+   --------------------------------------------------------------------- */
+.c-hero { position: relative; overflow: hidden; }
+.c-hero .hero-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 42%; }
+.c-hero .hero-wash {
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(90deg, rgba(245, 243, 238, .94) 0%, rgba(245, 243, 238, .84) 46%, rgba(245, 243, 238, .38) 100%),
+    linear-gradient(0deg, rgba(245, 243, 238, .6) 0%, rgba(245, 243, 238, 0) 42%);
+}
+.c-hero .c-hero-inner { position: relative; z-index: 2; padding: 88px 0 72px; }
+@media (max-width: 700px) { .c-hero .c-hero-inner { padding: 60px 0 52px; } }
+.c-label { font-size: 11px; letter-spacing: .3em; text-transform: uppercase; color: var(--sand); margin: 0 0 20px; }
+.c-role-line { font-size: clamp(18px, 2.6vw, 24px); color: var(--ink); margin: 18px 0 0; }
+.c-role-line .c-role-name { font-family: var(--font-lora), Georgia, serif; }
+.c-hero .lead { margin: 18px 0 30px; }
+
+/* Frosted cream card (about 80% opacity) with a soft shadow. */
+.c-card {
+  background: rgba(251, 250, 247, .8);
+  border: 1px solid rgba(220, 214, 204, .8);
+  border-radius: 16px;
+  box-shadow: 0 10px 34px rgba(43, 39, 38, .07);
+  padding: 26px 26px 24px;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+@media (max-width: 560px) { .c-card { padding: 20px 18px 18px; border-radius: 14px; } }
+.c-facts { display: grid; gap: 8px 28px; margin: 0; }
+@media (min-width: 640px) { .c-facts { grid-template-columns: auto 1fr; } }
+.c-facts dt { font-size: 11px; letter-spacing: .22em; text-transform: uppercase; color: var(--sand); padding: 10px 0 0; }
+.c-facts dd { margin: 0; padding: 8px 0; border-bottom: 1px solid var(--line); font-size: 15px; }
+.c-card h2, .c-card h3 { margin-top: 0; }
+
+.c-section { padding-top: 72px; }
+.c-two { display: grid; gap: 18px; }
+@media (min-width: 800px) { .c-two { grid-template-columns: 1fr 1fr; gap: 22px; } }
+.c-list { margin: 14px 0 0; padding-left: 18px; color: var(--ink-soft); font-size: 15px; line-height: 1.8; }
+.c-list li { margin: 0 0 8px; }
+.c-list li:last-child { margin-bottom: 0; }
+
+/* How to apply: three quiet routes. */
+.c-routes { display: grid; gap: 18px; }
+@media (min-width: 800px) { .c-routes { grid-template-columns: repeat(3, 1fr); gap: 22px; } }
+.c-route h3 { font-size: 16px; margin: 0 0 8px; }
+.c-route p { color: var(--ink-soft); font-size: 14px; margin: 0; }
+
+/* Application form. */
+.c-form { max-width: 560px; }
+.c-form .grp-label { display: block; font-size: 12px; letter-spacing: .04em; color: var(--sand); margin: 24px 0 6px; }
+.c-form .grp-label .req { color: var(--mute); letter-spacing: 0; text-transform: none; }
+.c-form input[type="text"], .c-form input[type="email"], .c-form input[type="tel"], .c-form select, .c-form textarea {
+  width: 100%; background: transparent; border: 0; border-bottom: 1px solid var(--line);
+  padding: 10px 2px; font: 300 16px/1.5 var(--font-montserrat), system-ui, sans-serif; color: var(--ink);
+  border-radius: 0; outline: none; transition: border-color var(--sc-d-fast) var(--sc-ease-out);
+}
+.c-form input:focus, .c-form select:focus, .c-form textarea:focus { border-bottom-color: var(--sand); }
+.c-form select { appearance: none; -webkit-appearance: none; background-image: linear-gradient(45deg, transparent 50%, var(--mute) 50%), linear-gradient(135deg, var(--mute) 50%, transparent 50%); background-position: calc(100% - 14px) 55%, calc(100% - 9px) 55%; background-size: 5px 5px; background-repeat: no-repeat; }
+.c-form textarea { min-height: 84px; resize: vertical; }
+.c-form ::placeholder { color: var(--mute); opacity: .75; }
+.c-error { display: block; color: #8a4b3a; font-size: 13px; margin-top: 6px; min-height: 0; }
+.c-error:empty { display: none; }
+.c-form input[aria-invalid="true"], .c-form select[aria-invalid="true"], .c-form textarea[aria-invalid="true"] { border-bottom-color: #8a4b3a; }
+
+/* Treatment chips. */
+.c-chips { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 4px; }
+.c-chip { position: relative; font: inherit; font-size: 13px; letter-spacing: .04em; background: transparent; color: var(--ink); border: 1px solid var(--line); border-radius: 999px; padding: 10px 16px; cursor: pointer; transition: border-color var(--sc-d-fast) var(--sc-ease-out), color var(--sc-d-fast) var(--sc-ease-out); }
+.c-chip:hover, .c-chip:focus-visible { border-color: var(--sand); color: var(--sand); }
+.c-chip[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: var(--bg); }
+.c-chip input { position: absolute; opacity: 0; inset: 0; cursor: pointer; }
+.c-chip:has(input:focus-visible) { outline: 2px solid var(--sand); outline-offset: 2px; }
+
+/* Consent + honeypot + counter. */
+.c-consent { display: flex; gap: 12px; align-items: flex-start; margin-top: 26px; font-size: 14px; color: var(--ink-soft); line-height: 1.6; }
+.c-consent input[type="checkbox"] { width: 20px; height: 20px; margin: 2px 0 0; accent-color: var(--sand); flex: none; cursor: pointer; }
+.c-counter { display: block; text-align: right; color: var(--mute); font-size: 12px; margin-top: 6px; }
+.c-hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+
+/* Submit buttons: side by side on desktop, stacked full-width on mobile. */
+.c-actions { display: flex; gap: 14px; margin-top: 30px; flex-wrap: wrap; }
+.c-actions .btn { min-height: 48px; cursor: pointer; background: transparent; font: inherit; font-size: 12px; letter-spacing: .16em; text-transform: uppercase; padding: 13px 26px; }
+.c-actions .btn[disabled] { opacity: .45; cursor: not-allowed; }
+.c-actions .btn[disabled]:hover { background: transparent; color: var(--ink); }
+.c-actions .btn-solid[disabled]:hover { background: transparent; color: var(--ink); }
+.c-actions .btn-solid:not([disabled]):hover, .c-actions .btn-solid:not([disabled]):focus-visible { background: var(--ink); color: var(--bg); }
+@media (max-width: 560px) { .c-actions { flex-direction: column; } .c-actions .btn { width: 100%; text-align: center; } }
+.c-fallback { margin-top: 14px; }
+.c-privacy { margin-top: 20px; color: var(--mute); font-size: 12px; line-height: 1.8; }
+
+/* Confirmation dialog before the redirect. */
+.c-modal-back { position: fixed; inset: 0; background: rgba(43, 39, 38, .45); z-index: 80; display: grid; place-items: center; padding: 20px; }
+.c-modal { background: var(--bg); border: 1px solid var(--line); border-radius: 16px; box-shadow: 0 24px 70px rgba(43, 39, 38, .3); max-width: 460px; width: 100%; padding: 28px 26px; }
+.c-modal h2 { font-size: 22px; margin: 0 0 10px; }
+.c-modal p { color: var(--ink-soft); font-size: 14px; line-height: 1.7; margin: 0 0 18px; }
+.c-modal .c-actions { margin-top: 0; }
+
+/* Visit us facts + maps buttons. */
+.c-visit { display: grid; gap: 18px; }
+@media (min-width: 800px) { .c-visit { grid-template-columns: 1.2fr 1fr 1fr; gap: 22px; } }
+.c-visit .fact { font-size: 15px; line-height: 1.7; margin: 6px 0 10px; }
+.c-visit .btn { min-height: 44px; padding: 11px 18px; font-size: 11px; }
+
+/* Partner band above the shared footer (careers page only). */
+.c-band { border-top: 1px solid var(--line); padding: 56px 0 48px; }
+.c-band-line { text-align: center; font-size: 13px; letter-spacing: .16em; text-transform: uppercase; color: var(--mute); margin: 0 0 34px; }
+.c-band-logos { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 30px; }
+.c-band-logo { display: grid; justify-items: center; gap: 10px; text-decoration: none; }
+.c-band-logo img { height: 44px; width: auto; max-width: 240px; }
+.c-band-logo span { font-size: 12px; letter-spacing: .06em; color: var(--mute); border-bottom: 1px solid transparent; }
+.c-band-logo:hover span, .c-band-logo:focus-visible span { color: var(--sand); border-bottom-color: var(--sand); }
+.c-band-logo:focus-visible { outline: 2px solid var(--sand); outline-offset: 4px; }
+.c-band-divider { width: 1px; align-self: stretch; min-height: 56px; background: var(--line); }
+@media (max-width: 560px) { .c-band-divider { display: none; } .c-band-logos { gap: 26px; } }
+
+/* Header nav (Careers link beside Book). */
+.header-nav { display: flex; align-items: center; gap: 18px; }
+.nav-link { font-size: 12px; letter-spacing: .16em; text-transform: uppercase; text-decoration: none; color: var(--ink); padding: 10px 0; position: relative; }
+.nav-link::after { content: ""; position: absolute; inset: -4px -10px; }
+.nav-link:hover, .nav-link:focus-visible { color: var(--sand); }
+.nav-link:focus-visible { outline: 2px solid var(--sand); outline-offset: 3px; }
+@media (max-width: 560px) { .nav-link { letter-spacing: .1em; } }

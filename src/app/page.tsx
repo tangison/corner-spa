@@ -45,9 +45,26 @@ export default function Home() {
       <SiteHeader />
 
       <main id="top">
-        {/* 1 - Recognition: the hero speaks first. Entrance stagger on load. */}
-        <section data-sc-act="flow" aria-label="Corner Spa">
-          <div className="w">
+        {/* 1 - Recognition: the hero speaks first, over a full-bleed frame from
+               the owner image pack, washed back to the cream ground. Entrance
+               stagger on load. */}
+        <section
+          data-sc-act="flow"
+          aria-label="Corner Spa"
+          className="hero-media"
+        >
+          <img
+            className="hero-bg"
+            src={MEDIA.photos.heroStonesLeafWide}
+            alt=""
+            aria-hidden="true"
+            width={1600}
+            height={900}
+            decoding="async"
+            fetchPriority="high"
+          />
+          <div className="hero-wash" aria-hidden="true" />
+          <div className="w hero-inner">
             <div className="hero" data-sc-in data-sc-stagger="90">
               <h1 className="serif">{SPA.tagline}</h1>
               <p className="lead">{SPA.lead}</p>
@@ -99,8 +116,8 @@ export default function Home() {
                   className="mono"
                   src={MEDIA.photos.hotStonesBack}
                   alt="Warm hands placing smooth dark stones along a back"
-                  width={1399}
-                  height={1750}
+                  width={1279}
+                  height={1600}
                   loading="lazy"
                   decoding="async"
                 />
@@ -174,8 +191,8 @@ export default function Home() {
               <img
                 src={MEDIA.photos.sandRipples}
                 alt=""
-                width={2400}
-                height={1350}
+                width={1600}
+                height={900}
                 loading="lazy"
                 decoding="async"
               />
@@ -188,18 +205,19 @@ export default function Home() {
           </div>
         </section>
 
-        {/* 5 - Range: close-ups, in sequence. One iris wipe, once. */}
+        {/* 5 - Range: treatments and still lifes from the owner pack, in
+               sequence. One iris wipe, once. */}
         <section data-sc-act="flow" aria-label="Gallery">
           <div className="w">
             <p className="eyebrow">Gallery</p>
             <div className="g" data-sc-stagger="70">
               <figure data-sc-in style={{ margin: 0 }}>
                 <img
-                  className="a"
-                  src={MEDIA.photos.blackPebbles}
-                  alt="Two smooth black stones, one resting on the other"
-                  width={1919}
-                  height={2400}
+                  className="a mono"
+                  src={MEDIA.photos.peopleBackHands}
+                  alt="A therapist's hands resting on an oiled back during a full body massage"
+                  width={1280}
+                  height={1600}
                   loading="lazy"
                   decoding="async"
                 />
@@ -209,31 +227,31 @@ export default function Home() {
                   className="a mono"
                   src={MEDIA.photos.facialCheek}
                   alt="Fingertips resting on a cheek during a quiet facial"
-                  width={1399}
-                  height={1750}
+                  width={1279}
+                  height={1600}
                   loading="lazy"
                   decoding="async"
+                  style={{ objectPosition: "center 30%" }}
                 />
               </figure>
-              <figure data-sc-in style={{ margin: 0 }}>
+              <figure data-sc-in style={{ margin: 0 }} className="s">
                 <img
                   className="s"
                   src={MEDIA.photos.wetStone}
-                  alt="A wet black stone with water droplets"
-                  width={2400}
-                  height={2400}
+                  alt="A smooth dark stone resting in shallow water"
+                  width={1600}
+                  height={1600}
                   loading="lazy"
                   decoding="async"
                 />
               </figure>
-              <figure data-sc-in style={{ margin: 0 }}>
+              <figure data-sc-in style={{ margin: 0 }} className="s">
                 <img
-                  className="s"
-                  style={{ objectPosition: "left center" }}
-                  src={MEDIA.photos.leafMacro}
-                  alt="A dried leaf with fine veins"
-                  width={2400}
-                  height={1350}
+                  className="s mono"
+                  src={MEDIA.photos.couplesDetail}
+                  alt="Two folded towels side by side, hands resting flat"
+                  width={1280}
+                  height={1600}
                   loading="lazy"
                   decoding="async"
                 />
@@ -244,8 +262,21 @@ export default function Home() {
                   data-sc-reveal-at="0.55 0.9"
                   className="c"
                   src={MEDIA.photos.towel}
-                  alt="Soft cotton towel weave"
+                  alt=""
+                  aria-hidden="true"
                   width={1600}
+                  height={1600}
+                  loading="lazy"
+                  decoding="async"
+                  style={{ objectPosition: "center 40%" }}
+                />
+              </figure>
+              <figure data-sc-in style={{ margin: 0 }}>
+                <img
+                  className="a mono"
+                  src={MEDIA.photos.peopleOilPour}
+                  alt="A warm stone held flat against a shoulder"
+                  width={1280}
                   height={1600}
                   loading="lazy"
                   decoding="async"
@@ -254,33 +285,32 @@ export default function Home() {
               <figure data-sc-in style={{ margin: 0 }}>
                 <img
                   className="a mono"
-                  src={MEDIA.photos.peopleBackHands}
-                  alt="A therapist's hands resting on an oiled back during a massage"
-                  width={1500}
-                  height={1000}
+                  src={MEDIA.photos.neckShoulder}
+                  alt="A back, neck and shoulder massage working through a towel"
+                  width={1280}
+                  height={1600}
                   loading="lazy"
                   decoding="async"
-                  style={{ objectPosition: "center 30%" }}
-                />
-              </figure>
-              <figure data-sc-in style={{ margin: 0 }}>
-                <img
-                  className="a mono"
-                  src={MEDIA.photos.peopleFacialCheek}
-                  alt="A woman with closed eyes smoothing cream onto her cheek"
-                  width={1200}
-                  height={800}
-                  loading="lazy"
-                  decoding="async"
-                  style={{ objectPosition: "center 35%" }}
                 />
               </figure>
               <figure data-sc-in style={{ margin: 0 }} className="s">
                 <img
-                  className="s mono"
-                  src={MEDIA.photos.peopleOilPour}
-                  alt="Warm oil poured from a small dark bowl into an open palm"
-                  width={1067}
+                  className="s"
+                  src={MEDIA.photos.blackPebbles}
+                  alt="Two smooth stones stacked one on the other"
+                  width={1279}
+                  height={1600}
+                  loading="lazy"
+                  decoding="async"
+                />
+              </figure>
+              <figure data-sc-in style={{ margin: 0 }} className="s">
+                <img
+                  className="s"
+                  src={MEDIA.photos.oilDrop}
+                  alt=""
+                  aria-hidden="true"
+                  width={1600}
                   height={1600}
                   loading="lazy"
                   decoding="async"
@@ -288,14 +318,35 @@ export default function Home() {
               </figure>
               <figure data-sc-in style={{ margin: 0 }} className="c">
                 <img
-                  className="c mono"
-                  src={MEDIA.photos.peopleStonesRest}
-                  alt="A woman resting beside smooth dark stones on a textured towel"
+                  className="c"
+                  src={MEDIA.photos.leafMacro}
+                  alt="The fine veins of a dried leaf"
                   width={1600}
-                  height={1064}
+                  height={900}
                   loading="lazy"
                   decoding="async"
-                  style={{ objectPosition: "center 40%" }}
+                />
+              </figure>
+              <figure data-sc-in style={{ margin: 0 }}>
+                <img
+                  className="a mono"
+                  src={MEDIA.photos.fullbodyStones}
+                  alt="Three heated stones resting along a back during a hot stone massage"
+                  width={1280}
+                  height={1600}
+                  loading="lazy"
+                  decoding="async"
+                />
+              </figure>
+              <figure data-sc-in style={{ margin: 0 }}>
+                <img
+                  className="a mono"
+                  src={MEDIA.photos.peopleStonesRest}
+                  alt="Two therapists working side by side during a couples massage"
+                  width={1280}
+                  height={1600}
+                  loading="lazy"
+                  decoding="async"
                 />
               </figure>
             </div>
@@ -313,6 +364,23 @@ export default function Home() {
             <div className="pt" data-sc-in data-sc-stagger="80">
               {PARTNERS.map((p) => (
                 <div key={p.name}>
+                  <a
+                    href={p.href}
+                    target="_blank"
+                    rel="noopener"
+                    className="venture-logo"
+                    data-track="partner_click"
+                    data-track-detail={JSON.stringify({ partner: p.name })}
+                  >
+                    <img
+                      src={p.name === "Oryx Institute" ? MEDIA.oryxLockup : MEDIA.mendozerLockup}
+                      alt={`${p.name} logo`}
+                      width={p.name === "Oryx Institute" ? 154 : 184}
+                      height={p.name === "Oryx Institute" ? 50 : 46}
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </a>
                   <h3 className="serif">{p.name}</h3>
                   <p>
                     {p.role}. {p.line}
