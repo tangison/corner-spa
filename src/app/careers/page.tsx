@@ -106,7 +106,7 @@ export default function CareersPage() {
             <p className="c-label">Careers</p>
             <h1 className="serif">We are hiring.</h1>
             <p className="c-role-line">
-              <span className="c-role-name">{CAREERS_ROLE}</span>
+              <span className="c-role-name">Multi-talent spa specialist</span>
             </p>
             <p className="lead">
               Join the team at Corner Spa in Windhoek West and help people
@@ -143,7 +143,9 @@ export default function CareersPage() {
                 <dt>Reports to</dt>
                 <dd>[CONFIRM]</dd>
                 <dt>Closing date</dt>
-                <dd>[CONFIRM or "Open until filled"]</dd>
+                {/* Owner has not set a closing date: the safe wording stays
+                    until they confirm one. No deadline is invented. */}
+                <dd>Open until filled</dd>
               </dl>
             </div>
           </div>
