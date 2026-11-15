@@ -953,3 +953,80 @@ a:focus-visible { outline: 2px solid var(--sand); outline-offset: 3px; }
 .nav-link:hover, .nav-link:focus-visible { color: var(--sand); }
 .nav-link:focus-visible { outline: 2px solid var(--sand); outline-offset: 3px; }
 @media (max-width: 560px) { .nav-link { letter-spacing: .1em; } }
+
+/* Three nav links + the Book button overflow a 360px phone on one line
+   with the brand: the nav drops to its own row and spreads out instead. */
+@media (max-width: 560px) {
+  header.site { flex-wrap: wrap; row-gap: 4px; }
+  .header-nav { width: 100%; justify-content: space-between; gap: 12px; }
+}
+
+/* ---------------------------------------------------------------------
+   Vouchers (SPA-VOUCHERS). Package cards, the builder with a live voucher
+   preview, and print rules that isolate the voucher card on the page.
+   Same tokens, type and buttons as the careers page.
+   --------------------------------------------------------------------- */
+.v-pkgs { display: grid; gap: 18px; }
+@media (min-width: 640px) { .v-pkgs { grid-template-columns: 1fr 1fr; } }
+@media (min-width: 1020px) { .v-pkgs { grid-template-columns: repeat(4, 1fr); } }
+.v-pkg { display: flex; flex-direction: column; }
+.v-pkg h3 { font-size: 20px; margin: 0; }
+.v-pkg-price { font-family: var(--font-lora), Georgia, serif; font-size: 24px; margin: 10px 0 0; }
+.v-pkg ul { margin: 12px 0 0; padding-left: 18px; color: var(--ink-soft); font-size: 14px; line-height: 1.7; }
+.v-pkg .v-pkg-use { margin-top: 16px; align-self: flex-start; }
+.v-pkg .v-pkg-use[disabled] { opacity: .45; cursor: not-allowed; }
+
+/* Builder + preview: two columns from 960px, preview pinned while typing. */
+.v-builder { display: grid; gap: 24px; }
+@media (min-width: 960px) {
+  .v-builder { grid-template-columns: 1.1fr 1fr; gap: 36px; align-items: start; }
+  .v-preview { position: sticky; top: 92px; }
+}
+.v-field-note { display: block; margin-top: 6px; color: var(--mute); font-size: 12px; }
+.v-delivery { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 4px; }
+.v-delivery .c-chip { display: inline-flex; align-items: center; }
+.v-delivery input { position: absolute; opacity: 0; inset: 0; cursor: pointer; }
+.v-delivery .c-chip:has(input:checked) { background: var(--ink); border-color: var(--ink); color: var(--bg); }
+.v-delivery .c-chip:has(input:focus-visible) { outline: 2px solid var(--sand); outline-offset: 2px; }
+.v-actions .btn[disabled] { opacity: .45; cursor: not-allowed; }
+
+/* The voucher card. Literal cream grounds and inks (not theme vars) on
+   purpose: a voucher looks the same on a dark phone and on paper. */
+.v-card {
+  --ink: #2B2726; --ink-soft: #6f6761; --sand: #7d6a4d; --mute: #6f6761; --line: #dcd6cc;
+  background: #FBFAF7;
+  border: 1px solid #A89076;
+  border-radius: 18px;
+  box-shadow: 0 14px 44px rgba(43, 39, 38, .10);
+  color: #2B2726;
+  padding: 30px 28px 26px;
+}
+@media (max-width: 560px) { .v-card { padding: 24px 20px 20px; border-radius: 14px; } }
+.v-card-top { display: flex; align-items: center; gap: 10px; }
+.v-card-top img { width: 30px; height: auto; display: block; }
+.v-card-brand { font-size: 12px; letter-spacing: .28em; text-transform: uppercase; }
+.v-card-kicker { font-size: 11px; letter-spacing: .3em; text-transform: uppercase; color: var(--sand); margin: 26px 0 8px; }
+.v-card-for { font-size: clamp(26px, 3.4vw, 34px); line-height: 1.15; margin: 0; }
+.v-card-line { margin: 14px 0 0; color: var(--ink-soft); font-size: 15px; line-height: 1.7; }
+.v-card-amount { font-size: 28px; color: var(--ink); }
+.v-card-pkg { font-size: 19px; margin: 14px 0 0; }
+.v-card-incl { margin: 8px 0 0; padding-left: 18px; color: var(--ink-soft); font-size: 14px; line-height: 1.7; }
+.v-card-msg { font-family: var(--font-lora), Georgia, serif; font-style: italic; color: var(--ink-soft); font-size: 15px; line-height: 1.7; margin: 14px 0 0; }
+.v-card-from { margin: 12px 0 0; font-size: 14px; color: var(--ink-soft); }
+.v-card-foot { border-top: 1px solid var(--line); margin-top: 22px; padding-top: 14px; display: grid; gap: 6px; font-size: 12px; line-height: 1.6; color: var(--mute); }
+.v-card-code { font-size: 14px; letter-spacing: .18em; color: var(--ink); text-transform: uppercase; }
+.v-note-under { margin-top: 14px; color: var(--mute); font-size: 12px; line-height: 1.7; max-width: 46ch; }
+
+/* Print: the body hides everything but the voucher clone. */
+.v-print-root { display: none; }
+@media print {
+  body.v-printing > *:not(.v-print-root) { display: none !important; }
+  body.v-printing .v-print-root { display: block !important; }
+  .v-print-root .v-card {
+    margin: 30mm auto;
+    max-width: 150mm;
+    box-shadow: none;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}

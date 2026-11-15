@@ -40,6 +40,9 @@ export function SiteHeader() {
             Corner Spa
           </a>
           <nav className="header-nav" aria-label="Main">
+            <a className="nav-link" href="/vouchers" onClick={() => track("nav_vouchers_click")}>
+              Vouchers
+            </a>
             <a className="nav-link" href="/careers" onClick={() => track("nav_careers_click")}>
               Careers
             </a>

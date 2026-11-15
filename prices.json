@@ -44,5 +44,40 @@
   ],
   "facials": {
     "note": "Ask us for prices"
+  },
+  "voucherPackages": {
+    "_edit": "Gift voucher packages. Pairings and prices below are proposed by Tangison from the 2026 menu; the owner can change any of them. Each 'worth' is the exact sum of the menu rows above (computed, never hand-typed): wind-down 300+250=550, slow afternoon 450+250+100=800, hot-stone treat 500+150=650, for two is the couples massage at its menu price. Validity and the open-amount floor are owner-adjustable defaults.",
+    "validityMonths": 12,
+    "openAmountMin": 200,
+    "items": [
+      {
+        "id": "wind-down",
+        "name": "The wind-down",
+        "price": 500,
+        "worth": 550,
+        "includes": ["Back, neck and shoulder massage (45 min)", "Normal foot spa"]
+      },
+      {
+        "id": "slow-afternoon",
+        "name": "The slow afternoon",
+        "price": 720,
+        "worth": 800,
+        "includes": ["Full body massage (60 min)", "Normal foot spa", "Pedicure without tips"]
+      },
+      {
+        "id": "hot-stone-treat",
+        "name": "The hot-stone treat",
+        "price": 580,
+        "worth": 650,
+        "includes": ["Full body massage with hot stone (60 min)", "Manicure without tips"]
+      },
+      {
+        "id": "for-two",
+        "name": "For two",
+        "price": 800,
+        "worth": 800,
+        "includes": ["Couples massage (60 min)", "Two tables side by side in one quiet room"]
+      }
+    ]
   }
 }

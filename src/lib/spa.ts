@@ -89,6 +89,21 @@ export const PARTNERS = [
   },
 ] as const;
 
+// The two organisations behind the spa, for the about page and the feedback
+// form. info@mendozer.com is the one general mailbox (legal and privacy per
+// llms.txt); careers@mendozer.com stays separate, under Careers above.
+export const ORGANISATIONS = {
+  oryx: {
+    name: "Oryx Institute",
+    site: { href: "https://oryxinstitute.org" },
+  },
+  mendozer: {
+    name: "Mendozer Investments",
+    email: "info@mendozer.com",
+    site: { href: "https://mendozer.com" },
+  },
+} as const;
+
 // Social profiles. Hidden everywhere until a real URL is filled in here.
 export const SOCIAL_LINKS = {
   instagram: "", // e.g. https://instagram.com/cornerspa
@@ -112,6 +127,13 @@ export const CAREERS_WA_PREFILL =
 export const MAPS_GOOGLE =
   "https://maps.app.goo.gl/xBqbe1HhGoi5gU1aA?g_st=ic";
 export const MAPS_APPLE = "https://maps.apple/p/wAiQBI4WE28Lu~";
+
+// ---------------- Gift vouchers ----------------
+export const VOUCHERS_URL = `${SITE_URL}/vouchers`;
+export const VOUCHER_WA_PREFILL =
+  "Hi Corner Spa! I have a question about gift vouchers.";
+export const VOUCHER_WA_ORDER_PREFILL =
+  "Hi Corner Spa, I would like to order a gift voucher.";
 
 export const WA_PREFILL = {
   general:
@@ -139,9 +161,23 @@ export type PriceRow = {
 
 export type PriceGroup = { id: string; title: string; rows: PriceRow[] };
 
+// A named gift-voucher package (mirrors the voucherPackages block in prices.json).
+export type VoucherPackage = {
+  id: string;
+  name: string;
+  price: number;
+  worth: number;
+  includes: string[];
+};
+
 type PricesFile = {
   groups: PriceGroup[];
   facials: { note: string };
+  voucherPackages?: {
+    validityMonths: number;
+    openAmountMin: number;
+    items: VoucherPackage[];
+  };
 };
 
 const pricesFile = pricesJson as PricesFile;
@@ -149,6 +185,14 @@ const pricesFile = pricesJson as PricesFile;
 export const PRICE_GROUPS: PriceGroup[] = pricesFile.groups;
 
 export const FACIALS_NOTE = pricesFile.facials.note; // "Ask us for prices"
+
+// Gift voucher packages and defaults, from prices.json (owner-adjustable
+// there). Declared after pricesFile so nothing reads it before it exists.
+export const VOUCHER_VALIDITY_MONTHS =
+  pricesFile.voucherPackages?.validityMonths ?? 12;
+export const VOUCHER_OPEN_MIN = pricesFile.voucherPackages?.openAmountMin ?? 200;
+export const VOUCHER_PACKAGES: VoucherPackage[] =
+  pricesFile.voucherPackages?.items ?? [];
 
 export const ALL_PRICE_ROWS: PriceRow[] = PRICE_GROUPS.flatMap((g) => g.rows);
 

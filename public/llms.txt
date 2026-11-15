@@ -19,6 +19,8 @@ Operators: first project of Oryx Institute (oryxinstitute.org), a concept by Men
 - [Home](https://spa.mendozer.com/): price list, gallery, booking form.
 - [Book](https://spa.mendozer.com/book): booking form, hours, address, directions, before-your-visit note, FAQ.
 - [Contact](https://spa.mendozer.com/contact): address, hours, directions, WhatsApp and legal email.
+- [Careers](https://spa.mendozer.com/careers): the Multi-Talent Spa Specialist vacancy and the two-minute application form.
+- [Gift vouchers](https://spa.mendozer.com/vouchers): voucher packages, open-amount vouchers and the WhatsApp order flow.
 - [Privacy policy](https://spa.mendozer.com/privacy-policy): plain-language privacy statement.
 - [Booking terms](https://spa.mendozer.com/terms): arrival, cancellation, payment and health disclosure terms.
 - [Brand](https://spa.mendozer.com/brand): colours, fonts and logo rules.
