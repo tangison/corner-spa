@@ -1,7 +1,7 @@
-"""Visual samples for the vouchers page: desktop + mobile screenshots and a
-real print-rendered sample voucher PDF (filled with the girlfriend scenario
-from the brief). Screenshots go to download/ for review; the PDF doubles as
-proof the print isolation works (only the voucher card, on A4)."""
+"""Visual samples for the vouchers page: desktop + mobile screenshots for
+review in download/. The gift card is built by hand at the spa, so nothing
+voucher-like is rendered client-side anymore; the earlier sample PDF is kept
+in download/ purely as a design reference for that hand-built card."""
 from playwright.sync_api import sync_playwright
 
 DL = "/home/z/my-project/download"
@@ -23,25 +23,6 @@ with sync_playwright() as p:
     pg.evaluate("window.scrollTo(0, 0)")
     pg.wait_for_timeout(600)
     pg.screenshot(path=f"{DL}/vouchers-page-desktop.jpg", full_page=True, type="jpeg", quality=55)
-
-    # Fill the girlfriend scenario on the same page, then print to PDF.
-    pg.fill("#v-to", "Lena")
-    pg.fill("#v-from", "Targis")
-    pg.fill("#v-msg", "Happy birthday, my love. This one is for you. 🎂")
-    pg.select_option("#v-pkg", "hot-stone-treat")
-    pg.wait_for_timeout(200)
-    # Same DOM move printVoucher() makes, without calling window.print().
-    pg.evaluate("""() => {
-      const node = document.querySelector('.v-card');
-      const root = document.createElement('div');
-      root.className = 'v-print-root';
-      root.appendChild(node.cloneNode(true));
-      document.body.appendChild(root);
-      document.body.classList.add('v-printing');
-    }""")
-    pg.emulate_media(media="print")
-    pg.pdf(path=f"{DL}/corner-spa-voucher-sample.pdf", format="A4", print_background=True)
-    pg.emulate_media(media="screen")
     ctx.close()
 
     # Mobile full page (same scroll-through)
@@ -62,6 +43,6 @@ with sync_playwright() as p:
     b.close()
 
 import os
-for f in ["vouchers-page-desktop.jpg", "vouchers-page-mobile.jpg", "corner-spa-voucher-sample.pdf"]:
+for f in ["vouchers-page-desktop.jpg", "vouchers-page-mobile.jpg"]:
     pth = os.path.join(DL, f)
     print(f, os.path.getsize(pth))

@@ -1,17 +1,10 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
-import {
-  MEDIA,
-  track,
-  VOUCHER_OPEN_MIN,
-  VOUCHER_PACKAGES,
-  VOUCHER_VALIDITY_MONTHS,
-} from "@/lib/spa";
+import { track, VOUCHER_OPEN_MIN, VOUCHER_PACKAGES } from "@/lib/spa";
 import {
   buildVoucherMessage,
   isOpenAmount,
-  validateCore,
   validateFull,
   voucherCode,
   voucherWaLink,
@@ -20,10 +13,10 @@ import {
 } from "@/lib/voucher";
 
 /* SPA-VOUCHERS builder. No backend: the order is written into a WhatsApp
-   message and handed to the visitor ready to send; the printed voucher is
-   rendered from the same live preview the buyer just personalised. Values
-   survive a cancelled redirect, and a copy-my-order fallback covers phones
-   where wa.me opens nothing. */
+   message and handed to the visitor ready to send; the spa builds the gift
+   card by hand once payment is confirmed, under the code the order carries.
+   Values survive a cancelled redirect, and a copy-my-order fallback covers
+   phones where wa.me opens nothing. */
 
 const STORE_KEY = "corner-spa-voucher-order";
 
@@ -46,10 +39,9 @@ export function VoucherForm() {
   const [modal, setModal] = useState(false);
   const [copied, setCopied] = useState(false);
   const continueRef = useRef<HTMLButtonElement>(null);
-  const cardRef = useRef<HTMLDivElement>(null);
 
-  // One stable code per order session: it is shown on the preview, printed
-  // on the voucher and carried in the WhatsApp message.
+  // One stable code per order session: it travels in the WhatsApp message
+  // and goes on the gift card when the spa builds it by hand.
   useEffect(() => {
     try {
       const raw = sessionStorage.getItem(STORE_KEY);
@@ -82,11 +74,8 @@ export function VoucherForm() {
   }, [f, code]);
 
   const errsFull = useMemo(() => validateFull(f), [f]);
-  const errsCore = useMemo(() => validateCore(f), [f]);
-  const coreValid = Object.keys(errsCore).length === 0;
   const fullValid = Object.keys(errsFull).length === 0;
   const open = isOpenAmount(f.packageId);
-  const pkg = VOUCHER_PACKAGES.find((p) => p.id === f.packageId);
 
   const set = <K extends keyof VoucherFields>(k: K, v: VoucherFields[K]) => {
     setF((p) => ({ ...p, [k]: v }));
@@ -137,25 +126,6 @@ export function VoucherForm() {
     window.open(href, "_blank", "noopener");
   };
 
-  const printVoucher = () => {
-    const node = cardRef.current;
-    if (!node || typeof window.print !== "function") return;
-    const root = document.createElement("div");
-    root.className = "v-print-root";
-    root.appendChild(node.cloneNode(true));
-    document.body.appendChild(root);
-    document.body.classList.add("v-printing");
-    track("voucher_print");
-    const cleanup = () => {
-      document.body.classList.remove("v-printing");
-      root.remove();
-      window.removeEventListener("afterprint", cleanup);
-    };
-    window.addEventListener("afterprint", cleanup);
-    window.print();
-    setTimeout(cleanup, 2000); // browsers that never fire afterprint
-  };
-
   const copyOrder = async () => {
     const text = `${buildVoucherMessage(f, code)}\n(Or build the same voucher at https://spa.mendozer.com/vouchers)`;
     try {
@@ -184,8 +154,6 @@ export function VoucherForm() {
 
   const err = (k: keyof ReturnType<typeof validateFull>) =>
     touched ? errsFull[k] : undefined;
-
-  const amountShown = f.amount || String(VOUCHER_OPEN_MIN);
 
   return (
     <>
@@ -233,7 +201,7 @@ export function VoucherForm() {
         </div>
       </section>
 
-      {/* Builder + live voucher preview. */}
+      {/* Builder: the order form. The gift card is built by hand at the spa. */}
       <section id="build" data-sc-act="flow" aria-label="Build a voucher" className="c-section">
         <div className="w">
           <p className="eyebrow">Build the voucher</p>
@@ -287,12 +255,12 @@ export function VoucherForm() {
                     value={f.amount}
                     onChange={(e) => set("amount", e.target.value)}
                     onBlur={blur}
-                    aria-invalid={touched && !!errsCore.amount}
-                    aria-describedby={touched && errsCore.amount ? "v-amount-err" : undefined}
+                    aria-invalid={touched && !!errsFull.amount}
+                    aria-describedby={touched && errsFull.amount ? "v-amount-err" : undefined}
                     required
                   />
                   <span className="c-error" id="v-amount-err" role="alert">
-                    {touched ? errsCore.amount : ""}
+                    {touched ? errsFull.amount : ""}
                   </span>
                 </>
               )}
@@ -308,12 +276,12 @@ export function VoucherForm() {
                 value={f.to}
                 onChange={(e) => set("to", e.target.value)}
                 onBlur={blur}
-                aria-invalid={touched && !!errsCore.to}
-                aria-describedby={touched && errsCore.to ? "v-to-err" : undefined}
+                aria-invalid={touched && !!errsFull.to}
+                aria-describedby={touched && errsFull.to ? "v-to-err" : undefined}
                 required
               />
               <span className="c-error" id="v-to-err" role="alert">
-                {touched ? errsCore.to : ""}
+                {touched ? errsFull.to : ""}
               </span>
 
               <label className="grp-label" htmlFor="v-from">
@@ -327,12 +295,12 @@ export function VoucherForm() {
                 value={f.from}
                 onChange={(e) => set("from", e.target.value)}
                 onBlur={blur}
-                aria-invalid={touched && !!errsCore.from}
-                aria-describedby={touched && errsCore.from ? "v-from-err" : undefined}
+                aria-invalid={touched && !!errsFull.from}
+                aria-describedby={touched && errsFull.from ? "v-from-err" : undefined}
                 required
               />
               <span className="c-error" id="v-from-err" role="alert">
-                {touched ? errsCore.from : ""}
+                {touched ? errsFull.from : ""}
               </span>
 
               <label className="grp-label" htmlFor="v-msg">
@@ -433,22 +401,13 @@ export function VoucherForm() {
                 >
                   Order on WhatsApp
                 </button>
-                <button
-                  type="button"
-                  className="btn"
-                  disabled={!coreValid}
-                  onClick={printVoucher}
-                  data-track="voucher_print_click"
-                >
-                  Print the voucher
-                </button>
               </div>
 
               <p className="c-fallback">
                 <button
                   type="button"
                   className="a2"
-                  disabled={!coreValid}
+                  disabled={!fullValid}
                   onClick={copyOrder}
                   data-track="voucher_copy_click"
                 >
@@ -461,48 +420,6 @@ export function VoucherForm() {
                 stored on this site.
               </p>
             </form>
-
-            <div className="v-preview">
-              <div className="v-card" ref={cardRef} aria-label="Voucher preview">
-                <div className="v-card-top">
-                  <img src={MEDIA.markDark} alt="Corner Spa" width={30} height={27} loading="lazy" decoding="async" />
-                  <span className="v-card-brand">Corner Spa</span>
-                </div>
-                <p className="v-card-kicker">Gift voucher</p>
-                <p className="v-card-for serif">{f.to.trim() || "Their name"}</p>
-                {open ? (
-                  <p className="v-card-line">
-                    toward any treatments on our menu —{" "}
-                    <span className="v-card-amount serif">N$ {amountShown}</span>
-                  </p>
-                ) : (
-                  <>
-                    <p className="v-card-pkg serif">{pkg?.name}</p>
-                    <ul className="v-card-incl">
-                      {pkg?.includes.map((line) => (
-                        <li key={line}>{line}</li>
-                      ))}
-                    </ul>
-                  </>
-                )}
-                {f.message.trim() && (
-                  <p className="v-card-msg">&ldquo;{f.message.trim()}&rdquo;</p>
-                )}
-                <p className="v-card-from">With love, {f.from.trim() || "your name"}</p>
-                <div className="v-card-foot">
-                  <span className="v-card-code">{code || "CS-G26-····"}</span>
-                  <span>
-                    Valid for {VOUCHER_VALIDITY_MONTHS} months from purchase ·
-                    Booking in advance on WhatsApp
-                  </span>
-                  <span>34 Schonlein Street, Windhoek West · spa.mendozer.com</span>
-                </div>
-              </div>
-              <p className="v-note-under">
-                The printed voucher follows this design. Print it to hand over
-                once payment is confirmed, or send your order and we prepare it.
-              </p>
-            </div>
           </div>
         </div>
       </section>
@@ -519,8 +436,8 @@ export function VoucherForm() {
             <h2 id="v-modal-title" className="serif">Almost done.</h2>
             <p>
               Your voucher order is written out and ready to send. Corner Spa
-              replies with the payment details and issues the voucher under
-              code {code}.
+              replies with the payment details and builds your gift card by
+              hand under code {code}.
             </p>
             <div className="c-actions">
               <button type="button" className="btn btn-solid" ref={continueRef} onClick={proceed}>

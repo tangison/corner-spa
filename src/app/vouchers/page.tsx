@@ -143,7 +143,7 @@ export default function VouchersPage() {
               <div className="c-card c-route" data-sc-in>
                 <h3 className="serif">Make it theirs</h3>
                 <p>
-                  Add their name, your name and a line to them. The voucher
+                  Add their name, your name and a line to them. Your order
                   carries it all, with its own code.
                 </p>
               </div>
@@ -151,14 +151,16 @@ export default function VouchersPage() {
                 <h3 className="serif">Send on WhatsApp</h3>
                 <p>
                   Your order opens in WhatsApp ready to send. We reply with
-                  payment details, then issue the voucher under its code.
+                  payment details, then make the gift card by hand under its
+                  code.
                 </p>
               </div>
             </div>
           </div>
         </section>
 
-        {/* 3 - Packages + builder + live preview (client island). */}
+        {/* 3 - Packages + builder (client island). The card is built by
+            hand at the spa; the page only takes the order. */}
         <VoucherForm />
 
         {/* 4 - Good to know: the terms the voucher carries. */}

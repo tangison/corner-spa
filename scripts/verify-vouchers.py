@@ -1,13 +1,15 @@
 """Vouchers page probe — the browser-side half of the voucher tests (the
 logic half lives in scripts/test-voucher.ts). Covers: nav/footer wiring,
-hero copy, package cards and the pick→builder hand-off, both validity tiers
-on the buttons, the amount rules on the open voucher, the confirm-modal →
-wa.me redirect (captured popup, decoded text), emoji, the 200-char card
+hero copy, package cards and the pick→builder hand-off, the single validity
+tier on the buttons, the amount rules on the open voucher, the confirm-modal
+→ wa.me redirect (captured popup, decoded text), emoji, the 200-char card
 line, the copy fallback, honeypot, JSON-LD, canonical/OG, the sitemap entry,
-and a 360px no-overflow smoke check. Runs against the production build on
-http://localhost:3100.
+and a 360px no-overflow smoke check. Also asserts the manual-card flow: no
+print button and no client-side voucher preview. Runs against the production
+build on http://localhost:3100.
 """
 import json
+import re
 import sys
 from urllib.parse import unquote, urlparse, parse_qs
 from playwright.sync_api import sync_playwright
@@ -61,19 +63,19 @@ with sync_playwright() as p:
     sel = page.locator("#v-pkg")
     check("package select defaults to wind-down", sel.input_value() == "wind-down")
     order_btn = page.locator("button", has_text="Order on WhatsApp")
-    print_btn = page.locator("button", has_text="Print the voucher")
     copy_btn = page.locator("button", has_text="Copy my order")
     check("Order disabled before filling", order_btn.is_disabled())
-    check("Print disabled before filling", print_btn.is_disabled())
+    check("Copy disabled before filling", copy_btn.is_disabled())
+    check("no print button (card is built manually at the spa)",
+          page.locator("button", has_text="Print the voucher").count() == 0)
+    check("no client-side voucher preview", page.locator(".v-card").count() == 0)
     check("amount field hidden for named package", page.locator("#v-amount").count() == 0)
     check("honeypot present", page.locator(".c-hp input").count() == 1)
-    code_txt = page.locator(".v-card-code").inner_text().strip()
-    check("voucher code shown on preview", code_txt.startswith("CS-G"), code_txt)
 
-    # ---------- core validity unlocks Print, full still locked ----------
+    # ---------- one validity tier: nothing unlocks until the order is whole ----------
     page.fill("#v-to", "Lena")
     page.fill("#v-from", "Targis")
-    check("Print unlocked by core fields only", print_btn.is_enabled())
+    check("Copy still locked without phone", copy_btn.is_disabled())
     check("Order still locked without phone", order_btn.is_disabled())
 
     # ---------- phone validation via Order ----------
@@ -93,8 +95,6 @@ with sync_playwright() as p:
     page.fill("#v-amount", "480")
     page.locator("#v-amount").blur()
     check("valid amount clears error", page.locator("#v-amount-err").inner_text().strip() == "")
-    preview_amount = page.locator(".v-card-amount").inner_text().strip()
-    check("preview shows the open amount", "480" in preview_amount, preview_amount)
     sel.select_option("wind-down")
     page.wait_for_timeout(100)
 
@@ -105,7 +105,9 @@ with sync_playwright() as p:
     order_btn.click()
     check("confirm modal opens", page.locator(".c-modal").count() == 1)
     modal_txt = page.locator(".c-modal").inner_text()
-    check("modal carries the code", code_txt in modal_txt, modal_txt[:120])
+    m_code = re.search(r"code\s+(CS-G\d{2}-[A-Z2-9]{4})", modal_txt)
+    check("modal carries the code", m_code is not None, modal_txt[:120])
+    code_txt = m_code.group(1) if m_code else ""
     page.click('.c-modal >> text=Cancel')
     check("cancel closes modal, stays on page", page.url.rstrip("/") == BASE + "/vouchers" and page.locator(".c-modal").count() == 0)
     check("inputs survive cancel", page.locator("#v-to").input_value() == "Lena" and page.locator("#v-msg").input_value().endswith("🎂💛"))
