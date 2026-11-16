@@ -588,12 +588,12 @@ h2 { font-size: clamp(28px, 4.5vw, 44px); line-height: 1.15; margin-bottom: 40px
 .bk-done { margin-top: 22px; color: var(--mute); font-size: 13px; letter-spacing: .06em; }
 .bk-privacy { margin-top: 18px; color: var(--mute); font-size: 12px; }
 
-/* Footer: 13px floor (never smaller), sentence case at quiet tracking.
-   Caps-and-wide-tracking on a 130-character link run read as shouting and
-   broke the 24px touch-target floor; sentence case at 13px fixes both. */
-footer.site { padding: 48px 0 64px; border-top: 1px solid var(--line); font-size: 13px; letter-spacing: .04em; color: var(--mute); text-align: center; line-height: 2.1; }
-footer.site a { text-decoration: none; border-bottom: 1px solid var(--line); }
-footer.site a:hover { color: var(--sand); }
+/* Footer: 13px floor (never smaller), sentence case at quiet tracking,
+   laid out left-aligned like the Collins footer: quiet primary row, two
+   fact columns, secondary paperwork row, brand band with the lockups. */
+footer.site { padding: 56px 0 48px; border-top: 1px solid var(--line); font-size: 13px; letter-spacing: .04em; color: var(--mute); line-height: 2.1; }
+footer.site a { text-decoration: none; border-bottom: 1px solid var(--line); transition: color var(--sc-d-fast) var(--sc-ease-out); }
+footer.site a:hover { color: var(--ink); }
 
 a:focus-visible { outline: 2px solid var(--sand); outline-offset: 3px; }
 
@@ -652,10 +652,23 @@ a:focus-visible { outline: 2px solid var(--sand); outline-offset: 3px; }
 @media (prefers-color-scheme: dark) { .mono { filter: grayscale(1) sepia(.18) contrast(.96) brightness(.82); } }
 @media (prefers-reduced-motion: reduce) { .mono { transition: none; } }
 
-/* footer navigation */
-.foot-nav { display: flex; flex-wrap: wrap; gap: 6px 22px; justify-content: center; margin: 18px 0 6px; }
-.foot-nav a { text-decoration: none; border-bottom: 1px solid var(--line); }
-.foot-copy { margin-top: 10px; letter-spacing: .04em; }
+/* footer navigation: primary row, fact columns, secondary row, brand band */
+.foot-primary { display: flex; flex-wrap: wrap; gap: 8px 28px; margin: 0 0 44px; }
+.foot-primary a { font-size: 15px; letter-spacing: .02em; color: var(--ink); border-bottom: 0; text-decoration: none; position: relative; }
+.foot-primary a::before { content: ""; position: absolute; left: 0; right: 0; bottom: -2px; height: 1px; background: var(--ink); transform: scaleX(0); transform-origin: left; transition: transform var(--sc-d-fast) var(--sc-ease-out); }
+.foot-primary a:hover::before, .foot-primary a:focus-visible::before { transform: scaleX(1); }
+.foot-cols { display: grid; grid-template-columns: 1fr; gap: 26px 72px; margin: 0 0 38px; max-width: 760px; }
+@media (min-width: 800px) { .foot-cols { grid-template-columns: 1fr 1fr; } }
+.foot-col p { margin: 0; }
+.foot-label { font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: var(--mute); margin: 0 0 8px; }
+.foot-secondary { display: flex; flex-wrap: wrap; gap: 6px 22px; margin: 0 0 30px; padding-top: 24px; border-top: 1px solid var(--line); }
+.foot-brand-band { padding-top: 22px; border-top: 1px solid var(--line); }
+.foot-legal { margin: 12px 0 0; }
+.copy-mail { display: inline; background: none; border: 0; padding: 0; font: inherit; letter-spacing: inherit; color: var(--ink); border-bottom: 1px solid var(--line); cursor: pointer; }
+.copy-mail:hover, .copy-mail:focus-visible { color: var(--ink); border-bottom-color: var(--sand); }
+.copy-ok { margin-left: 10px; color: var(--sand); opacity: 0; transition: opacity var(--sc-d-fast) var(--sc-ease-out); }
+.copy-ok.show { opacity: 1; }
+@media (max-width: 560px) { .foot-primary { gap: 8px 18px; } .foot-primary a { font-size: 14px; } }
 
 /* chat widget */
 .float-chat-panel { position: fixed; right: max(16px, env(safe-area-inset-right)); bottom: calc(max(16px, env(safe-area-inset-bottom)) + 120px); width: min(340px, calc(100vw - 32px)); max-height: min(480px, 70svh); overflow: auto; background: var(--bg); border: 1px solid var(--line); border-radius: 14px; padding: 18px; z-index: 55; box-shadow: 0 12px 40px rgba(43, 39, 38, .18); }
@@ -948,17 +961,18 @@ a:focus-visible { outline: 2px solid var(--sand); outline-offset: 3px; }
 
 /* Header nav (Careers link beside Book). */
 .header-nav { display: flex; align-items: center; gap: 18px; }
-.nav-link { font-size: 12px; letter-spacing: .16em; text-transform: uppercase; text-decoration: none; color: var(--ink); padding: 10px 0; position: relative; }
-.nav-link::after { content: ""; position: absolute; inset: -4px -10px; }
-.nav-link:hover, .nav-link:focus-visible { color: var(--sand); }
+.nav-link { font-size: 13px; letter-spacing: .02em; text-decoration: none; color: var(--mute); padding: 10px 0; position: relative; transition: color var(--sc-d-fast) var(--sc-ease-out); }
+.nav-link::after { content: ""; position: absolute; left: 0; right: 0; bottom: 4px; height: 1px; background: var(--ink); transform: scaleX(0); transform-origin: left; transition: transform var(--sc-d-fast) var(--sc-ease-out); }
+.nav-link:hover, .nav-link:focus-visible { color: var(--ink); }
+.nav-link:hover::after, .nav-link:focus-visible::after { transform: scaleX(1); }
 .nav-link:focus-visible { outline: 2px solid var(--sand); outline-offset: 3px; }
-@media (max-width: 560px) { .nav-link { letter-spacing: .1em; } }
+@media (max-width: 560px) { .nav-link { letter-spacing: .02em; } }
 
 /* Three nav links + the Book button overflow a 360px phone on one line
    with the brand: the nav drops to its own row and spreads out instead. */
 @media (max-width: 560px) {
   header.site { flex-wrap: wrap; row-gap: 4px; }
-  .header-nav { width: 100%; justify-content: space-between; gap: 12px; }
+  .header-nav { width: 100%; justify-content: flex-start; flex-wrap: wrap; gap: 10px 16px; }
 }
 
 /* ---------------------------------------------------------------------
@@ -1027,6 +1041,6 @@ a:focus-visible { outline: 2px solid var(--sand); outline-offset: 3px; }
 /* Partner lockups in the footer credit: the chip is the literal light
    ground (#F5F3EE), so it disappears on light pages and keeps the dark
    lockups readable inside dark pages (e.g. /contact). */
-.foot-partners { display: flex; justify-content: center; align-items: center; gap: 14px; margin: 14px 0 4px; }
+.foot-partners { display: flex; justify-content: flex-start; align-items: center; gap: 14px; margin: 0 0 4px; }
 .foot-partners a { border-bottom: 0; background: #F5F3EE; border-radius: 10px; padding: 8px 12px; }
 .foot-partners img { display: block; height: auto; }
