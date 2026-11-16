@@ -1,17 +1,20 @@
 """Vouchers page probe — the browser-side half of the voucher tests (the
-logic half lives in scripts/test-voucher.ts). Covers: nav/footer wiring,
-hero copy, package cards and the pick→builder hand-off, the single validity
-tier on the buttons, the amount rules on the open voucher, the confirm-modal
-→ wa.me redirect (captured popup, decoded text), emoji, the 200-char card
-line, the copy fallback, honeypot, JSON-LD, canonical/OG, the sitemap entry,
-and a 360px no-overflow smoke check. Also asserts the manual-card flow: no
-print button and no client-side voucher preview. Runs against the production
-build on http://localhost:3100.
+logic half lives in scripts/test-voucher.ts). The order form is a plain
+contact form: name, WhatsApp number, which voucher, who it is for, an
+optional line, an optional surprise number; Buy opens WhatsApp with the
+whole order and the spa builds the card by hand. Covers: nav/footer wiring,
+hero copy, package cards and the pick→form hand-off, the single validity
+tier on the buttons, the amount rules on the open voucher, the Buy → wa.me
+redirect (captured popup, decoded text) with both delivery modes, emoji,
+the 200-char card line, the copy fallback, honeypot, the manual-card
+assertions (no modal, no client-side voucher), JSON-LD, canonical/OG, the
+sitemap entry, and a 360px no-overflow smoke check. Runs against the
+production build on http://localhost:3100.
 """
 import json
 import re
 import sys
-from urllib.parse import unquote, urlparse, parse_qs
+from urllib.parse import urlparse, parse_qs
 from playwright.sync_api import sync_playwright
 
 BASE = "http://localhost:3100"
@@ -34,12 +37,25 @@ with sync_playwright() as p:
     check("header nav has Vouchers", page.locator("header.site nav >> text=Vouchers").count() >= 1)
     check("footer nav has Gift vouchers", page.locator("footer.site nav >> text=Gift vouchers").count() >= 1)
     check("h1 is exactly 'The gift of quiet.'", page.locator("h1").inner_text().strip() == "The gift of quiet.")
+    check("hero CTA says Order a voucher", page.locator("a", has_text="Order a voucher").count() >= 1)
     check("canonical is /vouchers",
           page.locator("link[rel=canonical]").get_attribute("href") == "https://spa.mendozer.com/vouchers")
     check("og:url is /vouchers",
-          page.locator("meta[property='og:url']").get_attribute("href" if False else "content") == "https://spa.mendozer.com/vouchers")
+          page.locator("meta[property='og:url']").get_attribute("content") == "https://spa.mendozer.com/vouchers")
     check("no leftover placeholders in visible text",
           all(tok not in page.locator("main").inner_text() for tok in ["[CONFIRM", "TODO", "XXX", "undefined", "NaN"]))
+    check("no confirm modal, no client-side voucher, no print button",
+          page.locator(".c-modal, .v-card, button:has-text('Print')").count() == 0)
+
+    # ---------- Black Friday pop-up (site-wide, shows 16-30 Nov 2026) ----------
+    page.wait_for_selector(".cs-bf.is-open", timeout=8000)
+    check("Black Friday popup opens after 1.5s", page.locator(".cs-bf.is-open").count() == 1)
+    check("popup poster present", page.locator(".cs-bf__img").count() == 1)
+    bf_href = page.locator(".cs-bf__book").get_attribute("href")
+    check("popup books the spa WhatsApp", bf_href == "https://wa.me/264816234788", str(bf_href))
+    page.click(".cs-bf__close")
+    check("popup closes with X", page.locator(".cs-bf").count() == 0)
+    check("popup flag set for this visit", page.evaluate("sessionStorage.getItem('cs-bf-seen')") == "1")
 
     ld = page.locator("script[type='application/ld+json']").first.inner_text()
     ldj = json.loads(ld)
@@ -59,31 +75,26 @@ with sync_playwright() as p:
                        "Your own amount", "from N$ 200"]:
         check(f"package card shows {name_price}", name_price in card_txt)
 
-    # ---------- builder defaults ----------
+    # ---------- contact-form defaults ----------
     sel = page.locator("#v-pkg")
-    check("package select defaults to wind-down", sel.input_value() == "wind-down")
-    order_btn = page.locator("button", has_text="Order on WhatsApp")
+    check("voucher select defaults to wind-down", sel.input_value() == "wind-down")
+    buy_btn = page.locator("button", has_text="Buy on WhatsApp")
     copy_btn = page.locator("button", has_text="Copy my order")
-    check("Order disabled before filling", order_btn.is_disabled())
+    check("Buy disabled before filling", buy_btn.is_disabled())
     check("Copy disabled before filling", copy_btn.is_disabled())
-    check("no print button (card is built manually at the spa)",
-          page.locator("button", has_text="Print the voucher").count() == 0)
-    check("no client-side voucher preview", page.locator(".v-card").count() == 0)
     check("amount field hidden for named package", page.locator("#v-amount").count() == 0)
     check("honeypot present", page.locator(".c-hp input").count() == 1)
+    check("surprise number field marked optional", "optional" in page.locator("label[for=v-rphone]").inner_text())
 
     # ---------- one validity tier: nothing unlocks until the order is whole ----------
     page.fill("#v-to", "Lena")
+    check("Buy still locked with only their name", buy_btn.is_disabled())
     page.fill("#v-from", "Targis")
-    check("Copy still locked without phone", copy_btn.is_disabled())
-    check("Order still locked without phone", order_btn.is_disabled())
-
-    # ---------- phone validation via Order ----------
+    check("Buy still locked without WhatsApp number", buy_btn.is_disabled())
     page.fill("#v-bphone", "123")
-    check("Order locked with bad phone", order_btn.is_disabled())
-    # enable via full fill: correct phone
+    check("Buy locked with bad phone", buy_btn.is_disabled())
     page.fill("#v-bphone", "081 234 5678")
-    check("Order unlocked with valid phone", order_btn.is_enabled())
+    check("Buy unlocked without surprise number (delivery = me)", buy_btn.is_enabled())
 
     # ---------- open amount rules ----------
     sel.select_option("open")
@@ -98,44 +109,45 @@ with sync_playwright() as p:
     sel.select_option("wind-down")
     page.wait_for_timeout(100)
 
-    # ---------- cancel keeps everything ----------
+    # ---------- surprise path locks until their number is valid ----------
     page.fill("#v-msg", "Happy birthday, my love. 🎂💛")
-    page.click('label.c-chip:has-text("Surprise")')
+    page.fill("#v-rphone", "123")
+    check("Buy locked with bad surprise number", buy_btn.is_disabled())
     page.fill("#v-rphone", "+264 81 987 6543")
-    order_btn.click()
-    check("confirm modal opens", page.locator(".c-modal").count() == 1)
-    modal_txt = page.locator(".c-modal").inner_text()
-    m_code = re.search(r"code\s+(CS-G\d{2}-[A-Z2-9]{4})", modal_txt)
-    check("modal carries the code", m_code is not None, modal_txt[:120])
-    code_txt = m_code.group(1) if m_code else ""
-    page.click('.c-modal >> text=Cancel')
-    check("cancel closes modal, stays on page", page.url.rstrip("/") == BASE + "/vouchers" and page.locator(".c-modal").count() == 0)
-    check("inputs survive cancel", page.locator("#v-to").input_value() == "Lena" and page.locator("#v-msg").input_value().endswith("🎂💛"))
+    check("Buy unlocked with valid surprise number", buy_btn.is_enabled())
 
-    # ---------- valid submit → wa.me popup ----------
-    order_btn.click()
+    # ---------- Buy → wa.me popup, surprise delivery ----------
     with page.expect_popup() as pop:
-        page.click('.c-modal >> text=Continue')
+        buy_btn.click()
     popup_url = pop.value.url
-    # Desktop browsers: wa.me hands off to api.whatsapp.com/send with the
-    # same query; both are the same deep link. Phones open WhatsApp directly.
     ok_target = popup_url.startswith("https://wa.me/264816234788") or (
         popup_url.startswith("https://api.whatsapp.com/send/") and "phone=264816234788" in popup_url)
     check("popup is WhatsApp to the spa number", ok_target, popup_url[:60])
-    # The pre-redirect wa.me request carries OUR encoding exactly; assert the
-    # message on that one (WhatsApp's own redirect may re-encode the query).
     check("wa.me request fired with our encoding",
           any(u.startswith("https://wa.me/264816234788?text=") for u in WA_REQUESTS))
     wa_url = next(u for u in WA_REQUESTS if u.startswith("https://wa.me/264816234788?text="))
-    q = parse_qs(urlparse(wa_url).query)
-    text = q["text"][0]  # parse_qs already decodes; no second unquote
+    text = parse_qs(urlparse(wa_url).query)["text"][0]
     check("order opener line", text.startswith("Hi Corner Spa, I would like to order a gift voucher."))
     check("voucher line present", "Voucher: The wind-down — N$ 500" in text)
-    check("code line present", f"Code: {code_txt}" in text)
+    m_code = re.search(r"Code: (CS-G\d{2}-[A-Z2-9]{4})", text)
+    check("code line present and well-formed", m_code is not None)
+    code_txt = m_code.group(1) if m_code else ""
     check("surprise delivery line", "+264 81 987 6543" in text and "surprise" in text.lower())
     check("emoji survive encoding", "🎂" in text and "💛" in text and "Happy birthday, my love." in text)
     check("payment ask line", "Please send me the payment details." in text)
     check("message under 1500 chars", len(text) <= 1500, str(len(text)))
+
+    # ---------- second order, delivery = me (surprise number cleared) ----------
+    WA_REQUESTS.clear()
+    page.fill("#v-rphone", "")
+    check("Buy stays unlocked after clearing surprise number", buy_btn.is_enabled())
+    with page.expect_popup() as pop2:
+        buy_btn.click()
+    wa_url2 = next(u for u in WA_REQUESTS if u.startswith("https://wa.me/264816234788?text="))
+    text2 = parse_qs(urlparse(wa_url2).query)["text"][0]
+    check("me delivery line when surprise number empty",
+          "send the voucher to me" in text2 and "surprise" not in text2.lower())
+    check("same code across both orders", f"Code: {code_txt}" in text2)
 
     # ---------- copy fallback ----------
     copy_btn.click()

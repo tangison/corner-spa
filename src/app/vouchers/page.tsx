@@ -119,7 +119,7 @@ export default function VouchersPage() {
             </p>
             <div className="lead-cta">
               <a className="btn" href="#build" data-track="vouchers_build_scroll">
-                Build a voucher
+                Order a voucher
               </a>
               <a className="btn" href="#packages" data-track="vouchers_packages_scroll">
                 See the packages

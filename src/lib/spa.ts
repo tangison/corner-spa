@@ -110,10 +110,6 @@ export const SOCIAL_LINKS = {
   facebook: "", // e.g. https://facebook.com/cornerspa
 };
 
-// Google Business Profile link. The reviews section stays hidden until
-// this is a real URL. There is no profile yet, so the site shows nothing.
-export const REVIEWS_URL = "";
-
 export function waLink(prefill: string): string {
   return `https://wa.me/${SPA.whatsappNumber}?text=${encodeURIComponent(prefill)}`;
 }
@@ -127,6 +123,11 @@ export const CAREERS_WA_PREFILL =
 export const MAPS_GOOGLE =
   "https://maps.app.goo.gl/xBqbe1HhGoi5gU1aA?g_st=ic";
 export const MAPS_APPLE = "https://maps.apple/p/wAiQBI4WE28Lu~";
+
+// Google Business Profile link — the spa's Maps listing, where the guest
+// reviews live. The reviews carousel on the homepage links here ("make the
+// link work"); swap in a dedicated reviews URL if one is ever created.
+export const REVIEWS_URL = MAPS_GOOGLE;
 
 // ---------------- Gift vouchers ----------------
 export const VOUCHERS_URL = `${SITE_URL}/vouchers`;

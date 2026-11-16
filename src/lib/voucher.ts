@@ -69,8 +69,9 @@ function phoneOk(raw: string): boolean {
   return /^\+264\d{7,9}$/.test(digits) || /^0\d{8,9}$/.test(digits);
 }
 
-/* Core validity: everything the voucher itself needs. Printing and copying
-   wait for this; a buyer can print a gift before settling payment details. */
+/* Core validity: everything the gift card itself needs — who it is for,
+   who it is from, and the amount on an open voucher. The WhatsApp order
+   waits for full validity below. */
 export function validateCore(f: VoucherFields): VoucherErrors {
   const e: VoucherErrors = {};
   if (isOpenAmount(f.packageId)) {

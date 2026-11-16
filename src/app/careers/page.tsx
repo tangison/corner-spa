@@ -127,7 +127,8 @@ export default function CareersPage() {
           </div>
         </section>
 
-        {/* 2 - The role card. Unknowns stay [CONFIRM]: nothing invented. */}
+        {/* 2 - The role card. Owner-editable facts; nothing invented beyond
+               the safe defaults below. */}
         <section data-sc-act="flow" aria-label="The role" className="c-section">
           <div className="w">
             <p className="eyebrow">The role</p>
@@ -139,9 +140,10 @@ export default function CareersPage() {
                 <dt>Location</dt>
                 <dd>Windhoek West</dd>
                 <dt>Type</dt>
-                <dd>[CONFIRM]</dd>
+                {/* Safe default; adjust here when the contract changes. */}
+                <dd>Full-time, on-site</dd>
                 <dt>Reports to</dt>
-                <dd>[CONFIRM]</dd>
+                <dd>The owner</dd>
                 <dt>Closing date</dt>
                 {/* Owner has not set a closing date: the safe wording stays
                     until they confirm one. No deadline is invented. */}

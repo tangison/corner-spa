@@ -5,7 +5,7 @@ import { ScrollEngine } from "@/components/corner/engine";
 import { EmbedGuard } from "@/components/corner/embed-guard";
 import { TrackClicks } from "@/components/corner/track-clicks";
 import { BookForm } from "@/components/corner/book-form";
-import { ReviewsSection } from "@/components/corner/reviews";
+import { ReviewsCarousel } from "@/components/corner/reviews-carousel";
 import { HoursList } from "@/components/corner/open-now";
 import {
   ADDRESS, ADDRESS_LINE, DIRECTIONS_URL, FACIALS_NOTE, MEDIA, OPENING_HOURS_SPEC,
@@ -406,8 +406,9 @@ export default function Home() {
           </div>
         </section>
 
-        {/* 6b - Reviews: hidden until a Google Business Profile link exists. */}
-        <ReviewsSection />
+        {/* 6b - Reviews: the seven guest reviews from the owner's website
+               pack, in a carousel, with the Google profile link. */}
+        <ReviewsCarousel />
 
         {/* 7 - Commitment: WhatsApp, hours, directions, and a form that
                opens WhatsApp directly. The phone number is never printed. */}

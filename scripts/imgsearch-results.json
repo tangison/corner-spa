@@ -1,0 +1,44 @@
+{
+  "success": true,
+  "query": "warm beige spa still life, folded towels and smooth basalt stones, soft natural light, calm neutral tones, minimal",
+  "count": 5,
+  "ranked": true,
+  "captioned_count": 5,
+  "results": [
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/64a89167ffd4.jpg",
+      "caption": "Folded beige and white towels stacked on wooden planks in sunlight, topped with a natural sea sponge. Suitable for background image.",
+      "source": "Scooms",
+      "original_width": "1840px",
+      "original_height": "1840px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/a327c9fef219.jpg",
+      "caption": "Framed bathroom wall art print with text: \"BATHROOM,\" \"RELAX • SOAK • UNWIND,\" and \"Soothing the body & calming the mind.\" Suitable for background image.",
+      "source": "Etsy",
+      "original_width": "1122px",
+      "original_height": "1402px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/39b7b860b797.jpg",
+      "caption": "A bright bathroom scene with neatly stacked beige and gray towels, a white clawfoot bathtub, orchid vase, and wicker basket; no watermarks, high clarity, suitable for background image",
+      "source": "Lili Alessandra",
+      "original_width": "2000px",
+      "original_height": "800px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/9f217bf734fa.jpg",
+      "caption": "A woman in black scrubs handles white towels beside an industrial Speed Queen washer in a spa laundry room, with shelves of linens and products. Text includes \"Speed Queen,\" \"Spa Linen Care Professional,\" \"CLEAN LINENS, CALM SPACES, HAPPIER GUESTS,\" and \"AI-generated image\" watermark; not suitable for background image.",
+      "source": "Pure Spa Direct",
+      "original_width": "1254px",
+      "original_height": "1254px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/ada471757388.jpg",
+      "caption": "Elegant beige travertine bathroom with arched brass-framed mirror, brass faucet, stone floating vanity, draped linen towel. suitable for background image",
+      "source": "SplitShire",
+      "original_width": "832px",
+      "original_height": "1248px"
+    }
+  ]
+}

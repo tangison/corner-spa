@@ -1,10 +1,11 @@
-import { ADDRESS_LINE, DIRECTIONS_URL, HOURS_LINE, SOCIAL_LINKS } from "@/lib/spa";
+import { ADDRESS_LINE, DIRECTIONS_URL, HOURS_LINE, MEDIA, PARTNERS, SOCIAL_LINKS } from "@/lib/spa";
 import { OpenNowBadge } from "@/components/corner/open-now";
 
 // Shared footer on every page: facts, hours, the street address with
 // directions, both web addresses, quiet partner links, and the routes that
-// make the site one connected whole. Social links appear here only once
-// real URLs exist in SOCIAL_LINKS (src/lib/spa.ts).
+// make the site one connected whole. The partner lockups (Oryx Institute
+// and Mendozer Investments) sit right above their credit line. Social
+// links appear here only once real URLs exist in SOCIAL_LINKS.
 export function SiteFooter() {
   const socials = Object.entries(SOCIAL_LINKS).filter(([, href]) => !!href);
   return (
@@ -36,6 +37,29 @@ export function SiteFooter() {
         <br />
         <span className="foot-badge">
           <OpenNowBadge />
+        </span>
+        <br />
+        <span className="foot-partners">
+          {PARTNERS.map((p) => (
+            <a
+              key={p.name}
+              href={p.href}
+              target="_blank"
+              rel="noopener"
+              aria-label={p.name}
+              data-track="partner_click"
+              data-track-detail={JSON.stringify({ partner: p.name, from: "footer" })}
+            >
+              <img
+                src={p.name === "Oryx Institute" ? MEDIA.oryxLockup : MEDIA.mendozerLockup}
+                alt={`${p.name} logo`}
+                width={p.name === "Oryx Institute" ? 116 : 132}
+                height={p.name === "Oryx Institute" ? 40 : 52}
+                loading="lazy"
+                decoding="async"
+              />
+            </a>
+          ))}
         </span>
         <br />
         First project of Oryx Institute. A concept by Mendozer Investments.

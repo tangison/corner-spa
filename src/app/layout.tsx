@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Lora, Montserrat } from "next/font/google";
 import { SwRegister } from "@/components/corner/sw-register";
+import { BlackFridayPopup } from "@/components/corner/black-friday";
 import "./globals.css";
 
 const lora = Lora({
@@ -90,6 +91,7 @@ export default function RootLayout({
           </style>
         </noscript>
         {children}
+        <BlackFridayPopup />
         <SwRegister />
       </body>
     </html>
