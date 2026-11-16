@@ -58,3 +58,4 @@ tool-results/
 agent-ctx/
 .creds
 upload/pack-extract/
+agent/
