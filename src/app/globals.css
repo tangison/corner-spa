@@ -959,20 +959,43 @@ a:focus-visible { outline: 2px solid var(--sand); outline-offset: 3px; }
 .c-band-divider { width: 1px; align-self: stretch; min-height: 56px; background: var(--line); }
 @media (max-width: 560px) { .c-band-divider { display: none; } .c-band-logos { gap: 26px; } }
 
-/* Header nav (Careers link beside Book). */
+/* Header nav: four quiet links plus Book on desktop; a hamburger drawer
+   below 700px, where the same five targets stop fitting beside the brand. */
 .header-nav { display: flex; align-items: center; gap: 18px; }
 .nav-link { font-size: 13px; letter-spacing: .02em; text-decoration: none; color: var(--mute); padding: 10px 0; position: relative; transition: color var(--sc-d-fast) var(--sc-ease-out); }
 .nav-link::after { content: ""; position: absolute; left: 0; right: 0; bottom: 4px; height: 1px; background: var(--ink); transform: scaleX(0); transform-origin: left; transition: transform var(--sc-d-fast) var(--sc-ease-out); }
 .nav-link:hover, .nav-link:focus-visible { color: var(--ink); }
 .nav-link:hover::after, .nav-link:focus-visible::after { transform: scaleX(1); }
 .nav-link:focus-visible { outline: 2px solid var(--sand); outline-offset: 3px; }
-@media (max-width: 560px) { .nav-link { letter-spacing: .02em; } }
 
-/* Three nav links + the Book button overflow a 360px phone on one line
-   with the brand: the nav drops to its own row and spreads out instead. */
-@media (max-width: 560px) {
-  header.site { flex-wrap: wrap; row-gap: 4px; }
-  .header-nav { width: 100%; justify-content: flex-start; flex-wrap: wrap; gap: 10px 16px; }
+/* Hamburger: a 44px target with two authored strokes that cross into an X.
+   The drawer is a disclosure pinned under the sticky header, not a modal:
+   the page keeps scrolling, Esc and outside taps close it, and visibility
+   (not display) animates it while keeping closed links out of tab order. */
+.menu-btn { display: none; }
+.mobile-nav { position: absolute; top: 100%; left: 0; right: 0; z-index: 45; background: var(--bg); border-bottom: 1px solid var(--line); box-shadow: 0 16px 32px rgba(43, 39, 38, .10); transform: translateY(-10px); opacity: 0; visibility: hidden; transition: transform .3s cubic-bezier(.16, 1, .3, 1), opacity var(--sc-d-base) var(--sc-ease-out), visibility 0s linear .3s; }
+.mobile-nav.open { transform: none; opacity: 1; visibility: visible; transition-delay: 0s; }
+.mobile-nav .w { padding-top: 6px; padding-bottom: 12px; }
+.mnav-link { display: flex; align-items: center; min-height: 46px; font-size: 15px; letter-spacing: .02em; color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--line); }
+.mnav-link:hover, .mnav-link:focus-visible { color: var(--sand); }
+.mnav-link:focus-visible { outline: 2px solid var(--sand); outline-offset: 3px; }
+.mnav-book { margin: 14px 0 4px; }
+.mnav-book .btn { min-height: 44px; }
+@media (max-width: 700px) {
+  .header-nav { display: none; }
+  .menu-btn { display: grid; place-items: center; width: 44px; height: 44px; margin-right: -8px; background: none; border: 0; padding: 0; cursor: pointer; }
+  .menu-btn:focus-visible { outline: 2px solid var(--sand); outline-offset: 3px; }
+  .menu-btn:active { transform: scale(.97); }
+  .menu-icon { position: relative; display: block; width: 20px; height: 12px; }
+  .menu-icon span { position: absolute; left: 0; right: 0; height: 1.5px; background: var(--ink); transition: transform var(--sc-d-base) var(--sc-ease-out); }
+  .menu-icon span:first-child { top: 2px; }
+  .menu-icon span:last-child { bottom: 2px; }
+  .menu-btn[aria-expanded="true"] .menu-icon span:first-child { transform: translateY(3.25px) rotate(45deg); }
+  .menu-btn[aria-expanded="true"] .menu-icon span:last-child { transform: translateY(-3.25px) rotate(-45deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .mobile-nav { transition: none; }
+  .menu-icon span { transition: none; }
 }
 
 /* ---------------------------------------------------------------------
