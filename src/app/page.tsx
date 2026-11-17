@@ -107,7 +107,7 @@ export default function Home() {
         </section>
 
         {/* 3 - Substance: honest prices, sticky photo, every row books on WhatsApp. */}
-        <section id="treatments" data-sc-act="flow" aria-label="Price list">
+        <section id="treatments" data-sc-act="flow" aria-label="Price list" className="band-sand">
           <div className="w">
             <h2 className="serif">Price list</h2>
             <div className="menu">
@@ -357,7 +357,7 @@ export default function Home() {
         <section
           data-sc-act="flow"
           aria-label="The venture"
-          style={{ borderTop: "1px solid var(--line)" }}
+          className="band-ink"
         >
           <div className="w">
             <p className="eyebrow">The venture</p>
@@ -415,9 +415,8 @@ export default function Home() {
         <section
           id="book"
           data-sc-act="flow"
-          className="book"
+          className="book band-sand"
           aria-label="Book now"
-          style={{ borderTop: "1px solid var(--line)" }}
         >
           <div className="w">
             <p className="eyebrow">Book now</p>

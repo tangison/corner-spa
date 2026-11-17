@@ -522,7 +522,33 @@ h1 { font-size: clamp(42px, 8vw, 84px); line-height: 1.05; letter-spacing: -.015
 
 .full { display: block; width: 100%; height: clamp(240px, 52vw, 620px); object-fit: cover; }
 section { padding: 96px 0; }
-@media (max-width: 700px) { section { padding: 64px 0; } }
+
+/* Colour regions: the sand wash owns the price list and the booking band;
+   the venture band is the one deliberately dark region, pinned in both
+   themes (explicit dark design, not a mechanical dark-mode inversion).
+   Text on the dark band derives from its own foreground, never gray. */
+.band-sand { background: color-mix(in srgb, var(--sand) 12%, var(--bg)); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.band-ink { background: #211d1b; color: #f4f1ea; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.band-ink .eyebrow { color: var(--sand); }
+.band-ink h3 { color: #f4f1ea; }
+.band-ink .pt p { color: color-mix(in srgb, #f4f1ea 78%, transparent); }
+.band-ink .pt .a2 { color: var(--sand); border-bottom-color: rgba(244, 241, 234, .28); }
+.band-ink .pt .a2:hover { border-bottom-color: var(--sand); }
+.band-ink .venture-logo { background: #f5f3ee; border-radius: 12px; padding: 14px 18px; }
+.band-ink .note { color: color-mix(in srgb, #f4f1ea 62%, transparent); }
+.band-ink .note a { color: #f4f1ea; }
+.band-ink .note a:hover { color: var(--sand); }
+
+@media (max-width: 700px) {
+  section { padding: 64px 0; }
+  .eyebrow { margin-bottom: 20px; }
+  h2 { margin-bottom: 28px; }
+  .lead { margin: 22px 0 28px; }
+  .book-facts { gap: 26px; margin-top: 30px; }
+  .bk-form { margin-top: 38px; padding-top: 26px; }
+  footer.site { padding: 44px 0 38px; }
+  .foot-primary { margin-bottom: 32px; }
+}
 .eyebrow { font-size: 11px; letter-spacing: .3em; text-transform: uppercase; color: var(--sand); margin-bottom: 28px; }
 h2 { font-size: clamp(28px, 4.5vw, 44px); line-height: 1.15; margin-bottom: 40px; text-wrap: balance; }
 
@@ -585,6 +611,10 @@ h2 { font-size: clamp(28px, 4.5vw, 44px); line-height: 1.15; margin-bottom: 40px
 .bk-form textarea { min-height: 72px; resize: vertical; }
 .bk-form ::placeholder { color: var(--mute); opacity: .75; }
 .bk-actions { margin-top: 34px; display: flex; gap: 14px; flex-wrap: wrap; }
+/* The booking form's one action is the primary: solid warm ink, lifting a
+   touch warmer on hover — the accent stays with the wash, not the button. */
+.bk-actions .btn { background: var(--ink); border-color: var(--ink); color: var(--bg); }
+.bk-actions .btn:hover, .bk-actions .btn:focus-visible { background: color-mix(in srgb, var(--ink) 86%, var(--sand)); border-color: color-mix(in srgb, var(--ink) 86%, var(--sand)); color: var(--bg); }
 .bk-done { margin-top: 22px; color: var(--mute); font-size: 13px; letter-spacing: .06em; }
 .bk-privacy { margin-top: 18px; color: var(--mute); font-size: 12px; }
 
@@ -1025,8 +1055,8 @@ a:focus-visible { outline: 2px solid var(--sand); outline-offset: 3px; }
    on purpose; everything else uses the theme tokens.
    --------------------------------------------------------------------- */
 .rev-band { position: relative; overflow: hidden; border-top: 1px solid var(--line); }
-.rev-band-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: .13; }
-.rev-band-wash { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(245,243,238,.55), rgba(245,243,238,.88) 55%, rgba(245,243,238,.55)); }
+.rev-band-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: .16; }
+.rev-band-wash { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(245,243,238,.5), rgba(245,243,238,.82) 55%, rgba(245,243,238,.5)); }
 .rev-band-inner { position: relative; padding-top: 64px; padding-bottom: 64px; }
 .rev-band h2 { font-size: clamp(28px, 4vw, 40px); margin: 6px 0 26px; }
 .cs-reviews { position: relative; max-width: 1100px; margin: 0 auto; padding: 0 56px; }
