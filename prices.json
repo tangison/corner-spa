@@ -1,7 +1,7 @@
 {
   "_edit": "Single source of truth for every price on the site. Pages and the booking form read this file. After editing, refresh the downloadable PDF with: python3 scripts/make_price_pdf.py",
   "_currency": "All prices in Namibian dollars (N$).",
-  "_source": "Owner price list PDF (2026). This file mirrors it exactly: no rows added, none removed.",
+  "_source": "Owner price list PDF (2026), updated with the flyer's lashes group. This file mirrors it exactly: no rows added, none removed.",
   "groups": [
     {
       "id": "massage",
@@ -39,6 +39,19 @@
       "title": "Waxing",
       "rows": [
         { "name": "Underarms", "price": 100 }
+      ]
+    },
+    {
+      "id": "lashes",
+      "title": "Lashes",
+      "rows": [
+        { "name": "Classic lashes", "price": 300 },
+        { "name": "Cluster lashes", "price": 250 },
+        { "name": "W and YY", "price": 350 },
+        { "name": "Cat eye", "price": 250 },
+        { "name": "Refill", "price": 100 },
+        { "name": "Removal, my work", "price": 100 },
+        { "name": "Removal, foreign work", "price": 120 }
       ]
     }
   ],

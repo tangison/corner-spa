@@ -27,7 +27,10 @@ LINE = HexColor("#DCD6CC")
 
 W, H = A4
 M = 52  # margin
-BOTTOM = 120  # lowest y a row may occupy
+# Lowest y a row may occupy. 224 instead of bare text clearance: the last
+# page also carries the flyer's scan-to-book QR row (~90pt) above the footer.
+BOTTOM = 224
+QR_DIR = os.path.join(ROOT, "public", "media", "qr")
 
 
 def tracked_text(c, text, x, y, size=8.5, color=SAND, tracking=2.2, font="Helvetica"):
@@ -79,7 +82,7 @@ def footer(c, page_no):
     c.setFillColor(GREY)
     c.drawCentredString(W / 2, y, "34 Schonlein Street, Windhoek West, Windhoek, Namibia, on the Flexona Organizational Services plot")
     y -= 12
-    c.drawCentredString(W / 2, y, "Mon to Fri 09:00 to 18:00  ·  Sat 09:00 to 16:00  ·  Sun closed  (Windhoek time)")
+    c.drawCentredString(W / 2, y, "Mon to Fri 09:00 to 18:00  ·  Sat 09:00 to 16:00  ·  Sun by appointment only  (Windhoek time)")
     y -= 12
     c.setFillColor(SAND)
     c.drawCentredString(W / 2, y, "Book on WhatsApp via spa.mendozer.com  ·  oryxinstitute.org/corner-spa  ·  mendozer.com")
@@ -140,6 +143,28 @@ def draw_items(c, items):
     return i
 
 
+def qr_block(c):
+    """The flyer's scan row: three cream-free QRs (brand charcoal on the
+    paper's own cream) with their domains, centred above the footer."""
+    centered_tracked(c, "Scan to visit or book online", 214)
+    targets = [
+        ("spa-mendozer.png", "spa.mendozer.com"),
+        ("oryx-corner-spa.png", "oryxinstitute.org/corner-spa"),
+        ("mendozer.png", "mendozer.com"),
+    ]
+    size, gap = 68, 40
+    total = len(targets) * size + (len(targets) - 1) * gap
+    x = (W - total) / 2
+    for fname, label in targets:
+        c.drawImage(
+            os.path.join(QR_DIR, fname), x, 118, width=size, height=size, mask="auto"
+        )
+        c.setFont("Helvetica", 8)
+        c.setFillColor(GREY)
+        c.drawCentredString(x + size / 2, 106, label)
+        x += size + gap
+
+
 def main():
     with open(PRICES, encoding="utf-8") as f:
         data = json.load(f)
@@ -156,6 +181,7 @@ def main():
     c = canvas.Canvas(OUT, pagesize=A4)
     c.setTitle("Corner Spa price list")
     c.setAuthor("Corner Spa, Windhoek")
+    c.setCreator("Corner Spa site build")
     c.setSubject("Massage, foot spa, nails, waxing, lashes. Prices in Namibian dollars.")
 
     header(c)
@@ -170,6 +196,7 @@ def main():
         page_no += 1
         header(c)
         remaining = remaining[drawn:]
+    qr_block(c)
     footer(c, page_no)
     c.save()
     size = os.path.getsize(OUT)

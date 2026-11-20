@@ -14,7 +14,7 @@ export const SPA = {
   phone: "+264 81 623 4788", // JSON-LD / structured data only, never visible text
   whatsappNumber: "264816234788",
   quote: "Slow, quiet and unhurried.",
-  currencyNote: "All prices in Namibian dollars.",
+  currencyNote: "All prices in Namibian dollars (N$).",
 } as const;
 
 // Owner to supply later. Referenced nowhere on the page until filled in.
@@ -290,7 +290,7 @@ export const CHAT_ANSWERS: Record<string, ChatAnswer> = {
   },
   prices: {
     chips: ["Book", "Facials", "Where are you?"],
-    text: "Massages from N$ 300. Full body massage, 60 min, is N$ 450, and with hot stone N$ 500. Couples massage, 60 min, is N$ 800. Foot spa from N$ 250, nails from N$ 100, waxing (underarms) N$ 100. Facials: ask us for prices. The full list is under Price list on the home page.",
+    text: "Massages from N$ 300. Full body massage, 60 min, is N$ 450, and with hot stone N$ 500. Couples massage, 60 min, is N$ 800. Foot spa from N$ 250, nails from N$ 100, lashes from N$ 100, waxing (underarms) N$ 100. Facials: ask us for prices. The full list is under Price list on the home page.",
   },
   facials: {
     chips: ["Book", "Prices"],

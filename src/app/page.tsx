@@ -110,6 +110,7 @@ export default function Home() {
         <section id="treatments" data-sc-act="flow" aria-label="Price list" className="band-sand">
           <div className="w">
             <h2 className="serif">Price list</h2>
+            <p className="lead">The relaxation you deserve. All prices in Namibian dollars (N$).</p>
             <div className="menu">
               <div className="menu-media" data-sc-parallax="-0.18">
                 <img
@@ -459,6 +460,42 @@ export default function Home() {
               </div>
             </div>
             <BookForm />
+            <div className="book-qr" data-sc-in>
+              <p className="grp-label">Scan to visit or book online</p>
+              <figure>
+                <img
+                  src="/media/qr/spa-mendozer.svg"
+                  alt="QR code opening spa.mendozer.com"
+                  width={96}
+                  height={96}
+                  loading="lazy"
+                  decoding="async"
+                />
+                <figcaption>spa.mendozer.com</figcaption>
+              </figure>
+              <figure>
+                <img
+                  src="/media/qr/oryx-corner-spa.svg"
+                  alt="QR code opening oryxinstitute.org/corner-spa"
+                  width={96}
+                  height={96}
+                  loading="lazy"
+                  decoding="async"
+                />
+                <figcaption>oryxinstitute.org/corner-spa</figcaption>
+              </figure>
+              <figure>
+                <img
+                  src="/media/qr/mendozer.svg"
+                  alt="QR code opening mendozer.com"
+                  width={96}
+                  height={96}
+                  loading="lazy"
+                  decoding="async"
+                />
+                <figcaption>mendozer.com</figcaption>
+              </figure>
+            </div>
             <p className="note">
               {SITE_ADDRESSES.map((a) => (
                 <span key={a.label}>

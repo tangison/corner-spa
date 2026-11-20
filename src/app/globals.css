@@ -592,6 +592,16 @@ h2 { font-size: clamp(28px, 4.5vw, 44px); line-height: 1.15; margin-bottom: 40px
 .pt .a2 { color: var(--sand); font-size: 13px; letter-spacing: .02em; margin-top: 8px; display: inline-block; text-decoration: none; border-bottom: 1px solid var(--line); }
 .pt .a2:hover { border-bottom-color: var(--sand); }
 
+/* Scan-to-book chips in the booking band: three quiet cream cards, one per
+   site, mirroring the flyer's QR block. They wrap on phones and shrink to
+   84px so all three stay on screen without horizontal scrolling. */
+.book-qr { display: flex; flex-wrap: wrap; align-items: flex-start; justify-content: center; gap: 22px; margin: 48px auto 0; max-width: 560px; text-align: center; }
+.book-qr .grp-label { width: 100%; margin: 0 0 18px; }
+.book-qr figure { margin: 0; display: grid; justify-items: center; gap: 10px; background: #f5f3ee; border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px 12px; }
+.book-qr img { width: 96px; height: 96px; display: block; }
+.book-qr figcaption { font-size: 11px; letter-spacing: .06em; color: var(--mute); }
+@media (max-width: 560px) { .book-qr { gap: 14px; } .book-qr img { width: 84px; height: 84px; } .book-qr figure { padding: 12px 12px 10px; } }
+
 .book { text-align: center; }
 .book .ph { font-family: var(--font-lora), Georgia, serif; font-size: clamp(30px, 6vw, 56px); margin: 8px 0 28px; display: block; text-decoration: none; }
 .book .ph:hover { color: var(--sand); }
